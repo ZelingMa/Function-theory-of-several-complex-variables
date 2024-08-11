@@ -1,0 +1,1647 @@
+\chapter{$\bar{\partial}$问题及其应用\label{chap6}}
+第\ref{chap5}章中我们已经证明了全纯域一定是拟凸域.反过来的问题是：拟凸域是否一定是全纯域？这就是著名的 Levi 猜测或 Levi 问题.20世纪60年代中期，由 Andreotti，Vesentini，Morrey，Kohn 和 H\"ormander 等人发展起来的$L^2$估计方法，把 Levi 问题的研究归结为$\bar{\partial}$问题的可解性及对解的估计.本章将介绍$L^2$方法，并用它来解决 Levi 问题.
+\section{两项准备知识\label{sec6.1}}
+在下面的讨论中，我们将要用到函数的光滑化方法和Sobolev空间的概念，作为准备知识，我们将分别予以介绍.
+\subsection{函数的光滑化\index{H!函数的光滑化}}
+函数的光滑化是指，对任意$u\in L^2(\MR^N)$，要找一列函数$u_l\in(C^\infty\cap L^2)(\MR^N)$\index[symbolindex]{\textbf{函数和映射}!$(C^\infty\cap L^2)(\MR^N)$}，使得当$l\to\infty$时，有$\Vert u-u_l\Vert_{L^2}\to0$.这个从$u$找$\{u_l\}$的方法称为函数的光滑化方法或Friedrichs正则化方法\index{F!Friedrichs正则化方法}.其实，类似的方法在证明定理\ref{thm5.4.8}和定理\ref{thm5.5.10}时都已用过.
+
+如证明定理\ref{thm5.4.8}那样，取$\chi\colon \MR^N\to\MR$，使其满足下列条件：
+
+(1) $\chi\in C^\infty(\MR^N)$；
+
+(2) $\supp\chi$是紧集；
+
+(3) $\chi\ge0$；
+
+(4) $\int_{\MR^N}\chi(x)\dif m(x)=1$.
+
+这样的函数不难找到.例如，取
+\[\psi(x)=\begin{cases}
+	\exp\left(\frac1{|x|^2-1}\right),&|x|<1,\\
+	0,&|x|\ge1.
+\end{cases}\]
+如果记$c=\int_{\MR^N}\psi(x)\dif m(x)$，那么$\chi(x)=\frac1c \psi(x)$就是满足上述条件的函数.
+
+现在可以证明
+\begin{theorem}\label{thm6.1.1}
+	设$\chi$是$C_0^\infty(\MR^N)$中的非负函数，且满足
+	\[\int_{\MR^N}\chi(x)\dif m(x)=1,\quad \supp\chi\subset\left\{x\in\MR^N\colon |x|\le1\right\},\]
+	记$\chi_\varepsilon(x)=\frac1{\varepsilon^N}\chi\left(\frac{x}{\varepsilon}\right)$.如果对$u\in L^2(\MR^N)$，命\index[symbolindex]{\textbf{其它符号}!$u_\varepsilon$}\index[symbolindex]{\textbf{其它符号}!$(u\ast\chi_\varepsilon)(x)$}
+	\[u_\varepsilon(x)=(u\ast\chi_\varepsilon)(x)=\int_{\MR^N}u(x-y)\chi_\varepsilon(y)\dif m(y),\]
+	那么
+	
+	(1)\hypertarget{6.1.1}{}
+	$u_\varepsilon\in(C^\infty\cap L^2)(\MR^N)$；
+	
+	(2)\hypertarget{6.1.1}{}
+	$\supp u_\varepsilon\subset\{x\colon d(x,\supp u)\le\varepsilon\}$；
+	
+	(3)\hypertarget{6.1.1}{}
+	当$\varepsilon\to0$时，$\Vert u_\varepsilon -u\Vert_{L^2}\to0$.
+	
+	这里的\hyperlink{6.1.1}{(2)}说明，如果$\supp u$是紧的，那么$\supp u_\varepsilon$也是紧的；\hyperlink{6.1.1}{(3)}说明$\{u_\varepsilon\}$就是$u$的一个光滑化序列.
+\end{theorem}
+\begin{proof}
+	\hyperlink{6.1.1}{(1)}
+	把$u_\varepsilon(x)$改写成
+	\[u_\varepsilon(x)=\int_{\MR^N}u(y)\chi_\varepsilon(x-y)\dif m(y),\]
+	便知$u_\varepsilon(x)\in C^\infty(\MR^N)$.下面证明$\Vert u_\varepsilon\Vert_{L^2}\le\Vert u\Vert_{L^2}$.事实上
+	\begin{align*}
+		\Vert u_\varepsilon\Vert_{L^2}^2
+		&=\int_{\MR^N}|u_\varepsilon(x)|^2 \dif m(x)\\
+		&=\int_{\MR^N}\left|\int_{\MR^N} u(x-y)\chi_\varepsilon(y)\dif m(y)\right|^2\dif m(x)\\
+		&\le\int_{\MR^N}\left\{\int_{\MR^N}|u(x-y)|\chi_\varepsilon(y)\dif m(y)\right\}^2\dif m(x)\\
+		&\le\int_{\MR^N}\left\{\int_{\MR^N}|u(x-y)|^2\chi_\varepsilon(y)\dif m(y)\right\}\cdot\left\{\int_{\MR^N}\chi_\varepsilon(y)\dif m(y)\right\}\dif m(x)\\
+		&=\int_{\MR^N} \chi_\varepsilon(y)\dif m(y)\int_{\MR^N}|u(x-y)|^2\dif m(x)=\Vert u\Vert_{L^2}^2,
+	\end{align*}
+这里我们用了等式$\int_{\MR^N}\chi_\varepsilon(y)\dif m(y)=1$.由于$u\in L^2(\MR^N)$，所以$u_\varepsilon(x)\in L^2(\MR^N)$.
+
+\hyperlink{6.1.1}{(2)}
+任取$x_0\in\supp u_\varepsilon$.我们先设$u(x_0)\neq0$.如果$d(x_0,\supp u)>\varepsilon$，那么$B(x_0,\varepsilon)\cap\supp u=\varnothing$.由于$\supp\chi_\varepsilon=\{\chi\colon|\chi|\le\varepsilon\}$，所以
+\begin{align*}
+	u_\varepsilon(x_0)
+	&=\int_{|y|\le\varepsilon}u(x_0-y)\chi_\varepsilon(y)\dif m(y)\\
+	&=\int_{|x_0-w|\le\varepsilon}u(w)\chi_\varepsilon(x_0-w)\dif m(w)=0,
+\end{align*}
+这和$u_\varepsilon(x_0)\neq0$矛盾.再设$u_\varepsilon(x_0)=0$，则必有$x_k\to x_0$，而$u_\varepsilon(x_k)\neq0$.由上面的讨论知道，$d(x_k,\supp u)\le\varepsilon$.让$k\to\infty$，即得$d(x_0,\supp u)\le\varepsilon$.
+
+\hyperlink{6.1.1}{(3)}
+由于$u\in L^2(\MR^N)$，对于任给的$\delta>0$，存在具有紧支集的连续函数$v$，使得
+\begin{equation}\label{eq6.1.1}
+	\Vert u-v\Vert_{L^2}<\frac{\delta}{3}.
+\end{equation}
+由\hyperlink{6.1.1}{(1)}所证，对于任意的$\varepsilon>0$有
+\begin{equation}\label{eq6.1.2}
+	\Vert u_\varepsilon-v_\varepsilon\Vert_{L^2}\le\Vert u-v\Vert_{L^2}<\frac{\delta}{3}.
+\end{equation}
+记$K=\supp v$，则$K$是紧集，取定$\eta>0$，记
+\[K_\eta=\left\{x\in\MR^N\colon d(x,K)\le\eta\right\},\]
+则$K_\eta$也是紧集.由于$v$在$K_\eta$上连续，因而一致连续，故存在$\eta'>0$，当$x,x'\in K_\eta$，且$|x-x'|<\eta'$时，$|v(x)-v(x')|<\frac{\delta}{3m(K_\eta)}$，这里$m(K_\eta)$记$K_\eta$在$\MR^N$中的体积.今取$\varepsilon<\min\left\{\eta',\frac12 \eta\right\}$，则当$x\in K_\varepsilon,|y|<\varepsilon$时，$x-y\in K_{2\varepsilon}\subset K_\eta$，因而
+\[|v(x-y)-v(x)|<\frac{\delta}{3m(K_\eta)}.\]
+于是
+\begin{align*}
+	\max_{x\in K_\varepsilon}|v_\varepsilon(x)-v(x)|
+	&\le\max_{x\in K_\varepsilon}\int_{\MR^N}|v(x-y)-v(x)|\chi_\varepsilon(y)\dif m(y)\\
+	&=\max_{x\in K_\varepsilon}\int_{|y|\le\varepsilon}|v(x-y)-v(x)|\chi_\varepsilon(y)\dif m(y)<\frac{\delta}{3m(K_\eta)}.
+\end{align*}
+因为$\supp v=K$，由\hyperlink{6.1.1}{(2)}知$\supp v_\varepsilon\subset K_\varepsilon$，所以$\supp(v_\varepsilon-v)\subset K_\varepsilon$.于是
+\begin{align}\label{eq6.1.3}
+	\Vert v_\varepsilon-v\Vert_{L^2}
+	&=\left\{\int_{\MR^N}|v_\varepsilon(x)-v(x)|^2\dif m(x)\right\}^{\frac12}\notag\\
+	&=\left\{\int_{K_\varepsilon}|v_\varepsilon(x)-v(x)|^2\dif m(x)\right\}^{\frac12}<\frac\delta 3.
+\end{align}
+综合\eqref{eq6.1.1}，\eqref{eq6.1.2}，\eqref{eq6.1.3}即得
+\[\Vert u_\varepsilon-u\Vert_{L^2}\le\Vert u_\varepsilon-v_\varepsilon\Vert_{L^2}+\Vert v_\varepsilon-v\Vert_{L^2}+\Vert v-u\Vert_{L^2}<\delta.\]
+即当$\varepsilon\to0$时，$\Vert u_\varepsilon-u\Vert_{L^2}\to0$.
+\end{proof}
+注意，虽然上面的讨论是对$u\in L^2(\MR^N)$进行的，其实所有结论对$u\in L^p(\MR^N),1\le p<\infty$也都成立.
+\subsection{$\MR^N$上的Sobolev空间}
+设$G$是$\MR^N$中的开集，对于$f\in C^\infty(G)$及非负整数$s$，定义\index[symbolindex]{\textbf{其它符号}!$\Vert f\Vert_s^2$}
+\[\Vert f\Vert_s^2=\sum_{|\alpha|\le s}\Vert\DD^\alpha f\Vert_{L^2}^2=\sum_{|\alpha|\le s}\int_G|(\DD^\alpha f)(x)|^2\dif m(x),\]
+这里$\alpha=(\alpha_1,\cdots,\alpha_N)$是多重指标，$(\DD^\alpha f)(x)=\frac{\partial^{|\alpha|}f(x)}{\partial x_1^{\alpha_1}\cdots\partial x_N^{\alpha_N}}$.记\index[symbolindex]{\textbf{函数和映射}!$A_s(G)$}
+\[A_s(G)=\{f\in C^\infty(G)\colon\Vert f\Vert_s<\infty\}.\]
+对于$f,g\in A_s(G)$，定义它们的内积\index[symbolindex]{\textbf{其它符号}!$\langle f$，$g\rangle_s$}
+\[\langle f,g\rangle_s=\sum_{|\alpha|\le s}\int_G (\DD^\alpha f)(x)\bar{(\DD^\alpha g)(x)}\dif m(x),\]
+特别
+\[\langle f,g\rangle_0=\int_G f(x)\bar{g(x)}\dif m(x)\]
+就是普通$L^2(G)$中的内积，简记为$\langle f,g\rangle$.由Schwarz不等式
+\[|\langle f,g\rangle_s|\le\Vert f\Vert_s \Vert g\Vert_s.\]
+
+现设$\{f_j\}$是$A_s(G)$中的Cauchy序列，即当$j,k\to\infty$时，$\Vert f_j-f_k\Vert_s\to0$.按照$\Vert f\Vert_s$的定义，对于任意$|\alpha|\le s$，均有
+\[\Vert\DD^\alpha f_j-\DD^\alpha f_k\Vert_{L^2}\to0,\quad j,k\to\infty.\]
+特别当$\alpha=(0,\cdots,0)$时，有$\Vert f_j-f_k\Vert_{L^2}\to0$，即$\{f_j\}$是$L^2(G)$中一个Cauchy序列.由于$L^2(G)$是完备的，所以存在$f\in L^2(G)$，使得$\Vert f_j-f\Vert_{L^2}\to0,j\to\infty$.这个$f$是由$A_s(G)$中的Cauchy序列$\{f_j\}$所确定的.把所有这种$f$添加到$A_s(G)$上去，所得的空间称为$A_s(G)$按范数$\Vert\cdot\Vert_s$的完备化空间.
+\begin{definition}\label{def6.1.2}
+	$A_s(G)$按范数$\Vert\cdot\Vert_s$的完备化空间称为\textbf{Sobolev空间}，记为$W^s(G)$\index[symbolindex]{\textbf{函数和映射}!$W^s(G)$}.
+\end{definition}
+为了弄清Sobolev空间$W^s(G)$的构造，我们引进弱导数的概念.
+
+设$f\in C^\infty((a,b)),\varphi\in C_0^\infty((a,b))$，则由分部积分法
+\[\int_{a}^{b}f(x)\bar{\varphi^{(m)}(x)}\dx=(-1)^m\int_{a}^{b}f^{(m)}(x)\bar{\varphi(x)}\dx,\]
+即$\langle f,\varphi^{(m)}\rangle=(-1)^m\langle f^{(m)},\varphi\rangle$.根据这个简单的事实，我们给出下面的
+\begin{definition}\label{def6.1.3}
+	设$f\in L^2(G)$.如果存在$h\in L^2(G)$，使得对任意$\varphi\in C_0^\infty(G)$，总有
+	\[\langle f,\DD^\alpha \varphi\rangle=(-1)^{|\alpha|}\langle h,\varphi\rangle,\]
+	就称$h$为$f$的$\alpha$阶\textbf{弱导数}\index{R!弱导数}，记为$\DD^\alpha f=h(\text{弱})$\index[symbolindex]{\textbf{导数}!$\DD^\alpha f(\text{弱})$}.这时称$f$的$\alpha$阶弱导数存在.
+\end{definition}
+显然，如果$f$的$\alpha$阶弱导数$h$存在，则在$L^2(G)$上$h$是唯一的，即若$\DD^\alpha f=h,\DD^\alpha f=g$，则$h$和$g$在$G$上几乎处处相等.如果$f$是$C^\infty$函数，那么它的弱导数就是普通的导数.这样就把导数的概念推广到$L^2(G)$函数上去了.
+
+容易看出，弱导数的运算和普通导数是一样的，即若$f,g\in L^2(G)$，且弱导数$\DD^\alpha f,\DD^\alpha g$存在，那么对任意复数$a,b$有
+\[\DD^\alpha(af+bg)=a\DD^\alpha f+b\DD^\alpha g.\]
+又若弱导数$\pp{f}{x_j}$存在，$g\in C^\infty(G)$且$\pp{g}{x_j}$在$G$上有界，则
+\[\pp{}{x_j}(fg)=\pp{g}{x_j}f+g\pp{f}{x_j}.\]
+这些都可按弱导数的定义直接验证.
+
+对于Sobolev空间来说，有下面的
+\begin{prop}\label{prop6.1.4}
+	如果$f\in W^s(G)$，则对任意$\alpha,|\alpha|\le s$，弱导数$\DD^\alpha f$存在.
+\end{prop}
+\begin{proof}
+	根据$W^s(G)$的定义，存在$A_s(G)$中的Cauchy序列$\{f_j\}$，当$j\to\infty$时，$\Vert f_j-f\Vert_{L^2}\to0$.因而，当$j,k\to\infty$时，有$\Vert f_j-f_k\Vert_s\to0$.由此推出，对任意$\alpha,|\alpha|\le s$有
+	\[\Vert\DD^\alpha f_j-\DD^\alpha f_k\Vert_{L^2}\to0,\quad j,k\to\infty.\]
+	因为$L^2(G)$是完备的，所以存在$h\in L^2(G)$，使得当$j\to\infty$时，有$\Vert\DD^\alpha f_j-h\Vert_{L^2}\to0$.任取$\varphi\in C_0^\infty(G)$，则有
+	\[\langle f,\DD^\alpha\varphi\rangle=\lim_{j\to\infty}\langle f_j,\DD^\alpha \varphi\rangle=(-1)^{|\alpha|}\lim_{j\to\infty}\langle \DD^\alpha f_j,\varphi\rangle=(-1)^{|\alpha|}\langle h,\varphi\rangle.\]
+	此即$\DD^\alpha f=h(\text{弱})$.
+\end{proof}
+现在可以在$W^s(G)$中定义内积.
+
+设$f,g\in W^s(G)$，定义它们的内积
+\[\langle f,g\rangle_s=\sum_{|\alpha|\le s}\int_G(\DD^\alpha f)(x)\bar{(\DD^\alpha g)(x)}\dif m(x),\]
+这里$\DD^\alpha f,\DD^\alpha g$都是弱导数.
+
+如果$f,g\in A_s(G)$，那么上面的定义和原来的相一致.特别
+\[\Vert f\Vert_s^2=\langle f,f\rangle_s=\sum_{|\alpha|\le s}\Vert\DD^\alpha f\Vert_{L^2}^2.\]
+
+在这个内积下，$W^s(G)$是一个Hilbert空间.
+
+下面证明命题\ref{prop6.1.4}的逆也是成立的，为此先证
+\begin{prop}\label{prop6.1.5}
+	设$G$是$\MR^N$中的开集，如果$x\in G,d(x,\partial G)>\varepsilon$，弱导数$\DD^\alpha f$存在，那么
+	\[\DD^\alpha(f\ast\chi_\varepsilon)(x)=((\DD^\alpha f)\ast\chi_\varepsilon)(x),\]
+	这里$\chi_\varepsilon$是定理\ref{thm6.1.1}中定义的函数.
+\end{prop}
+\begin{proof}
+	因为$d(x,\partial G)>\varepsilon$，所以$B(x,\varepsilon)\subset G$.于是
+	\begin{align*}
+		\DD^\alpha(f\ast\chi_\varepsilon)(x)
+		&=\DD^\alpha\left\{\int_G f(y)\chi_\varepsilon(x-y)\dif m(y)\right\}\\
+		&=\int_G f(y)\DD_x^\alpha \chi_\varepsilon(x-y)\dif m(y)\\
+		&=(-1)^{|\alpha|}\int_G f(y)\DD_y^\alpha \chi_\varepsilon(x-y)\dif m(y)\\
+		&=(-1)^{|\alpha|}(-1)^{|\alpha|}\int_G \DD^\alpha f(y)\chi_\varepsilon(x-y)\dif m(y)\\
+		&=((\DD^\alpha f)\ast\chi_\varepsilon)(x).\qedhere
+	\end{align*}
+\end{proof}
+现在证明
+\begin{theorem}\label{thm6.1.6}
+	Sobolev空间$W^s(G)$可表示为\index{S!Sobolev空间}
+	\[W^s(G)=\{f\in L^2(G)\colon\text{当$|\alpha|\le s$时，弱导数$\DD^\alpha f$存在}\}.\]
+\end{theorem}
+\begin{proof}
+	若把满足上式右端条件的函数的全体记为$P_s(G)$，则命题\ref{prop6.1.4}已证$W^s(G)\subset P_s(G)$.现在要证$P_s(G)\subset W^s(G)$.任取$f\in P_s(G)$，则$f\in L^2(G)$，且对任意$\alpha,|\alpha|\le s$，弱导数$\DD^\alpha f$存在.我们要证明，存在$f_j\in A_s(G)$，使得当$j\to\infty$时，$\Vert f_j-f\Vert_s\to0$.任取有理点$a_j\in G$，则必存在充分小的$r_j$，使得$\bar{B}(a_j,r_j)\subset G$，当$a_j$走遍$G$中的有理点时，所得的球列$\{B(a_j,r_j)\}$覆盖了$G$.取从属于$\{B(a_j,r_j)\}$的单位分解$\{\eta_j\}$，则对任意$j,\supp(\eta_j f)\subset\subset G$.对任意$\alpha,|\alpha|\le s$及固定的$j$，弱导数$\DD^\alpha(\eta_j f)\in L^2(G)$.于是，由定理\ref{thm6.1.1}得知，当$\varepsilon\to0$时，有
+	\[\Vert \DD^\alpha(\eta_j f)\ast\chi_\varepsilon-\DD^\alpha (\eta_j f)\Vert_{L^2}\to0.\]
+	这就是说，对任意一列趋于$0$的正数$\delta_k$，存在$\varepsilon(j,k)>0$，使得当$|\alpha|\le s$时，有
+	\[\Vert\DD^\alpha(\eta_j f)\ast\chi_{\varepsilon(j,k)}-\DD^\alpha(\eta_j f)\Vert_{L^2}<\frac{\delta_k}{2^j}.\]
+	命$f_{\delta_k}=\sum_{j=1}^{\infty}(\eta_j f)\ast\chi_{\varepsilon(j,k)}$，显然$f_{\delta_k}\in C^\infty(G)\cap L^2(G)$.对每个$\alpha,|\alpha|\le s$，利用命题\ref{prop6.1.5}，即得
+	\begin{align*}
+		\Vert\DD^\alpha f_{\delta_k}-\DD^\alpha f\Vert_{L^2}
+		&=\left\Vert\DD^\alpha\left(\sum_{j=1}^{\infty}(\eta_j f)\ast\chi_{\varepsilon(j,k)}\right)-\DD^\alpha\left(\sum_{j=1}^{\infty}\eta_j f\right)\right\Vert_{L^2}\\
+		&=\left\Vert\sum_{j=1}^{\infty}(\DD^\alpha(\eta_j f)\ast\chi_{\varepsilon(j,k)}-\DD^\alpha(\eta_j f))\right\Vert_{L^2}\\
+		&\le\sum_{j=1}^{\infty}\Vert\DD^\alpha(\eta_j f)\ast\chi_{\varepsilon(j,k)}-\DD^\alpha(\eta_j f)\Vert_{L^2}\\
+		&\le\sum_{j=1}^{\infty}\frac{\delta_k}{2^j}=\delta_k\to0.
+	\end{align*}
+因而有$\Vert f_{\delta_k}-f\Vert_s\to0,k\to\infty$.
+\end{proof}
+定理\ref{thm6.1.6}有时也被用来作为Sobolev空间$W^s(G)$的定义.这个定理使我们弄清了$W^s(G)$的构造，它是由$L^2(G)$中那些具有弱导数$\DD^\alpha f(|\alpha|\le s)$的函数$f$所构成.当然，具有弱导数的函数未必有普通的导数.但下面的Sobolev引理断言，具有高阶弱导数的函数必具有一定阶数的普通导数.
+\begin{theorem}[（\textbf{Sobolev引理}）]\label{thm6.1.7}\index{D!定理!Sobolev引理}
+	设$G$是$\MR^N$中的开集，如果$s>\frac N2,k$是任意的非负整数，那么
+	\[W^{s+k}(G)\subset C^k(G).\]
+\end{theorem}
+为此要先证下面的
+\begin{lemma}[（\textbf{Sobolev不等式}）]\label{lem6.1.8}\index{S!Sobolev不等式}
+	设$G$是$\MR^N$中的开集，$K$是$G$中的紧集.如果$s>\frac N2$，则必存在常数$C>0$，使得对每一个$f\in A_s(G)$均有
+	\[\max_{x\in K}|f(x)|\le C\Vert f\Vert_s.\]
+\end{lemma}
+\begin{proof}
+	因为$K$是$G$中的紧集，故必存在$\rho>0$，使得对每一个$a\in K$都有$B(a,\rho)\subset G$.取定义在$[0,\infty)$中的函数$\eta$，使得$\eta\in C^\infty([0,\rho]),\supp\eta\subset[0,\rho)$，且当$r\in\left[0,\frac{\rho}{2}\right]$时，$\eta(r)\equiv1$.对固定的$a\in K$，通过$\eta$可定义$\MR^N$上的函数$\eta(|x-a|)$，仍用$\eta$简记之.任取$f\in A_s(G)$，并用极坐标，$f$可写为
+	\[f(x_1,\cdots,x_N)=f(r\cos\theta_1,r\sin\theta_1\cos\theta_2,\cdots,r\sin\theta_1\cdots\sin\theta_{N-2}\sin\theta_{N-1}),\]
+	在$\eta$的定义中取$a=0$，则$\eta(|x|)=\eta(r)$.由分部积分法可得
+	\[\int_{0}^{\rho}r^{s-1}\frac{\partial^s(\eta f)}{\partial r^s}\dif r=(-1)^s (s-1)! f(0),\]
+	或者
+	\[f(0)=(-1)^s\frac1{(s-1)!}\int_{0}^{\rho}r^{s-1}\frac{\partial^s(\eta f)}{\partial r^s}\dif r.\]
+	让上式两端在单位球面上积分，记单位球面的面积为$\sigma_0$，并注意到体积元素和面积元素的关系为$\dif m=r^{N-1}\dif r\dif\sigma$，就有
+	\begin{align*}
+		f(0)\sigma_0
+		&=(-1)^s\frac1{(s-1)!}\int_{\partial B}\int_{0}^{\rho}r^{s-1}\frac{\partial^s(\eta f)}{\partial r^s}\dif r\dif\sigma\\
+		&=(-1)^s\frac1{(s-1)!}\int_{\partial B}\int_{0}^{\rho}r^{s-N}\frac{\partial^s(\eta f)}{\partial r^s}r^{N-1}\dif r\dif\sigma\\
+		&=(-1)^s\frac1{(s-1)!}\int_{B(0,\rho)}r^{s-N}\frac{\partial^s(\eta f)}{\partial r^s}\dif m.
+	\end{align*}
+用Schwarz不等式得
+\begin{equation}\label{eq6.1.4}
+	|f(0)\sigma_0|\le\frac1{(s-1)!}\left(\int_{B(0,\rho)}r^{2(s-N)}\dif m\right)^{\frac12}\left(\int_{B(0,\rho)}\left|\frac{\partial^s(\eta f)}{\partial r^s}\right|^2\dif m\right)^{\frac12}.
+\end{equation}
+由于$s>\frac N2$，所以$2(s-N)>-N$，右端第一个积分收敛.由于$B(0,\rho)\subset G$，右端第二个积分不超过
+\begin{align*}
+	\left(\int_G \left|\frac{\partial^s(\eta f)}{\partial r^s}\right|^2\dif m\right)^{\frac12}
+	&\le\left(\sum_{|\alpha|\le s}\Vert\DD^\alpha(\eta f)\Vert_{L^2}^2\right)^{\frac12}\\
+	&\le C\left(\sum_{|\alpha|\le s}\Vert\DD^\alpha f\Vert_{L^2}^2\right)^{\frac12}=C\Vert f\Vert_s.
+\end{align*}
+于是由\eqref{eq6.1.4}即得
+\[|f(0)|\le C\Vert f\Vert_s,\]
+这里$C$代表一个常数，它在不同的地方出现可以取不同的值.对于$K$中任意点$a$，取$\eta$为$\eta(|x-a|)$，所有的讨论都在$B(a,\rho)$上进行，即可得同样的结论.
+\end{proof}
+\begin{proof}[\textbf{定理\ref{thm6.1.7}的证明}]
+	设$f\in W^{s+k}(G)$，我们要证明$f$在$G$上几乎处处等于$C^k(G)$中的一个函数.根据$W^{s+k}(G)$的定义，存在一列$\{f_j\}\subset A_{s+k}(G)$，使得当$j\to\infty$时，$\Vert f_j-f\Vert_{L^2}\to0$.因而当$i\to\infty,j\to\infty$时，有$\Vert f_i-f_j\Vert_{s+k}\to0$.由于$f_i-f_j\in A_{s+k}(G)$，所以对任意$\alpha,|\alpha|\le k,\DD^\alpha (f_i-f_j)\in A_s(G)$.于是，由引理\ref{lem6.1.8}，对任意紧集$K\subset G$，有
+	\begin{align*}
+		\max_{x\in K}|\DD^\alpha f_i(x)-\DD^\alpha f_j(x)|
+		&\le C\Vert\DD^\alpha f_i-\DD^\alpha f_j\Vert_s\\
+		&\le C\Vert f_i-f_j\Vert_{s+k}\to0.
+	\end{align*}
+这就证明了$\{\DD^\alpha f_j\}$在$K$上一致收敛.特别取$\alpha=(0,\cdots,0)$，就有$\{f_j\}$在$K$上一致收敛.设其极限函数为$g$，由于$\{\DD^\alpha f_j\}$也在$K$上一致收敛，因而有$\DD^\alpha f_j\to\DD^\alpha g$，所以$g\in C^k(K)$.这时当然有$\Vert f_j-g\Vert_{L^2(K)}\to0(j\to\infty)$.另外从$\Vert f_j-f\Vert_{L^2}\to0$，当然也有$\Vert f_j-f\Vert_{L^2(K)}\to0$，所以$f$在$K$上几乎处处等于$g$，因为$K$是$G$中任意的紧集，所以$f$在$G$上几乎处处等于$g$.
+\end{proof}
+Sobolev引理是研究偏微分方程解的正则性的重要工具，它在偏微分方程的近代研究中十分重要.
+\section{把$\bar{\partial}$问题归结为$L^2$估计\label{sec6.2}}
+\subsection{加权的平方可积空间}
+在\ref{sec4.5}中我们曾经提到过，$\MC^n$中$(p,q)$形式的一般形状为
+\[f=\sum_{|I|=p}\sum_{|J|=p}f_{IJ}(z)\dz_I\wedge\dzz_J,\]
+这里$I=(i_1,\cdots,i_p),J=(j_1,\cdots,j_q),\dz_I=\dz_{i_1}\wedge\cdots\wedge\dz_{i_p},\dzz_J=\dzz_{j_1}\wedge\cdots\wedge\dzz_{j_q},1\le i_1<\cdots<i_p\le n,1\le j_1<\cdots<j_q\le n$.$\bar{\partial}$算子把$(p,q)$形式映为$(p,q+1)$形式.所谓$\bar{\partial}$问题是指给定一个$(p,q+1)$形式$f$，要找一个$(p,q)$形式$u$，使得$\bar{\partial}u=f$成立.由于$\bar{\partial}^2=0$，所以上述问题有解的必要条件是$\bar{\partial}f=0$.
+
+当$p=q=0$时，$\bar{\partial}$问题可叙述为：给定一个$(0,1)$形式$f=\sum_{j=1}^{n}f_j(z)\dzz_j$满足$\bar{\partial}f=0$，要找一个函数$u$，使得$\bar{\partial}u=f$.在\ref{sec4.7}中，我们利用平面上非齐次的Cauchy积分公式，已经讨论过平面上的$\bar{\partial}$问题，以及高维的具有紧支集的$\bar{\partial}$问题.
+
+下面我们将从Hilbert空间的角度来考察一般的$\bar{\partial}$问题，最后把求解问题归结为证明一个不等式.
+\begin{definition}\label{def6.2.1}
+	设$G$是$\MC^n$中的开集，$f\colon G\to\MC$是可测函数，$\varphi\colon G\to\MR$是连续函数，定义\index[symbolindex]{\textbf{函数和映射}!$L^2(G$，$\varphi)$}
+	\[L^2(G,\varphi)=\left\{f\colon\int_G |f|^2\ee^{-\varphi}\dif m<\infty\right\},\]
+	这里$\dif m$是$G$中的Lebesgue测度，$\varphi$称为\textbf{权函数}\index{Q!权函数}，$L^2(G,\varphi)$称为\textbf{加权的平方可积空间}\index{J!加权的平方可积空间}.
+\end{definition}
+设$f,g\in L^2(G,\varphi)$，定义它们的内积为\index[symbolindex]{\textbf{其它符号}!$\langle f$，$g\rangle_\varphi$}\index[symbolindex]{\textbf{其它符号}!$\Vert f\Vert_\varphi^2$}
+\[\langle f,g\rangle_\varphi=\int_G f\bar{g}\ee^{-\varphi}\dif m,\]
+\[\Vert f\Vert_\varphi^2=\langle f,f\rangle_\varphi=\int_G |f|^2\ee^{-\varphi}\dif m,\]
+则$L^2(G,\varphi)$是一个Hilbert空间.同样定义\index[symbolindex]{\textbf{微分形式}!$L_{\text{$(p$，$q)$}}^2(G$，$\varphi)$}
+\[L_{(p,q)}^2(G,\varphi)=\left\{f\colon\text{$f$是$(p,q)$形式，它的系数$f_{IJ}\in L^2(G,\varphi)$}\right\}.\]
+
+设$f,g\in L_{(p,q)}^2(G,\varphi)$，定义它们的内积为
+\[\langle f,g\rangle_\varphi=\sum_{I,J}\int_G f_{IJ}\bar{g}_{IJ}\ee^{-\varphi}\dif m,\]
+\[\Vert f\Vert_\varphi^2=\langle f,f\rangle_\varphi=\sum_{I,J}\int_G |f_{IJ}|^2\ee^{-\varphi}\dif m,\]
+记$|f|^2=\sum_{I,J}|f_{IJ}|^2$，则$\Vert f\Vert_\varphi^2=\int_G |f|^2\ee^{-\varphi}\dif m$.这时$L_{(p,q)}^2(G,\varphi)$也成一个Hilbert空间.
+
+设$f=\sum_{I,J}f_{IJ}\dz_I\wedge\dzz_J\in L_{(p,q)}^2(G,\varphi)$，则
+\[\bar{\partial}f=\sum_{I,J}\sum_{k=1}^{n}\pp{f_{IJ}}{\bar{z}_k}\dzz_k\wedge\dz_I\wedge\dzz_J.\]
+由于$f_{IJ}$不是可微函数，这里的$\pp{f_{IJ}}{\bar{z}_k}$是$f_{IJ}$的弱导数，这时仍有$\bar{\partial}f\in L_{(p,q+1)}^2(G,\varphi)$，但$\bar{\partial}f$未必属于$L_{(p,q+1)}^2(G,\varphi_1)$，$\varphi_1$是另一个权函数.
+
+我们把扩大定义后的$\bar{\partial}$算子记为$T$或$S,T$的定义域$D(T)$是指\index[symbolindex]{\textbf{微分形式}!$D(T)$}
+\[D(T)=\left\{f\in L_{(p,q)}^2(G,\varphi_1)\colon Tf\in L_{(p,q+1)}^2(G,\varphi_2)\right\}.\]
+$T$和$S$的作用如下：
+\[L_{(p,q)}^2(G,\varphi_1) \overset{T}{\longrightarrow} L_{(p,q+1)}^2(G,\varphi_2)\overset{S}{\longrightarrow} L_{(p,q+2)}^2(G,\varphi_3).\]
+\subsection{$\bar{\partial}$算子的基本性质}
+为了把$\bar{\partial}$问题抽象成一般的Hilbert空间中的问题，注意算子$T=\bar{\partial}$的下列性质：
+
+(1)
+$T$是线性算子；
+
+(2)
+$D(T)$在$L_{(p,q)}^2(G,\varphi_1)$中稠；
+
+用$D_{(p,q)}(G)$记$G$中的$(p,q)$形式$f$\index[symbolindex]{\textbf{微分形式}!$D_{\text{$(p$，$q)$}}(G)$}，其系数$f_{IJ}\in C_0^\infty(G)$，即在$G$中有紧支集的无穷可微函数.显然，$D_{(p,q)}(G)\subset D(T)$.对于任意$f\in L_{(p,q)}^2(G,\varphi_1)$可取具有紧支集的连续函数$u_{IJ}$，使得$\Vert f_{IJ}-u_{IJ}\Vert_{L^2}<\varepsilon$.因为$u_{IJ}$有紧支集，故由定理\ref{thm6.1.1}\hyperlink{6.1.1}{(2)}，存在$(u_{IJ})_\varepsilon\in C_0^\infty(G)$，使得$\Vert (u_{IJ})_\varepsilon-u_{IJ}\Vert_{L^2}\to0$，当$\varepsilon\to0$.于是得$\Vert f_{IJ}-(u_{IJ})_\varepsilon\Vert_{L^2}\to0$，这说明$D_{(p,q)}(G)$在$L_{(p,q)}^2(G,\varphi_1)$中稠，因而$D(T)$在$L_{(p,q)}^2(G,\varphi_1)$中稠.
+
+(3)
+$T$是闭算子.
+
+设$u_k\in D(T),u_k\to u,Tu_k\to v$，要证明
+\[u\in D(T),\quad\text{且$v=Tu$}.\]
+事实上，因为$u_k\to u$，所以$u\in L_{(p,q)}^2(G,\varphi_1)$.由于$T$在弱导数的意义下是连续的，所以$Tu_k\to Tu$，因而$Tu\in L_{(p,q+1)}^2(G,\varphi_2)$，所以$u\in D(T)$，且$v=Tu$.
+\subsection{$\bar{\partial}$问题的Hilbert空间模型}
+知道了$T$的这些性质后，便可把$\bar{\partial}$问题抽象为一般的Hilbert空间模型.
+
+设$H_1,H_2,H_3$是三个Hilbert空间，$T,S$是两个线性算子，它们有关系
+\[H\overset{T}{\longrightarrow}H_2\overset{S}{\longrightarrow}H_3.\]
+$T,S$还满足下述条件：
+
+(1)
+$D(T),D(S)$分别在$H_1,H_2$中稠\index[symbolindex]{\textbf{微分形式}!$D(S)$}；
+
+(2)
+$T,S$是线性的闭算子；
+
+(3)
+$TS=0$（这是因为$\bar{\partial}^2=0$）.
+
+如果$Sf=0$，问$Tu=f$在$H_1$中是否有解？
+
+容易看出，$Tu=f$在$H_1$中有解的充分必要条件是
+\begin{equation}\label{eq6.2.1}
+	\langle Tu,g\rangle_{H_2}=\langle f,g\rangle_{H_2}
+\end{equation}
+对$H_2$中某一稠密子集中的任意$g$成立.
+
+在什么条件下才能使\eqref{eq6.2.1}成立？让我们回忆一下$T$的伴随算子$T^\ast$的定义.\index[symbolindex]{\textbf{其它符号}!$T^\ast$}\index{B!伴随算子}
+
+因为$T$的定义域$D(T)$在全空间$H_1$是稠的，即$T\colon H_1\to H_2$是稠定算子\index{C!稠定算子}.今定义\index[symbolindex]{\textbf{微分形式}!$D(T^\ast)$}
+\[D(T^\ast)=\left\{y\colon y\in H_2,\exists y^\ast \in H_1,\forall x\in D(T),\text{使$\langle Tx,y\rangle=\langle x,y^\ast\rangle$成立}\right\}.\]
+不难证明，对于给定的$y\in D(T^\ast)$，对应的$y^\ast$是唯一的.这就确定了算子$T^\ast\colon y\to y^\ast$，称$T^\ast$为$T$的伴随算子.因而对任意的$x\in D(T),y\in D(T^\ast)$，有
+\[\langle Tx,y\rangle=\langle x,T^\ast y\rangle.\]
+我们知道$T^\ast$有下列性质：
+
+(1)
+稠定线性算子$T$的伴随算子$T^\ast$是线性算子；
+
+(2)
+稠定线性算子$T$的伴随算子$T^\ast$是闭算子；
+
+(3)
+如果$T$是闭算子，那么$(T^\ast)^\ast=T$.
+
+容易知道，$T^\ast$对$D_{(p,q+1)}(G)$中的元素都有定义，即$D_{(p,q+1)}(G)\subset D(T^\ast)$，因而
+
+(4)
+$D(T^\ast)$在$H_2$中稠.
+
+今设$E$是$H_2$中的稠子集，\eqref{eq6.2.1}对每个$g\in E$成立.如果$E\subset D(T^\ast)$，则因$\langle Tu,g\rangle=\langle u,T^\ast g\rangle$，\eqref{eq6.2.1}可改写为
+\begin{equation}\label{eq6.2.2}
+	\langle u,T^\ast g\rangle=\langle f,g\rangle.
+\end{equation}
+记
+\[H_1'=\left\{T^\ast g\colon g\in E\subset D(T^\ast)\right\},\]
+则$H_1'\subset H_1$.定义$h\colon H_1'\to \MC$如下：
+\[h(T^\ast g)=\langle g,f\rangle_{H_2}.\]
+$h$是定义在$H_1'$上的一个线性泛函.如果能把$h$扩展成定义在整个空间$H_1$上的一个有界线性泛函，那么根据Riesz表示定理，存在$u\in H_1$，使得$h(T^\ast g)=\langle T^\ast g,u\rangle$，即$\langle T^\ast g,u\rangle=\langle g,f\rangle$，这就是\eqref{eq6.2.2}.因而$u$就是$Tu=f$的解.
+
+在什么条件下，$h$能扩展成全空间$H_1$上的有界线性泛函？
+\begin{prop}\label{prop6.2.2}
+	如果存在只依赖于$f$的常数$C_f$，使得
+	\begin{equation}\label{eq6.2.3}
+		|\langle g,f\rangle|\le C_f\Vert T^\ast g\Vert,g\in E\subset D(T^\ast),
+	\end{equation}
+则$h(T^\ast g)=\langle g,f\rangle$可以扩展成$H_1$上的有界线性泛函.
+\end{prop}
+\begin{proof}
+	先证在条件\eqref{eq6.2.3}下，泛函$h(T^\ast g)=\langle g,f\rangle$的定义有意义.因为如果$T^\ast g_1=T^\ast g_2$，那么
+	\[|\langle g_1-g_2,f\rangle|\le C_f\Vert T^\ast(g_1-g_2)\Vert=0,\]
+	因而$\langle g_1,f\rangle=\langle g_2,f\rangle$.现在先把$h$扩充到$\bar{H}_1'$上.设$x\in\bar{H}_1'$，则存在$T^\ast g_l\in H_1'$，使得$T^\ast g_l\to x,l\to\infty$.于是由\eqref{eq6.2.3}得
+	\[|\langle g_l-g_m,f\rangle|\le C_f\Vert T^\ast g_l-T^\ast g_m\Vert\to0,l,m\to\infty.\]
+	这说明$\{\langle g_l,f\rangle\}$是$\MC$中的Cauchy序列.今定义
+	\[h(x)=\lim_{l\to\infty}\langle g_l,f\rangle.\]
+	因为$\bar{H}_1'$是$H_1$的一个闭子空间，命$P$是$H_1$到$\bar{H}_1'$上的投影算子，即对任意$x\in H_1$，存在唯一的$x_0\in\bar{H}_1'$，使得$Px=x_0$.今定义$h(x)=h(x_0)$.这样$h$就在整个空间$H_1$中都有了定义.下面证明$h$是$H_1$上的有界线性泛函.任取$x,y\in H_1$，它们唯一地对应着$x_0,y_0\in\bar{H}_1'$.如果$x_0,y_0\in\bar{H}_1'$，那么
+	\begin{align*}
+		h(\alpha x+\beta y)
+		&=h(\alpha x_0+\beta y_0)=h(\alpha T^\ast g_1+\beta T^\ast g_2)\\
+		&=h(T^\ast(\alpha g_1+\beta g_2))=\langle\alpha g_1+\beta g_2,f\rangle\\
+		&=\alpha\langle g_1,f\rangle+\beta\langle g_2,f\rangle\\
+		&=\alpha h(T^\ast g_1)+\beta h(T^\ast g_2)\\
+		&=\alpha h(x_0)+\beta h(y_0)=\alpha h(x)+\beta h(y).
+	\end{align*}
+属于闭包的情况可通过极限证明之，所以$h$是线性的.
+
+有界性的证明也很容易.对于任意$x\in H_1$，
+\begin{align*}
+	|h(x)|
+	&=|h(x_0)|=|h(T^\ast g)|\\
+	&=|\langle g,f\rangle|\le C_f\Vert T^\ast g\Vert=C_f\Vert x_0\Vert\\
+	&\le C_f\Vert x\Vert.
+\end{align*}
+$x_0$属于闭包的情况可通过极限来证明.
+\end{proof}
+现在问，在什么条件下，\eqref{eq6.2.3}能成立？注意，上面的讨论并没有对$f$加以限制.实际上，只要对满足$Sf=0$的$f$讨论就行了.记\index{S!算子的零空间}\index{S!算子的像空间}
+\[N(S)=\left\{x\in H_2\colon Sx=0\right\},\quad R(T)=\left\{Tx\colon x\in D(T)\right\}.\]
+称$N(S)$为算子$S$的零空间，$R(T)$为算子$T$的像空间.$N(S),R(T)$和$N(T^\ast)$间有下述包含关系.\index[symbolindex]{\textbf{微分形式}!$N(S)$，$N(S)^\perp$}\index[symbolindex]{\textbf{微分形式}!$R(T)$，$R(T)^\perp$}\index[symbolindex]{\textbf{微分形式}!$N(T^\ast)$}
+\begin{lemma}\label{lem6.2.3}
+	$N(S)^\perp \subset R(T)^\perp \subset N(T^\ast)$.
+\end{lemma}
+\begin{proof}
+	任取$x\in N(S)^\perp,y\in R(T)$，则必存在$h\in D(T)$，使得$y=Th$.由于$ST=0$，所以$Sy=STh=0$，即$y\in N(S)$，因而$x\perp y$，这说明$x\in R(T)^\perp$.这就证明了$N(S)^\perp \subset R(T)^\perp$.再取$x\in R(T)^\perp$，则对任意$y\in R(T)$，有$\langle x,y\rangle=0$.而$y=Th,h\in D(T)$，因而$\langle x,Th\rangle=0$，即$\langle T^\ast x,h\rangle=0$.由于$y$是任意的，因而$h$也是任意的，所以$T^\ast x=0$，即$x\in N(T^\ast)$，因而$R(T)^\perp \subset N(T^\ast)$.
+\end{proof}
+现在可以证明
+\begin{prop}\label{prop6.2.4}
+	设$D(T^\ast)\cap D(S)$在$H_2$中稠.如果存在常数$C$，使得对每个$g\in D(T^\ast)\cap D(S)$，有
+	\begin{equation}\label{eq6.2.4}
+		\Vert g\Vert^2\le C\left(\Vert T^\ast g\Vert^2+\Vert Sg\Vert^2\right),
+	\end{equation}
+那么
+\begin{equation}\label{eq6.2.5}
+	|\langle g,f\rangle|\le\sqrt{C}\Vert f\Vert\,\Vert T^\ast g\Vert
+\end{equation}
+对每个$f\in N(S)$和$g\in D(T^\ast)\cap D(S)$成立.
+\end{prop}
+\begin{proof}
+	任取$g\in D(T^\ast)\cap D(S)$.把$g$对闭子空间$N(S)$作正交分解：$g=g_1+g_2$，这里$g_1\in N(S),g_2\in N(S)^\perp$.我们证明$g_1,g_2$都在$D(T^\ast)\cap D(S)$中.事实上，因为$g_1\in N(S)$，所以$Sg_1=0$，因而$g_1\in D(S)$.其次，由引理\ref{lem6.2.3}，从$g_2\in N(S)^\perp$得知$g_2\in N(T^\ast)$，即$T^\ast g_2=0$，因而$g_2\in D(T^\ast)$.由于$g\in D(T^\ast)\cap D(S)$，所以$g_1=g-g_2\in D(T^\ast)$，因而$g_1\in D(T^\ast)\cap D(S)$.于是$g_2=g-g_1\in D(T^\ast)\cap D(S)$.这样
+	\begin{align*}
+		|\langle g,f\rangle|
+		&=|\langle g_1+g_2,f\rangle|=|\langle g_1,f\rangle+\langle g_2,f\rangle|\\
+		&=|\langle g_1,f\rangle|\le\Vert f\Vert\,\Vert g_1\Vert\\
+		&\le\sqrt{C}\Vert f\Vert\left(\Vert T^\ast g_1\Vert^2+\Vert Sg_1\Vert^2\right)^{\frac12}\\
+		&=\sqrt{C}\Vert f\Vert\,\Vert T^\ast g_1\Vert\\
+		&=\sqrt{C}\Vert f\Vert\,\Vert T^\ast(g-g_2)\Vert=\sqrt{C}\Vert f\Vert\,\Vert T^\ast g\Vert.\qedhere
+	\end{align*}
+\end{proof}
+这样一来，全部问题归结为，在什么条件下，不等式\eqref{eq6.2.4}成立.上面的结论可总结为下面的
+\begin{theorem}\label{thm6.2.5}
+	设$D(T^\ast)\cap D(S)$在$H_2$中稠.如果存在常数$C$，使得对每个$g\in D(T^\ast)\cap D(S)$，有
+	\begin{equation}
+		\Vert g\Vert^2\le C\left(\Vert T^\ast g\Vert^2+\Vert Sg\Vert^2\right),\tag{\ref{eq6.2.4}}
+	\end{equation}
+	那么$Tu=f$对$f\in N(S)$有解，且解$u$满足
+	
+	(1)\hypertarget{6.2.5}{}
+	$\Vert u\Vert\le\sqrt{C}\Vert f\Vert$；
+	
+	(2)\hypertarget{6.2.5}{}
+	存在$v\in D(T^\ast)$，使得$u=T^\ast v$；
+	
+	(3)\hypertarget{6.2.5}{}
+	$u\in N(T)^\perp$.\\
+	\eqref{eq6.2.4}称为基本不等式\index{J!基本不等式}.
+\end{theorem}
+\begin{proof}
+	$Tu=f$对$f\in N(S)$有解这一事实已在上面证明.现在证明解$u$满足上面三条性质.因为线性泛函$h$的界是$\sqrt{C}\Vert f\Vert$，故由Riesz表示定理$\Vert u\Vert\le\sqrt{C}\Vert f\Vert$，这就是\hyperlink{6.2.5}{(1)}.为了证明\hyperlink{6.2.5}{(2)}，我们先证明存在$\{g_k\}\subset D(T^\ast)$，使得
+	\begin{equation}\label{eq6.2.6}
+		u=\lim_{k\to\infty} T^\ast g_k.
+	\end{equation}
+因为按照泛函$h$的扩展过程，对一般的$x\in H_1$，对$\bar{H}_1'$作正交分解$x=x_0+x_1$，其中$x_0\in \bar{H}_1',x_1\in\left(\bar{H}_1'\right)^\perp$.然后定义$h(x)=h(x_0)$.现在让$x\in\left(\bar{H}_1'\right)^\perp$，这时$x_0=0$.于是
+\[h(x)=h(x_0)=h(0)=0=\langle x,u\rangle,\]
+这说明$u\in\bar{H}_1'$，因而有$u=\lim_{k\to\infty} T^\ast g_k$.其次我们再证明
+\begin{equation}\label{eq6.2.7}
+	T^\ast(D(T^\ast))=T^\ast(N(S)\cap D(T^\ast)).
+\end{equation}
+右端包含在左端内是显然的.今取$g\in D(T^\ast)$，把$g$对$N(S)$作正交分解：$g=g_1+g_2,g_1\in N(S),g_2\in N(S)^\perp$.由引理\ref{lem6.2.3}$N(S)^\perp\subset N(T^\ast)$，所以$T^\ast g=T^\ast g_1$，故\eqref{eq6.2.7}成立.由于\eqref{eq6.2.7}，不妨设\eqref{eq6.2.6}中的$g_k\in N(S)\cap D(T^\ast)$.在命题\ref{prop6.2.4}的不等式\eqref{eq6.2.5}中命$f=g=g_k$，可得$\Vert g_k\Vert\le\sqrt{C}\Vert T^\ast g_k\Vert$.因为$\{T^\ast g_k\}$收敛，所以
+\[\Vert g_k-g_l\Vert\le\sqrt{C}\Vert T^\ast g_k-T^\ast g_l\Vert\to0,\quad k,l\to\infty.\]
+即$\{g_k\}$是一个Cauchy序列.设$g_k\to v$，由于$T^\ast$是闭算子，所以$v\in D(T^\ast)$，且$u=T^\ast v$，这就证明了\hyperlink{6.2.5}{(2)}.\hyperlink{6.2.5}{(3)}的证明很简单，任取$x\in N(T)$，由\hyperlink{6.2.5}{(2)}即得
+\[\langle x,u\rangle=\langle x,T^\ast v\rangle=\langle Tx,v\rangle=0.\]
+所以$u\in N(T)^\perp$.
+\end{proof}
+这个定理说明，当基本不等式\eqref{eq6.2.4}满足时，$\bar{\partial}u=f$对$f\in N(S)$有解，而且解$u$具有定理\ref{thm6.2.5}中的性质.注意，条件\eqref{eq6.2.4}是$\bar{\partial}$方程有解的充分条件，并不必要，即若\eqref{eq6.2.4}不成立，$\bar{\partial}$方程也可能有解，但这时解$u$就不一定具有定理\ref{thm6.2.5}中的性质了.以后我们将看到，具有定理\ref{thm6.2.5}\hyperlink{6.2.5}{(2)}的解有良好的性质.为了区别于其它的解，我们给出下面的
+\begin{definition}\label{def6.2.6}
+	设$u$是方程$\bar{\partial}u=f$的一个解，如果存在$v\in D(T^\ast)$，使得$u=T^\ast v$，就称$u$为方程的一个\textbf{标准解}或\textbf{Kohn解}.
+\end{definition}
+定理\ref{thm6.2.5}断言，当基本不等式\eqref{eq6.2.4}成立时，$\bar{\partial}u=f$对$f\in N(S)$一定有标准解.
+\section{$\bar{\partial}$问题解的存在性定理\label{sec6.3}}
+现在回到我们的问题，这时
+\[H_1=L_{(p,q)}^2(G,\varphi_1),H_2=L_{(p,q+1)}^2(G,\varphi_2),H_3=L_{(p,q+2)}^2(G,\varphi_3),\]
+这里$\varphi_1,\varphi_2,\varphi_3$是三个权函数，它们都是实值连续函数.
+
+我们现在要证明：如果$G$是$\MC^n$中的拟凸域，那么对任意$g\in D(T^\ast)\cap D(S)$，有
+\begin{equation}\label{eq6.3.1}
+	\Vert g\Vert_{\varphi_2}^2\le C\left(\Vert T^\ast g\Vert_{\varphi_1}^2+\Vert Sg\Vert_{\varphi_3}^2\right).
+\end{equation}
+证明的思路是这样的：
+
+(1)\hypertarget{6.3}{}
+先在一定的条件下，证明对任意$g\in D(T^\ast)\cap D(S)$必有$h_k\in D_{(p,q+1)}(G)$，使得在相应的范数下，有
+\[h_k\to g,T^\ast h_k\to T^\ast g,Sh_k\to Sg.\]
+因而只要对$g\in D_{(p,q+1)}(G)$证明不等式\eqref{eq6.3.1}就行了.
+
+(2)\hypertarget{6.3}{}
+适当选取$\varphi_1,\varphi_2,\varphi_3$，使\hyperlink{6.3}{(1)}中需要的条件得到满足.然后再在一定的条件下，对$g\in D_{(p,q+1)}(G)$证明基本不等式\eqref{eq6.3.1}成立.
+
+(3)
+对$\MC^n$中的拟凸域，证明\hyperlink{6.3}{(2)}中需要的条件是成立的，因而基本不等式\eqref{eq6.3.1}对任意$g\in D(T^\ast)\cap D(S)$成立.
+\subsection{用$D_{(p,q+1)}(G)$中的元素逼近$D(T^\ast)\cap D(S)$中的元素}
+先证明下面的
+\begin{lemma}\label{lem6.3.1}
+	设$G$是$\MC^n$中的域，则必存在满足下面三个条件的函数列$\{\eta_j\}$：
+	
+	(1)\hypertarget{6.3.1}{}
+	$\eta_j\in C_0^\infty(G)$；
+	
+	(2)\hypertarget{6.3.1}{}
+	对任意$z\in G,0\le\eta_j(z)\le1$；
+	
+	(3)\hypertarget{6.3.1}{}
+	对于$G$的任一紧集$K$，存在正整数$j_0$，当$j>j_0$时，$\eta_j(z)\equiv1$在$K$上成立.
+\end{lemma}
+\begin{proof}
+	取$G$的一个正规穷竭$\{K_j\}$（见引理\ref{lem4.6.4}），命$g_j$是$K_j$上的特征函数.设$\delta_j=d(K_j,\partial G)$，取$\varepsilon_j=\frac12\delta_j$，作
+	\[\eta_j(x)=(g_j\ast\chi_{\varepsilon_j})(x),\]
+	则由定理\ref{thm6.1.1}知道$\eta_j$在$G$中有紧支集，且无穷次可微，因而$\eta_j\in C_0^\infty(G)$.显然$0\le \eta_j\le1$.对于任意紧集$K\subset G$，有充分大的$j$，使得$K\subset K'\subset K_j$，其中$K'=\{y\colon |x-y|\le\varepsilon_j,x\in K\}$.于是，当$x\in K$时，便有
+	\begin{align*}
+		\eta_j(x)
+		&=\int_{\MR^{2n}}g_j(y)\chi_{\varepsilon_j}(x-y)\dif m(y)=\int_{K'}g_j(y)\chi_{\varepsilon_j}(x-y)\dif m(y)\\
+		&=\int_{K'}\chi_{\varepsilon_j}(x-y)\dif m(y)=\int_{\MR^{2n}}\chi_{\varepsilon_j}(x-y)\dif m(y)=1.
+	\end{align*}
+因此$\{\eta_j\}$就是所求的序列.
+\end{proof}
+\begin{lemma}\label{lem6.3.2}
+	设$G$是$\MC^n$中的域，$\eta\in C_0^\infty(G)$，且满足
+	\begin{equation}\label{eq6.3.2}
+		\ee^{-\varphi_{j+1}}\sum_{l=1}^{n}\left|\pp{\eta}{\bar{z}_l}\right|^2\le\ee^{-\varphi_j},\quad j=1,2,
+	\end{equation}
+那么
+
+(1)\hypertarget{6.3.2}{}
+对于$f=\sum_{I,J}f_{IJ}\dz_I\wedge\dzz_J$，有
+\begin{equation}\label{eq6.3.3}
+	\left|\bar{\partial}(\eta f)-\eta\bar{\partial}f\right|^2\ee^{-\varphi_{j+1}}\le|f|^2\ee^{-\varphi_j},j=1,2;
+\end{equation}
+
+(2)\hypertarget{6.3.2}{}
+对如果$f\in D(T^\ast)$，那么$\eta f\in D(T^\ast)$.
+\end{lemma}
+\begin{proof}
+	\hyperlink{6.3.2}{(1)}
+	因为$\bar{\partial}\eta=\sum_{l=1}^{n}\pp{\eta}{\bar{z}_l}\dzz_l,\bar{\partial}(\eta f)=\bar{\partial}\eta\wedge f+\eta\bar{\partial}f$，所以
+	\begin{align*}
+		\left|\bar{\partial}(\eta f)-\eta\bar{\partial}f\right|
+		&=\left|\bar{\partial}\eta\wedge f\right|^2=\left|\sum_{I,J}\sum_{l=1}^n \pp{\eta}{\bar{z}_l}f_{IJ}\dzz_l\wedge\dz_I\wedge\dzz_J\right|^2\\
+		&=\sum_{I,J}\sum_{l=1}^{n}\left|\pp{\eta}{\bar{z}_l}\right|^2\left|f_{IJ}\right|^2.
+	\end{align*}
+于是由\eqref{eq6.3.2}即得
+\[\left|\bar{\partial}(\eta f)-\eta\bar{\partial}f\right|^2\ee^{-\varphi_{j+1}}=\sum_{I,J}\left|f_{IJ}\right|^2\sum_{l=1}^{n}\left|\pp{\eta}{\bar{z}_l}\right|^2\ee^{-\varphi_{j+1}}\le\left|f\right|^2\ee^{-\varphi_j}.\]
+	
+	\hyperlink{6.3.2}{(2)}
+	要证明$\eta f\in D(T^\ast)$，就是要证明对于任意$u\in D(T)$，存在$v\in L_{(p,q)}^2(G,\varphi_1)$，使得$\langle Tu,\eta f\rangle_{\varphi_2}=\langle u,v\rangle_{\varphi_1}$.为此只要证明$\langle Tu,\eta f\rangle_{\varphi_2}$是$u$的有界线性泛函就行.事实上，
+	\begin{align*}
+		\langle Tu,\eta f\rangle_{\varphi_2}
+		&=\langle\bar{\eta}Tu,f\rangle_{\varphi_2}=\langle T(\bar{\eta}u),f\rangle_{\varphi_2}+\langle\bar{\eta}Tu-T(\bar{\eta}u),f\rangle_{\varphi_2}\\
+		&=\langle u,\eta T^\ast f\rangle_{\varphi_1}+\langle\bar{\eta}Tu-T(\bar{\eta}u),f\rangle_{\varphi_2},
+	\end{align*}
+和式的第一项由Schwarz不等式得
+\[|\langle u,\eta T^\ast f\rangle_{\varphi_1}|\le\Vert \eta T^\ast f\Vert_{\varphi_1}\Vert u\Vert_{\varphi_1}.\]
+第二项由Schwarz不等式以及\hyperlink{6.3.2}{(1)}可得
+\[\left|\langle\bar{\eta}Tu-T(\bar{\eta}u),f\rangle_{\varphi_2}\right|\le\Vert f\Vert_{\varphi_2}\Vert\bar{\eta}Tu-T(\bar{\eta}u)\Vert_{\varphi_2}\le\Vert f\Vert_{\varphi_2}\Vert u\Vert_{\varphi_1}.\]
+由此即得$\langle Tu,\eta f\rangle_{\varphi_2}$是$L_{(p,q)}^2(G,\varphi_1)$上的有界线性泛函.由Riesz表示定理，存在$v\in L_{(p,q)}^2(G,\varphi_1)$，使得$\langle Tu,\eta f\rangle_{\varphi_2}=\langle u,v\rangle_{\varphi_1}$，因而$\eta f\in D(T^\ast)$，且$v=T^\ast(\eta f)$.
+\end{proof}
+在证明过程中，需要用到伴随算子$T^\ast$的表达式.
+\begin{lemma}\label{lem6.3.3}
+	设$f=\sum_{I,J}f_{IJ}\dz_i\wedge\dzz_J\in D(T^\ast)$，这里$|I|=p,|J|=q+1$，那么
+	\begin{equation}\label{eq6.3.4}
+		T^\ast f=(-1)^{p-1}\sum_{I,K}\sum_{j=1}^{n}\ee^{\varphi_1}\pp{}{z_j}\left(\ee^{-\varphi_2}f_{I,jK}\right)\dz_I\wedge\dzz_K
+	\end{equation}
+或
+\begin{equation}\label{eq6.3.5}
+	\ee^{\varphi_2-\varphi_1}T^\ast f=(-1)^{p-1}\sum_{I,K}\sum_{j=1}^{n}\left(\pp{f_{I,jK}}{z_j}-f_{I,jK}\pp{\varphi_2}{z_j}\right)\dz_I\wedge\dzz_K,
+\end{equation}
+这里$|K|=q,\varphi_2\in C^1(G)$.
+\end{lemma}
+\begin{proof}
+	取$u=\sum_{I,K}u_{IK}\dz_I\wedge\dzz_K\in D_{(p,q)}(G)$，那么
+	\begin{align}\label{eq6.3.6}
+		Tu
+		&=\bar{\partial}u=\sum_{|I|=p}\sum_{|K|=q}\sum_{j=1}^{n}\pp{u_{IK}}{\bar{z}_j}\dzz_j\wedge\dz_I\wedge\dzz_K\notag\\
+		&=(-1)^p\sum_{|I|=p}\sum_{|K|=q}\sum_{j=1}^{n}\pp{u_{IK}}{\bar{z}_j}\dz_I\wedge\dzz_j\wedge\dzz_K,\notag\\
+		\langle f,Tu\rangle_{\varphi_2}
+		&=(-1)^p\sum_{I,K}\sum_{j=1}^n \int_G f_{I,jK}\pp{\bar{u}_{IK}}{z_j}\ee^{-\varphi_2}\dif m\notag\\
+		&=(-1)^{p-1}\sum_{I,K}\sum_{j=1}^n \int_G\bar{u}_{IK}\pp{}{z_j}\left(\ee^{-\varphi_2}f_{I,jK}\right)\dif m\notag\\
+		&=(-1)^{p-1}\sum_{I,K}\sum_{j=1}^n \int_G \ee^{\varphi_1}\pp{}{z_j}\left(\ee^{-\varphi_2}f_{I,jK}\right)\ee^{-\varphi_1}\bar{u}_{IK}\dif m.
+	\end{align}
+上面第二个等式用了分部积分公式，因为$u_{IK}$有紧支集.另一方面，
+\[\langle T^\ast f,u\rangle_{\varphi_1}=\sum_{I,K}\int_G (T^\ast f)_{IK}\bar{u}_{IK}\ee^{-\varphi_1}\dif m.\]
+由于$\langle f,Tu\rangle_{\varphi_2}=\langle T^\ast f,u\rangle_{\varphi_1}$，把上式和\eqref{eq6.3.6}比较即得
+\[(T^\ast f)_{IK}=(-1)^{p-1}\sum_{j=1}^{n}\ee^{\varphi_1}\pp{}{z_j}\left(\ee^{-\varphi_2}f_{I,jK}\right).\]
+因而
+\[T^\ast f=(-1)^{p-1}\sum_{I,K}\sum_{j=1}^{n}\ee^{\varphi_1}\pp{}{z_j}\left(\ee^{-\varphi_2}f_{I,jK}\right)\dz_I\wedge\dzz_K.\]
+
+上式也可写为
+\[T^\ast f=(-1)^{p-1}\sum_{I,K}\sum_{j=1}^{n}\ee^{\varphi_1}\left(\ee^{-\varphi_2}\pp{}{z_j}f_{I,jK}-\ee^{-\varphi_2}f_{I,jK}\pp{\varphi_2}{z_j}\right)\dz_I\wedge\dzz_K.\]
+由此即得\eqref{eq6.3.5}.
+\end{proof}
+现在可以证明
+\begin{prop}\label{prop6.3.4}
+	设$G$是$\MC^n$中的域，$\{\eta_k\}$是引理\ref{lem6.3.1}中的函数列.如果$\varphi_2\in C^1(G)$，且
+	\begin{equation}\label{eq6.3.7}
+		\ee^{-\varphi_{j+1}}\sum_{l=1}^{n}\left|\pp{\eta_k}{\bar{z}_l}\right|^2\le\ee^{-\varphi_j},\quad j=1,2;k=1,2,\cdots,
+	\end{equation}
+那么对于任意$f\in D(T^\ast)\cap D(S)$，存在$h_k\in D_{(p,q+1)}(G)$，使得当$k\to\infty$时，有
+\[\Vert h_k-f\Vert_{\varphi_2}\to0,\quad\Vert T^\ast h_k-T^\ast f\Vert_{\varphi_1}\to0,\quad\Vert Sh_k-Sf\Vert_{\varphi_3}\to0.\]
+\end{prop}
+\textbf{证明的思路}\quad 证明分为两部分：
+
+（一）\hypertarget{6.3.4}{}
+先证对于任意$f\in D(T^\ast)\cap D(S)$，必有具有紧支集的$g_k\in D(T^\ast)\cap D(S)$，使得当$k\to\infty$时，有
+\begin{equation}\label{eq6.3.8}
+	\Vert g_k-f\Vert_{\varphi_2}\to0,\quad\Vert T^\ast g_k-T^\ast f\Vert_{\varphi_1}\to0,\quad\Vert Sg_k-Sf\Vert_{\varphi_3}\to0.
+\end{equation}
+
+（二）\hypertarget{6.3.4}{}
+对于具有紧支集的$f\in D(T^\ast)\cap D(S)$，证明存在$h_k\in D_{(p,q+1)}(G)$，使得当$k\to\infty$时，有
+\begin{equation}\label{eq6.3.9}
+	\Vert h_k-f\Vert_{\varphi_2}\to0,\quad\Vert T^\ast h_k-T^\ast f\Vert_{\varphi_1}\to0,\quad\Vert Sh_k-Sf\Vert_{\varphi_3}\to0.
+\end{equation}
+\begin{proof}
+	\hyperlink{6.3.4}{（一）}
+	对于任意的$f\in D(T^\ast)\cap D(S)$，命$g_k=\eta_k f$，则$g_k$就满足\eqref{eq6.3.8}.因为$\eta_k$有紧支集，所以$g_k$有紧支集.现在先来证明\eqref{eq6.3.8}的第三个极限式.由引理\ref{lem6.3.2}\hyperlink{6.3.2}{(1)}可得
+	\[\left|\bar{\partial}(\eta_k f)-\eta_k\bar{\partial}f\right|^2\ee^{-\varphi_3}<|f|^2\ee^{-\varphi_2},\]
+	由于$f\in L_{(p,q+1)}^2(G,\varphi_2)$，上式右端可积，根据Lebesgue控制收敛定理有
+	\begin{align}\label{eq6.3.10}
+		\lim_{k\to\infty}\Vert S(\eta_k f)-\eta_k Sf\Vert_{\varphi_3}^2
+		&=\int_G\lim_{k\to\infty}|S(\eta_k f)-\eta_k Sf|^2\ee^{-\varphi_3}\dif m\notag\\
+		&=\lim_{l\to\infty}\int_{K_l}\lim_{k\to\infty}|S(\eta_k f)-\eta_k Sf|^2\ee^{-\varphi_3}\dif m=0,
+	\end{align}
+这里$\{K_l\}$是$G$的一个正规穷竭，当$l$取定时，能取到充分大的$k_0$，当$k>k_0$时，$\eta_k$在$K_l$上恒等于$1$，因而被积函数为$0$.因为$f\in D(S)$，按照定义$Sf\in L_{(p,q+2)}^2(G,\varphi_3)$.由于$|\eta_k Sf-Sf|\le 2|Sf|$，故可用控制收敛定理，得
+\begin{align}\label{eq6.3.11}
+	\lim_{k\to\infty}\Vert \eta_k Sf-Sf\Vert_{\varphi_3}
+	&=\int_G\lim_{k\to\infty}|\eta_k Sf-Sf|^2\ee^{-\varphi_3}\dif m\notag\\
+	&=\lim_{l\to\infty}\int_{K_l}\lim_{k\to\infty}|\eta_k Sf-Sf|^2\ee^{-\varphi_3}\dif m=0.
+\end{align}
+于是，从\eqref{eq6.3.10}，\eqref{eq6.3.11}即得
+\[\Vert Sg_k-Sf\Vert_{\varphi_3}\le\Vert S(\eta_k f)-\eta_k Sf\Vert_{\varphi_3}+\Vert \eta_k Sf-Sf\Vert_{\varphi_3}\to0.\]
+这就是\eqref{eq6.3.8}的第三个极限式.\eqref{eq6.3.8}的第一个极限式用控制收敛定理直接可得.最后正\eqref{eq6.3.8}的第二式.由引理\ref{lem6.3.2}\hyperlink{6.3.2}{(2)}，$\eta_k f\in D(T^\ast)$.于是
+\begin{align*}
+	&|\langle T^\ast(\eta_k f)-\eta_k T^\ast f,u\rangle_{\varphi_1}|\\
+	=&|\langle T^\ast(\eta_k f),u\rangle_{\varphi_1}-\langle \eta_k T^\ast f,u\rangle_{\varphi_1}|=|\langle \eta_k f,Tu\rangle_{\varphi_1}-\langle T^\ast f,\eta_k u\rangle_{\varphi_1}|\\
+	=&|\langle f,\eta_k Tu\rangle_{\varphi_1}-\langle f,T(\eta_k u)\rangle_{\varphi_1}|=|\langle f,\eta_k Tu-T(\eta_k u)\rangle_{\varphi_2}|.
+\end{align*}
+
+再用引理\ref{lem6.3.2}\hyperlink{6.3.2}{(1)}，即得
+\begin{align*}
+	\left|\int_G (T^\ast(\eta_k f)-\eta_k T^\ast f)\bar{u}\ee^{-\varphi_1}\dif m\right|
+	&\le\int_G |f|\,|\eta_k Tu-T(\eta_k u)|\ee^{-\varphi_2}\dif m\\
+	&\le\int_G |f|\,|u|\ee^{-\frac{\varphi_1}{2}+\frac{\varphi_2}{2}}\cdot\ee^{-\varphi_2}\dif m\\
+	&=\int_G |f|\,|u|\ee^{-\frac{\varphi_1}{2}-\frac{\varphi_2}{2}}\dif m.
+\end{align*}
+取$u=T^\ast(\eta_k f)-\eta_k T^\ast f$，并注意到它的支集在$G\setminus K_k$中，上式可写为
+\begin{align*}
+	&\int_G|T^\ast(\eta_k f)-\eta_k T^\ast f|^2\ee^{-\varphi_1}\dif m\\
+	\le&\int_G |f|\,|T^\ast(\eta_k f)-\eta_k T^\ast f|\ee^{-\frac{\varphi_1}{2}-\frac{\varphi_2}{2}}\dif m\\
+	=&\int_{G\setminus K_k}|f|\ee^{-\frac{\varphi_2}{2}}|T^\ast(\eta_k f)-\eta_k T^\ast f|\ee^{-\frac{\varphi_1}{2}}\dif m\\
+	\le&\left(\int_{G\setminus K_k}|f|^2\ee^{-\varphi_2}\right)^{\frac12}\left(\int_{G\setminus K_k}|T^\ast(\eta_k f)-\eta_k T^\ast f|^2\ee^{-\varphi_1}\dif m\right)^{\frac12}.
+\end{align*}
+于是得
+\[\Vert T^\ast(\eta_k f)-\eta_k T^\ast f\Vert_{\varphi_1}\le\left(\int_{G\setminus K_k}|f|^2\ee^{-\varphi_2}\right)^{\frac12}\to0,\quad k\to\infty.\]
+用类似于上面的方法，即可得证
+\[\Vert T^\ast g_k-T^\ast f\Vert_{\varphi_1}\to0,\quad k\to\infty.\]
+	
+	\hyperlink{6.3.4}{（二）}
+	设$f=\sum_{I,J}f_{IJ}\dz_I\wedge\dzz_J\in D(T^\ast)\cap D(S)$，它在$G$中有紧支集，即$f_{IJ}$在$G$中有公共的紧支集.规定
+	\[(f\ast\chi_\varepsilon)(x)=\sum_{I,J}(f_{IJ}\ast\chi_\varepsilon)(x)\dz_I\wedge\dzz_J.\]
+	即$f_\varepsilon(x)=\sum_{I,J}(f_{IJ})_\varepsilon \dz_I\wedge\dzz_J$.设$f_{IJ}$的公共紧支集为$K$，则由定理\ref{thm6.1.1}，$(f_{IJ})_\varepsilon$的紧支集为
+	\[K_1=\{x\colon d(x,K)\le\varepsilon\}.\]
+	取$\varepsilon$充分小，可使$K_1\subset G$.因而$(f_{IJ})_\varepsilon\in C_0^\infty(G)$，而且$\Vert (f_{IJ})_\varepsilon-f_{IJ}\Vert_{L^2}\to0$.因而当$\varepsilon\to0$时，$\Vert f_\varepsilon-f\Vert_{\varphi_2}\to0$，这里$f_\varepsilon\in D_{(p,q+1)}(G)$.由命题\ref{prop6.1.5}知道$Sf_\varepsilon=(Sf)_\varepsilon$，因而当$\varepsilon\to0$时，
+	\[\Vert Sf_\varepsilon-Sf\Vert_{\varphi_3}=\Vert(Sf)_\varepsilon-Sf\Vert_{\varphi_3}\to0.\]
+	最后来证明当$\varepsilon\to0$时，$\Vert T^\ast f_\varepsilon-T^\ast f\Vert_{\varphi_1}\to0$.根据引理\ref{lem6.3.3}中$T^\ast f$的表达式\eqref{eq6.3.5}，若记\index[symbolindex]{\textbf{其它符号}!$\theta f$}
+	\[\theta f=(-1)^{p-1}\sum_{I,K}\sum_{j=1}^{n}\pp{f_{I,jK}}{z_j}\dz_I\wedge\dzz_K,\]
+	\[a f=(-1)^p\sum_{I,K}\sum_{j=1}^n f_{I,jK}\pp{\varphi_2}{z_j}\dz_I\wedge\dzz_K,\]
+	则
+	\[\ee^{\varphi_2-\varphi_1}T^\ast f=\theta f+a f.\]
+	由命题\ref{prop6.1.5}可得
+	\begin{align*}
+		(\theta+a)f_\varepsilon
+		&=\theta f_\varepsilon+a f_\varepsilon=(\theta f)_\varepsilon+a f_\varepsilon\\
+		&=((\theta+a)f)_\varepsilon-(af)_\varepsilon+af_\varepsilon.
+	\end{align*}
+根据定理\ref{thm6.1.1}知道，上式在$L^2$中收敛于
+\[(\theta+a)f-af+af=(\theta+a)f.\]
+此即$\Vert T^\ast f_\varepsilon-T^\ast f\Vert_{\varphi_1}\to0(\varepsilon\to0)$.取$h_k=(f)_{\frac1k}$，即得\hyperlink{6.3.4}{（二）}的证明.
+
+现在对任意的$f\in D(T^\ast)\cap D(S)$，按照\hyperlink{6.3.4}{（一）}有一列具有紧支集的$\{g_k\}\subset D(T^\ast)\cap D(S)$，使得\eqref{eq6.3.8}成立.对于每个$g_k$，按照\hyperlink{6.3.4}{（二）}有$\{g_{kl}\}\subset D_{(p,q+1)}(G)$，使得\eqref{eq6.3.9}成立.对每个$g_k$，必能在$\{g_{kl}\}$中选出一个，记为$h_k$，使得$\Vert g_k-h_k\Vert_{\varphi_2}<\frac1k$，同时使另外两式也成立.对任意$\varepsilon>0$，取$k>k_0$，使得
+\[\Vert f-g_k\Vert_{\varphi_2}<\frac{\varepsilon}{2},\Vert g_k-h_k\Vert_{\varphi_2}<\frac1k<\frac{\varepsilon}{2},\]
+于是$\Vert f-h_k\Vert_{\varphi_2}<\varepsilon$，另外两式也同时成立，$\{h_k\}$即为所求.
+\end{proof}
+\subsection{基本不等式成立的条件}
+因为基本不等式\eqref{eq6.3.1}只涉及$\Vert f\Vert_{\varphi_2},\Vert T^\ast f\Vert_{\varphi_1},\Vert Sf\Vert_{\varphi_3}$这三个量，有了命题\ref{prop6.3.4}之后，只要对$f\in D_{(p,q+1)}(G)$来证明不等式\eqref{eq6.3.1}就行了.
+
+现在来看，能否找到$\varphi_1,\varphi_2,\varphi_3$，使得命题\ref{prop6.3.4}中的条件\eqref{eq6.3.7}成立.
+对于给定的$x\in G$，总能有紧集$K\subset G$，使得$x\in K$，故当$k>k_0$时，$\eta_k(x)\equiv1$在$K$上成立，于是$\pp{\eta_k(x)}{\bar{z}_l}=0$.因此
+\[\psi_1(x)=\sup\left\{\sum_{l=1}^{n}\left|\pp{\eta_1(x)}{\bar{z}_l}\right|^2,\sum_{l=1}^{n}\left|\pp{\eta_2(x)}{\bar{z}_l}\right|^2,\cdots\right\}\]
+在$G$上有定义且取正值.命$\psi(x)=\log\psi_1(x)$，于是
+\[\sum_{l=1}^{n}\left|\pp{\eta_k(x)}{\bar{z}_l}\right|^2\le\psi_1(x)=\ee^{\psi(x)}.\]
+对于任意的$\varphi\in C^2(G)$，命
+\[\varphi_1=\varphi-2\psi,\quad \varphi_2=\varphi-\psi,\quad \varphi_3=\varphi,\]
+我们有
+\[\ee^{-\varphi_2}\sum_{l=1}^{n}\left|\pp{\eta_k}{\bar{z}_l}\right|^2\le\ee^{-\varphi_2}\ee^\psi=\ee^{-\varphi+2\psi}=\ee^{-\varphi_1},\]
+\[\ee^{-\varphi_3}\sum_{l=1}^{n}\left|\pp{\eta_k}{\bar{z}_l}\right|^2\le\ee^{-\varphi_3}\ee^\psi=\ee^{-(\varphi-\psi)}=\ee^{-\varphi_2},\]
+即条件\eqref{eq6.3.7}成立.
+
+现在可以证明
+\begin{prop}\label{prop6.3.5}
+	设$\varphi,\psi$及$\varphi_1,\varphi_2,\varphi_3$如上所述.如果对$w\in\MC^n$，有
+	\begin{equation}\label{eq6.3.12}
+		\sum_{j,k=1}^{n}\pppp{\varphi}{z_j}{\bar{z}_k}w_j\bar{w}_k\ge2\left(|\bar{\partial}\psi|^2+\ee^{\psi}\right)\sum_{j=1}^{n}|w_j|^2,
+	\end{equation}
+那么对任意$f\in D_{(p,q+1)}(G)$，便有
+\[\Vert f\Vert_{\varphi_2}^2\le\Vert T^\ast f\Vert_{\varphi_1}^2+\Vert Sf\Vert_{\varphi_3}^2.\]
+\end{prop}
+在证明命题\ref{prop6.3.5}之前，先证明
+\begin{lemma}\label{lem6.3.6}
+	设$f=\sum_{|I|=p}\sum_{|J|=q+1}f_{IJ}\dz_I\wedge\dzz_J$，那么
+	\[\left|\bar{\partial}f\right|^2=\sum_{I,J}\sum_{j=1}^{n}\left|\pp{f_{IJ}}{\bar{z}_j}\right|^2-\sum_{I,K}\sum_{j,k=1}^n \pp{f_{I,jK}}{\bar{z}_k}\cdot\bar{\pp{f_{I,kK}}{\bar{z}_j}},\]
+	这里$|K|=q$.
+\end{lemma}
+\begin{proof}
+	因为
+	\begin{align*}
+		\bar{\partial}f
+		&=\sum_{|I|=p}\sum_{|J|=q+1}\sum_{j=1
+		}^{n}\pp{f_{IJ}}{\bar{z}_j}\dzz_j\wedge\dz_I\wedge\dzz_J\\
+		&=(-1)^p\sum_{|I|=p}\sum_{|J|=q+1}\sum_{j=1
+		}^{n}\pp{f_{IJ}}{\bar{z}_j}\dz_I\wedge\dzz_j\wedge\dzz_J,
+	\end{align*}
+	这里$I,J$分别是$p$个数字和$q+1$个数字的增排列，但$jJ$就不一定是增排列了.因此不能写$\left|\bar{\partial}f\right|^2=\sum_{I,J}\sum_{j=1}^{n}\left|\pp{f_{IJ}}{\bar{z}_j}\right|^2$，还必须从此式减去那些因$jJ$不是增排列而产生的项.为此，把$\left|\bar{\partial}f\right|^2$写成一般形式
+	\begin{equation}\label{eq6.3.13}
+		\left|\bar{\partial}f\right|^2=\sum_{I,J,L}\sum_{j,l=1}^{n}\pp{f_{IJ}}{\bar{z}_j}\bar{\pp{f_{IL}}{\bar{z}_l}}\varepsilon_{lL}^{jJ}.
+	\end{equation}
+	显然，如果$j\in J$或$l\in L$，则$\varepsilon_{lL}^{jJ}=0$；如果$\{j\}\cup J\neq \{l\}\cup L$，则也有$\varepsilon_{lL}^{jJ}=0$.所以在下面的讨论中，排除这三种情况.
+	
+	如果$jJ$和$lL$作为$q+2$个数字的排列，它们的奇偶性不同，这意味着$jJ$和$lL$都排成增排列时，$\dzz_j\wedge\dzz_J$和$\dzz_l\wedge\dzz_L$的符号不同，因而$\varepsilon_{lL}^{jJ}=-1$.反之，则$\varepsilon_{lL}^{jJ}=1$.实际上，$\varepsilon_{lL}^{jJ}$就是置换$\binom{
+	jJ}{lL}$的符号.现在仔细研究\eqref{eq6.3.13}中的项.首先考虑$j=l$的项，这时必有$J=L,j\notin J$和$l\notin L$，于是$\varepsilon_{lL}^{jJ}=1$，故\eqref{eq6.3.13}中相应的项为
+	\[\sum_{I,J}\sum_{j\notin J}\left|\pp{f_{IJ}}{z_j}\right|^2.\]
+	再考虑$j\neq l$的项，因为$\varepsilon_{lL}^{jJ}\neq0$，故必有$l\in J,j\in L$，但由于$\{j\}\cup J=\{l\}\cup L$，故从$J$中去掉$l$和从$L$中去掉$j$所剩下的$q$个数字的集合$K$和$K'$完全相同.由于
+	\[\varepsilon_{lL}^{jJ}=\varepsilon_{jlK}^{jJ}\varepsilon_{ljK}^{jlK}\varepsilon_{lL}^{ljK}=-\varepsilon_{lK}^{J}\varepsilon_{L}^{jK},\]
+	所以对应于$j\neq l$的项是
+	\[-\sum_{I,J,L}\sum_{j\neq l}\pp{f_{IJ}}{\bar{z}_j}\bar{\pp{f_{IL}}{\bar{z}_l}}\varepsilon_{lK}^J \varepsilon_{L}^{jK}=-\sum_{I,K}\sum_{j\neq l}\pp{f_{I,lK}}{\bar{z}_j}\bar{\pp{f_{I,jK}}{\bar{z}_l}}.\]
+	于是
+	\begin{align*}
+		\left|\bar{\partial}f\right|^2
+		&=\sum_{I,J}\sum_{j\neq J}\left|\pp{f_{IJ}}{\bar{z}_j}\right|^2-\sum_{I,K}\sum_{j\neq l}\pp{f_{I,lK}}{\bar{z}_j}\bar{\pp{f_{I,jK}}{\bar{z}_l}}\\
+		&=\sum_{I,J}\sum_{j=1}^n\left|\pp{f_{IJ}}{\bar{z}_j}\right|^2-\sum_{I,K}\sum_{j,l=1}^n\pp{f_{I,lK}}{\bar{z}_j}\bar{\pp{f_{I,jK}}{\bar{z}_l}}\qedhere
+	\end{align*}
+\end{proof}
+\begin{lemma}\label{lem6.3.7}
+		设$\varphi\in C^2(G)$是一个取实值的函数，记\index[symbolindex]{\textbf{其它符号}!$\delta_j w$}
+		\[\delta_j w=\ee^\varphi \pp{}{z_j}\left(w\ee^{-\varphi}\right)=\pp{w}{z_j}-w\pp{\varphi}{z_j},\]
+		那么
+		
+		(1)\hypertarget{6.3.7}{}
+		若$u,v\in C_0^\infty(G)$，则
+		\[\int_G u\bar{\pp{v}{\bar{z}_j}}\ee^{-\varphi}\dif m=-\int_G (\delta_j u)\bar{v}\ee^{-\varphi}\dif m.\]
+		
+		
+		(2)\hypertarget{6.3.7}{}
+		若$w_j\in C_0^\infty(G),j=1,\cdots,n$，则
+		\[\sum_{j,k=1}^{n}\int_G\left\{(\delta_j w_j)\bar{(\delta_k w_k)}-\pp{w_j}{\bar{z}_k}\bar{\pp{w_k}{\bar{z}_j}}\right\}\ee^{-\varphi}\dif m=\sum_{j,k=1}^{n}\int_G w_j\bar{w}_k\pppp{\varphi}{z_j}{\bar{z}_k}\ee^{-\varphi}\dif m.\]
+\end{lemma}
+\begin{proof}	
+	\hyperlink{6.3.7}{(1)}
+	由于$u,v$在$G$中有紧支集，由分部积分法，
+	\[\int_G u\bar{\pp{v}{\bar{z}_j}}\ee^{-\varphi}\dif m=\int_G u\pp{\bar{v}}{z_j}\ee^{-\varphi}\dif m=-\int_G \bar{v}\pp{}{z_j}\left(u\ee^{-\varphi}\right)\dif m=-\int_G(\delta_j u)\bar{v}\ee^{-\varphi}\dif m.\]
+	
+	\hyperlink{6.3.7}{(2)}
+	由直接验算可得
+	\[\left(\delta_k\pp{}{\bar{z}_j}-\pp{}{\bar{z}_j}\delta_k\right)w_k=\pppp{\varphi}{z_k}{\bar{z}_j}w_k,\]
+	即
+	\[-\pp{}{\bar{z}_j}\delta_kw_k=\pppp{\varphi}{z_k}{\bar{z}_j}w_k-\delta_k\pp{}{\bar{z}_j}w_k.\]
+	现在\hyperlink{6.3.7}{(1)}中取$u=w_j,v=\delta_k w_k$，那么
+	\begin{align*}
+		\int_G(\delta_jw_j)\bar{(\delta_kw_k)}\ee^{-\varphi}
+		&=-\int_G w_j\bar{\pp{}{\bar{z}_j}(\delta_kw_k)}\ee^{-\varphi}\dif m\\
+		&=\int_G w_j\bar{w}_k\pppp{\varphi}{\bar{z}_k}{z_j}\ee^{-\varphi}\dif m-\int_G w_j\bar{\delta_k\pp{w_k}{\bar{z}_j}}\ee^{-\varphi}\dif m,
+	\end{align*}
+	因而
+	\begin{equation}\label{eq6.3.14}
+		\sum_{j,k=1}^{n}\int_G(\delta_jw_j)\bar{(\delta_kw_k)}\ee^{-\varphi}\dif m
+		=\sum_{j,k=1}^{n}\int_G\pppp{\varphi}{\bar{z}_k}{z_j}w_j\bar{w}_k\ee^{-\varphi}\dif m-\sum_{j,k=1}^{n}\int_Gw_j\bar{\delta_k\pp{w_k}{\bar{z}_j}}\ee^{-\varphi}\dif m,
+	\end{equation}
+	这里我们已经把上式右端第二项求和指标$j,k$作了调换.另一方面，再在\hyperlink{6.3.7}{(1)}中取$u=\pp{w_j}{\bar{z}_k},v=w_k$，有
+	\[\int_G \pp{w_j}{\bar{z}_k}\bar{\pp{w_k}{\bar{z}_j}}\ee^{-\varphi}\dif m=-\int_G \delta_j\pp{w_j}{\bar{z}_k}\bar{w}_k\ee^{-\varphi}\dif m,\]
+	取共轭并对$j,k$求和得
+	\begin{align*}
+		-\sum_{j,k=1}^n\int_G w_k\bar{\delta_j\pp{w_j}{\bar{z}_k}}\ee^{-\varphi}\dif m
+		&=\sum_{j,k=1}^n\int_G \bar{\pp{w_j}{\bar{z}_k}}\pp{w_k}{\bar{z}_j}\ee^{-\varphi}\dif m\\
+		&=\sum_{j,k=1}^n \int_G \pp{w_j}{\bar{z}_k}\bar{\pp{w_k}{\bar{z}_j}}\ee^{-\varphi}\dif m.
+	\end{align*}
+	从\eqref{eq6.3.14}减去上式，即得
+	\[\sum_{j,k=1}^{n}\int_G\left\{(\delta_j w_j)\bar{(\delta_k w_k)}-\pp{w_j}{\bar{z}_k}\bar{\pp{w_k}{\bar{z}_j}}\right\}\ee^{-\varphi}\dif m=\sum_{j,k=1}^{n}\int_G w_j\bar{w}_k\pppp{\varphi}{\bar{z}_k}{z_j}\ee^{-\varphi}\dif m.\qedhere\]
+\end{proof}
+\begin{proof}[\textbf{命题\ref{prop6.3.5}的证明}]
+	
+	由引理\ref{lem6.3.3}的\eqref{eq6.3.5}，$T^\ast f$可以表示为
+	\[\ee^{\varphi_2-\varphi_1}T^\ast f=(-1)^{p-1}\sum_{I,K}\sum_{j=1}^{n}\left(\pp{}{z_j}f_{I,jK}-f_{I,jK}\pp{\varphi_2}{z_j}\right)\dz_I\wedge\dzz_K.\]
+	注意到$\psi=\varphi_2-\varphi_1,\varphi_2=\varphi-\psi$以及$\delta_j w=\pp{w}{z_j}-w\pp{\varphi}{z_j}$，上式可写为
+	\[\ee^\psi T^\ast f=(-1)^{p-1}\sum_{I,K}\sum_{j=1}^{n}\delta_j f_{I,jK}\dz_I\wedge\dzz_K+(-1)^{p-1}\sum_{I,K}\sum_{j=1}^{n}f_{I,jK}\pp{\psi}{z_j}\dz_I\wedge\dzz_K,\]
+	把右端两式分别简记为$X$和$Y$，上式可简写为
+	\[\ee^{-\psi}X=T^\ast f-\ee^{-\psi}Y.\]
+	因而得
+	\begin{align}\label{eq6.3.15}
+		\Vert \ee^{-\psi}X\Vert_{\varphi_1}^2
+		&=\left(\Vert T^\ast f\Vert_{\varphi_1}^2+\Vert \ee^{-\psi} Y\Vert_{\varphi_1}\right)^2\notag\\
+		&\le2\Vert T^\ast f\Vert_{\varphi_1}^2+2\Vert\ee^{-\psi}Y\Vert_{\varphi_1}^2.
+	\end{align}
+	从$X,Y$的表达式得知
+	\begin{align*}
+		\Vert\ee^{-\psi}X\Vert_{\varphi_1}^2
+		&=\int_G \sum_{I,K}\left|\sum_{j=1}^{n}\delta_j f_{I,jK}\right|^2\ee^{-2\psi}\ee^{-\varphi_1}\dif m\\
+		&=\int_G\sum_{I,K}\sum_{j,k=1}^{n}(\delta_j f_{I,jK})\bar{(\delta_k f_{I,kK})}\ee^{-\varphi}\dif m,\\
+		\Vert \ee^{-\psi}Y\Vert_{\varphi_1}^2
+		&=\int_G\sum_{I,K}\left|\sum_{j=1}^{n}f_{I,jK}\pp{\psi}{z_j}\right|^2\ee^{-\varphi}\dif m\\
+		&\le\int_G \sum_{I,K}\left\{\sum_{j=1}^{n}|f_{I,jK}|^2\sum_{j=1}^{n}\left|\pp{\psi}{z_j}\right|^2\right\}\ee^{-\varphi}\dif m\\
+		&\le\int_G |f|^2\,|\partial\psi|^2\ee^{-\varphi}\dif m.
+	\end{align*}
+	代入\eqref{eq6.3.15}得
+	\[\int_G\sum_{I,K}\sum_{j,k=1}^{n}(\delta_j f_{I,jK})\bar{(\delta_k f_{I,kK})}\ee^{-\varphi}\dif m\le 2\Vert T^\ast f\Vert_{\varphi_1}^2+2\int_G |f|^2\,|\partial\psi|^2\ee^{-\varphi}\dif m.\]
+	把引理\ref{lem6.3.6}中$\left|\bar{\partial}f\right|^2$表达式的两端在$G$上积分并分别加在上面不等式的两端得
+	\begin{align*}
+		&\int_G\sum_{I,K}\sum_{j,k=1}^{n}\left\{(\delta_j f_{I,jK})\bar{(\delta_k f_{I,kK})}-\pp{f_{I,jK}}{\bar{z}_k}\bar{\pp{f_{I,kK}}{\bar{z}_j}}\right\}\ee^{-\varphi}\dif m+\int_G\sum_{I,J}\sum_{j=1}^{n}\left|\pp{f_{IJ}}{\bar{z}_j}\right|^2\ee^{-\varphi}\dif m\\
+		\le& 2\Vert T^\ast f\Vert_{\varphi_1}^2+\Vert Sf\Vert_{\varphi_3}^2+2\int_G |f|^2\,|\partial\psi|^2 \ee^{-\varphi}\dif m.
+	\end{align*}
+	在引理\ref{lem6.3.7}\hyperlink{6.3.7}{(2)}中取$w_j=f_{I,jK}$，上式便可写为
+	\begin{align}\label{eq6.3.16}
+		&\sum_{I,K}\int_G\sum_{j,k=1}^{n}f_{I,jK}\bar{f}_{I,kK}\pppp{\varphi}{z_j}{\bar{z}_k}\ee^{-\varphi}\dif m+\sum_{I,J}\sum_{j=1}^{n}\int_G\left|\pp{f_{IJ}}{\bar{z}_j}\right|^2\ee^{-\varphi}\dif m\notag\\
+		&\le 2\Vert T^\ast f\Vert_{\varphi_1}^2+\Vert Sf\Vert_{\varphi_3}^2+2\int_G |f|^2\,|\partial\psi|^2\ee^{-\varphi}\dif m.
+	\end{align}
+	根据命题\ref{prop6.3.5}的条件\eqref{eq6.3.12}，
+	\[\sum_{j,k=1}^{n}\pppp{\varphi}{z_j}{\bar{z}_k}f_{I,jK}\bar{f}_{I,kK}\ge2\left(\left|\bar{\partial}\psi\right|^2+\ee^{\psi}\right)\sum_{j=1}^{n}|f_{I,jK}|^2,\]
+	因而有
+	\begin{align*}
+		&2\Vert T^\ast f\Vert_{\varphi_1}^2+\Vert Sf\Vert_{\varphi_3}^2+2\int_G |f|^2\,|\bar{\partial}\psi|^2\ee^{-\varphi}\dif m\\
+		\ge&\sum_{I,K}\int_G 2\left(\left|\bar{\partial}\psi\right|^2+\ee^{\psi}\right)\sum_{j=1}^{n}|f_{I,jK}|^2\ee^{-\varphi}\dif m+\sum_{I,J}\sum_{j=1}^{n}\int_G\left|\pp{f_{IJ}}{\bar{z}_j}\right|\ee^{-\varphi}\dif m\\
+		=&2\int_G |f|^2\,\left|\bar{\partial}\psi\right|^2\ee^{-\varphi}\dif m+2\Vert f\Vert_{\varphi_2}^2+\sum_{I,J}\sum_{j=1}^{n}\int_G\left|\pp{f_{IJ}}{\bar{z}_j}\right|^2\ee^{-\varphi}\dif m\\
+		\ge&2\int_G |f|^2\,\left|\bar{\partial}\psi\right|^2\ee^{-\varphi}\dif m+2\Vert f\Vert_{\varphi_2}^2.
+	\end{align*}
+	由此即得
+	\[\Vert f\Vert_{\varphi_2}^2\le\Vert T^\ast f\Vert_{\varphi_1}^2+\Vert Sf\Vert_{\varphi_3}^2.\]
+	这就是要证明的不等式.
+\end{proof}
+\subsection{$\bar{\partial}$问题在拟凸域上有解}
+有了这些准备之后，便可证明我们的主要定理.
+\begin{theorem}\label{thm6.3.8}
+	设$G$是$\MC^n$中的拟凸域.如果$f\in L_{(p,q+1)}^2(G,\loc)$且满足$\bar{\partial}f=0$，那么方程$\bar{\partial}u=f$有一个解$u\in L_{(p,q)}^2(G,\loc)$.
+\end{theorem}	
+	证明之前先解释记号$L_{(p,q)}^2(G,\loc)$.定义\index[symbolindex]{\textbf{微分形式}!$L_{\text{$(p$，$q)$}}^2(G$，$\loc)$}
+	\[L^2(G,\loc)=\left\{f\colon\text{对每个$K\subset\subset G,\int_K |f|^2 \dif m<\infty$}\right\}.\]
+	$L^2(G,\loc)$中的元素称为局部平方可积函数\index{J!局部平方可积函数}.显然$L^2(G,\varphi)\subset L^2(G,\loc)$.因为对任何$f\in L^2(G,\varphi)$，取$K\subset\subset G$，则在$K$上有$|\varphi|\le M$，于是
+	\begin{align*}
+		\int_K |f|^2 \dif m
+		&\le \ee^M\int_K |f|^2\ee^{-\varphi}\dif m\\
+		&\le \ee^M\int_G|f|^2\ee^{-\varphi}\dif m<\infty,
+	\end{align*}
+	即$f\in L^2(G,\loc)$.弄清了$L^2(G,\loc)$的意义以后，$L_{(p,q)}^2(G,\loc)$的意义自然就明白了.
+	\begin{proof}[\textbf{定理\ref{thm6.3.8}的证明}]
+		根据定理\ref{thm5.5.10}，在拟凸域$G$上存在强多重次调和穷竭函数$\eta\in C^\infty(G)$.因而对任意实数$t$，有
+		\[K_t=\{z\in G\colon \eta(z)\le t\}\subset\subset G.\]
+		因为$\eta$是强多重次调和函数，故对任意$z\in G$及$\xi\in\MC^n$，有
+		\[\sum_{j,k=1}^{n}\pppp{\eta(z)}{z_j}{\bar{z}_k}\xi_j\bar{\xi}_k>0.\]
+		对于取定的$z\in G$，该二次型在单位球面上的最小值设为$m(z)>0$.于是，有
+		\[\sum_{j,k=1}^{n}\pppp{\eta(z)}{z_j}{\bar{z}_k}\xi_j\bar{\xi}_k\ge m(z)\sum_{j=1}^{n}|\xi_j|^2.\]
+		如命题\ref{prop6.3.5}那样取定$\psi$，命
+		\[h(t)=\sup_{K_t}2\frac{\left|\bar{\partial}\psi\right|^2+\ee^{\psi(z)}}{m(z)},\]
+		因为$K_t$是紧的，故$h(t)$有限且是$t$的单调增加的连续函数.今取$g\colon \MR\to\MR,g\in C^\infty(\MR),g$是递增的凸函数，$g'\ge0,g''>0$且$g'\ge h$.现在命$\varphi(z)=g(\eta(z))$，则有
+		\begin{align*}
+			\sum_{j,k=1}^{n}\pppp{\varphi}{z_j}{\bar{z}_k}w_j\bar{w}_k
+			&=g''(\eta(z))\left|\sum_{j=1}^{n}\pp{\eta}{z_j}w_j\right|^2+g'(\eta(z))\sum_{j,k=1}^{n}\pppp{\varphi}{z_j}{\bar{z}_k}w_j\bar{w}_k\\
+			&\ge g'(\eta(z))\sum_{j,k=1}^{n}\pppp{\varphi}{z_j}{\bar{z}_k}w_j\bar{w}_k\\
+			&\ge g'(\eta(z))m(z)\sum_{j=1}^{n}|w_j|^2.
+		\end{align*}
+		对于取定的$z$，设$\eta(z)=t$，于是
+		\[g'(\eta(z))=g'(t)\ge h(t)\ge2\frac{\left|\bar{\partial}\psi\right|^2+\ee^{\psi(z)}}{m(z)},\]
+		代入上式即得
+		\[\sum_{j,k=1}^{n}\pppp{\varphi}{z_j}{\bar{z}_k}w_j\bar{w}_k\ge2\left(\left|\bar{\partial}\psi\right|^2+\ee^\psi\right)\sum_{j=1}^{n}|w_j|^2.\]
+		此式说明这样选取的$\varphi$满足命题\ref{prop6.3.5}的条件\eqref{eq6.3.12}.
+		
+		另一方面，因为$f\in L_{(p,q+1)}^2(G,\loc)$，对于任何$j$，积分$\int_{K_{j+1}\setminus K_j}|f|^2\dif m=b_j$是有限数，适当选取$\delta_j$，使得
+		\[\sum_{j=1}^{\infty}b_j\delta_j<\infty.\]
+		现在要求上面选取的$g$还满足
+		\[g(t)\ge\log\frac1{\delta_j}+\sup\left\{\psi(z)\colon z\in K_{j+1}\setminus K_j\right\},j<t\le j+1.\]
+		这样，当$z\in K_{j+1}\setminus K_j$时，$j<\eta(z)\le j+1$，因而
+		\[\varphi(z)=g(\eta(z))\ge\log\frac1{\delta_j}+\psi(z),\]
+		即
+		\[\ee^{-(\varphi-\psi)}\le\delta_j\quad(z\in K_{j+1}\setminus K_j).\]
+		于是
+		\begin{align*}
+			\Vert f\Vert_{\varphi_2}^2
+			&=\int_G |f|^2\ee^{-(\varphi-\psi)}\dif m\\
+			&=\sum_{j=1}^{\infty}\int_{K_{j+1}\setminus K_j}|f|^2\ee^{-(\varphi-\psi)}\dif m\le\sum_{j=1}^{\infty} b_j\delta_j<\infty.
+		\end{align*}
+		则$f\in L_{(p,q+1)}^2(G,\varphi_2)$，因而$\bar{\partial}u=f$有解
+		\[u\in L_{(p,q)}^2(G,\varphi_1)\subset L_{(p,q)}^2(G,\loc).\qedhere\]
+	\end{proof}
+\section{$\bar{\partial}$问题解的正则性\label{sec6.4}}
+上面我们已经证明了，如果$G$是$\MC^n$中的拟凸域，当$f\in L_{(p,q+1)}^2(G,\loc),\bar{\partial}f=0$时，$\bar{\partial}u=f$有一个解$u$，而且$u\in L_{(p,q)}^2(G,\loc)$.我们自然希望，当$f$有足够的可微性时，解$u$也有相应的可微性，但情况并不一定如此.
+
+例如设$G=B_2$，即$\MC^2$中的单位球.命
+\[f=2\left(\bar{z}_1+\bar{z}_2\right)\dzz_1\wedge\dzz_2.\]
+它是一个具有$C^\infty$系数的$(0,2)$形式，命
+\[h_1(z)=\begin{cases}
+	0,&\Re z_2\le0,\\
+	1,&\Re z_2>0,
+\end{cases}\]
+\[h_2(z)=\begin{cases}
+	0,&\Re z_1\le0,\\
+	1,&\Re z_1>0,
+\end{cases}\]
+\[u(z)=\left(h_1\pp{h_2}{\bar{z}_1}-\bar{z}_2^2\right)\dzz_1+\left(h_2\pp{h_1}{\bar{z}_2}+\bar{z}_1^2\right)\dzz_2.\]
+通过直接计算易得$\bar{\partial}u=f$，即$u$是$\bar{\partial}u=f$的一个解，但这个解却是不连续的.另一方面，容易看出
+\[v=-\bar{z}_2^2\dzz_1+\bar{z}_1^2\dzz_2\]
+也满足$\bar{\partial}v=f$，而这个解的系数都是属于$C^\infty$的.
+
+这个例子说明，当$f$有足够的可微性时，方程$\bar{\partial}u=f$的许多解中，既有性质良好的解，也有性质不好的解.我们的任务是要设法找出那些性质良好的解.
+\subsection{$\MC^n$中的Sobolev空间\index{S!Sobolev空间}}
+这一节的主要工具是Sobolev空间的理论.在\ref{sec6.1}中，我们曾在$\MR^N$的开集上引入Sobolev空间的概念.把$\MC^n$看成$\MR^{2n}$，\ref{sec6.1}中建立的Sobolev空间的理论在$\MC^n$中仍然有效.但是那里的微分算子$\DD^\alpha=\frac{\partial^{|\alpha|}}{\partial x_1^{\alpha_1}\cdots\partial x_N^{\alpha_N}}$现在应改成\index[symbolindex]{\textbf{导数}!$\DD_z^\alpha$，$\DD_{\bar{z}}^\beta$}
+\[\DD_z^\alpha \DD_{\bar{z}}^\beta=\frac{\partial^{|\alpha|}}{\partial z_1^{\alpha_1}\cdots\partial z_n^{\alpha_n}}\frac{\partial^{|\beta|}}{\partial \bar{z}_1^{\alpha_1}\cdots\partial \bar{z}_n^{\alpha_n}},\]
+这里$\alpha=(\alpha_1,\cdots,\alpha_n),\beta=(\beta_1,\cdots,\beta_n)$都是多重指标.这时Sobolev空间可定义为
+\begin{definition}\label{def6.4.1}
+	设$G$是$\MC^n$中的域，$s$是非负整数.$G$上的$s$阶Sobolev空间$W^s(G)$是所有这样的函数$f$构成的集合：对所有满足$|\alpha|+|\beta|\le s$的$\alpha,\beta$，它的弱导数$\DD_z^\alpha \DD_{\bar{z}}^\beta f\in L^2(G)$.
+\end{definition}
+若在这空间中引进如下的范数
+\[\Vert f\Vert_s=\sum_{|\alpha|+|\beta|\le s}\Vert\DD_z^\alpha\DD_{\bar{z}}^\beta f\Vert_{L^2}^2,\]
+则$W^s(G)$成为Banach空间.
+
+若引进如下的内积
+\[\langle f,g\rangle_s=\sum_{|\alpha|+|\beta|\le s}\int_G(\DD_z^\alpha\DD_{\bar{z}}^\beta f)\bar{(\DD_z^\alpha\DD_{\bar{z}}^\beta g)}\dif m,\]
+则$W^s(G)$成为Hilbert空间.
+\begin{definition}\label{def6.4.2}
+	设$G$是$\MC^n$中的域，$s$是非负整数.$G$上的$s$阶$(p,q)$形式的Sobolev空间定义为\index[symbolindex]{\textbf{微分形式}!$W_{\text{$(p$，$q)$}}^s(G)$}
+	\[W_{(p,q)}^s(G)=\left\{f=\sum_{|I|=p}\sum_{|J|=q}f_{IJ}\dz_I\wedge\dzz_J\colon f_{IJ}\in W^s(G)\right\},\]
+	
+	它的范数定义为
+	\[\Vert f\Vert_s^2=\sum_{|I|=p}\sum_{|J|=q}\Vert f_{IJ}\Vert_s^2.\]
+	
+	自然定义下面的\index[symbolindex]{\textbf{函数和映射}!$W^s(G$，$\loc)$}\index[symbolindex]{\textbf{微分形式}!$W_{\text{$(p$，$q)$}}^s(G$，$\loc)$}
+	\[W^s(G,\loc)=\left\{f\colon \DD_z^\alpha\DD_{\bar{z}}^\beta f\in L^2(G,\loc),|\alpha|+|\beta|\le s\right\},\]
+	\[W_{(p,q)}^s(G,\loc)=\left\{f=\sum_{|I|=p}\sum_{|J|=q}f_{IJ}\dz_I\wedge\dzz_J\colon f_{IJ}\in W^s(G,\loc)\right\}.\]
+\end{definition}
+我们需要下面的
+\begin{prop}\label{prop6.4.3}
+	如果$f\in L^2(\MC^n)$具有紧支集，且$\pp{f}{\bar{z}_j}\in L^2(\MC^n),j=1,\cdots,n$，那么$f\in W^1(\MC^n)$.
+\end{prop}
+\begin{proof}
+	按照$W^1(\MC^n)$的定义，只要证明，对所有的$j=1,\cdots,n$，有$\pp{f}{z_j}\in L^2(\MC^n)$就行了.先设$f\in C_0^\infty(\MC^n)$，由分部积分法即得
+	\begin{align*}
+		\int_{\MC^n}\left|\pp{f}{z_j}\right|^2\dif m
+		&=\int_{\MC^n}\pp{f}{z_j}\bar{\pp{f}{z_j}}\dif m\\
+		&=-\int_{\MC^n}\pppp{f}{\bar{z}_j}{z_j}\bar{f}\dif m=\int_{\MC^n}\left|\pp{f}{\bar{z}_j}\right|^2\dif m<\infty.
+	\end{align*}
+	对于一般的具有紧支集的$f\in L^2(\MC^n)$，用\ref{sec6.1}的函数光滑化的方法，作$f_\varepsilon=f\ast\chi_\varepsilon$.因为$f$具有紧支集，所以$f_\varepsilon\in C_0^\infty(\MC^n)$，且$\Vert f_\varepsilon-f\Vert_{L^2}\to0$（当$\varepsilon \to0$）.从$\pp{f}{\bar{z}_j}\in L^2(\MC^n)$可得$\pp{f_\varepsilon}{\bar{z}_j}=\left(\pp{f}{\bar{z}_j}\right)_\varepsilon\in L^2(\MC^n)$，因而由上面所证，即知$\pp{f_\varepsilon}{z_j}\in L^2(\MC^n)$，所以$\left(\pp{f}{z_j}\right)_\varepsilon\in L^2(\MC^n)$.由于当$\varepsilon\to0$时，$\left(\pp{f}{z_j}\right)_\varepsilon$在$L^2$中收敛于$\pp{f}{z_j}$，因而$\pp{f}{z_j}\in L^2(\MC^n)$对所有$j=1,\cdots,n$成立.
+\end{proof}
+\begin{prop}\label{prop6.4.4}
+	设$f=\sum_{I,J}f_{IJ}\dz_I\wedge\dzz_J\in L_{(p,q+1)}^2(\MC^n)$具有紧支集.\\
+	如果$\bar{\partial}f\in L_{(p,q+2)}^2(\MC^n),\theta f\in L_{(p,q)}^2(\MC^n)$，这里
+	\[\theta f=(-1)^{p-1}\sum_{|I|=p\atop|K|=q}\sum_{j=1}^{n}\pp{f_{I,jK}}{z_j}\dz_I\wedge\dzz_K,\]
+	如命题\ref{prop6.3.4}的证明中所示，那么$f\in W_{(p,q+1)}^s(\MC^n)$.
+\end{prop}
+\begin{proof}
+	和证明命题\ref{prop6.4.3}的方法一样.先设$f\in D_{(p,q+1)}(\MC^n)$.注意到\ref{sec6.3}的\eqref{eq6.3.16}对任意的$\varphi$和$\psi$都是成立的，现取$\varphi=\psi=0$，这时$\varphi_1=\varphi-2\psi=0,\varphi_2=\varphi-\psi=0,\varphi_3=\varphi=0$.于是\eqref{eq6.3.16}变成
+	\[\sum_{I,J}\sum_{j=1}^{n}\int_{\MC^n}\left|\pp{f_{IJ}}{\bar{z}_j}\right|^2\dif m\le2\Vert T^\ast f\Vert_{L^2}^2+\Vert Sf\Vert_{L^2}^2.\]
+	这时$T^\ast f$可以表示为
+	\[T^\ast f=(-1)^{p-1}\sum_{|I|=p\atop|K|=q}\sum_{j=1}^{n}\pp{f_{I,jK}}{z_j}\dz_I\wedge\dzz_K=\theta f,\]
+	故上式可写为
+	\[\sum_{I,J}\sum_{j=1}^{n}\int_{\MC^n}\left|\pp{f_{IJ}}{\bar{z}_j}\right|^2\dif m\le2\Vert \theta f\Vert_{L^2}^2+\Vert \bar{\partial}f\Vert_{L^2}^2,\]
+	由此得$\pp{f_{IJ}}{\bar{z}_j}\in L^2(\MC^n)$.由命题\ref{prop6.4.3}得$f_{IJ}\in W^1(\MC^n)$，因而$f\in W_{(p,q+1)}^1(\MC^n)$.对于一般的具有紧支集的$f\in L_{(p,q+1)}^2(\MC^n)$，和命题\ref{prop6.4.3}的证法一样，用光滑化的方法即可得证.
+\end{proof}
+\subsection{内部正则性定理}
+现在可以证明
+\begin{theorem}\label{thm6.4.5}
+	设$G$是$\MC^n$中的拟凸域，$s$是非负整数.如果$f\in W_{(p,q+1)}^s(G,\loc)$，且$\bar{\partial}f=0$，那么
+	
+	(1)\hypertarget{6.4.5}{}
+	如果$q\ge1$，那么方程$\bar{\partial}u=f$的标准解$u\in W_{(p,q)}^{s+1}(G,\loc)$；
+	
+	(2)\hypertarget{6.4.5}{}
+	如果$q=0$，那么方程$\bar{\partial}u=f$的任意解$u\in W_{(p,0)}^{s+1}(G,\loc)$.
+\end{theorem}
+\begin{proof}
+	先证\hyperlink{6.4.5}{(1)}. 设$q\ge1$.从定理\ref{thm6.3.8}、命题\ref{prop6.3.5}和定理\ref{thm6.2.5}知道方程$\bar{\partial}u=f$存在标准解（标准解的定义见定义\ref{def6.2.6}）.现在证明这个标准解$u$还满足$\theta\left(\ee^{-\varphi_1}u\right)=0$，这里$\theta$是命题\ref{prop6.4.4}中提到的算子.事实上，因为$u$是标准解，所以存在$v\in D(T^\ast)$，使得$u=T^\ast v$.于是
+	\begin{align*}
+		\ee^{-\varphi_1} T^\ast v
+		&=(-1)^{p-1}\sum_{I,K}\sum_{j=1}^{n}\pp{}{z_j}\left(\ee^{-\varphi_2}v_{I,jK}\right)\dz_I\wedge\dzz_K\\
+		&=\theta\left(\ee^{-\varphi_2}v\right).
+	\end{align*}
+	从直接验算可得$\theta^2=0$，因而
+	\[\theta\left(\varphi^{-\varphi_1}u\right)=\theta\left(\ee^{-\varphi_1}T^\ast v\right)=\theta^2\left(\ee^{-\varphi_2}v\right)=0.\]
+	另一方面，
+	\begin{align*}
+		\theta\left(\ee^{-\varphi_1}u\right)
+		&=(-1)^{p-1}\sum_{I,L}\sum_{j=1}^{n}\pp{}{z_j}\left(\ee^{-\varphi_1}u_{I,jL}\right)\dz_I\wedge\dzz_L\\
+		&=(-1)^{p-1}\sum_{I,L}\sum_{j=1}^{n}\left(-\ee^{-\varphi_1}\pp{\varphi_1}{z_j}u_{I,jL}+\ee^{-\varphi_1}\pp{u_{I,jL}}{z_j}\right)\dz_I\wedge\dzz_L\\
+		&=\ee^{-\varphi_1}\theta u-\ee^{-\varphi_1}bu,
+	\end{align*}
+	这里
+	\[bu=(-1)^{p-1}\sum_{I,L}\sum_{j=1}^{n}u_{I,jL}\pp{\varphi_1}{z_j}\dz_I\wedge\dzz_L,|L|=q-1.\]
+	由此得$\theta u=bu$，这里$b$是一个系数属于$C^\infty$的零阶微分算子.现在假定对某个$m(0\le m\le s)$证明了
+	\[u\in W_{(p,q)}^m(G,\loc),\]
+	至少$m=0$时这个假定是成立的.任取$\chi\in C_0^\infty(G)$，则
+	\[\bar{\partial}(\chi u)=(\bar{\partial}\chi)\wedge u+\chi\bar{\partial}u=(\bar{\partial}\chi)\wedge u+\chi f\in W_{(p,q+1)}^m(G,\loc).\]
+	这里我们已经用了$f\in W_{(p,q+1)}^s(G,\loc)$的假定.\\
+	因为$\theta u=bu$，所以$\theta(\chi u)\in W_{(p,q-1)}^m(G,\loc)$.现在设多重指标$\alpha=(\alpha_1,\cdots,\alpha_n),\beta=(\beta_1,\cdots,\beta_n)$，满足$|\alpha|+|\beta|\le m$，按照Sobolev空间的定义有
+	\[\bar{\partial}(\DD_z^\alpha\DD_{\bar{z}}^\beta(\chi u))=\DD_z^\alpha\DD_{\bar{z}}^\beta(\bar{\partial}(\chi u))\in L_{(p,q+1)}^2(G),\]
+	\[\theta(\DD_z^\alpha\DD_{\bar{z}}^\beta(\chi u))=\DD_z^\alpha\DD_{\bar{z}}^\beta(\theta(\chi u))\in L_{(p,q-1)}^2(G).\]
+	于是，由命题\ref{prop6.4.4}得$\DD_z^\alpha\DD_{\bar{z}}^\beta(\chi u)\in W_{(p,q)}^1(G)$，因而$\chi u\in W_{(p,q)}^{m+1}$，所以$u\in W_{(p,q)}^{m+1}(G,\loc)$.这样，我们从$u\in W_{(p,q)}^m(G,\loc)$推出了$u\in W_{(p,q)}^{m+1}(G,\loc)$.继续做下去，即得$u\in W_{(p,q)}^{s+1}(G,\loc)$.
+	
+	\hyperlink{6.4.5}{(2)}
+	设$q=0$.设$u=\sum_I u_I\dz_I$是$\bar{\partial}u=f$的任意一个解.于是$f\in W_{(p,1)}^s(G,\loc)$意味着$\pp{u}{\bar{z}_j}=f_{I,j}\in W^s(G,\loc)$.和上面一样，假定对某个$m(0\le m\le s)$已经证明了$u\in W_{(p,0)}^m(G,\loc)$.取$\chi\in C_0^\infty(G)$，则
+	\[\pp{}{\bar{z}_j}(\chi u_I)=\chi f_{I,j}+\pp{\chi}{\bar{z}_j}u_I\in W^m(G).\]
+	下面的讨论和\hyperlink{6.4.5}{(1)}中完全一样，但只要用命题\ref{prop6.4.3}就行了.
+\end{proof}
+这一节的主要结果是下面的.
+\begin{theorem}\label{thm6.4.6}
+	设$G$是$\MC^n$中的拟凸域.如果$f\in C_{(p,q+1)}^\infty(G)$且$\bar{\partial}f=0$，那么存在$u\in C_{(p,q)}^\infty(G)$，使得$\bar{\partial}u=f$成立.
+\end{theorem}
+\begin{proof}
+	定理\ref{thm6.1.7}（Sobolev引理）现在可以写成$W_{(p,q)}^{s+n+1}(G)\subset C_{(p,q)}^s(G)$，又因可微分性是一个局部性质，因而又可写成
+	\begin{equation}\label{eq6.4.1}
+		W_{(p,q)}^{s+n+1}(G,\loc)\subset C_{(p,q)}^s(G).
+	\end{equation}
+	于是，由定理\ref{thm6.4.5}和\eqref{eq6.4.1}即得本定理.
+\end{proof}
+定理\ref{thm6.4.6}称为内部正则性定理，在强拟凸域的情形，Kohn得到更强的结果.
+\begin{theorem}\label{thm6.4.7}
+	设$G$是$\MC^n$中具有$C^2$边界的有界强拟凸域.如果$f\in C_{(p,q+1)}^\infty(\bar{G})$且$\bar{\partial}f=0$，那么存在$u\in C_{(p,q)}^\infty(\bar{G})$，使得$\bar{\partial}u=f$成立.
+\end{theorem}
+这个定理在\ref{sec6.7.1}中要用到，它的证明就不在这里讲了.
+\section{Levi问题\index{L!Levi问题}\label{sec6.5}}
+作为$\bar{\partial}$问题的第一个应用，我们证明Levi猜测：拟凸域一定是全纯域.\index{L!Levi猜测}
+
+我们从一个全纯开拓问题谈起.设$G$是$\MC^n$中的域，命$E=\{z\in G\colon z_n=0\}$，那么$E$可以看成$\MC^{n-1}$中的一个集合.设$f$是$E$上的全纯函数，问是否存在$F\in H(G)$，使得$F|_E=f$？从下面的例子可以看出，一般来说，这样的$F$是不存在的.
+\begin{example}\label{exa6.5.1}
+	设$G=B(0,1)\setminus \bar{B}\left(0,\frac12\right)\subset\MC^2$，即$G=\left\{z\in\MC^2\colon\frac14<|z_1|^2+|z_2|^2<1\right\}$，所以$E=\left\{(z_1,0)\colon\frac12<|z_1|<1\right\}$.命$f\colon E\to\MC$为$f(z_1,0)=\frac1{z_1-\frac12}$，当然$f\in H(E)$.如果存在$F\in H(G)$，使得$F|_E=f$，那么由推论\ref{cor1.3.6}知道，$F$是单位球$B(0,1)$上的全纯函数，因而在点$\left(\frac12,0\right)$的任一邻域中有界，这和$F|_E=f$相矛盾.这就是说$f$的全纯开拓$F$是不存在的.
+\end{example}
+但对拟凸域，这样的全纯开拓是存在的.
+\begin{lemma}\label{lem6.5.2}
+	设$G$是$\MC^n$中的拟凸域，命
+	\[E=\{z\in G\colon z_n=0\},\quad \widetilde{E}=\left\{(z_1,\cdots,z_{n-1})\in \MC^{n-1}\colon(z_1,\cdots,z_{n-1},0)\in E\right\},\]
+	如果记$(z_1,\cdots,z_{n-1})$的函数$f(z_1,\cdots,z_{n-1},0)$在$\widetilde{E}$上全纯，则必存在全纯函数$F\colon G\to\MC$，使得$F|_E=f$.
+\end{lemma}
+\begin{proof}
+	记$\pi(z_1,\cdots,z_n)=(z_1,\cdots,z_{n-1})$为$\MC^n$到$\MC^{n-1}$的射影，$H=\{z\in G\colon \pi z\notin\widetilde{E}\}$.那么$E$和$H$是$G$的不相交的闭子集.作为$E$的邻域$V_1,V_2$，使得$E\subset V_1\subset V_2$，且$V_2\cap H=\varnothing$.虽然$E$不一定是$G$中的紧子集，但用证明推论\ref{cor4.6.6}的方法，仍然可以证明，存在$C^\infty$函数$\varphi\colon G\to[0,1]$，使得$\supp\varphi\subset V_2$，且在$V_1$上有$\varphi(z)\equiv1$.定义$G$上的$(0,1)$形式
+	\begin{equation}\label{eq6.5.1}
+		g=\begin{cases}
+			\frac{(-\bar{\partial}\varphi(z))f(\pi(z),0)}{z_n},&z\in G\setminus E,\\
+			0,&z\in E,
+		\end{cases}
+	\end{equation}
+	因为$\bar{\partial}\varphi=0$在$V_1$上成立，所以$g$是属于$C^\infty$的$(0,1)$形式.由于$f$全纯，且$\bar{\partial}^2=0$，所以$\bar{\partial}g=0$.于是，由定理\ref{thm6.4.6}知，$\bar{\partial}$方程$\bar{\partial}u=g$有解$u\in C^\infty(G)$.用这个$u$构造函数
+	\[F(z)=\varphi(z)f(\pi(z),0)+z_n u(z),\]
+	则$\bar{\partial}F=0$，即$F\in H(G)$，且$F|_E=f$.
+\end{proof}
+现在证明Levi猜测.
+\begin{theorem}\label{thm6.5.3}
+	设$G$是$\MC^n$中的拟凸域，那么$G$一定是全纯域.
+\end{theorem}
+\begin{proof}
+	对空间的维数用归纳法.因为$\MC$上任意域都是全纯域，所以$n=1$时定理成立.今设定理对$\MC^{n-1}$中的拟凸域成立.任取$a\in\partial G$，适当选取$b\in\MC^n$，作
+	\[H=\left\{z\in\MC^n\colon\sum_{j=1}^{n}(z_j-a_j)b_j=0\right\},\]
+	使得$a\in\partial(G\cap H)$.作坐标变换
+	\[w_j=z_j-a_j,j=1,\cdots,n-1;\quad w_n=\sum_{j=1}^{n}(z_j-a_j)b_j,\]
+	则$a$变为原点，$H$变为$\{w\in\MC^n\colon w_n=0\}$.命$E=G\cap H$，在新的坐标系下，$E=\{w\in G\colon w_n=0\}$.由于$G$是$\MC^n$中的拟凸域，容易直接证明$E$是$\MC^{n-1}$中的拟凸域，由归纳假定，它是$\MC^{n-1}$中的全纯域，因而存在$E$上的全纯函数$f$，它不能通过$a$点全纯开拓出去由引理\ref{lem6.5.2}，存在$G$上的全纯函数$F$，使得$F|_E=f$，所以$F$不能通过$a$点全纯开拓出去，因而$G$是全纯域.
+\end{proof}
+\section{Cousin问题和除法问题\label{sec6.6}}
+\subsection{Cousin问题}
+单复变中有两个重要的问题：
+
+(1)
+设$G$是$\MC$中的域，$a_1,a_2,\cdots$是一列趋于$\partial G$的点.问是否存在$G$中的亚纯函数，使它在$a_j$处有给定的主要部分
+\[\frac{a_{j1}}{z-a_j}+\cdots+\frac{a_{jl_j}}{(z-a_j)^{l_j}},\quad j=1,2,\cdots\]
+
+(2)
+设$G$是$\MC$中的域，$a_1,a_2,\cdots$是$G$中一列点，在$G$中没有极限点.问是否存在$G$中的全纯函数以$\{a_k\}$为其零点集？
+
+这两个问题的答案都是肯定的，前者就是所谓的Mittag-Leffler定理\index{D!定理!Mittag-Leffler定理}，后者是通过Weierstrass无穷乘积来解决的\index{W!Weierstrass无穷乘积}，称为Weierstrass定理.\index{D!定理!Weierstrass定理}
+
+在多复变中，全纯函数的零点和极点都不是孤立的，所以这两个问题在多复变中有不同的提法.
+
+Mittag-Leffler定理在多复变中的推广即所谓的Cousin第一问题\index{C!Cousin第一问题}，它的提法如下：
+
+设$G$是$\MC^n$中的域，$\{U_j\}$是$G$的一个开覆盖，在每个$U_j$上有亚纯函数$f_j$，满足条件
+\[f_j-f_k\in H(U_j\cap U_k).\]
+问是否存在一个$G$上的亚纯函数$f$，使得$f-f_j$在$U_j$上是全纯函数？
+
+Weierstrass定理在多复变中的推广即所谓的Cousin第二问题\index{C!Cousin第二问题}，它的提法如下：
+
+设$G$是$\MC^n$中的域，$\{U_j\}$是$G$的一个开覆盖，在每一个开集$U_j$上有一个全纯函数$f_j$，满足条件$\frac{f_j}{f_k}$和$\frac{f_k}{f_j}$在$U_j\cap U_k$中全纯.问是否存在一个$G$上的全纯函数$f$，使得$\frac{f_j}{f}$在$U_j$中全纯且没有零点？
+
+这里要求$\frac{f_j}{f}$在$U_j$中没有零点且全纯，意味着$f$和$f_j$在$U_j$中有相同的零点集.
+
+Cousin第一问题在全纯域上永远有解，Cousin第二问题则不然.
+\begin{theorem}\label{thm6.6.1}
+	设$G$是$\MC^n$中的全纯域，则Cousin第一问题有解.
+\end{theorem}
+\begin{proof}
+	我们只要能在每一个$U_i$上找到全纯函数$u_i$，使得在$U_i\cap U_j$上有$f_j-f_i=u_j-u_i$，这时命
+	\[f=f_i-u_i,\quad z\in U_i,\]
+	则$f$是$U_i$上的亚纯函数.由于当$z\in U_i\cap U_j$时，$f_i-u_i=f_j-u_j$，所以$f$在$G$上有定义，$f$是$G$上的亚纯函数，且当$z\in U_i$时，$f-f_i=-u_i$是$U_i$上的全纯函数，因而$f$即为所求.为了找到满足上述条件$u_i$，记$f_{ij}=f_j-f_i$，则由假定$f_{ij}$在$U_i\cap U_j$上全纯.我们先找在$U_i$上是$C^\infty$的函数$g_i$，使得在$U_i\cap U_j$上有$f_{ij}=g_j-g_i$.为此，取相应于$\{U_i\}$的单位分解$\{\rho_i\}$，即一组$C^\infty$函数$\rho_i\ge0,\supp\rho_i\subset U_{i'}$且$\sum_{i=1}^{\infty}\rho_i=1$.命
+	\[g_j(z)=\sum_{k=1}^{\infty}\rho_k(z)f_{kj}(z),\quad z\in U_j.\]
+	容易看出，当$z\in U_j$时，如果$U_{k'}\cap U_j=\varnothing$，则$\rho_{k'}(z)=0$.因此，上面的级数只对那些$U_{k'}\cap U_j\neq\varnothing$的$k'$求和，这时$f_{k' j}$是全纯的，因而$g_j\in C^\infty(U_j)$.如果写
+	\begin{align*}
+		g_j(z)
+		&=\sum_{k=1}^{\infty}\rho_k(z)(f_j(z)-f_k(z))\\
+		&=f_j(z)-\sum_{k=1}^{\infty}\rho_k(z)f_k(z),\quad z\in U_j,
+	\end{align*}
+	那么当$z\in U_i\cap U_j$时，便有
+	\[g_j(z)-g_i(z)=f_j(z)-f_i(z).\]
+	命$\omega=\bar{\partial}g_i,z\in U_i$，由于当$z\in U_i\cap U_j$时，$\bar{\partial}g_j-\bar{\partial}g_i=\bar{\partial}f_{ij}=0$，即$\bar{\partial}g_j=\bar{\partial}g_i$，所以$\omega$在$G$上有定义，且$\omega\in C_{(0,1)}^\infty(G)$.由于$G$是全纯域，即拟凸域，所以$\bar{\partial}$方程
+	\[\bar{\partial}u=\omega\]
+	在$G$上有解$u\in C^\infty(G)$.今在$U_i$上定义$u_i=g_i-u$，因为$\bar{\partial} u_i=\bar{\partial} g_i-\bar{\partial}u=0$，所以$u_i\in H(U_i)$，而且
+	\[u_j-u_i=g_j-g_i=f_{ij}=f_j-f_i.\]
+	因而$f=f_i-u_i(z\in U_i)$即为所求之解.
+\end{proof}
+Cousin第二问题在全纯域上一般是没有解的，Oka曾经举出过使Cousin第二问题无解的全纯域的例子（见\cite[p.250]{krantz2001function}）.但我们有下面的
+\begin{theorem}\label{thm6.6.2}
+	设$G$是$\MC^n$中的全纯域.如果存在$g\in C^\infty(G)$，使得$\frac{f_i}{g}$在$U_i$上是$C^\infty$的且无零点，则Cousin第二问题有解.
+\end{theorem}
+\begin{proof}
+	命$f_{ij}=\frac{f_j}{f_i}=\frac{\frac{f_j}{g}}{\frac{f_i}{g}}$.根据假定，$\frac{f_j}{g}$与$\frac{f_i}{g}$在$U_i\cap U_j$上都是$C^\infty$的且无零点，因而
+	\[\log f_{ij}=\log\frac{f_j}{g}-\log\frac{f_i}{g},\quad z\in U_i\cap U_j.\]
+	两端可能相差$2\pi\ii$的整数倍.因为$\frac{f_j}{f_i}$在$U_i\cap U_j$中全纯且无零点，故$\log f_{ij}$在$U_i\cap U_j$中全纯.因而$\bar{\partial}\log f_{ij}=0$，或者$\bar{\partial}\log\frac{f_j}{g}=\bar{\partial}\log\frac{f_i}{g}$在$U_i\cap U_j$上成立.在$U_i$上定义$(0,1)$形式如下：
+	\[\omega=\bar{\partial}\log\frac{f_i}{g},\quad z\in U_i.\]
+	由于当$z\in U_i\cap U_j$时，$\bar{\partial}\log\frac{f_i}{g}=\bar{\partial}\log\frac{f_j}{g}$，所以$\omega$在$G$上有定义，且$\omega\in C_{(0,1)}^\infty(G)$.从$\bar{\partial}^2=0$知$\bar{\partial}\omega=0$.故由定理\ref{thm6.4.6}知$\bar{\partial}$方程$\bar{\partial}u=\omega$有解$u\in C^\infty(G)$.今在$U_i$上命$v_i=\log\frac{f_i}{g}-u$，因为
+	\[\bar{\partial}v_i=\bar{\partial}\log\frac{f_i}{g}-\bar{\partial}u=0,\]
+	所以$v_i\in H(U_i)$.今在$U_i$上定义
+	\[f=\frac{f_i}{\ee^{v_i}},\]
+	则$f\in H(U_i)$.当$z\in U_i\cap U_j$时，
+	\[\frac{\ee^{v_j}}{\ee^{v_i}}=\frac{\ee^{\log\frac{f_j}{g}-u}}{\ee^{\log\frac{f_i}{g}-u}}=\frac{f_j}{f_i},\]
+	即$\frac{f_i}{\ee^{v_i}}=\frac{f_j}{\ee^{v_j}}$.所以$f$是$G$上的全纯函数，且在$U_i$上，$\frac{f_i}{f}=\ee^{v_i}\neq0$.所以$f$就是Cousin第二问题的解.
+\end{proof}
+\subsection{除法问题\index{C!除法问题}}
+作为Cousin第一问题的一个应用，我们来讨论除法问题.
+
+所谓除法问题是指：是$G$是$\MC^n$中的域，$0\in G,f$是$G$上的全纯函数，满足$f(0)=0$.问是否存在$G$中的全纯函数$g_1,\cdots,g_n$，使得
+\begin{equation}\label{eq6.6.1}
+	f(z)=\sum_{j=1}^{n}z_jg_j(z)
+\end{equation}
+在$G$中成立？
+
+显然，由于$f\in H(G)$且$f(0)=0$，把$f$在原点附近展开成幂级数就能得到\eqref{eq6.6.1}.但只能断言在原点附近成立，至于\eqref{eq6.6.1}是否能在$G$中成立是不容易回答的.
+
+这里我们将证明，如果$G$是$\MC^n$中的拟凸域，那么除法问题有解.这一结论在下面讨论$\bar{\partial}$问题解的一致估计时将要用到.
+
+为此，我们先证明两个引理.
+\begin{lemma}\label{lem6.6.3}
+	设$G$是$\MC^n$中的拟凸域.如果集合
+	\[E=\{z\in G\colon z_1=0\}\]
+	不空，那么每一个$E$上的全纯函数都可全纯开拓到$G$上.
+\end{lemma}
+
+这就是引理\ref{lem6.5.2}，我们已经证明过.现在作为Cousin第一问题应用的例子，给出一个新的证明.
+\begin{proof}
+	任取$\varphi\in H(E)$，对每个$z\in E$，存在$\MC^n$中的邻域$U_z$，使得$\varphi$在$U_z$中全纯.命$U=\bigcup_{z\in E}U_z$，则$U$是$E$的一个邻域，$\varphi$在$U$上全纯，因为$\frac{\varphi}{z_1}$是$U$上的一个亚纯函数.命$U_1=U\cap G,f_1=\frac{\varphi}{z_1},U_2=G\setminus E,f_2=0$，则$\{U_1,U_2\}$构成$G$的一个开覆盖，$f_1$在$U_1$上亚纯，$f_2$在$U_2$上全纯，且在$U_1\cap U_2$上，$f_2-f_1=-\frac{\varphi}{z_1}$全纯.由于$G$是拟凸域，Cousin第一问题有解，即在$G$上存在亚纯函数$\widetilde{f}$，使得$\widetilde{f}-f_j\in H(U_j),j=1,2$.因为$f_2=0$，故$\widetilde{f}$在$U^2$上全纯.在$U_1$上，函数
+	\begin{equation}\label{eq6.6.2}
+		h(z)=\widetilde{f}-\frac{\varphi}{z_1}
+	\end{equation}
+	是全纯的，因而$z_1\widetilde{f}=\varphi(z)+z_1h(z)$也在$U_1$上全纯.当然$z_1\widetilde{f}$也在$U_2$上全纯，所以$z_1\widetilde{f}\in H(G)$.命$f=z_1\widetilde{f}$，当$z\in E$时，由\eqref{eq6.6.2}知，$z_1h(z)=f(z)-\varphi(z)$.但此时$z_1=0$，故$f(z)=\varphi(z)$，所以$f$是$\varphi$在$G$上的一个全纯开拓.
+\end{proof}
+\begin{lemma}\label{lem6.6.4}
+	设$G$是$\MC^n$中的拟凸域.如果集合
+	\[E=\{z\in G\colon z_1=z_2=\cdots=z_k=0\},\quad 1\le k\le n\]
+	不空，那么对每个$f\in H(G)$且满足$f|_E=0$者，必存在$g_1,\cdots,g_k\in H(G)$，使得
+	\[f(z)=\sum_{j=1}^{k}z_jg_j(z)\]
+	在$G$上成立.
+\end{lemma}
+\begin{proof}
+	用归纳法证明.当$k=1$时，命
+	\[g_1(z)=\begin{cases}
+		\pp{f}{z_1}(0),&z\in E,\\
+		\frac{f(z)}{z_1},&z\in G\setminus E,
+	\end{cases}\]
+	则$g_1\in H(G)$，且$f=z_1g_1$在$G$上成立，即引理当$k=1$时成立.现设$k\le m-1$时引理成立.命
+	\[G_m=\{z\in G\colon z_m=0\}.\]
+	因为$G$是拟凸域，所以$G_m$的每个连通分支在$\MC^{n-1}$中是拟凸域.考虑$n-1$个变量的函数
+	\[F=f(z_1,\cdots,z_{m-1},0,z_{m+1},\cdots,z_n),\]
+	它在$G_m$中全纯，由$f|_E=0$得知$F$在
+	\[\{z\in G_m\colon z_1=z_2=\cdots=z_{m-1}=0\}\]
+	上取零值.由归纳假定，存在$\widetilde{g}_j\in H(G_m),j=1,\cdots,m-1$，使得
+	\[F=\sum_{j=1}^{m-1}z_j\widetilde{g}_j(z_1,\cdots,z_{m-1},z_{m+1},\cdots,z_n).\]
+	由引理\ref{lem6.6.3}知，每个$\widetilde{g}_j$对应着一个$g_j\in H(G)$，使得当$z\in G_m$时，$\widetilde{g}_j(z)=g_j(z)$.作函数
+	\[\varphi(z)=f(z)-\sum_{j=1}^{m-1}z_jg_j(z),\]
+	显然$\varphi\in H(G)$，且当$z\in G_m$时
+	\[\varphi(z)=F(z)-\sum_{j=1}^{m-1}z_j\widetilde{g}_j(z)=0.\]
+	再应用引理$k=1$的情形，即得$\varphi(z)=z_mg_m(z)$，这里$g_m(z)\in H(G)$.由此即得
+	\[f(z)=\sum_{j=1}^{m}z_jg_j(z).\]
+	证明完毕.
+\end{proof}
+现在很容易证明我们的主要定理.
+\begin{theorem}\label{thm6.6.5}
+	设$G$是$\MC^n$中的拟凸域，则除法问题有解.
+\end{theorem}
+\begin{proof}
+	因为$f\in H(G),f(0)=0$，由于$0\in G$，所以
+	\[E=\{z\in G\colon z_1=\cdots=z_n=0\}=\{0\}\]
+	不空.$f(0)=0$即$f|_E=0$.在引理\ref{lem6.6.4}中取$k=n$即得定理的证明.
+\end{proof}
+\section{$\bar{\partial}$问题解的一致估计\index{Y!一致估计}\label{sec6.7.1}}
+\subsection{Henkin核的构造}
+前面我们用$L^2$估计的方法，证明在拟凸域上$\bar{\partial}$问题有解，而且得到了解的$L^2$估计（见定理\ref{thm6.2.5}\hyperlink{6.2.5}{(1)}）.在\ref{sec4.7}我们利用复平面上的非齐次Cauchy积分公式（定理\ref{thm4.7.1}）导出了$\MC$中有界域上$\bar{\partial}$问题解的积分表示，并由此而得到了解的一致估计（定理\ref{thm4.7.2}）.这一节的目的是要把定理\ref{thm4.7.2}的结果推广到$\MC^n$中去，得到$\MC^n$中有界强拟凸域上$\bar{\partial}$问题解的积分表示，并由此而得到解的一致估计.
+
+让我们来分析一下如何进行这项工作.\,
+定理\ref{thm4.7.2}是由定理\ref{thm4.7.1}推导出来的，\,
+定理\\
+\ref{thm4.7.1}在$\MC^n$中的推广就是Bochner-Martinelli积分公式（定理\ref{thm4.8.2}），那么从Bochner-Martinelli积分公式出发，能否得到$\MC^n$中有界强拟凸域上$\bar{\partial}$问题解的积分表示呢？答案是否定的.关键的原因是Bochner-Martinelli核$K_{B\text{-}M}(z,\zeta)$对$z$不是全纯的，这是它与Cauchy核最大的不同之处.
+
+这样就产生了一个新的问题，能否构造一个新的核$K(z,\zeta)$，它对变量$z$是全纯的，但同时类似于定理\ref{thm4.8.2}\eqref{eq4.8.3}的Bochner-Martinelli积分公式又能成立？
+
+我们还是从分析Bochner-Martinelli核的构造入手.为此需要下面两个引理.
+\begin{lemma}\label{lem6.7.1}
+	设$s$和$g$是$\MC^n$中的开集$G$到$\MC^n\setminus\{0\}$的映射.如果函数$\varphi\colon G\to\MC$使得$g=\varphi s$成立，那么$\eta(g)=\varphi^n\eta(s)$，这里
+	\[\eta(g)=\sum_{j=1}^{n}(-1)^{j-1}g_j\dif g_1\wedge\cdots\wedge[j]\wedge\cdots\wedge\dif g_n,\]
+	\[\eta(s)=\sum_{j=1}^{n}(-1)^{j-1}s_j\dif s_1\wedge\cdots\wedge[j]\wedge\cdots\wedge\dif s_n.\]
+\end{lemma}
+\begin{proof}
+	由假定$\varphi$在$G$中没有零点.今设$s_1\neq0$，则$g_1\neq0$.由于$\dif\left(\frac{g_k}{g_1}\right)=\frac1{g_1}\dif g_k-\frac{g_k}{g_1}\dif g_1,k=2,\cdots,n$，所以
+	\begin{align*}
+		\dif\left(\frac{g_2}{g_1}\right)\wedge\cdots\wedge\dif\left(\frac{g_n}{g_1}\right)
+		&=\frac1{g_1^n}\sum_{j=1}^{n}(-1)^{j-1}g_j\dif g_1\wedge\cdots\wedge[j]\wedge\cdots\wedge\dif g_n\\
+		&=\frac1{g_1^n}\eta(g).
+	\end{align*}
+	同样道理，
+	\[\dif\left(\frac{s_2}{s_1}\right)\wedge\cdots\wedge\dif\left(\frac{s_n}{s_1}\right)=\frac1{s_1^n}\eta(s).\]
+	因为$g=\varphi s$，所以$\frac{s_k}{s_1}=\frac{g_k}{g_1},k=1,2,\cdots,n$.由此即得
+	\[\eta(g)=\varphi^n \eta(s).\]
+	如果$s_1=0$，可取其它$s_j\neq0$代替之.
+\end{proof}
+\begin{lemma}\label{lem6.7.2}
+	设$\theta_j=\sum_{k=1}^{n}a_{jk}\dz_k,j=1,\cdots,n$.如果$\theta_1,\cdots,\theta_n$线性相关，那么$\theta_1\wedge\cdots\wedge\theta_n=0$.
+\end{lemma}
+\begin{proof}
+	存在不全为$0$的$c_1,\cdots,c_n$，使得$\sum_{j=1}^{n}c_j\theta_j=0$，但是
+	\[\sum_{j=1}^{n}c_j\theta_j=\sum_{j=1}^{n}c_j\sum_{k=1}^{n}a_{jk}\dz_k=\sum_{k=1}^{n}\left(\sum_{j=1}^{n}c_ja_{jk}\right)\dz_k,\]
+	所以$\sum_{j=1}^{n}c_ja_{jk}=0,k=1,\cdots,n$.因而$\det(a_{jk})=0$.于是
+	\begin{align*}
+		\theta_1\wedge\cdots\wedge\theta_n
+		&=\sum_{j_1=1}^{n}a_{1j_1}\dz_{j_1}\wedge\cdots\wedge\sum_{j_n=1}^{n}a_{nj_n}\dz_{j_n}\\
+		&=\sum_{j_1=1}^{n}\cdots\sum_{j_n=1}^{n}a_{1j_1}\cdots a_{nj_n}\dz_{j_1}\wedge\cdots\wedge\dz_{j_n}\\
+		&=\sum_{(j_1\cdots j_n)}a_{1j_1}\cdots a_{nj_n}\dz_{j_1}\wedge\cdots\wedge\dz_{j_n}\\
+		&=\sum_{(j_1\cdots j_n)}(-1)^{\tau(j_1\cdots j_n)}a_{1j_1}\cdots a_{nj_n}\dz_{1}\wedge\cdots\wedge\dz_{n}\\
+		&=\det(a_{jk})\dz_{1}\wedge\cdots\wedge\dz_{n}=0,
+	\end{align*}
+	这里$\sum_{(j_1\cdots j_n)}$表示对所有的排列$(j_1\cdots j_n)$求和.
+\end{proof}
+现在可以来分析一下Bochner-Martinelli（下面简写$B\text{-}M$）核.从\ref{sec4.8.1}知道，$B\text{-}M$核为
+\[K_{B\text{-}M}(z,\zeta)=\frac{\eta\left(\bar{\zeta}-\bar{z}\right)\wedge\omega(\zeta)}{|\zeta-z|^{2n}},\]
+这里$\omega(\zeta)=\dif\zeta_1\wedge\cdots\wedge\dif\zeta_n,z\in G,\zeta\in\partial G$，所以$\zeta-z\neq0$.若取$s=\bar{\zeta}-\bar{z},g=\frac{\bar{\zeta}-\bar{z}}{|\zeta-z|^2},\varphi=\frac1{|\zeta-z|^2}$，则$g=\varphi s$，由引理\ref{lem6.7.1}得
+\[\eta(g)=\frac1{|\zeta-z|^{2n}}\eta(s)=\frac{\eta\left(\bar{\zeta}-\bar{z}\right)}{|\zeta-z|^{2n}}.\]
+因而$B\text{-}M$核又可改写为
+\begin{align*}
+	K_{B\text{-}M}(z,\zeta)
+	=&\eta(g)\wedge\omega(\zeta)\\
+	=&\sum_{j=1}^{n}(-1)^{j-1}g_j\dif g_1\wedge\cdots\dif g_{j-1}\wedge\dif g_{j+1}\wedge\cdots\wedge\dif g_n\wedge\omega(\zeta)\\
+	=&\sum_{j=1}^{n}(-1)^{j-1}g_j(\partial g_1+\bar{\partial}g_1)\wedge\cdots(\partial g_{j-1}+\bar{\partial}g_{j-1})\wedge\\
+	&(\partial g_{j+1}+\bar{\partial}g_{j+1})\wedge\cdots\wedge(\partial g_n+\bar{\partial}g_n)\wedge\omega(\zeta).
+\end{align*}
+因为$\omega(\zeta)=\dif\zeta_1\wedge\cdots\wedge\dif \zeta_n$是$(n,0)$形式，所以$\partial g_k\wedge\omega(\zeta)=0$，因而
+\begin{equation}\label{eq6.7.1}
+	K_{B\text{-}M}(z,\zeta)=\sum_{j=1}^{n}(-1)^{j-1}g_j\bar{\partial}g_1\wedge\cdots\wedge\bar{\partial}g_{j-1}\wedge\bar{\partial}g_{j+1}\wedge\cdots\wedge\bar{\partial}g_n\wedge\omega(\zeta),
+\end{equation}
+这里$g_j(z,\zeta)=\frac{\bar{\zeta}-\bar{z}}{|\zeta-z|^2},j=1,\cdots,n$.
+
+现在可以从\eqref{eq6.7.1}出发来证明$B\text{-}M$核对$\zeta$而言是$\bar{\partial}$闭形式，即$\bar{\partial}K_{B\text{-}M}(z,\zeta)=0$，这是证明$B\text{-}M$积分公式关键的一步.事实上，从$g_j$的表达式立刻可得
+\begin{equation}\label{eq6.7.2}
+	\sum_{j=1}^{n}(\zeta_j-z_j)g_j(z,\zeta)=1,
+\end{equation}
+因而$\sum_{j=1}^{n}(\zeta_j-z_j)\bar{\partial}g_j(z,\zeta)=0$.这说明$n$个$(0,1)$形式$\bar{\partial}g_1,\cdots,\bar{\partial}g_n$是线性相关的.于是，从引理\ref{lem6.7.2}即得$\bar{\partial}g_1\wedge\cdots\wedge\bar{\partial}g_n=0$.这样从\eqref{eq6.7.1}立刻可得
+\[\bar{\partial}K_{B-M}(z,\zeta)=\sum_{j=1}^{n}(-1)^{j-1}\bar{\partial}g_j\wedge\bar{\partial}g_1\wedge\cdots\wedge\bar{\partial}g_{j-1}\wedge\bar{\partial}g_{j+1}\wedge\cdots\wedge\bar{\partial}g_n\wedge\omega(\zeta)=0.\]
+由此可见，从$B\text{-}M$核的表达式\eqref{eq6.7.1}出发证明它是$\bar{\partial}$闭形式的关键是$g_j$所满足的等式\eqref{eq6.7.2}，而这些$g_j(z,\zeta)$对$z$恰恰不是全纯函数.
+
+这样自然产生一种想法，能否构造一种新的$1$的分解（即等式\eqref{eq6.7.2}）使$g_j(z,\zeta)$是$z$的全纯函数.然后用这种新的$g_j(z,\zeta)$按\eqref{eq6.7.1}那样产生一个新的核$K(z,\zeta)$，这个新的核自然是$\bar{\partial}$闭的.这就是下面构造Henkin核的基本出发点.
+
+构造这种新的$g_j(z,\zeta)$时，需要对域附加条件才行.我们先证下面的
+\begin{lemma}\label{lem6.7.3}
+	设$G$是$\MC^n$中具有$C^2$边界的有界强拟凸域，则对任意给定的$\zeta\in\partial G$，存在$\widetilde{G}\supset G$，使得$\zeta$是$\widetilde{G}$的内点，而且在$\widetilde{G}$上存在全纯函数$\Phi(z,\zeta)$满足$\Phi(\zeta,\zeta)=0$\index[symbolindex]{\textbf{函数和映射}!$\Phi(z$，$\zeta)$}，且当$z\in G$时，$\Phi(z,\zeta)\neq0$.
+\end{lemma}
+\begin{proof}
+	根据定理\ref{thm5.3.13}，存在$G$的定义函数$\rho$和正数$\lambda_0$，使得对任意非零的$\xi\in\MC^n$和$\zeta\in\partial G$有
+	\begin{equation}\label{eq6.7.3}
+		\sum_{j,k=1}^{n}\pppp{\rho(\zeta)}{z_j}{\bar{z}_k}\xi_j\bar{\xi}_k\ge\lambda_0|\xi|^2.
+	\end{equation}
+	今取定$\zeta\in\partial G$，让$\rho(z)$在$\zeta$附近作Taylor展开
+	\begin{align*}
+		\rho(z)
+		=&\sum_{j=1}^{n}\pp{\rho(\zeta)}{z_j}(z_j-\zeta_j)+\sum_{j=1}^{n}\pp{\rho(\zeta)}{\bar{z}_j}(\bar{z}_j-\bar{\zeta}_j)+\\
+		&\frac12\sum_{j,k=1}^{n}\pppp{\rho(\zeta)}{z_j}{z_k}(z_j-\zeta_j)(z_k-\zeta_k)+\\
+		&\frac12\sum_{j,k=1}^{n}\pppp{\rho(\zeta)}{\bar{z}_j}{\bar{z}_k}(\bar{z}_j-\bar{\zeta}_j)(\bar{z}_k-\bar{\zeta}_k)+\\
+		&\sum_{j,k=1}^{n}\pppp{\rho(\zeta)}{z_j}{\bar{z}_k}(z_j-\zeta_j)(\bar{z}_k-\bar{\zeta}_k)+o(|z-\zeta|^2).
+	\end{align*}
+	由\eqref{eq6.7.3}可得
+	\[\sum_{j,k=1}^{n}\pppp{\rho(\zeta)}{z_j}{\bar{z}_k}(z_j-\zeta_j)(\bar{z}_k-\bar{\zeta}_k)\ge\lambda_0|z-\zeta|^2.\]
+	若记\index[symbolindex]{\textbf{函数和映射}!$F(z$，$\zeta)$}
+	\[F(z,\zeta)=\sum_{j=1}^{n}\pp{\rho(\zeta)}{z_j}(\zeta_j-z_j)-\frac12\sum_{j,k=1}^{n}\pppp{\rho(\zeta)}{z_j}{z_k}(z_j-\zeta_j)(z_k-\zeta_k),\]
+	则上式可写为
+	\[\rho(z)\ge-2\Re F(z,\zeta)+\lambda_0|z-\zeta|^2+o(|z-\zeta|^2).\]
+	当$z\in G$时，$\rho(z)<0$，因而当$z$充分接近$\zeta$时有
+	\[2\Re F(z,\zeta)>\lambda_0 |z-\zeta|^2.\]
+	这说明存在$\zeta$的邻域$V_1(\zeta)$，当$z\in G\cap V_1(\zeta)$时，$F(z,\zeta)\neq0$.今取$\zeta$的邻域$V_2(\zeta)\subset V_1(\zeta)$，由推论\ref{cor4.6.6}，存在非负的$C^\infty$函数$\psi$，使得当$z\in V_2(\zeta)$时，$\psi(z)\equiv1$；当$z\notin V_1(\zeta)$时，$\psi\equiv0$.命
+	\[\widetilde{\rho}(z)=\rho(z)-\psi(z),\quad\widetilde{G}=\left\{z\in\MC^n\colon\widetilde{\rho}(z)<0\right\},\]
+	则显然有$G\subset\widetilde{G}\subset G\cup V_1(\zeta)$，这是因为$\psi$是非负的，$G\subset\widetilde{G}$是明显的.今若取$z\in\widetilde{G}$，则$\widetilde{\rho}(z)<0$，即$\rho(z)<\psi(z)$.如果$z\notin V_1(\zeta)$，则$\psi(z)=0$，因而$\rho(z)<0$，即$z\in G$.所以$\widetilde{G}\subset G\cup V_1(\zeta)$.现在不妨设
+	\[\widetilde{G}=G\cup V_3(\zeta),\quad\text{其中$V_3(\zeta)\subset V_1(\zeta)$.}\]
+	根据上面的讨论，当$z\in G\cap V_3(\zeta)$时，$F(z,\zeta)\neq0$.今取$g\in C^\infty(\widetilde{G})$，使得$g$在$G$上处处不为$0$，而在$V_3(\zeta)$上，$g=F(z,\zeta)$.在$G$和$V_3(\zeta)$上分别考虑全纯函数$1$和$F(z,\zeta)$，在$G\cap V_3(\zeta)$上$\frac1{F(z,\zeta)}$和$F(z,\zeta)$都没有零点，且全纯；且在$\widetilde{G}$上存在$C^\infty$函数$g$，使得$\frac1 g$和$\frac{F(z,\zeta)}{g}=1$分别在$G$和$V_3(\zeta)$上是$C^\infty$的，且没有零点.于是，根据定理\ref{thm6.6.2}，Cousin第二问题有解，即存在$\widetilde{G}$上的全纯函数$\Phi(z,\zeta)$，使得$\frac1{\Phi(z,\zeta)}$和$\frac{F(z,\zeta)}{\Phi(z,\zeta)}$分别在$G$和$V_3(\zeta)$全纯且无零点.$\frac{1}{\Phi(z,\zeta)}$在$G$上全纯，说明$\Phi(z,\zeta)$在$G$上处处不为$0$.在$V_3(\zeta)$上记$\frac{F(z,\zeta)}{\Phi(z,\zeta)}=H(z,\zeta)$，则$H(z,\zeta)$全纯且不为$0$.写$F(z,\zeta)=\Phi(z,\zeta)H(z,\zeta)$，则因$F(\zeta,\zeta)=0$，所以$\Phi(\zeta,\zeta)=0$.因而$\Phi(z,\zeta)$就是要找的函数.
+\end{proof}
+现在很容易证明下面的
+\begin{theorem}\label{thm6.7.4}
+	设$G$是$\MC^n$中具有$C^2$边界的有界强拟凸域，则存在全纯的单位分解\index{D!单位分解!全纯单位分解}
+	\[1=\sum_{j=1}^{n}(\zeta_j-z_j)h_j(z,\zeta),\]
+	这里$z\in G,\zeta\in\partial G,h_j(z,\zeta)(j=1,\cdots,n)$是$z\in G$的全纯函数.
+\end{theorem}
+\begin{proof}
+	根据引理\ref{lem6.7.3}，对于给定的$\zeta\in\partial G$，存在$\widetilde{G}\supset G$和$\widetilde{G}$上的全纯函数$\Phi(z,\zeta)$，它在$G$上处处不为$0,\Phi(\zeta,\zeta)=0$.作变换$w=\zeta-z$，设$\widetilde{G},G$分别被变为$\widetilde{\Omega}$和$\Omega$，则$0\in\widetilde{\Omega}$.若记
+	\[\Phi(z,\zeta)=\Phi(\zeta-w,\zeta)=f(w),\]
+	则$f$是$\widetilde{\Omega}$中的全纯函数，且$f(0)=\Phi(\zeta,\zeta)=0$.于是，根据定理\ref{thm6.6.5}，除法问题有解，即存在$\widetilde{\Omega}$上的全纯函数$f_1,\cdots,f_n$，使得
+	\[f(w)=\sum_{j=1}^{n}w_jf_j(w).\]
+	若记$f_j(w)=f_j(\zeta-z)=P_j(z,\zeta)$，则上式可写为
+	\[\Phi(z,\zeta)=\sum_{j=1}^{n}(\zeta_j-z_j)P_j(z,\zeta).\]
+	因$\Phi(z,\zeta)$在$G$中处处不为$0$，所以$h_j(z,\zeta)=\frac{P_j(z,\zeta)}{\Phi_j(z,\zeta)}$是$G$中的全纯函数，而且有
+	\[1=\sum_{j=1}^{n}(\zeta_j-z_j)h_j(z,\zeta).\qedhere\]
+\end{proof}
+有了这个全纯的单位分解定理，我们就可以构造所需要的核了.
+
+现在有两种单位分解
+\begin{align*}
+	1
+	&=\sum_{j=1}^{n}(\zeta_j-z_j)\frac{\bar{\zeta}_j-\bar{z}_j}{|\zeta-z|^2}\\
+	1
+	&=\sum_{j=1}^{n}(\zeta_j-z_j)h_j(z,\zeta),
+\end{align*}
+引进参数$\lambda$，把第一式乘$\lambda$，第二式乘$1-\lambda$，然后相加，又得一新的单位分解
+\[1=\sum_{j=1}^{n}(\zeta_j-z_j)\left\{\lambda\frac{\bar{\zeta}_j-\bar{z}_j}{|\zeta-z|^2}+(1-\lambda)h_j(z,\zeta)\right\}.\]
+命
+\[g_j(z,\zeta)=\lambda\frac{\bar{\zeta}_j-\bar{z}_j}{|\zeta-z|^2}+(1-\lambda)h_j(z,\zeta),\quad 0\le\lambda\le1.\]
+
+所谓Henkin核是指\index[symbolindex]{\textbf{微分形式}!$K(\lambda$，$z$，$\zeta)$}\index{H!Henkin核}
+\[K(\lambda,z,\zeta)=\sum_{j=1}^{n}(-1)^{j-1}g_j\dif g_1\wedge\cdots\wedge\dif g_{j-1}\wedge\dif g_{j+1}\wedge\cdots\wedge\dif g_n\wedge\dif\zeta_1\wedge\cdots\wedge\dif \zeta_n.\]
+容易看出，当$\lambda=1$时，$K(1,z,\zeta)$就是$B\text{-}M$核.
+
+下面还要做三件事：
+
+(1)
+建立Henkin核的积分公式，即相当于$B\text{-}M$核的$B\text{-}M$积分公式.
+
+(2)
+证明Henkin核的积分公式能给出$\bar{\partial}$问题的解.
+
+(3)
+对解作出一致估计.
+
+这里(1)，(2)两件事都还容易做，最困难的是(3).
+\subsection{$\bar{\partial}$问题解的Henkin积分表示}
+下面就是Henkin核的积分公式.
+
+	\begin{theorem}\label{thm6.7.5}
+		设$G$是$\MC^n$中具有$C^2$边界的有界强拟凸域，$f\in C^1(\bar{G})$，则
+		\begin{align*}
+			f(z)=
+			&\frac1{nc_n}\int_{\partial G}\bar{\partial}f\wedge\int_{0}^{1}K(\lambda,z,\zeta)\dif\lambda+\\
+			&\frac1{nc_n}\int_G\bar{\partial}f\wedge K(1,z,\zeta)-\\
+			&\frac1{nc_n}\int_{\partial G}f(\zeta)K(0,z,\zeta)
+		\end{align*}
+		在$G$上成立，这里
+		\[c_n=(-1)^{\frac{n(n-1)}{2}}\frac{(2\pi\ii)^n}{n!}.\]
+		
+		这个公式称为Leray-Stokes公式.\index{L!Leray-Stokes公式}	
+	\end{theorem}
+\begin{figure}[htp]
+	\centering
+	\tikzset{global scale/.style={
+			scale=#1,
+			every node/.append style={scale=#1}
+		}
+	}
+	\begin{tikzpicture}[>=Stealth,thick,global scale=0.8]
+		\draw(-2,0)node[left]{$\lambda=1$}--(-2,6)node[left]{$\lambda=0$};
+		\draw(2,0)--(2,6);
+		\draw (0,6) ellipse [x radius=2, y radius=.8];
+		\draw[dashed](2,0) arc [start angle =0, end angle =180, x radius=2, y radius=.8];
+		\draw(2,0) arc [start angle =0, end angle=-180, x radius=2, y radius=.8];
+		\draw (0,0) ellipse [x radius=1, y radius=.4];
+		\node at (0,0) {$z$};
+		\node at (1,-1) [below]{$B(z,\varepsilon)$};
+		\draw (0.2,-0.2)--(1,-1);
+		\draw[->] (-3.5,6.7)--(-3.5,0.8)node[below]{$R$};
+	\end{tikzpicture}
+	\captionof{figure}{\label{fig6.1}}
+\end{figure}
+\begin{proof}
+	从$K(\lambda,z,\zeta)$的构造知道，$\dif K(\lambda,z,\zeta)=0$，所以有$\dif (f(\zeta)K(\lambda,z,\zeta))=\bar{\partial}f(\zeta)\wedge K(\lambda,z,\zeta)$.现在让$\dif (f(\zeta)K(\lambda,z,\zeta))$在下列曲面上积分，积分区域为一曲面，它无上底（$\lambda=0,\zeta\in G$），但有下底（$\lambda=1,\zeta\in G\setminus B(z,\varepsilon)$）和侧面（$(\zeta,\lambda)\in\partial G\times[0,1]$），它的边界是$\{\lambda=0,\zeta\in\partial G\}\cup\{\lambda=1,\zeta\in\partial B(z,\varepsilon)\}$.根据Stokes公式有
+	\begin{align}\label{eq6.7.4}
+		&\int_{\lambda\in[0,1]\atop\zeta\in\partial G}\bar{\partial}f(\zeta)\wedge K(\lambda,z,\zeta)+\int_{\lambda=1\atop\zeta\in G\setminus B(z,\varepsilon)}\bar{\partial}f(\zeta)\wedge K(\lambda,z,\zeta)\notag\\
+		=&\int_{\lambda=0\atop\zeta\in\partial G}f(\zeta)K(\lambda,z,\zeta)+\int_{\lambda=1\atop\zeta\in\partial B(z,\varepsilon)}f(\zeta)K(\lambda,z,\zeta).
+	\end{align}
+	左端第一项可以写成
+	\[\int_{\partial G}\bar{\partial}f(\zeta)\wedge\int_{0}^{1}K(\lambda,z,\zeta)\dif\lambda,\]
+	左端第二项当$\varepsilon\to0$时有
+	\begin{align*}
+		\int_{\lambda=1\atop\zeta\in G\setminus B(z,\varepsilon)}\bar{\partial}f(\zeta)\wedge K(\lambda,z,\zeta)
+		&=\int_{G\setminus B(z,\varepsilon)}\bar{\partial}f(\zeta)\wedge K(1,z,\zeta)\\
+		&\to\int_G \bar{\partial}f(\zeta)\wedge K(1,z,\zeta).
+	\end{align*}
+	根据定理\ref{thm4.8.2}的证明，当$\varepsilon\to0$时，右端第二项有极限
+	\[\int_{\partial B(z,\varepsilon)}f(\zeta)K(1,z,\zeta)=\int_{\partial B(z,\varepsilon)}f(\zeta)K_{B\text{-}M}(z,\zeta)\to nc_nf(z).\]
+	故在\eqref{eq6.7.4}中命$\varepsilon\to0$，即得所要证的公式.
+\end{proof}
+\begin{corollary}\label{cor6.7.6}
+	设$G$是$\MC^n$中具有$C^2$边界的有界强拟凸域.如果$f\in C^1(\bar{G})\cap H(G)$，那么
+	\[f(z)=-\frac1{nc_n}\int_{\partial G}f(\zeta)K(0,z,\zeta).\]
+\end{corollary}
+\begin{proof}
+	用Leray-Stokes公式并注意$\bar{\partial}f=0$即得.
+\end{proof}
+应用Leray-Stokes公式容易得到$\bar{\partial}$问题解的Henkin积分表示.\index{H!Henkin积分表示}
+\begin{theorem}\label{thm6.7.7}
+	设$G$是$\MC^n$中具有$C^2$边界的有界强拟凸域.$f\in C_{(0,1)}^\infty(\bar{G})$且满足$\bar{\partial}f=0$，则由公式
+	\begin{equation}\label{eq6.7.5}
+		u(z)=\frac1{nc_n}\int_{\partial G}f\wedge\int_{0}^{1}K(\lambda,z,\zeta)\dif\lambda+\frac1{nc_n}\int_G f\wedge K(1,z,\zeta)
+	\end{equation}
+	所定义的$u$满足方程$\bar{\partial}u=f$，且$u\in C^\infty(G)$.
+\end{theorem}
+\begin{proof}
+	由解的正则性定理\ref{thm6.4.7}，在所设条件下，$\bar{\partial}u=f$存在解$u_1\in C^\infty(\bar{G})$.对$u_1$用Leray-Stokes公式：
+	\begin{align}\label{eq6.7.6}
+		u_1(z)
+		=&\frac1{nc_n}\int_{\partial G}\bar{\partial}u_1 \wedge\int_{0}^{1}K(\lambda,z,\zeta)\dif\lambda+
+		\frac1{nc_n}\int_G\bar{\partial}u_1 \wedge K(1,z,\zeta)-\notag\\
+		&\frac1{nc_n}\int_{\partial G}u_1(\zeta)K(0,z,\zeta)\notag\\
+		=&\frac1{nc_n}\int_{\partial G}f \wedge\int_{0}^{1}K(\lambda,z,\zeta)\dif\lambda+
+		\frac1{nc_n}\int_G f\wedge K(1,z,\zeta)-\notag\\
+		&\frac1{nc_n}\int_{\partial G}u_1(\zeta)K(0,z,\zeta)\notag\\
+		=&u(z)-\frac1{nc_n}\int_{\partial G}u_1(\zeta)K(0,z,\zeta).
+	\end{align}
+	由于$K(0,z,\zeta)$是$z$的全纯函数，所以
+	\[\bar{\partial}\left(\int_{\partial G}u_1(\zeta)K(0,z,\zeta)\right)=0.\]
+	于是，从\eqref{eq6.7.6}即得$u\in C^\infty(G)$，而且
+	\[\bar{\partial}u=\bar{\partial}u_1=f.\qedhere\]
+\end{proof}
+\subsection{$\bar{\partial}$问题解的一致估计}
+最后来完成最困难的一件事，即证明由\eqref{eq6.7.5}给出的解具有一致估计.为此，先给出Henkin核的另一个表达式.
+\begin{lemma}\label{lem6.7.8}
+	设$\theta_j=\sum_{k_j=1}^{n}a_{jk_j}\dif\zeta_{k_j},j=1,\cdots,n-2$，那么
+	\[\theta_1\wedge\cdots\wedge\theta_{n-2}
+	=\sum_{1\le q_1<\cdots<q_{n-2}\le n}\det\begin{pmatrix}
+		a_{1q_1} & \cdots & a_{1q_{n-2}}\\
+		\vdots & & \vdots\\
+		a_{n-2,q_1} & \cdots & a_{n-2,q_{n-2}}
+	\end{pmatrix}\dif\zeta_{q_1}\wedge\cdots\wedge\dif\zeta_{q_{n-2}}.\]
+\end{lemma}
+\begin{proof}
+	\[\theta_1\wedge\cdots\wedge\theta_{n-2}=\sum_{k_1=1}^{n}\cdots\sum_{k_{n-2}=1}^{n}a_{1k_1}\cdots a_{n-2,k_{n-2}}\dif\zeta_{k_1}\wedge\cdots\wedge\dif\zeta_{k_{n-2}}.\]
+	因为每个$k_j(j=1,\cdots,n-2)$都从$1$变到$n$，故上式给出了所有可能的线性组合.现固定$(q_1\cdots q_{n-2})$，使得$q_1<q_2<\cdots<q_{n-2}$，我们来计算$\dif\zeta_{q_1}\wedge\cdots\wedge\dif\zeta_{q_{n-2}}$的系数.设$(k_1\cdots k_{n-2})$是$(q_1\cdots q_{n-2})$的一个排列，于是$\dif\zeta_{q_1}\wedge\cdots\wedge\dif\zeta_{q_{n-2}}$的系数为
+	\[\sum_{(k_1\cdots k_{n-2})}(-1)^{\tau(k_1\cdots k_{n-2})}a_{1k_1}\cdots a_{n-2,k_{n-2}}=\det\begin{pmatrix}
+		a_{1q_1} & \cdots & a_{1q_{n-2}}\\
+		\vdots & & \vdots\\
+		a_{n-2,q_1} & \cdots & a_{n-2,q_{n-2}}
+	\end{pmatrix},\]
+	由此即得所要证的等式.
+\end{proof}
+\begin{lemma}\label{lem6.7.9}
+	Henkin核可表示为
+	\[K(\lambda,z,\zeta)=\sum_{1\le q_1<\cdots<q_{n-2}\le n}\det A_{q_1\cdots q_{n-2}}\dif\lambda\wedge\dif\bar{\zeta}_{q_1}\wedge\cdots\wedge\dif\bar{\zeta}_{q_{n-2}}\wedge\dif\zeta_1\wedge\cdots\wedge\dif\zeta_n,\]
+	这里$A_{q_1\cdots q_{n-2}}$是下面的$n$阶方阵
+	\[A_{q_1\cdots q_{n-2}}
+	=\begin{pmatrix}
+		g_1 & g_2 & \cdots & g_n\\
+		\pp{g_1}{\lambda} & \pp{g_2}{\lambda} & \cdots & \pp{g_n}{\lambda}\\
+		\pp{g_1}{\bar{\zeta}_{q_1}} & \pp{g_2}{\bar{\zeta}_{q_1}} & \cdots &\pp{g_n}{\bar{\zeta}_{q_1}}\\
+		\vdots & \vdots & & \vdots\\
+		\pp{g_1}{\bar{\zeta}_{q_{n-2}}} & \pp{g_2}{\bar{\zeta}_{q_{n-2}}} &\cdots &\pp{g_n}{\bar{\zeta}_{q_{n-2}}}
+	\end{pmatrix},\]
+	这里$g_j(z,\zeta)=\lambda\frac{\bar{\zeta}_j-\bar{z}_j}{|\zeta-z|^2}+(1-\lambda)h_j(z,\zeta),j=1,\cdots,n$.
+\end{lemma}
+\begin{proof}
+	根据Henkin核的定义
+	\[K(\lambda,z,\zeta)=\sum_{j=1}^{n}(-1)^{j-1}g_j\dif g_1\wedge\cdots\wedge[\dif g_j]\wedge\cdots\wedge\dif g_n\wedge\omega(\zeta),\]
+	这里$[\dif g_j]$表示乘积中不出现这一项.因为
+	\[\dif g_j=\partial g_j+\bar{\partial}g_j+\pp{g_j}{\lambda}\dif\lambda\]
+	且$\partial g_j\wedge\omega(\zeta)=0$，所以有
+	\begin{align*}
+		K(\lambda,z,\zeta)
+		=&\sum_{j=1}^{n}(-1)^{j-1}g_j\left(\bar{\partial}g_1+\pp{g_1}{\lambda}\dif\lambda\right)\wedge\cdots\wedge\\
+		&\left[\bar{\partial}g_j+\pp{g_j}{\lambda}\dif\lambda\right]\wedge\cdots\wedge\left(\bar{\partial}g_n+\pp{g_n}{\lambda}\dif\lambda\right)\wedge\omega(\zeta)\\
+		=&\sum_{j=1}^{n}(-1)^{j-1}g_j\sum_{l\neq j}\bar{\partial}g_1\wedge\cdots\wedge\bar{\partial}g_{l-1}\wedge\pp{g_l}{\lambda}\dif\lambda\wedge\\
+		&\bar{\partial}g_{l+1}\wedge\cdots\wedge[\bar{\partial}g_j]\wedge\cdots\wedge\bar{\partial}g_n\wedge\omega(\zeta)\\
+		=&\sum_{j=1}^{n}\sum_{l<j}(-1)^{j+l}g_j\pp{g_l}{\lambda}\dif\lambda\wedge\bar{\partial}g_1\wedge\cdots\wedge[\bar{\partial}g_l]\wedge\cdots\wedge\\
+		&[\bar{\partial}g_j]\wedge\cdots\wedge\bar{\partial}g_n\wedge\omega(\zeta)+\\
+		&\sum_{j=1}^{n}\sum_{l>j}(-1)^{j+l-1}g_j\pp{g_l}{\lambda}\dif\lambda\wedge\bar{\partial}g_1\wedge\cdots\wedge[\bar{\partial}g_j]\wedge\cdots\wedge\\
+		&[\bar{\partial}g_l]\wedge\cdots\wedge\bar{\partial}g_n\wedge\omega(\zeta).
+	\end{align*}
+	在第一个和中把$j$和$l$的指标对换，并注意到等式$\sum_{l=1}^{n}\sum_{j<l}a_{jl}=\sum_{j=1}^{n}\sum_{j<l}a_{jl}$，可得
+	\begin{align*}
+		K(\lambda,z,\zeta)=
+		&\sum_{j=1}^{n}\sum_{j<l}(-1)^{j+l}g_l\pp{g_j}{\lambda}\dif\lambda\wedge\bar{\partial}g_1\wedge\cdots\wedge\\
+		&[\bar{\partial}g_j]\wedge\cdots\wedge[\bar{\partial}g_l]\wedge\cdots\wedge\bar{\partial}g_n\wedge\omega(\zeta)+\\
+		&\sum_{j=1}^{n}\sum_{j<l}(-1)^{j+l-1}g_j\pp{g_l}{\lambda}\dif\lambda\wedge\bar{\partial}g_1\wedge\cdots\wedge\\
+		&[\bar{\partial}g_j]\wedge\cdots\wedge[\bar{\partial}g_l]\wedge\cdots\wedge\bar{\partial}g_n\wedge\omega(\zeta)\\
+		=&\sum_{j=1}^{n}\sum_{j<l}(-1)^{j+l-1}\det\begin{pmatrix}
+			g_j & g_l\\
+			\pp{g_j}{\lambda} & \pp{g_l}{\lambda}
+		\end{pmatrix}\dif\lambda\wedge\bar{\partial}g_1\wedge\cdots\wedge\\
+		&[\bar{\partial}g_j]\wedge\cdots\wedge[\bar{\partial}g_l]\wedge\cdots\wedge\bar{\partial}g_n\wedge\omega(\zeta).
+	\end{align*}
+	由引理\ref{lem6.7.8}，
+	\begin{equation}\label{eq6.7.7}
+		\bar{\partial}g_1\wedge\cdots\wedge
+		[\bar{\partial}g_j]\wedge\cdots\wedge[\bar{\partial}g_l]\wedge\cdots\wedge\bar{\partial}g_n=\sum_{1\le q_1<\cdots<q_{n-2}\le n}\det(\ast)\dif\zeta_{q_1}\wedge\cdots\wedge\dif\zeta_{q_{n-2}},
+	\end{equation}
+	其中
+	\[(\ast)=\begin{pmatrix}
+		\pp{g_1}{\bar{\zeta}_{q_1}} & \cdots &\pp{g_{j-1}}{\bar{\zeta}_{q_1}} & \pp{g_{j+1}}{\bar{\zeta}_{q_1}} & \cdots & \pp{g_{l-1}}{\bar{\zeta}_{q_1}} & \pp{g_{l+1}}{\bar{\zeta}_{q_1}} & \cdots &\pp{g_n}{\bar{\zeta}_{q_1}}\\
+		\vdots & & \vdots &\vdots & & \vdots & \vdots & & \vdots\\
+		\pp{g_1}{\bar{\zeta}_{q_{n-2}}} & \cdots &\pp{g_{j-1}}{\bar{\zeta}_{q_{n-2}}} & \pp{g_{j+1}}{\bar{\zeta}_{q_{n-2}}} & \cdots & \pp{g_{l-1}}{\bar{\zeta}_{q_{n-2}}} & \pp{g_{l+1}}{\bar{\zeta}_{q_{n-2}}} & \cdots &\pp{g_n}{\bar{\zeta}_{q_{n-2}}}
+	\end{pmatrix}.\]
+	把\eqref{eq6.7.7}式代入$K(\lambda,z,\zeta)$的表示式，得
+	\begin{align}\label{eq6.7.8}
+K(\lambda,z,\zeta)=
+&\sum_{1\le q_1<\cdots<q_{n-2}\le n}\left\{\sum_{j=1}^{n}\sum_{j<l}(-1)^{j+l-1}\det\begin{pmatrix}
+	g_j & g_l\\
+	\pp{g_j}{\lambda} & \pp{g_l}{\lambda}
+\end{pmatrix}\det(\ast)\right\}\cdot\notag\\
+&\dif\lambda\wedge\dif\zeta_{q_1}\wedge\cdots\wedge\dif\zeta_{q_{n-2}}\wedge\omega(\zeta).		
+	\end{align}
+	根据行列式的Laplace展开式，\eqref{eq6.7.8}式花括弧中的量就是$n$阶方阵$A_{q_1\cdots q_{n-2}}$的行列式，这就是要证明的.
+		\end{proof}
+现在可以证明一致估计的定理了.
+\begin{theorem}\label{thm6.7.10}
+	设$G$是$\MC^n$中具有$C^2$边界的有界强拟凸域，$f\in C_{(0,1)}^\infty(\bar{G})$且满足$\bar{\partial}f=0$，则由\eqref{eq6.7.5}确定的$\bar{\partial}$问题的解$u$具有一致估计
+	\[\Vert u\Vert_\infty\le C\Vert f\Vert_\infty,\]
+	其中$C$是不依赖于$f$的某个常数.
+\end{theorem}
+\begin{proof}
+	先看\eqref{eq6.7.5}的第二项.设$f=\sum_{l=1}^{n}f_l\dif\bar{\zeta}_l$，
+	\begin{align*}
+		&|f\wedge K(1,z,\zeta)|\\
+		=&|f\wedge K_{B-M}(z,\zeta)|=\left|\sum_{l=1}^{n}f_l\dif\bar{\zeta}_l\wedge\frac{\eta(\bar{\zeta}-\bar{z})\wedge\omega(\zeta)}{|\zeta-z|^{2n}}\right|\\
+		=&\left|\sum_{l=1}^{n}f_l\dif\bar{\zeta}_l\wedge\sum_{j=1}^{n}(-1)^{j-1}\frac{\bar{\zeta}_j-\bar{z}_j}{|\zeta-z|^{2n}}\dif\bar{\zeta}_1\wedge\cdots\wedge[j]\wedge\cdots\wedge\dif\bar{\zeta}_n\wedge\omega(\zeta)\right|\\
+		\le&\sum_{j=1}^{n}\frac{|\bar{\zeta}_j-\bar{z}_j|}{|\zeta-z|^{2n}}\Vert f\Vert_\infty|\omega(\bar{\zeta})\wedge\omega(\zeta)|.
+	\end{align*}
+	若记$\zeta_j=x_j+\ii y_j$，那么
+	\[\dif\bar{\zeta}_j\wedge\dif\zeta_j=(\dx_j-\ii\dy_j)\wedge(\dx_j+\ii\dy_j)=2\ii \dx_j\wedge\dy_j,\]
+	因而\index[symbolindex]{\textbf{微分形式}!$\omega(\bar{\zeta})\wedge\omega(\zeta)$}
+	\begin{align*}
+		\omega(\bar{\zeta})\wedge\omega(\zeta)
+		&=\dif\bar{\zeta}_1\wedge\cdots\wedge\dif\bar{\zeta}_n\wedge\dif\zeta_1\wedge\cdots\wedge\dif\zeta_n\\
+		&=(-1)^{\frac{n(n-1)}{2}}(2\ii)^n \dx_1\wedge\dy_1\wedge\cdots\wedge\dx_n\wedge\dy_n\\
+		&=(-1)^{\frac{n(n-1)}{2}}(2\ii)^n\dif m_{2n}.
+	\end{align*}
+	由此即得
+	\[|f\wedge K(1,z,\zeta)|\le 2^n \Vert f\Vert_\infty\sum_{j=1}^{n}\frac{|\zeta_j-z_j|}{|\zeta-z|^{2n}}\dif m_{2n}.\]
+	因为$G$是有界域，故可选取充分大的$R$，使得$G\subset B(z,R)$.于是
+	\begin{align}\label{eq6.7.9}
+		\left|\int_G f\wedge K(1,z,\zeta)\right|
+		&\le \int_{B(z,R)}|f\wedge K(1,z,\zeta)|\notag\\
+		&\le 2^n\Vert f\Vert_\infty \int_{B(z,R)}\sum_{j=1}^{n}\frac{|\zeta_j-z_j|}{|\zeta-z|^{2n}}\dif m_{2n}.
+	\end{align}
+	现在来估计积分$\int_{B(z,R)}\frac{|\zeta_1-z_1|}{|\zeta-z|^{2n}}\dif m_{2n}$.若记$z=(x_1,\cdots,x_{2n}),\zeta=(y_1,\cdots,y_{2n})$，则$z_1=x_1+\ii x_2,\zeta_1=y_1+\ii y_2$，采用球坐标
+	\[y_1-x_1=r\cos\varphi_1,\quad y_2-x_2=r\sin\varphi_1\cos\varphi_2,\cdots,\]
+	\[y_{2n}-x_{2n}=r\sin\varphi_1\sin\varphi_2\cdots\sin\varphi_{2n-1},\]
+	这时体积元素
+	\[\dif m_{2n}=r^{2n-1}\sin^{2n-2}\varphi_1\sin^{2n-3}\varphi_2\cdots\sin\varphi_{2n-2}\dif r\dif\varphi_1\cdots\dif\varphi_{2n-1}.\]
+	于是
+	\[\int_{B(z,R)}\frac{|\zeta_1-z_1|}{|\zeta-z|^{2n}}\dif m_{2n}\le\int_{B(z,R)}\frac{|y_1-x_1|+|y_2-x_2|}{|\zeta-z|^{2n}}\dif m_{2n},\]
+	而
+	\begin{align*}
+    \int_{B(z,R)}\frac{|y_1-x_1|}{|\zeta-z|^{2n}}
+    &\le\int_{0}^{R}\frac{r}{r^{2n}}r^{2n-1}\dif r\int_{0}^{\pi}\int_{0}^{\pi}\cdots\int_{0}^{2\pi}\sin^{2n-2}\varphi_1\cdots\sin\varphi_{2n-2}\dif\varphi_1\cdots\dif\varphi_{2n-1}\\
+    &=O(1).		
+	\end{align*}
+	易知其它类似的积分也都是有界量.于是，从\eqref{eq6.7.9}即得
+	\begin{equation}\label{eq6.7.10}
+		\left|\int_G f\wedge K(1,z,\zeta)\right|\le C_1\Vert f\Vert_\infty,
+	\end{equation}
+	剩下来需要证明的是
+	\begin{equation}\label{eq6.7.11}
+		\left|\int_{\partial G}f\wedge\int_{0}^{1}K(\lambda,z,\zeta)\dif\lambda\right|\le C_2\Vert f\Vert_\infty.
+	\end{equation}
+	这比证明不等式\eqref{eq6.7.10}要困难得多.首先注意，要证明\eqref{eq6.7.11}，只要证明当$\lambda\in[0,1]$时，有
+	\[\left|\int_{\partial G}f\wedge K(\lambda,z,\zeta)\right|\le C_2\Vert f\Vert_\infty\]
+	就行了.根据引理\ref{lem6.7.9}关于Henkin核的表达式，可写
+	\[f\wedge K(\lambda,z,\zeta)=\sum_{1\le q_1<\cdots<q_{n-2}\le n}f_j\det A_{q_1\cdots q_{n-2}}\dif\bar{\zeta}_j\dif\lambda\wedge\dif\bar{\zeta}_{q_1}\wedge\cdots\wedge\dif\bar{\zeta}_{q_{n-2}}\wedge\omega(\zeta).\]
+	这样全部问题归结为证明
+	\begin{equation}\label{eq6.7.12}
+		\left|\int_{\partial G}\det A_{q_1\cdots q_{n-2}}\dif\bar{\zeta}_j\dif\lambda\wedge\dif\bar{\zeta}_{q_1}\wedge\cdots\wedge\dif\bar{\zeta}_{q_{n-2}}\wedge\omega(\zeta)\right|=O(1)
+	\end{equation}
+	对$z\in G$成立就行.
+	
+	为此，我们要计算$\det A_{q_1\cdots q_{n-2}}$.注意
+	\[g_j(z)=\lambda\frac{\bar{\zeta}_j-\bar{z}_j}{|\zeta-z|^2}+(1-\lambda)\frac{P_j(z,\zeta)}{\Phi(z,\zeta)}\]
+	（关于$\Phi(z,\zeta)$和$P_j(z,\zeta)$的定义分别参见引理\ref{lem6.7.3}和定理\ref{thm6.7.4}的证明），所以$\pp{g_j}{\lambda}=\frac{\bar{\zeta}_j-\bar{z}_j}{|\zeta-z|^2}-\frac{P_j}{\Phi}$.简记$a_j=\frac{\bar{\zeta}_j-\bar{z}_j}{|\zeta-z|^2},b_j=\frac{P_j}{\Phi}$，则$g_j$和$\pp{g_j}{\lambda}$可分别写成
+	\[g_j=\lambda a_j+b_j-\lambda b_j,\pp{g_j}{\lambda}=a_j-b_j,\]
+	如果记$a=(a_1,\cdots,a_n),b=(b_1,\cdots,b_n)$，则$\det A_{q_1\cdots q_{n-2}}$可拆分称第一、第二行分别如下的$6$个行列式的和
+	\[\left(\begin{array}{c}
+		\lambda a\\
+		a
+	\end{array}\right)+\left(\begin{array}{c}
+	b\\
+	a
+	\end{array}\right)-\lambda\left(\begin{array}{c}
+	b\\
+	a
+	\end{array}\right)-\lambda\left(\begin{array}{c}
+	a\\
+	b
+	\end{array}\right)-\left(\begin{array}{c}
+	b\\
+	b
+	\end{array}\right)+\lambda\left(\begin{array}{c}
+	b\\
+	b
+	\end{array}\right),\]
+	其中第一、五、六个为$0$，第三、四个之和为$0$，因而得
+	\[\det A_{q_1\cdots q_{n-2}}=-\begin{vmatrix}
+		\frac{\bar{\zeta}_1-\bar{z}_1}{|\zeta-z|^2} & \cdots &\frac{\bar{\zeta}_n-\bar{z}_n}{|\zeta-z|^2}\\
+		\frac{P_1}{\Phi} & \cdots & \frac{P_n}{\Phi}\\
+		\pp{g_1}{\bar{\zeta}_{q_1}} & \cdots & \pp{g_n}{\bar{\zeta}_{q_1}}\\
+		\vdots & & \vdots\\
+		\pp{g_1}{\bar{\zeta}_{q_{n-2}}} & \cdots & \pp{g_n}{\bar{\zeta}_{q_{n-2}}}
+	\end{vmatrix}.\]
+	直接算出$\pp{g_j}{\bar{\zeta}_k}$之后再用刚才打散行列式的办法得
+	\begin{equation}\label{eq6.7.13}
+		\det A_{q_1\cdots q_{n-2}}=-\begin{vmatrix}
+			\frac{\bar{\zeta}_1-\bar{z}_1}{|\zeta-z|^2} & \cdots &\frac{\bar{\zeta}_n-\bar{z}_n}{|\zeta-z|^2}\\
+			\frac{P_1}{\Phi} & \cdots & \frac{P_n}{\Phi}\\
+			\frac{\lambda\delta_{1q_1}}{|\zeta-z|^2}+\frac{1-\lambda}{\Phi}\pp{P_1}{\bar{\zeta}_{q_1}} & \cdots & \frac{\lambda\delta_{nq_1}}{|\zeta-z|^2}+\frac{1-\lambda}{\Phi}\pp{P_n}{\bar{\zeta}_{q_1}}\\
+			\vdots & & \vdots\\
+			\frac{\lambda\delta_{1q_{n-2}}}{|\zeta-z|^2}+\frac{1-\lambda}{\Phi}\pp{P_1}{\bar{\zeta}_{q_{n-2}}} & \cdots & \frac{\lambda\delta_{nq_{n-2}}}{|\zeta-z|^2}+\frac{1-\lambda}{\Phi}\pp{P_n}{\bar{\zeta}_{q_{n-2}}}
+		\end{vmatrix}.
+	\end{equation}
+	由此可见，$\det A_{q_1\cdots q_{n-2}}$的奇点就发生在$z=\zeta\in\partial G$处，因而只需考虑当$z\to\zeta\in\partial G$时\eqref{eq6.7.12}成立就行了.固定$\zeta\in\partial G$，已知在$\zeta$的某个邻域中，$\Phi(z,\zeta)$和$F(z,\zeta)$有相同的零点，这里
+	\begin{equation}\label{eq6.7.14}
+		F(z,\zeta)
+		=\sum_{j=1}^{n}\pp{\rho(\zeta)}{z_j}(\zeta_j-z_j)-\frac12\sum_{j,k=1}^{n}\pppp{\rho(\zeta)}{z_j}{z_k}(z_j-\zeta_j)(z_k-\zeta_k).
+	\end{equation}
+	因此在估计\eqref{eq6.7.12}中的积分时，不妨将$\Phi(z,\zeta)$换成$F(z,\zeta)$.另一方面，从$\det A_{q_1\cdots q_{n-2}}$的表达式\eqref{eq6.7.13}可以看出，在它的项中，在$\zeta$处奇性最高的是
+	\[\frac1{|\zeta-z|^{2(n-1)-1}|F|}=\frac1{|\zeta-z|^{2n-3}|F|}.\]
+	因此，只要证明
+	\begin{equation}\label{eq6.7.15}
+		\left|\int_{\partial G}\frac1{|\zeta-z|^{2n-3}|F|}\dif\bar{\zeta}_j\wedge\dif\bar{\zeta}_{q_1}\wedge\cdots\wedge\dif\bar{\zeta}_{q_{n-2}}\wedge\omega(\zeta)\right|=O(1),
+	\end{equation}
+	\eqref{eq6.7.12}也就成立了.
+	
+	现在设$z$在$\zeta$的邻域中，这时$\dif\rho\neq0$，不妨设$\pp{\rho}{z_1}\neq0$.在这个邻域中作坐标变换
+	\[(x_1,\cdots,x_{2n})\to(u_1,\cdots,u_{2n}),\]
+	这里$\zeta_j=x_{2j-1}+\ii x_{2j},w_j=u_{2j-1}+\ii u_{2j}$，命
+	\[u_1=\rho(\zeta),\quad u_2=\Im F(z,\zeta),\quad u_3=x_3,\cdots,\quad u_{2n}=x_{2n}.\]
+	直接计算可得这个变换的Jacobi行列式为$\left|\pp{\rho}{\zeta_1}\right|^2\neq0$.由于$\partial G=\{\zeta\colon\rho(\zeta)=0\}$.所以在这个邻域中$\partial G$变为$u_1$.在引理\ref{lem6.7.3}的证明中，我们得到过不等式
+	\[\rho(z)\ge-2\Re F(z,\zeta)+\lambda_0|z-\zeta|^2+o(|z-\zeta|^2),\]
+	即$2\Re F(z,\zeta)\ge|\rho(z)|+\lambda_0|z-\zeta|^2\ge\lambda_0|z-\zeta|^2$，所以
+	\begin{align*}
+		|F|
+		&=\left\{(\Re F)^2+(\Im F)^2\right\}\ge\frac1{\sqrt{2}}(|\Re F|+|\Im F|)\\
+		&\ge\frac1{\sqrt{2}}\left(\frac{\lambda_0}{2}|z-\zeta|^2+|\Im F|\right)\ge C(|z-\zeta|^2+|\Im F|).
+	\end{align*}
+	于是，从局部来看，\eqref{eq6.7.15}左端的积分不超过
+	\[\int_{r<1}\frac{\dif u_2\cdots\dif u_{2n}}{r^{2n-3}(r^2+|u_2|)}\]
+	的常数倍.用球坐标
+	\[u_2=r\cos\theta_1,\quad u_3=r\sin\theta_1\cos\theta_2,\quad\cdots\quad,u_{2n}=r\sin\theta_1\cdots\sin\theta_{2n-2},\]
+	则$\dif u_2\cdots\dif u_{2n}=r^{2n-2}\sin^{2n-3}\theta_1\cdots\sin\theta_{2n-3}\dif r\dif\theta_1\cdots\dif\theta_{2n-2}$.于是上述积分不超过
+	\begin{align*}
+		\int_{0}^{1}\int_{0}^{2\pi}\frac{\dif r\dif\theta_1}{r+|\cos\theta_1|}
+		&=4\int_{0}^{1}\int_{0}^{\frac{\pi}{2}}\frac{\dif r\dif\theta_1}{r+\sin\theta_1}\le4\int_{0}^{1}\int_{0}^{\frac{\pi}{2}}\frac{\dif r\dif\theta_1}{r+\frac{2}{\pi}\theta_1}\\
+		&=4\int_{0}^{\frac{\pi}{2}}\left(\log\left(1+\frac{2}{\pi}\theta_1\right)-\log\frac{2}{\pi}\theta_1\right)\dif\theta_1<\infty.
+	\end{align*}
+	这就证明了\eqref{eq6.7.15}成立，因而\eqref{eq6.7.12}也成立.
+\end{proof}
+\section*{注记}\addcontentsline{toc}{section}{注记}
+1937年Oka首先在全纯凸域上证明$\bar{\partial}$问题的解是存在的，不过他是用Cousin第一问题的解存在的方式叙述的.关于拟凸域上$\bar{\partial}$问题解的存在性，第一个直接证明是1965年由L. H\"ormander\cite{hormander19652}给出的.所谓直接证明是指，它既不依赖于全纯凸域上Cousin第一问题的解，也不依赖于Levi问题的解.这里介绍的就是H\"ormander给出的方法.作为$\bar{\partial}$问题解的应用，我们给出了Cousin第一问题和第二问题的解.从历史上来看，Cousin第一问题早在1895年就由P. Cousin在乘积域上解决了，但是在以后的40年中，这个重要问题没有任何进展.直到1936年，Oka首先在多项式凸域上、稍后于1937年在一般的全纯凸域上解决了这个问题.实际上，H. Cartan已于1935年在$\MC^2$的多项式凸域上，解决了Cousin第一问题，但Oka不知道此情况.那么在非全纯凸域上，Cousin第一问题是否可能有解呢？H. Cartan\cite[536$\sim$538]{cartan1979collected}在1938年首先在$\MC^3$中构造了一个非全纯凸域，在其上Cousin第一问题有解.
+
+Levi问题1942年首先由Oka在$\MC^2$中解决，后来Oka于1953年，H. Bremermann\cite{bremermann1954aquivalenz}于1954年，F. Norguet\cite{norguet1954domaines}于1954年独立地解决了任意维数空间$\MC^n$中的Levi问题.1958年H. Grauert\cite{grauert1958levi}用凝聚解析层的理论解决了复流形上的Levi问题.
+
+强拟凸域上$\bar{\partial}$问题解的积分表示，在1970年前后由H. Greuert和I. Lieb\cite{grauert1970ramirezsche}，G. M. Henkin\cite{henkin1969integral,henkin1970integral}和E. Ramirez\cite{ramirez1970divisions}得到.当$f$是$(0,1)$形式时，强拟凸域上解的$L^\infty$估计是由H. Grauert和I. Lieb\cite{grauert1970ramirezsche}和G. M. Henkin\cite{henkin1970integral}解决的.当$f$是$(0,q)$形式（$q>1$）时，强拟凸域上解的$L^\infty$估计是由I. Lieb\cite{lieb1970cauchy}解决的.

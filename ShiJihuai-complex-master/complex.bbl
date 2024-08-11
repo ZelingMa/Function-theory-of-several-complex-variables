@@ -1,0 +1,302 @@
+\begin{thebibliography}{10}
+
+\bibitem{barnard1991growth}
+Roger~W. Barnard, Carl~H. FitzGerald, and Sheng Gong.
+\newblock The growth and $\frac{1}{4}$-theorems for starlike mappings in
+  $\mathbb{C}^n$.
+\newblock {\em Pacific Journal of Mathematics}, 150(1):13--22, 1991.
+
+\bibitem{barnard1994distortion}
+Roger~W. Barnard, Carl~H. FitzGerald, and Sheng Gong.
+\newblock A distortion theorem for biholomorphic mappings in $\mathbb{C}^2$.
+\newblock {\em Transactions of the American Mathematical Society},
+  344(2):907--924, 1994.
+
+\bibitem{bergman1951kernel}
+Stefan Bergman and M.~Schiffer.
+\newblock Kernel functions and conformal mapping.
+\newblock {\em Compositio Mathematica}, 8:205--249, 1951.
+
+\bibitem{bochner1943analytic}
+Solomon Bochner.
+\newblock Analytic and meromorphic continuation by means of green's formula.
+\newblock {\em Annals of Mathematics}, pages 652--673, 1943.
+
+\bibitem{bremermann1954aquivalenz}
+Hans~J. Bremermann.
+\newblock {\"U}ber die {\"a}quivalenz der pseudokonvexen gebiete und der
+  holomorphiegebiete im raum von n komplexen ver{\"a}nderlichen.
+\newblock {\em Mathematische Annalen}, 128:63--91, 1954.
+
+\bibitem{bremermann1956complex}
+Hans~J. Bremermann.
+\newblock Complex convexity.
+\newblock {\em Transactions of the American Mathematical Society},
+  82(1):17--51, 1956.
+
+\bibitem{bungart1964boundary}
+Lutz Bungart.
+\newblock Boundary kernel functions for domains on complex manifolds.
+\newblock {\em Pacific Journal of Mathematics}, 14:1151--1164, 1964.
+
+\bibitem{cartan1979collected}
+H.~Cartan.
+\newblock {\em Collected Works, {R. Remmert and JP Serre} eds}.
+\newblock Springer-Verlag, New York, 1979.
+
+\bibitem{montel1933leccons}
+Henri Cartan and Paul Montel.
+\newblock {\em Le{\c{c}}ons sur les fonctions univalentes ou multivalentes}.
+\newblock Gauthier-Villars, 1933.
+
+\bibitem{cartan1932theorie}
+Henri Cartan and Peter Thullen.
+\newblock Zur theorie der singularit{\"a}ten der funktionen mehrerer komplexen
+  ver{\"a}nderlichen: Regularit{\"a}ts-und konvergenzbereiche.
+\newblock {\em Mathematische Annalen}, 106:617--647, 1932.
+
+\bibitem{dong1992growth}
+D.~J. Dong and W.~J. Zhang.
+\newblock The growth and $\frac14$ theorems for starlike mappings in a banach
+  space.
+\newblock {\em Chin Sci Bull}, 37:1062, 1992.
+
+\bibitem{duren1986distortion}
+Peter Duren and Walter Rudin.
+\newblock Distortion in several variables.
+\newblock {\em Complex Variables and Elliptic Equations}, 5(2-4):323--326,
+  1986.
+
+\bibitem{ehrenpreis1961new}
+Leon Ehrenpreis.
+\newblock A new proof and an extension of hartog's theorem.
+\newblock {\em American Mathematical Society}, 67:507--509, 1961.
+
+\bibitem{fefferman1974bergman}
+Charles Fefferman.
+\newblock On the bergman kernel and biholomorphic mappings of pseudoconvex
+  domains.
+\newblock {\em Invent. Math}, 26:1--65, 1974.
+
+\bibitem{fitzgerald1990convex}
+C.~FitzGerald and C.~Thomas.
+\newblock Convex mappings from the unit ball in $\mathbb{C}^n$ into
+  $\mathbb{C}^n$.
+\newblock {\em Abstract of papers presented to A. M. S}, 66:46, 1990.
+
+\bibitem{gong1993biholomorphic}
+Sheng Gong.
+\newblock Biholomorphic mappings in several complex variables.
+\newblock {\em Contemporary Mathematics}, 142:15--48, 1993.
+
+\bibitem{gong1991growth}
+Sheng Gong and Taishun Liu.
+\newblock The growth theorem of biholomorphic convex mappings on $b_p$.
+\newblock {\em Chin. Quar. Jour. Math}, 6:78--82, 1991.
+
+\bibitem{grauert1958levi}
+Hans Grauert.
+\newblock On levi's problem and the imbedding of real-analytic manifolds.
+\newblock {\em Annals of Mathematics}, pages 460--472, 1958.
+
+\bibitem{grauert2012several}
+Hans Grauert and Klaus Fritzsche.
+\newblock {\em Several complex variables}, volume~38.
+\newblock Springer Science \& Business Media, 2012.
+
+\bibitem{grauert1970ramirezsche}
+Hans Grauert and Ingo Lieb.
+\newblock Das ramirezsche integral und die l{\"o}sung der gleichung
+  $\bar{\partial}f=\alpha$ im bereich der beschr{\"a}ankten formen.
+\newblock {\em Rice Institute Pamphlet-Rice University Studies}, 56(2):29--50,
+  1970.
+
+\bibitem{henkin1969integral}
+Gennadi~M. Henkin.
+\newblock Integral representations of functions holomorphic in strictly
+  pseudo-convex domains and some applications.
+\newblock {\em Mathematics of the USSR-Sbornik}, 7(4):597--616, 1969.
+
+\bibitem{henkin1970integral}
+Gennadi~M. Henkin.
+\newblock Integral representations of functions holomorphic in strictly
+  pseudoconvex domains and applications to the $\bar{\partial}$ -problem.
+\newblock {\em Mat. Sb}, 82(124):300--308, 1970.
+
+\bibitem{hormander19652}
+Lars H{\"o}rmander.
+\newblock {$L^2$} estimates and existence thereoms for the
+  $\bar{\partial}$-operator.
+\newblock {\em Acta Math}, 113:89--152, 1965.
+
+\bibitem{hormander1973introduction}
+Lars H{\"o}rmander.
+\newblock {\em An introduction to complex analysis in several variables}.
+\newblock North Holland Publishing Co., 2 edition, 1973.
+
+\bibitem{kikuchi1973starlike}
+Keiz{\=o} Kikuchi.
+\newblock Starlike and convex mappings in several complex variables.
+\newblock {\em Pacific Journal of Mathematics}, 44(2):569--580, 1973.
+
+\bibitem{kohn1963harmonic}
+Joseph~J. Kohn.
+\newblock Harmonic integrals on strongly pseudo-convex manifolds, i.
+\newblock {\em Annals of mathematics}, 78:112--148, 1963.
+
+\bibitem{krantz2001function}
+Steven~George Krantz.
+\newblock {\em Function theory of several complex variables}, volume 340.
+\newblock American Mathematical Soc., 2001.
+
+\bibitem{lelong1945fonctions}
+Pierre Lelong.
+\newblock Les fonctions plurisousharmoniques.
+\newblock In {\em Annales scientifiques de l'{\'E}cole Normale Sup{\'e}rieure},
+  volume~62, pages 301--338, 1945.
+
+\bibitem{lelong1952convexite}
+Pierre Lelong.
+\newblock La convexit{\'e} et les fonctions analytiques de plusieurs variables
+  complexes.
+\newblock {\em J. Math. Pures Appl.(9)}, 31:191--219, 1952.
+
+\bibitem{lieb1970cauchy}
+Ingo Lieb.
+\newblock Die cauchy-riemannschen differentialgleichungen auf streng
+  pseudokonvexen gebieten: Beschr{\"a}nkte l{\"o}sungen.
+\newblock {\em Mathematische Annalen}, 190:6--44, 1970.
+
+\bibitem{liu1989growth}
+T.~S. Liu.
+\newblock {\em The growth theorems, covering theorems and distortion theorems
+  for biholomorphic mappings on classical domains}.
+\newblock PhD thesis, USTC, 1989.
+
+\bibitem{miller1976subordinating}
+James Miller.
+\newblock Subordinating factor sequences and convex functions of several
+  variables.
+\newblock {\em Pacific Journal of Mathematics}, 65(1):159--165, 1976.
+
+\bibitem{narasimhan1971several}
+Raghavan Narasimhan.
+\newblock {\em Several complex variables}.
+\newblock University of Chicago Press, 1971.
+
+\bibitem{norguet1954domaines}
+Fran{\c{c}}ois Norguet.
+\newblock Sur les domaines d'holomorphie des fonctions uniformes de plusieurs
+  variables complexes.(passage du local au global.).
+\newblock {\em Bulletin de la Soci{\'e}t{\'e} Math{\'e}matique de France},
+  82:137--159, 1954.
+
+\bibitem{oka1984collected}
+K.~Oka.
+\newblock Collected papers, {Transl. by R. Narasimhan, with comments by H.
+  Cartan and R. Remmert}, 1984.
+
+\bibitem{ramirez1970divisions}
+E.~Ramirez.
+\newblock Divisions problem in der komplexen analysis mit einer anwendung auf
+  rand integral darstellung.
+\newblock {\em Math. Ann}, 184:172--187, 1970.
+
+\bibitem{range1998holomorphic}
+R.~Michael Range.
+\newblock {\em Holomorphic functions and integral representations in several
+  complex variables}, volume 108.
+\newblock Springer Science \& Business Media, 1998.
+
+\bibitem{rudin1976principles}
+Walter Rudin.
+\newblock {\em Principles of mathematical analysis}, volume~3.
+\newblock McGraw-hill New York, 1976.
+
+\bibitem{rudin2008function}
+Walter Rudin.
+\newblock {\em Function theory in the unit ball of $\mathbb{C}^n$}.
+\newblock Springer Science \& Business Media, 2008.
+
+\bibitem{suffridge1970principle}
+Ted Suffridge.
+\newblock The principle of subordination applied to functions of several
+  variables.
+\newblock {\em Pacific Journal of Mathematics}, 33(1):241--248, 1970.
+
+\bibitem{suffridge1973starlike}
+Ted Suffridge.
+\newblock Starlike and convex maps in banach spaces.
+\newblock {\em Pacific Journal of Mathematics}, 46(2):575--589, 1973.
+
+\bibitem{刘太顺1999n}
+刘太顺 and 张文俊.
+\newblock $\mathbb{C}^n$中双全纯凸映射的偏差定理.
+\newblock {\em 数学年刊: A 辑}, 20(4):505--512, 1999.
+
+\bibitem{华罗庚1958多复变数函数论中的典型域的调和分析}
+华罗庚.
+\newblock {\em 多复变数函数论中的典型域的调和分析}.
+\newblock 科学出版社, 1958.
+
+\bibitem{史济怀1981new}
+史济怀.
+\newblock A new proof of polydisc's analytic non-equivalence to any ball.
+\newblock {\em 科学通报: 英文版}, 26(10):952--953, 1981.
+
+\bibitem{史济怀1982bound}
+史济怀.
+\newblock On the bound of convexity of univalent analytic maps of the ball.
+\newblock {\em 科学通报: 英文版}, 27(5):473--476, 1982.
+
+\bibitem{徐森林1981流形}
+徐森林.
+\newblock {\em 流形和 Stokes 定理}.
+\newblock 人民教育出版社, 1981.
+
+\bibitem{戈卢津1956复变函数的几何理论}
+戈卢津 and 陈建功.
+\newblock {\em 复变函数的几何理论}.
+\newblock 科学出版社, 1956.
+
+\bibitem{萧荫堂2013多复变函数论}
+萧荫堂, 陈志华, and 钟家庆.
+\newblock {\em 多复变函数论}.
+\newblock 高等教育出版社, 2013.
+
+\bibitem{钟同德1986多复变函数的积分表示与多维奇异积分方程}
+钟同德.
+\newblock {\em 多复变函数的积分表示与多维奇异积分方程}.
+\newblock 厦门大学出版社, 1986.
+
+\bibitem{钟家庆1983多复分析}
+钟家庆.
+\newblock {\em 多复分析基础}.
+\newblock 北京大学数学系、中国科学院数学研究所, 1983.
+
+\bibitem{陆启铿1956多复变数函数与酉几何}
+陆启铿.
+\newblock 多复变数函数与酉几何.
+\newblock {\em 数学进展}, 2:567--662, 1956.
+
+\bibitem{陆启铿1961多复变数函数引论}
+陆启铿.
+\newblock {\em 多复变数函数引论}.
+\newblock 科学出版社, 1961.
+
+\bibitem{陆启铿1963典型流形与典型域}
+陆启铿.
+\newblock {\em 典型流形与典型域}.
+\newblock 上海科学技术出版社, 1963.
+
+\bibitem{龚昇1982多复变数的奇异积分}
+龚{\CJKfontspec{simsun.ttf}昇}.
+\newblock {\em 多复变数的奇异积分}.
+\newblock 上海科学技术出版社, 1982.
+
+\bibitem{龚昇1995多复变数的凸映照与星形映照}
+龚{\CJKfontspec{simsun.ttf}昇}.
+\newblock {\em 多复变数的凸映照与星形映照}.
+\newblock 科学出版社, 1995.
+
+\end{thebibliography}

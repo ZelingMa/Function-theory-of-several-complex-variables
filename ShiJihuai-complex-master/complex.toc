@@ -1,0 +1,150 @@
+\contentsline {chapter}{序\hskip 2em\relax 言}{I}{chapter*.1}%
+\contentsline {chapter}{前\hskip 2em\relax 言}{III}{chapter*.2}%
+\contentsline {chapter}{\numberline {第1章\hspace {.3em}}多复变数全纯函数}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}全纯函数}{1}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}全纯函数的定义}{1}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Cauchy-Riemann方程组}{4}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}唯一性定理}{4}{subsection.1.1.3}%
+\contentsline {section}{\numberline {1.2}多圆柱的Cauchy积分公式及其应用}{5}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}多圆柱的Cauchy积分公式}{5}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Weierstrass定理}{8}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Montel定理}{10}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}Hurwitz定理}{11}{subsection.1.2.4}%
+\contentsline {section}{\numberline {1.3}Hartogs现象}{11}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Hartogs现象}{11}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}全纯函数在Reinhardt域上的展开式}{13}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}全纯域}{15}{subsection.1.3.3}%
+\contentsline {section}{\numberline {1.4}球和球面上的积分}{16}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}积分的极坐标公式}{16}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}球面上积分的几种表示}{17}{subsection.1.4.2}%
+\contentsline {section}{\numberline {1.5}次调和函数和Hartogs定理}{20}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}单复变量次调和函数}{20}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}多复变数次调和函数}{24}{subsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.5.3}关于次调和函数的Hartogs定理}{25}{subsection.1.5.3}%
+\contentsline {subsection}{\numberline {1.5.4}关于全纯函数的Hartogs定理}{26}{subsection.1.5.4}%
+\contentsline {subsection}{\numberline {1.5.5}由齐次多项式构成的级数}{31}{subsection.1.5.5}%
+\contentsline {section}{\numberline {1.6}Riemann可去奇点定理和Rad\'o定理}{32}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}Riemann可去奇点定理}{32}{subsection.1.6.1}%
+\contentsline {subsection}{\numberline {1.6.2}Rad\'o定理}{34}{subsection.1.6.2}%
+\contentsline {section}{注记}{35}{section*.8}%
+\contentsline {chapter}{\numberline {第2章\hspace {.3em}}全纯映射}{36}{chapter.2}%
+\contentsline {section}{\numberline {2.1}全纯映射的导数}{36}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}全纯映射的导数}{36}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}复Jacobian和实Jacobian}{38}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}单叶全纯映射}{39}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}单叶全纯映射的基本性质}{39}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}全纯映射列的基本性质}{42}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}H. Cartan定理和球的全纯自同构}{44}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}H. Cartan定理}{44}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}多圆柱和球的自同构}{48}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}多圆柱和球的非全纯等价性}{53}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Schwarz引理}{54}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}星形圆型域的Schwarz引理}{54}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}全纯映射的从属原理}{57}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}多圆盘和球上的星形映射和凸映射}{58}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}多圆柱上的星形映射}{58}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}多圆柱上的凸映射}{64}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}球上的星形映射}{67}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}球上的凸映射}{72}{subsection.2.5.4}%
+\contentsline {section}{\numberline {2.6}球上星形映射和凸映射的增长定理和掩盖定理}{77}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}球上星形映射的增长定理和掩盖定理}{77}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}球上凸映射的增长定理和掩盖定理}{82}{subsection.2.6.2}%
+\contentsline {section}{\numberline {2.7}球上凸映射的偏差定理}{84}{section.2.7}%
+\contentsline {subsection}{\numberline {2.7.1}双全纯映射导数行列式的一个表达式}{84}{subsection.2.7.1}%
+\contentsline {subsection}{\numberline {2.7.2}规范化凸映射展开式系数的估计}{92}{subsection.2.7.2}%
+\contentsline {subsection}{\numberline {2.7.3}定理\ref {thm2.7.1}的证明}{98}{subsection.2.7.3}%
+\contentsline {section}{\numberline {2.8}双全纯映射族的凸性半径}{99}{section.2.8}%
+\contentsline {subsection}{\numberline {2.8.1}$B_n$上规范化双全纯映射族不存在凸性半径}{99}{subsection.2.8.1}%
+\contentsline {subsection}{\numberline {2.8.2}凸性半径存在的条件}{101}{subsection.2.8.2}%
+\contentsline {section}{注记}{103}{section*.11}%
+\contentsline {chapter}{\numberline {第3章\hspace {.3em}}正交系与Bergman核函数}{104}{chapter.3}%
+\contentsline {section}{\numberline {3.1}$(L^2\cap H)(\varOmega )$上存在完备的正交系}{104}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}$(L^2\cap H)(\varOmega )$是Hilbert空间}{104}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}$(L^2\cap H)(\varOmega )$上规范正交系的基本性质}{106}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}$(L^2\cap H)(\varOmega )$上存在完备的规范正交系}{109}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2}有界圆型域的完备正交系}{113}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}圆型域上全纯函数的展开式}{113}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}有界圆型域的完备正交系}{114}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Bergman核函数}{117}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}核函数的基本性质}{117}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}核函数与域的自同构}{122}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}典型域的核函数}{124}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}四类典型域}{124}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}$R_{\text {\uppercase {i}}}(m,n)$的全纯自同构}{126}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}$R_{\text {\uppercase {i}}}(m,n)$的全纯自同构的行列式}{128}{subsection.3.4.3}%
+\contentsline {section}{\numberline {3.5}Bergman度量}{132}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Bergman度量方阵}{132}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Bergman度量}{133}{subsection.3.5.2}%
+\contentsline {section}{注记}{135}{section*.14}%
+\contentsline {chapter}{\numberline {第4章\hspace {.3em}}Cauchy积分公式}{136}{chapter.4}%
+\contentsline {section}{\numberline {4.1}球的Cauchy积分公式}{136}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}球的Cauchy积分公式}{136}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Schwarz公式}{138}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}特征边界上的规范正交系}{139}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}域的特征边界}{139}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}特征边界上的规范正交系}{140}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}特征边界上的规范正交系的重要性质}{142}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}有界星形圆型域的Cauchy积分公式}{144}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Cauchy核与Cauchy积分公式}{144}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}由域的自同构计算Cauchy核}{146}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}典型域的Cauchy积分公式}{148}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}$R_{\text {\uppercase {i}}}(n,n)$的Cauchy核}{148}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}$R_{\text {\uppercase {i}}}(m,n)(m<n)$的Cauchy核}{150}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}微分形式和Stokes公式}{153}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}$\mathbb R^N$中的微分形式}{154}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Stokes公式}{160}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}$\mathbb C^n$中的微分形式}{162}{subsection.4.5.3}%
+\contentsline {section}{\numberline {4.6}单位分解}{164}{section.4.6}%
+\contentsline {section}{\numberline {4.7}复平面上非齐次Cauchy积分公式及其应用}{167}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}非齐次Cauchy积分公式}{167}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}平面上${}\mkern 1mu\overline {\mkern -1mu\partial } $问题的解}{168}{subsection.4.7.2}%
+\contentsline {subsection}{\numberline {4.7.3}具有紧支集的${}\mkern 1mu\overline {\mkern -1mu\partial } $问题}{169}{subsection.4.7.3}%
+\contentsline {subsection}{\numberline {4.7.4}Hartogs全纯开拓定理}{170}{subsection.4.7.4}%
+\contentsline {section}{\numberline {4.8}Bochner-Martinelli积分公式}{171}{section.4.8}%
+\contentsline {section}{注记}{174}{section*.18}%
+\contentsline {chapter}{\numberline {第5章\hspace {.3em}}全纯凸域和拟凸域}{175}{chapter.5}%
+\contentsline {section}{\numberline {5.1}全纯凸域}{175}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}欧氏凸域的特征}{175}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}全纯凸域及其特征}{178}{subsection.5.1.2}%
+\contentsline {section}{\numberline {5.2}Cartan-Thullen定理}{181}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}全纯域一定是全纯凸域}{182}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}全纯凸域一定是全纯域}{183}{subsection.5.2.2}%
+\contentsline {section}{\numberline {5.3}Levi拟凸域}{184}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}欧氏凸域的分析特征}{184}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Levi拟凸域和强拟凸域}{187}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Levi拟凸性和域的定义函数无关}{191}{subsection.5.3.3}%
+\contentsline {section}{\numberline {5.4}多重次调和函数}{195}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}多重次调和函数的基本性质}{195}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}用$C^\infty $的强多重次调和函数逼近多重次调和函数}{197}{subsection.5.4.2}%
+\contentsline {section}{\numberline {5.5}拟凸域}{200}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}拟凸域的定义}{200}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}拟凸域是Levi拟凸域的推广}{203}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}拟凸域上存在$C^\infty $的强多重次调和穷竭函数}{205}{subsection.5.5.3}%
+\contentsline {section}{注记}{207}{section*.19}%
+\contentsline {chapter}{\numberline {第6章\hspace {.3em}}${}\mkern 1mu\overline {\mkern -1mu\partial } $问题及其应用}{208}{chapter.6}%
+\contentsline {section}{\numberline {6.1}两项准备知识}{208}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}函数的光滑化}{208}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}$\mathbb R^N$上的Sobolev空间}{211}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}把${}\mkern 1mu\overline {\mkern -1mu\partial } $问题归结为$L^2$估计}{216}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}加权的平方可积空间}{216}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}${}\mkern 1mu\overline {\mkern -1mu\partial } $算子的基本性质}{217}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}${}\mkern 1mu\overline {\mkern -1mu\partial } $问题的Hilbert空间模型}{218}{subsection.6.2.3}%
+\contentsline {section}{\numberline {6.3}${}\mkern 1mu\overline {\mkern -1mu\partial } $问题解的存在性定理}{222}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}用$D_{(p,q+1)}(G)$中的元素逼近$D(T^\ast )\cap D(S)$中的元素}{222}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}基本不等式成立的条件}{228}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}${}\mkern 1mu\overline {\mkern -1mu\partial } $问题在拟凸域上有解}{233}{subsection.6.3.3}%
+\contentsline {section}{\numberline {6.4}${}\mkern 1mu\overline {\mkern -1mu\partial } $问题解的正则性}{235}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}$\mathbb C^n$中的Sobolev空间}{236}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}内部正则性定理}{238}{subsection.6.4.2}%
+\contentsline {section}{\numberline {6.5}Levi问题}{240}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Cousin问题和除法问题}{241}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}Cousin问题}{241}{subsection.6.6.1}%
+\contentsline {subsection}{\numberline {6.6.2}除法问题}{244}{subsection.6.6.2}%
+\contentsline {section}{\numberline {6.7}${}\mkern 1mu\overline {\mkern -1mu\partial } $问题解的一致估计}{246}{section.6.7}%
+\contentsline {subsection}{\numberline {6.7.1}Henkin核的构造}{246}{subsection.6.7.1}%
+\contentsline {subsection}{\numberline {6.7.2}${}\mkern 1mu\overline {\mkern -1mu\partial } $问题解的Henkin积分表示}{252}{subsection.6.7.2}%
+\contentsline {subsection}{\numberline {6.7.3}${}\mkern 1mu\overline {\mkern -1mu\partial } $问题解的一致估计}{254}{subsection.6.7.3}%
+\contentsline {section}{注记}{261}{section*.25}%
+\contentsline {chapter}{参考文献}{263}{section*.26}%
+\contentsline {chapter}{符号索引}{267}{section*.28}%
+\contentsline {chapter}{名词索引}{269}{section*.30}%

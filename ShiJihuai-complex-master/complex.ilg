@@ -1,0 +1,22 @@
+This is makeindex, version 2.17 [TeX Live 2023] (kpathsea + Thai support).
+Scanning style file d:/texlive/2023/texmf-dist/makeindex/base/mkind.ist
+** Input style error (file = d:/texlive/2023/texmf-dist/makeindex/base/mkind.ist, line = 20):
+   -- Unknown specifier sort_rule.
+** Input style error (file = d:/texlive/2023/texmf-dist/makeindex/base/mkind.ist, line = 21):
+   -- Unknown specifier *sort_rule.
+** Input style error (file = d:/texlive/2023/texmf-dist/makeindex/base/mkind.ist, line = 24):
+   -- Unknown specifier include.
+** Input style error (file = d:/texlive/2023/texmf-dist/makeindex/base/mkind.ist, line = 25):
+   -- Unknown specifier include.
+** Input style error (file = d:/texlive/2023/texmf-dist/makeindex/base/mkind.ist, line = 28):
+   -- Unknown specifier include.
+** Input style error (file = d:/texlive/2023/texmf-dist/makeindex/base/mkind.ist, line = 29):
+   -- Unknown specifier include.
+** Input style error (file = d:/texlive/2023/texmf-dist/makeindex/base/mkind.ist, line = 30):
+   -- Unknown specifier include.
+done (0 attributes redefined, 7 ignored).
+Scanning input file complex.idx....done (199 entries accepted, 0 rejected).
+Sorting entries.....done (1592 comparisons).
+Generating output file complex.ind....done (270 lines written, 0 warnings).
+Output written in complex.ind.
+Transcript written in complex.ilg.

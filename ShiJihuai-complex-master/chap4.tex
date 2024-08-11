@@ -1,0 +1,1245 @@
+\chapter{Cauchy积分公式\label{chap4}}
+\section{球的Cauchy积分公式\label{sec4.1}}
+\subsection{球的Cauchy积分公式}
+设$D$是平面上的有界域，它的边界由逐段光滑的Jordan曲线组成.如果$f$在$D$中全纯，在$\bar{D}$上连续，那么对每点$z\in D$，有
+\[f(z)=\frac1{2\pi\ii}\int\limits_{\partial D}\frac{f(\zeta)}{\zeta-z}\dif\zeta.\]
+这就是单复变数函数的Cauchy积分公式，它的重要性是众所周知的.
+
+在\ref{sec1.2}中，我们已经证明了多圆柱的Cauchy积分公式，在这一节我们要给出球的Cauchy积分公式.
+
+对单位圆盘的Cauchy积分公式作变换$\zeta=\ee^{\ii\theta}$，则有
+\[f(z)=\frac1{2\pi}\int_{0}^{2\pi}\frac{f(\zeta)}{1-z\bar{\zeta}}\dif\theta,\]
+这里$\frac1{1-z\bar{\zeta}}$称为单位圆盘的Cauchy核.
+
+定义$\MC^n\times\MC^n$上的函数
+\[C(z,\zeta)=\frac1{(1-\langle z,\zeta\rangle)^n}\]
+为$\MC^n$中单位球$B$的Cauchy核\index{C!Cauchy核}.
+
+设$f\in L^1(\sigma)$，从$C(z,\zeta)$可以产生一个新函数
+\[C[f](z)=\int_{\partial B} C(z,\zeta)f(\zeta)\dif\sigma(\zeta),z\in B,\]
+称$C[f]$\index[symbolindex]{\textbf{函数和映射}!$C[f]$}为$f$的Cauchy积分.
+
+称$A(B)=H(B)\cap C(\bar{B})$为\textbf{球代数}\index[symbolindex]{\textbf{函数和映射}!$A(B)$}.
+\begin{theorem}[（Cauchy积分公式）]\label{thm4.1.1}\index{C!Cauchy积分公式}
+	设$f\in A(B)$，则对$z\in B$有
+	\[f(z)=\int_{\partial B}\frac{f(\zeta)}{(1-\langle z,\zeta\rangle)^n}\dif\sigma(\zeta).\]
+\end{theorem}
+\begin{proof}
+	分两步来做.
+	
+	（一）\hypertarget{4.1.1}{}
+	设$z\in B$，假定$z=(z',0)$，其中$z'=(z_1,\cdots,z_{n-1})$.定义$g(w)=C(z,w)f(w)$，\\
+	$w\in\bar{B}$.由于$z_n=0$，所以
+	\begin{align*}
+		C(z,w)
+		&=\frac1{(1-\langle z,w\rangle)^n}=\frac1{(1-\langle z',w'\rangle)^n},\\
+		w'&=(w_1,\cdots,w_{n-1}),
+	\end{align*}
+它正好是$\MC^{n-1}$中单位球$B_{n-1}$的Bergman核函数$K(z',w')$（和例\ref{exa3.3.7}比较差一常数因子）.由定理\ref{thm3.3.2}得
+\begin{align}\label{eq4.1.1}
+	f(z)
+	&=f(z',0)=\int_{B_{n-1}}K(z',\zeta')f(\zeta',0)\dif\nu_{n-1}(\zeta')\notag\\
+	&=\int_{B_{n-1}}g(\zeta',0)\dif\nu_{n-1}(\zeta').
+\end{align}
+因为$z_n=0,C(z,w)$中不出现$\bar{w}_n$，所以$g(w)$是$w_n$的全纯函数，故当$\zeta=(\zeta',\zeta_n)\in\partial B_n$时，根据中值公式有
+\[g(\zeta',0)=\frac1{2\pi}\int_{-\pi}^{\pi}g(\zeta',\ee^{\ii\theta}\zeta_n)\dif\theta.\]
+把它代入\eqref{eq4.1.1}并利用定理\ref{thm1.4.4}\hyperlink{1.4.4}{(2)}，即得
+\begin{align*}
+	f(z)
+	&=\int_{B_{n-1}}\dif\nu_{n-1}(\zeta')\frac1{2\pi}\int_{-\pi}^{\pi}g(\zeta',\ee^{\ii\theta}\zeta_n)\dif\theta\\
+	&=\int_{\partial B}\frac{f(\zeta)\dif\sigma(\zeta)}{(1-\langle z,\zeta\rangle)^n}.
+\end{align*}
+
+（二）\hypertarget{4.1.1}{}
+设$z=(z_1,\cdots,z_n)\in B,z_n\neq0$，适当选取酉方阵$U$，使得$zU^{-1}=(\xi',0)=\xi$，这里$\xi'=(\xi_1,\cdots,\xi_{n-1})$.于是
+\begin{equation}\label{eq4.1.2}
+	\int_{\partial B}C(z,\zeta)f(\zeta)\dif\sigma(\zeta)=\int_{\partial B} C(\xi U,\zeta)f(\zeta)\dif\sigma(\zeta).
+\end{equation}
+对右端积分作变换$\zeta=\eta U$，并注意到$\sigma$的旋转不变性有
+\begin{align}\label{eq4.1.3}
+	\int_{\partial B}\frac{f(\zeta)\dif\sigma(\zeta)}{(1-\langle \xi U,\zeta\rangle)^n}
+	&=\int_{\partial B}\frac{f(\eta U)\dif\sigma(\eta)}{(1-\langle\xi U,\eta U\rangle)^n}\notag\\
+	&=\int_{\partial B}\frac{f(\eta U)\dif\sigma(\eta)}{(1-\langle\xi,\eta\rangle)^n}.
+\end{align}
+综合\eqref{eq4.1.2}、\eqref{eq4.1.3}并利用\hyperlink{4.1.1}{（一）}的结果，即得
+\begin{align*}
+	\int_{\partial B}C(z,\zeta)f(\zeta)\dif\sigma(\zeta)
+	&=\int_{\partial B}C(\xi,\eta)f(\eta U)\dif\sigma(\eta)\\
+	&=f(\xi U)=f(z).
+\end{align*}
+这就是要证明的.
+\end{proof}
+值得一提的是，这个并不复杂的积分公式首先由华罗庚\index{H!华罗庚}教授\cite{华罗庚1958多复变数函数论中的典型域的调和分析}在本世纪50年代中期得到，它是更广泛的典型域的Cauchy积分公式的一个特殊情形，1964年又被Bungart\cite{bungart1964boundary}\index{B!Bungart, L.}重新证明.
+\subsection{Schwarz公式\index{S!Schwarz公式}}
+像单复变一样，我们也有用$f$的实部表示$f$的Schwarz公式.
+\begin{theorem}\label{thm4.1.2}
+	设$f\in A(B),u=\Re f,f(0)$是实数，那么对$z\in B$，有
+	\begin{equation}\label{eq4.1.4}
+		f(z)=\int_{\partial B}\left\{2C(z,\zeta)-1\right\}u(\zeta)\dif\sigma(\zeta).
+	\end{equation}
+\end{theorem}
+\begin{proof}
+	不妨假定$f(0)=0$，则由Cauchy积分公式$\int_{\partial B}f(\zeta)\dif\sigma(\zeta)=f(0)=0$，于是
+	\[\int_{\partial B}u(\zeta)\dif\sigma(\zeta)=\frac12\left(\int_{\partial B}f(\zeta)\dif\sigma(\zeta)+\int_{\partial B}\bar{f}(\zeta)\dif\sigma(\zeta)\right)=0.\]
+	这样\eqref{eq4.1.4}的右端可写为
+	\begin{align*}
+		\int_{\partial B}\left\{2C(z,\zeta)-1\right\}u(\zeta)\dif\sigma(\zeta)
+		&\int_{\partial B}C(z,\zeta)(2u(\zeta))\dif\sigma(\zeta)\\
+		&=C[f](z)+C[\bar{f}](z)\\
+		&=f(z)+C[\bar{f}](z).
+	\end{align*}
+我们证明$C[\bar{f}](z)=0$.为此命$g(w)=C(w,z)f(w)$，则$g\in A(B)$且$g(0)=0$，于是$\int_{\partial B}g\dif\sigma=0$.因而
+\begin{align*}
+	C[\bar{f}](z)
+	&=\int_{\partial B} C(z,w)\bar{f(w)}\dif\sigma(w)\\
+	&=\int_{\partial B}\bar{C(w,z)}\bar{f(w)}\dif\sigma(w)\\
+	&=\bar{\int_{\partial B}g(w)\dif\sigma(w)}=0.
+\end{align*}
+证明完毕.
+\end{proof}
+比较定理\ref{thm1.2.1}和定理\ref{thm4.1.1}，我们发现多圆柱的Cauchy积分公式和球的Cauchy积分公式是不一样的，这显示出单复变和多复变的又一本质性差别.在单复变中，所有有界域的Cauchy核都是一样的.而在多复变中，Cauchy核却因域而异.
+\section{特征边界上的规范正交系\label{sec4.2}}
+\subsection{域的特征边界}
+在讨论一般域上的Cauchy积分公式之前，先来分析一下单位圆盘的情形，这时的Cauchy积分公式是
+\[f(z)=\frac1{2\pi}\int_{-\pi}^{\pi}\frac{f(\ee^{\ii\theta})}{1-\ee^{-\ii\theta}z}\dif\theta,\]
+它的Cauchy核是$\frac1{2\pi}\frac1{1-\bar{\zeta}z},\zeta=\ee^{\ii\theta}$，因为$\left|\bar{\zeta}z\right|<1$，把它展开成幂级数得
+\begin{align*}
+	\frac1{2\pi}\frac1{1-\bar{\zeta}z}
+	&=\frac1{2\pi}\sum_{k=0}^{\infty}\left(\bar{\zeta}z\right)^k\\
+	&=\sum_{k=0}^{\infty}\left(\frac1{\sqrt{2\pi}}z^k\right)\left(\frac1{\sqrt{2\pi}}\bar{\zeta}^k\right)
+\end{align*}
+容易看出$\left\{\frac1{\sqrt{2\pi}}z^k\right\}$是$(L^2\cap H)(U)$中的完备正交系，当$z$取圆周上的值$
+\zeta$时，$\left\{\frac1{\sqrt{2\pi}}\zeta^k\right\}$是单位圆盘上的规范正交系.因此，单位圆盘的Cauchy核可以通过下述途径得到：在$|z|<1$中取一组完备正交系$\{\varphi_k(z)\}$（不一定是规范的），当$z$取圆周上的值$\zeta$时，$\{\varphi_k(\zeta)\}$是$|\zeta|=1$上的规范正交系（但不一定是完备的），由它们即可产生Cauchy核如下：
+\[C(z,\zeta)=\sum_{k=0}^{\infty}\varphi_k(z)\bar{\varphi_k(\zeta)}.\]
+对Cauchy核的这种看法，有可能把Cauchy积分公式推广到一般的域.
+
+在多圆柱的Cauchy积分公式中，我们已经看到，积分并不是在多圆柱的整个边界上进行的，而是在维数最低的那部分边界上进行的，我们称它为特征边界.这种现象不是多圆柱独有的，另外一些域也有类似的情形.这正是多复变和单复变的本质差异之一.现在给出一般域$\Omega$的特征边界的定义.
+\begin{definition}\label{def4.2.1}
+	设$\Omega$是$\MC^n$中的域，如果$\Omega$的边界的一部分$S\subset\partial\Omega$具有下列性质：每个$H(\Omega)\cap C(\bar{\Omega})$中的函数都在$S$上取最大模，并且对$S$上任一点一定有$\Omega$中的全纯函数在该点取最大模，我们就称$S$为$\Omega$的\textbf{特征边界}\index{T!特征边界}.
+\end{definition}
+我们对单位多圆柱$U^n$的特征边界
+\[\partial_0 U^n=\{z=(z_1,\cdots,z_n)\colon|z_1|=1,\cdots,|z_n|=1\}\]
+来验证上面的性质.
+
+任取$f\in H(U^n)\cap C(\bar{U}^n)$，根据最大模原理，它的最大模必定在$\partial U^n$上取到.我们证明，$f$的最大模只能在$\partial_0 U^n$上取到.事实上，如果$f$在某点$\zeta\in\partial U^n\setminus\partial_0 U^n$上取到最大模，这里不妨设$|\zeta_1|<1,|\zeta_2|=1,\cdots,|\zeta_n|=1$.这时把$z_2,\cdots,z_n$看作参数，则$f(z_1,z_2,\cdots,z_n)$可以看成是$z_1$的全纯函数族.由于它$\bar{U}^n$上连续，因而有界，故是一正规族.因而
+\[f(z_1,\zeta_2,\cdots,\zeta_n)=\lim\limits_{\substack{z_2\to\zeta_2\\ \cdots\\ z_n\to\zeta_n}}f(z_1,z_2,\cdots,z_n)\]
+是$z_1$在单位圆盘$|z_1|<1$中的全纯函数.根据单复变数函数的最大模原理，它不可能在$\zeta_1$处取到最大模.因而$f$的最大模只能在$\partial_0 U^n$上取到.今任取$\zeta\in\partial_0 U^n$，任取$f\in H(U^n)\cap C(\bar{U}^n)$，设$f$在某点$\eta\in\partial U^n$取到最大模，取$\varphi\in\Aut(U^n)$，使得$\varphi(\zeta)=\eta$，若命$g=f\circ\varphi$，则$g$必在$\zeta$处取最大模.
+\subsection{特征边界上的规范正交系}
+设$\Omega$是$\MC^n$中的域，$S$是它的特征边界.根据对单复变数Cauchy核的分析，我们希望找到$(L^2\cap H)(\Omega)$中的完备正交系$\{\varphi_k(z)\}$，它在$S$上是规范正交的.由这组函数系就有可能产生$\Omega$的Cauchy核.下面我们将证明，对$\Omega$附加一定的条件，这样的函数系是存在的.
+\begin{theorem}\label{thm4.2.2}
+	设$\Omega$是$\MC^n$中包含原点的有界圆型域，它的特征边界$S$也是圆型的.那么存在函数系
+	\[\{\psi_{kl}\},k=0,1,\cdots;l=1,\cdots,m_k,m_k=\binom{n+k-1}{k}\]
+	满足下列条件：
+	
+	(1)\hypertarget{4.2.2}{}
+	每个$\psi_{kl}(z)(l=1,\cdots,m_k)$是$z$的$k$次齐次多项式；
+	
+	(2)\hypertarget{4.2.2}{}
+	$\{\psi_{kl}\}$是$(L^2\cap H)(\Omega)$中的完备正交系；
+	
+	(3)\hypertarget{4.2.2}{}
+	$\{\psi_{kl}(\zeta)\}$是$S$上的规范正交系，即
+	\[\int_S \psi_{kj}(\zeta)\bar{\psi_{kl}(\zeta)}\dif\mu(\zeta)=\delta_{jl},\]
+	\[\int_S \psi_{hj}(\zeta)\bar{\psi_{kl}(\zeta)}\dif\mu(\zeta)=0,h\neq k,\]
+	这里$\dif\mu$是$S$上的Lebesgue测度.
+\end{theorem}
+\begin{proof}
+	在证明定理\ref{thm3.2.2}时，我们已经构造出这样的函数系，它们在$(L^2\cap H)(\Omega)$中是完备规范正交的，为了使这组函数系在$S$上是规范正交的，需要一些新的技巧.和证明定理\ref{thm3.2.2}时一样，命
+	\[z^{[k]}=\left\{\sqrt{\frac{k!}{\alpha!}}z^\alpha\colon|\alpha|=k\right\},\]
+	$z^{[k]}$是一个$m_k$维向量.这里和证明定理\ref{thm3.2.2}时不同的是，在$z^\alpha$前加了一个系数$\sqrt{\frac{k!}{\alpha!}}$.这是证明定理\ref{thm4.2.3}时需要的.命
+	\[H_k=\int_\Omega{z^{[k]}}'\bar{z}^{[k]}\dif m_{2n}(z),\]
+	则$H_k$是$m_k$阶正定的Hermite方阵，写$H_k=A_k'\bar{A}_k$，并记$\varphi^{[k]}(z)=z^{[k]}A_k^{-1}$，则$\varphi^{[k]}$是$m_k$维向量，若写
+	\[\varphi^{[k]}=(\varphi_{k1},\cdots,\varphi_{km_k}),\]
+	则由定理\ref{thm3.2.2}所证，$\{\varphi_{kl}\}$是$(L^2\cap H)(\Omega)$中一组完备的规范正交系.现在记
+	\[\varphi^{[k]}(\zeta)=(\varphi_{k1}(\zeta),\cdots,\varphi_{km_k}),\quad \zeta\in S,\]
+	\[\int_S\left(\varphi^{[k]}(\zeta)\right)'\bar{(\varphi^{[k]}(\zeta))}\dif\mu(\zeta)=G_k,\]
+	则$G_k$是正定的Hermite方阵，故存在$m_k$阶酉方阵$U_k$，使得$\bar{U}_k' G_k U_k=\Lambda_k$，这里$\Lambda_k$为对角线元$\beta_{k1},\cdots,\beta_{km_k}$都取正值的对角方阵.由此即得
+	\[\int_S\left(\varphi^{[k]}(\zeta)\bar{U}_k\right)'\bar{(\varphi^{[k]}(\zeta)\bar{U}_k)}\dif\mu(\zeta)=\Lambda_k.\]
+	记$\varphi^{[z]}(z)\bar{U}_k=(\tilde{\varphi}_{k1}(z),\cdots,\tilde{\varphi}_{km_k}(z))$，并记
+	\begin{align*}
+		\psi^{[k]}(z)
+		&=\varphi^{[k]}(z)\bar{U}_k \Lambda_k^{-\frac12}=\left(\frac{\tilde{\varphi}_{k1}(z)}{\sqrt{\beta_{k1}}},\cdots,\frac{\tilde{\varphi}_{km_k}(z)}{\sqrt{\beta_{km_k}}}\right)\\
+		&=(\psi_{k1}(z),\cdots\psi_{km_k}(z)),
+	\end{align*}
+则$\{\psi_{kl}(z)\},k=0,1,\cdots;l=1,\cdots,m_k$就是所求的函数系.事实上，\hyperlink{4.2.2}{(1)}成立是显然的.由于
+\begin{align*}
+	&\int_\Omega\left(\varphi^{[k]}(z)\bar{U}_k\right)'\bar{(\varphi^{[k]}(z)\bar{U}_k)}\dif m_{2n}(z)\\
+	=&\bar{U}_k' \int_\Omega\left(\varphi^{[k]}(z)\right)'\bar{(\varphi^{[k]}(z)}\dif m_{2n}(z) U_k=I_{m_k}.
+\end{align*}
+又因不同次数的齐次多项式在$\Omega$上是正交的，所以$\{\psi_{kl}(z)\}$是$(L^2\cap H)(\Omega)$上的完备正交系，但不规范，即\hyperlink{4.2.2}{(2)}成立.由于
+\begin{align*}
+	&\int_S\left(\psi^{[k]}(\zeta)\right)'\bar{(\psi^{[k]}(\zeta)}\dif\mu(\zeta)\\
+	=&\Lambda_k^{-\frac12}\int_S\left(\varphi^{[k]}(\zeta)\bar{U}_k\right)'\bar{(\varphi^{[k]}(\zeta)\bar{U}_k)}\dif\mu(\zeta)\Lambda_k^{-\frac12}=I_{m_k},
+\end{align*}
+再利用$S$是圆型的性质，当$k\neq j$时，$\psi^{[k]}$的任一分量和$\psi^{[j]}$的任一分量在$S$上都是正交的，因而$\{\psi_{kl}\}$在$S$上是规范正交的，即\hyperlink{4.2.2}{(3)}成立.
+\end{proof}
+\subsection{特征边界上的规范正交系的重要性质}
+定理\ref{thm4.2.2}构造的这组正交系有下列重要性质：
+\begin{theorem}\label{thm4.2.3}
+	如果域$\Omega$和它的特征边界$S$满足定理\ref{thm4.2.2}的条件，而且$S$上任意两点可以通过酉变换相互变换，那么等式
+	\[\sum_{k=0}^{\infty}\sum_{l=1}^{m_k}|\psi_{kl}(\zeta)|^2 r^k=\frac1{V(S)}\frac{1}{(1-r)^n}\]
+	对$\zeta\in S,0\le r\le r_0<1$一致成立，其中$V(S)$记$S$的体积.
+\end{theorem}
+\begin{proof}
+	我们先证明$\sum\limits_{l=1}^{m_k}|\psi_{kl}(\zeta)|^2$是一个与$\zeta$无关的常数.事实上，
+	\begin{align}\label{eq4.2.1}
+		\sum\limits_{l=1}^{m_k}|\psi_{kl}(\zeta)|^2
+		&=\psi^{[k]}(\zeta)\bar{\psi^{[k]}(\zeta)}'\notag\\
+		&=\varphi^{[k]}(\zeta)\bar{U}_k\Lambda_k^{-1}U_k'\bar{\varphi^{[k]}(\zeta)}'\notag\\
+		&=\varphi^{[k]}(\zeta) \bar{G}_k^{-1}\bar{\varphi^{[k]}(\zeta)}'\notag\\
+		&=\varphi^{[k]}(\zeta)\left(\int_S \bar{\varphi^{[k]}(\eta)}'\varphi^{[k]}(\eta)\dif\mu(\eta)\right)^{-1}\bar{\varphi^{[k]}(\zeta)}'\notag\\
+		&=\zeta^{[k]}A_k^{-1}\left(\int_S \bar{(\eta^{[k]}A_k^{-1})}'(\eta^{[k]}A_k^{-1})\dif\mu(\eta)\right)^{-1}\bar{\zeta^{[k]}A_k^{-1}}'\notag\\
+		&=\zeta^{[k]}\left(\int_S\bar{\eta^{[k]}}'\eta^{[k]}\dif\mu(\eta)\right)^{-1}\bar{\zeta^{[k]}}'.
+	\end{align}
+任取$\xi\in S$，则有酉变换$U$，使得$\zeta=\xi U$.从多项式公式
+\[(x_1+\cdots+x_n)^k=\sum_{|\alpha|=k}\frac{k!}{\alpha_1!\cdots\alpha_n!}x_1^{\alpha_1}\cdots x_n^{\alpha_n},\]
+可以算得
+\begin{align*}
+	(\xi\bar{\xi}')^k
+	&=(\xi_1\bar{\xi}_1+\cdots\xi_n\bar{\xi}_n)^k\\
+	&=\sum_{|\alpha|=k} \frac{k!}{\alpha!}\xi^\alpha \bar{\xi}^\alpha=\xi^{[k]}\bar{\xi^{[k]}}'.
+\end{align*}
+$(\zeta\bar{\zeta}')^k=\zeta^{[k]}\bar{\zeta^{[k]}}'$.因为$\zeta\bar{\zeta}'=\xi\bar{\xi}'$，所以$\xi^{[k]}\bar{\xi^{[k]}}'=\zeta^{[k]}\bar{\zeta^{[k]}}'$.从而存在$m_k$阶酉方阵$U^{[k]}$，使得$\zeta^{[k]}=\xi^{[k]}U^{[k]}$.于是\eqref{eq4.2.1}的右端可以写成
+\begin{align*}
+	&\xi^{[k]}\left\{\int_S (\bar{\eta}^{[k]}U^{[k]'})'(\eta^{[k]}\bar{U^{[k]}}')\dif\mu(\eta)\right\}^{-1}\bar{\xi^{[k]}}'\\
+	=&\xi^{[k]}\left\{\int_S \bar{\eta^{[k]}}'\eta^{[k]}\dif\mu(\eta)\right\}^{-1}\bar{\xi^{[k]}}',
+\end{align*}
+这里我们已经利用了测度$\dif\mu$的酉不变性.这就证明了\eqref{eq4.2.1}和$\zeta$无关.现在来计算这个常数$h$.\eqref{eq4.2.1}右端对$\zeta$在$S$上积分得
+\[V(S)h=\int_S \zeta^{[k]}Q\bar{\zeta^{[k]}}'\dif\mu(\zeta)=\sum_{i,j=1}^{m_k}q_{ij}\int_S \zeta^{(i)}\bar{\zeta^{(j)}}\dif\mu(\zeta),\]
+这里$Q=\left(\int_S \bar{\eta^{[k]}}'\eta^{[k]}\dif\mu(\eta)\right)^{-1}=(q_{ij}),\zeta^{(i)}$是$\zeta^{[k]}$的第$i$个分量.\\
+如果记$P=\int_S \bar{\zeta^{[k]}}'\zeta^{[k]}\dif\mu(\zeta)=(p_{ij})$，那么$PQ=I_{m_k}$.于是
+\begin{align*}
+	V(S)h
+	&=\sum_{i,j=1}^{m_k}q_{ij}p_{ji}=\tr(PQ)\\
+	&=\tr(I_{m_k})=\binom{n+k-1}{k}.
+\end{align*}
+由此得
+\[\sum_{l=1}^{m_k}|\psi_{kl}(\zeta)|^2=\frac1{V(S)}\binom{n+k-1}{k}.\]
+因而
+\begin{align*}
+	\sum_{k=0}^{\infty}\sum_{l=1}^{m_k}|\psi_{kl}(\zeta)|^2r^k
+	&=\frac1{V(S)}\sum_{k=0}^{\infty}\binom{n+k-1}{k}r^k\\
+	&=\frac1{V(S)}\frac1{(1-r)^n}.
+\end{align*}
+收敛的一致性在计算过程中已经证明.
+\end{proof}
+注意，这个定理的背景是十分明显的.因为在单位圆盘的情形，$\psi_k(\zeta)=\frac1{\sqrt{2\pi}}\zeta^k$，\\$|\zeta|=1$，因而
+\[\sum_{k=0}^{\infty}\left|\frac1{\sqrt{2\pi}}\zeta^k\right|^2 r^k=\frac1{2\pi}\sum_{k=0}^{\infty}r^k=\frac1{2\pi}\frac1{1-r}.\]
+\begin{theorem}\label{thm4.2.4}
+	级数
+	\[\sum_{k=0}^{\infty}\sum_{l=1}^{m_k}\psi_{kl}(\zeta)\bar{\psi_{kl}(\eta)}r^k\]
+	对$\zeta,\eta\in S$及$0\le r\le r_0<1$一致绝对收敛.
+\end{theorem}
+\begin{proof}
+	由Schwarz不等式得
+	\begin{align*}
+		&\sum_{l=1}^{m_k}\left|\psi_{kl}(\zeta)\bar{\psi_{kl}(\eta)}\right|r^k\\
+		\le&\left(\sum_{l=1}^{m_k}|\psi_{kl}(\zeta)|^2r^k\right)^{\frac12}\left(\sum_{l=1}^{m_k}|\psi_{kl}(\eta)|^2r^k\right)^{\frac12}\\
+		\le&\frac12\left\{\sum_{l=1}^{m_k}|\psi_{kl}(\zeta)|^2 r^k+\sum_{l=1}^{m_k}|\psi_{kl}(\eta)|^2 r^k\right\}.
+	\end{align*}
+再用定理\ref{thm4.2.3}即得所要证明的结论.
+\end{proof}
+\begin{theorem}\label{thm4.2.5}
+	设$\Omega$是一个圆型的星形域，记
+	\[\Omega_r=\{rz\colon z\in\Omega,0<r<1\},\]
+	那么级数$\sum\limits_{k=0}^\infty \sum_{l=1}^{m_k}\psi_{kl}(z)\bar{\psi_{kl}(\zeta)}$对$z\in\bar{\Omega_r}$及$\zeta\in S$一致收敛.
+\end{theorem}
+\begin{proof}
+	因为$f\in H(\Omega)\cap C(\bar{\Omega})$的最大模在$\Omega$的特征边界$S$上取到，且当$z\in\Omega_r$时，$\frac1r z\in\Omega$.于是根据$\psi_{kl}$的$k$次齐次性及\ref{thm4.2.4}即得
+	\begin{align*}
+		&\left|\sum_{k=N}^{N'}\sum_{l=1}^{m_k}\psi_{kl}(z)\bar{\psi_{kl}(\zeta)}\right|\\
+		=&\left|\sum_{k=N}^{N'}\sum_{l=1}^{m_k}\psi_{kl}\left(\frac1r z\right)\bar{\psi_{kl}(\zeta)}r^k\right|\\
+		\le&\sup_{\xi\in S}\left|\sum_{k=N}^{N'}\sum_{l=1}^{m_k}\psi_{kl}(\xi)\bar{\psi_{kl}(\zeta)}r^k\right|\to0,\quad N,N'\to\infty.
+	\end{align*}
+定理证毕.
+\end{proof}
+\section{有界星形圆型域的Cauchy积分公式\label{sec4.3}}
+\subsection{Cauchy核与Cauchy积分公式}
+设$\Omega$是包含原点的有界星形圆型域，$S$是它的特征边界，并且具有\ref{sec4.2}提到的性质.在\ref{sec4.2}中，我们已经构造出一个函数系
+\[\psi_{kl},k=0,1,\cdots;l=1,\cdots,m_k,\]
+它们在$\Omega$上是完备正交的，在$S$上是规范正交的，而且
+\[\sum\limits_{k=0}^\infty \sum_{l=1}^{m_k}\psi_{kl}(z)\bar{\psi_{kl}(\zeta)}\]
+对$z\in\Omega_r$及$\zeta\in S$一致收敛.在这个基础上，我们给出
+\begin{definition}\label{def4.3.1}
+	我们称
+	\[C(z,\zeta)=\sum_{k=0}^{\infty}\sum_{l=1}^{m_k}\psi_{kl}(z)\bar{\psi_{kl}(\zeta)},z\in\Omega,\zeta\in S\]
+	为域$\Omega$的Cauchy核\index{C!Cauchy核}.
+\end{definition}
+从定理\ref{thm4.2.5}知道，$C(z,\zeta)$作为$z$的函数在$\Omega$上是全纯的.
+
+下面是域$\Omega$上的Cauchy积分公式\index{C!Cauchy积分公式}.
+\begin{theorem}\label{thm4.3.2}
+	设$\Omega$是$\MC^n$中包含原点的有界星形圆型域，它的特征边界$S$是圆型的，而且$S$上任意两点可以通过酉变换相互变换.如果$f\in H(\Omega)\cap C(\Omega\cup S)$，那么
+	\[f(z)=\int_S C(z,\zeta)f(\zeta)\dif\mu(\zeta).\]
+\end{theorem}
+\begin{proof}
+	因为$f$在$S$上连续，故
+	\[g(z)=\int_S f(\zeta)C(z,\zeta)\dif\mu(\zeta)\]
+	是$\Omega$上的全纯函数.由定理\ref{thm4.2.4}知，当$z$固定时，级数$C(z,\zeta)=\sum\limits_{k=0}^\infty \sum\limits_{l=1}^{m_k}\psi_{kl}(z)\bar{\psi_{kl}(\zeta)}$对$\zeta\in S$一致收敛，因而
+	\[g(z)=\sum\limits_{k=0}^\infty \sum\limits_{l=1}^{m_k}\psi_{kl}(z)\int_S f(\zeta)\bar{\psi_{kl}(\zeta)}\dif\mu(\zeta).\]
+	若记$b_{kl}=\int_S f(\zeta)\bar{\psi_{kl}(\zeta)}\dif\mu(\zeta)$，则
+	\[g(z)=\sum\limits_{k=0}^\infty \sum\limits_{l=1}^{m_k}b_{kl}\psi_{kl}(z).\]
+	另外，$f$在$\Omega$上展开式
+	\[f(z)=\sum\limits_{k=0}^\infty \sum\limits_{l=1}^{m_k}a_{kl}\psi_{kl}(z).\]
+	命$z=r\eta,0<r<1,\eta\in S$，则因$\psi_{kl}$是$k$次齐次多项式，
+	\[f(r\eta)=\sum\limits_{k=0}^\infty \sum\limits_{l=1}^{m_k} a_{kl}r^k\psi_{kl}(\eta),\]
+	所以
+	\[a_{kl}r^k=\int_S f(r\eta)\bar{\psi_{kl}(\eta)}\dif\mu(\eta).\]
+	于是
+	\[|b_{kl}-a_{kl}r^k|\le\int_S |f(\eta)-f(r\eta)|\,|\psi_{kl}(\eta)|\dif\mu(\eta).\]
+	记$M_{kl}=\sup\limits_{\eta\in S}|\psi_{kl}(\eta)|$，上式为
+	\[|b_{kl}-a_{kl}r^k|\le M_{kl}\int_S |f(\eta)-f(r\eta)|\dif\mu(\eta).\]
+	注意到$f$在$S$上连续，$S$是紧的，故当$r\to1$时，上式右端趋于$0$.由此得$a_{kl}=b_{kl}$，即
+	\[f(z)=g(z)=\int_S C(z,\zeta)f(\zeta)\dif\mu(\zeta).\qedhere\]
+\end{proof}
+这就是一般星形圆型域的Cauchy积分公式.
+\subsection{由域的自同构计算Cauchy核}
+和Bergman核函数的情形一样，对于不同的正交系，产生的Cauchy核是否不同？即Cauchy核是否依赖于正交系的选取？在下面的条件下，核的选取是唯一的.
+\begin{theorem}\label{thm4.3.3}
+	设$\{\omega_k(\zeta)\}$是$S$上的一组规范正交系，且满足：
+	
+	(1)\hypertarget{4.3.3}{}
+	$\omega_k(z),k=0,1,\cdots$在$\Omega\cup S$上全纯；
+	
+	(2)\hypertarget{4.3.3}{}
+	级数$C_1(z,\zeta)=\sum\limits_{k=0}^\infty \omega_k(z)\bar{\omega_k(\zeta)}$当$\zeta\in S,z$在$\Omega$中任一紧集上一致收敛；
+	
+	(3)\hypertarget{4.3.3}{}
+	任一$f\in H(\Omega\cup S)$能展为$f(z)=\sum\limits_{k=0}^\infty a_k\omega_k(z)$，且在$\Omega$中内闭一致收敛.
+	
+	那么$C_1(z,\zeta)=C(z,\zeta)$.
+\end{theorem}
+\begin{proof}
+	对于满足上述条件的正交系，定理\ref{thm4.3.2}成立，因而
+	\begin{equation}\label{eq4.3.1}
+		f(z)=\int_S C_1(z,\zeta)f(\zeta)\dif\mu(\zeta)
+	\end{equation}
+对每个$f\in H(\Omega\cup S)$成立.固定$w\in\Omega$，用证明定理\ref{thm4.2.4}的方法可以证明级数\\
+$\sum\limits_{k,l}\psi_{kl}(z)\bar{\psi_{kl}(w)}$对$z\in\Omega\cup S$一致收敛，因而$C(z,w)$在$\Omega\cup S$上全纯.在\eqref{eq4.3.1}中取$f(z)=C(z,w)$，即得
+\begin{equation}\label{eq4.3.2}
+	C(z,w)=\int_S C_1(z,\zeta)C(\zeta,w)\dif\mu(\zeta).
+\end{equation}
+对$C_1(w,z)$用定理\ref{thm4.3.2}得
+\[C_1(w,z)=\int_S C_1(\zeta,z)C(w,\zeta)\dif\mu(\zeta),\]
+取共轭，
+\begin{equation}\label{eq4.3.3}
+	C_1(z,w)=\int_S C_1(z,\zeta)C(\zeta,w)\dif\mu(\zeta).
+\end{equation}
+比较\eqref{eq4.3.2}，\eqref{eq4.3.3}即得$C(z,w)=C_1(z,w)$，让$w\to\zeta\in S$即得所欲证者.
+\end{proof}
+当$\Omega$是可递域时，Cauchy核也可不通过正交系来求得.
+\begin{theorem}\label{thm4.3.4}
+	设$\Omega$和$S$如上所述.如果$\Omega$是可递的，$\Aut(\Omega)$中的变换在$S$上全纯，且把$S$变为自己，如果$\Omega$的复维数和$S$的实维数相等，那么$\Omega$的Cauchy核为
+	\[C(z,\zeta)=\frac1{V(S)}\left(\det\varphi_z'(z)\right)^{\frac12}\bar{\left(\det\varphi_z'(\zeta)\right)^{\frac12}},\]
+	这里$\varphi_z\in\Aut(\Omega)$且满足$\varphi_z(z)=0$.
+\end{theorem}
+\begin{proof}
+	用$\varphi_a$记$\Aut(\Omega)$中把$a$点变为原点的全纯自同构.按假定它把$S$变为$S$，若记$\eta=\varphi_a(\zeta)$，则$S$上体积元素的变换关系为
+	\[\dif\mu(\eta)=\left|\det\varphi_a'(\zeta)\right|\dif\mu(\zeta).\]
+	为简便计，记$S$上的规范正交系为$\{\psi_k(\zeta)\}$.于是
+	\begin{align*}
+		&\int_S \psi_k(\eta)\bar{\psi_l(\eta)}\dif\mu(\eta)\\
+		=&\int_S \psi_k(\varphi_a(\zeta))\bar{\psi_l(\varphi_a(\zeta))}\left|\det\varphi_a'(\zeta)\right|\dif\mu(\zeta)=\delta_{kl}.
+	\end{align*}
+这说明
+\[\omega_k(\zeta)=\psi_k(\varphi_a(\zeta))\left(\det\varphi_a'(\zeta)\right)^{\frac12}\]
+也是$S$上的规范正交系.我们证明$\{\omega_k(\zeta)\}$满足定理\ref{thm4.3.3}的条件.显然\hyperlink{4.3.3}{(1)}、\hyperlink{4.3.3}{(2)}是成立的.为了证明\hyperlink{4.3.3}{(3)}，任取$f\in H(\Omega\cup S)$，命
+\[g(w)=f(\varphi_a^{-1}(w))\left(\det\varphi_a'(\varphi_a^{-1}(w))\right)^{-\frac12},\]
+则$g\in H(\Omega\cup S)$，因而有展开式$g(w)=\sum\limits_{k=0}^\infty a_k\psi_k(w)$，即
+\[f(\varphi_a^{-1}(w))\left(\det\varphi_a'(\varphi_a^{-1}(w))\right)^{-\frac12}=\sum\limits_{k=0}^\infty a_k\psi_k(w).\]
+命$w=\varphi_a(z)$，则有
+\[f(z)=\sum_{k=0}^{\infty}a_k\psi_k(\varphi_a(z))\left(\det\varphi_a'(z)\right)^{\frac12}=\sum_{k=0}^{\infty}a_k\omega_k(z).\]
+这样定理\ref{thm4.3.3}的条件都成立.于是
+\begin{align}\label{eq4.3.4}
+	C(z,\zeta)
+	&=\sum_{k=0}^{\infty}\omega_k(z)\bar{\omega_k(\zeta)}\notag\\
+	&=\sum_{k=0}^{\infty}\psi_k(w)\bar{\psi_k(\eta)}\left(\det\varphi_a'(z)\right)^{\frac12}\bar{\left(\det\varphi_a'(\zeta)\right)^{\frac12}}\notag\\
+	&=C(w,\eta)\left(\det\varphi_a'(z)\right)^{\frac12}\bar{\left(\det\varphi_a'(\zeta)\right)^{\frac12}},
+\end{align}
+其中$w=\varphi_a(z),\eta=\varphi_a(\zeta)$，因为$\psi_k(z)$是$k$次齐次多项式，所以$C(0,\zeta)=\sum\limits_{k=0}^\infty \psi_k(0)\psi_k(\zeta)$是一个常数.再由Cauchy公式$1=\int_S C(0,\zeta)\dif\mu(\zeta)$，由此得$C(0,\zeta)=\left(V(S)\right)^{-1}$，\\
+在\eqref{eq4.3.4}中取$a=z$，即得
+\[C(z,\zeta)=\frac1{V(S)}\left(\det\varphi_z'(z)\right)^{\frac12}\bar{\left(\det\varphi_z'(\zeta)\right)^{\frac12}}.\qedhere\]
+\end{proof}
+\section{典型域的Cauchy积分公式\label{sec4.4}}
+\ref{subsec3.4.1}中定义的四类典型域都是有界的圆型星形域，特征边界也都满足定理\ref{thm4.3.2}的要求.因此，\ref{sec4.3}中的定理都适用于四类典型域.
+\subsection{$R_{\text{\uppercase\expandafter{\romannumeral1}}}(n,n)$的Cauchy核}
+现在利用定理\ref{thm4.3.4}来计算矩阵双曲空间$R_{\text{\uppercase\expandafter{\romannumeral1}}}(m,n)$的Cauchy核.先假定$m=n$，这时$R_{\text{\uppercase\expandafter{\romannumeral1}}}(n,n)$的元素是满足$I-Z\bar{Z}'>0$的$n$阶方阵$Z$，它的特征边界$S_{\text{\uppercase\expandafter{\romannumeral1}}}$是$n$阶酉方阵的全体.在\ref{sec3.4}已经算出
+\begin{equation}\label{eq4.4.1}
+	\det\varphi_{Z_0}'(Z_0)=\left(\det A\bar{D}\right)^n,
+\end{equation}
+其中$A,D$满足
+\[A'\bar{A}=\left(I-\bar{Z}_0 Z_0'\right)^{-1},\quad D'\bar{D}=\left(I-Z_0'\bar{Z}_0\right)^{-1},\]
+现在来计算$\det\varphi_{Z_0}'(U)$，在\ref{sec3.4}中的等式
+\[\dif W=A\left\{\dif Z\left(I-\bar{Z}_0' Z\right)^{-1}-\left(Z-Z_0\right)\left(I-\bar{Z}_0'Z\right)^{-1}\dif\left(I-\bar{Z}_0'Z\right)\left(I-\bar{Z}_0'Z\right)^{-1}\right\} D^{-1}\]
+中命$Z=U,W=V$得
+\begin{align*}
+	\dif V
+	=&A\left\{\dif U\left(I-\bar{Z}_0' U\right)^{-1}+\right.\\
+	&\left.\left(U-Z_0\right)\left(I-\bar{Z}_0' U\right)^{-1}\bar{Z}_0'\dif U\left(I-\bar{Z}_0' U\right)^{-1}\right\}D^{-1}\\
+	=&\left[A+A\left(U-Z_0\right)\left(I-\bar{Z}_0' U\right)^{-1}\bar{Z}_0'\right]\dif U\left(I-\bar{Z}_0' U\right)^{-1} D^{-1}.
+\end{align*}
+若记
+\[P=A+A\left(U-Z_0\right)\left(I-\bar{Z}_0' U\right)^{-1}\bar{Z}_0',\quad Q=\left(I-\bar{Z}_0' U\right)^{-1} D^{-1},\]
+则$\varphi_{Z_0}'(U)=\left(P'\times Q\right)'$，所以
+\[\det\varphi_{Z_0}'(U)=\det\left(P'\times Q\right)=\left(\det P\right)^n\left(\det Q\right)^n.\]
+现在
+\begin{align*}
+	\det P
+	&=\det A\det\left[I+\left(U-Z_0\right)\left(I-\bar{Z}_0' U\right)^{-1}\bar{Z}_0'\right]\\
+	&=\det A\det\left[I+\bar{Z}_0'\left(U-Z_0\right)\left(I-\bar{Z}_0' U\right)^{-1}\right]\\
+	&=\det A\det\left[\left(I-\bar{Z}_0'Z_0\right)\left(I-\bar{Z}_0'U\right)^{-1}\right],\\
+	\det Q&=\det\left(I-\bar{Z}_0' U\right)^{-1}\det D^{-1}.
+\end{align*}
+所以
+\begin{equation}\label{eq4.4.2}
+	\det\varphi_{Z_0}'(U)=\left(\det AD^{-1}\right)^n\left(\det\left(I-\bar{Z}_0' Z_0\right)\right)^n\left(\det\left(I-\bar{Z}_0' U\right)^{-1}\right)^{2n}.
+\end{equation}
+综合\eqref{eq4.4.1}，\eqref{eq4.4.2}得
+\begin{align*}
+	&\left(\det\varphi_{Z_0}'(Z_0)\right)^{\frac12}\bar{\left(\det\varphi_{Z_0}'(U)\right)^{\frac12}}\\
+	=&\left(\det A\bar{A}\right)^{\frac n2}\det\left(I-Z_0' \bar{Z}_0\right)^{\frac n2}\det\left(I-Z_0'\bar{U}\right)^{-n}\\
+	=&\det\left(I-Z_0'\bar{U}\right)^{-n}=\det\left(I-Z_0\bar{U}'\right)^{-n}.
+\end{align*}
+所以当$m=n$时，$R_{\text{\uppercase\expandafter{\romannumeral1}}}(n,n)$的核是
+\begin{equation}\label{eq4.4.3}
+	C(Z,U)=\frac1{V(S_{\text{\uppercase\expandafter{\romannumeral1}}})\det\left(I-Z\bar{U}'\right)^n},
+\end{equation}
+其中$V(S_{\text{\uppercase\expandafter{\romannumeral1}}})$是$R_{\text{\uppercase\expandafter{\romannumeral1}}}(n,n)$的特征边界$S_{\text{\uppercase\expandafter{\romannumeral1}}}$的体积.
+\subsection{$R_{\text{\uppercase\expandafter{\romannumeral1}}}(m,n)(m<n)$的Cauchy核}
+现在设$m<n$，我们利用\eqref{eq4.4.3}给出这种情形下的Cauchy核.为此需要一个代数引理.
+\begin{lemma}\label{lem4.4.1}
+	设$Z$是任意的$m\times n(m\le n)$阶矩阵，则必存在$m$阶酉方阵$U$和$n$阶酉方阵$V$，使得
+	\[Z=U(\Lambda,O)V,\]
+	这里
+	\[\Lambda=\begin{pmatrix}
+		\lambda_1 & &\\
+		&\ddots&\\
+		&&\lambda_m
+	\end{pmatrix},\]
+$\lambda_1^2,\cdots,\lambda_m^2$是$Z\bar{Z}'$的特征根.
+\end{lemma}
+\begin{proof}
+	现设$Z$的秩为$m$，则$Z\bar{Z}'$是正定的Hermite方阵，故存在$m$阶酉方阵$U$，使得
+	\[\bar{U}'Z\bar{Z}'U=\begin{pmatrix}
+		\lambda_1^2 &&&\\
+		&\lambda_2^2&&\\
+		&&\ddots&\\
+		&&&\lambda_m^2
+	\end{pmatrix},\]
+这里$\lambda_1^2,\cdots,\lambda_m^2$是$Z\bar{Z}'$的特征根，它们都是正数.记
+\[\Lambda=\begin{pmatrix}
+	\lambda_1 &&&\\
+	&\lambda_2&&\\
+	&&\ddots&\\
+	&&&\lambda_m
+\end{pmatrix},\]
+那么$\Lambda^{-1}\bar{U}'Z\bar{Z}'U\Lambda^{-1}=I_m$.命$V_1=\Lambda^{-1}\bar{U}'Z,V_1$是$m\times n$阶矩阵，且$V_1\bar{V}_1'=I_m$.因而存在$(n-m)\times n$阶矩阵$V_2$，使得$\left(\begin{array}{c}
+	V_1\\
+	V_2
+\end{array}\right)=V$是$n$阶酉方阵.从$V\bar{V}'=I_m$即知$V_1\bar{V}_2'=O$.于是$V_1\bar{V}'=V_1\left(\bar{V}_1',\bar{V}_2'\right)=\left(I_m,O\right)$，即$\Lambda^{-1}\bar{U}'Z\bar{V}'=\left(I_m,O\right)$.
+
+由此即得
+\[Z=U(\Lambda,O)V.\]
+
+如果$Z$的秩为$r<m$，那么$Z\bar{Z}'$的秩也为$r$，故由$m$阶酉方阵$U_1$，使得
+\[\bar{U}_1' Z\bar{Z}' U_1=\begin{pmatrix}
+	A & \\
+	& O
+\end{pmatrix},\]
+这里$A$是$r$阶非异方阵.写$\bar{U}_1' Z=\left(\begin{array}{c}
+	Z_1\\
+	Z_2
+\end{array}\right)$，这里$Z_1$是$r\times n$矩阵，$Z_2$是$(m-r)\times n$矩阵，从
+\[\left(\begin{array}{c}
+	Z_1\\
+	Z_2
+\end{array}\right)\left(\bar{Z}_1',\bar{Z}_2'\right)=\begin{pmatrix}
+A & \\
+  & O
+\end{pmatrix},\]
+即得$Z_2\bar{Z}_2'=O$，因而$Z_2=O$.于是$\bar{U}_1'Z=\left(\begin{array}{c}
+	Z_1\\
+	O
+\end{array}\right)$.这说明$Z_1$的秩也是$r$.根据上面已经证明的，存在$r$阶酉方阵$U_2$，及$n$阶酉方阵$V$，使得$Z_1=U_2(\Lambda,O)V$，其中
+\[\Lambda=\begin{pmatrix}
+	\lambda_1 & &\\
+	&\ddots&\\
+	&&\lambda_r
+\end{pmatrix},\]
+$\lambda_1^2,\cdots,\lambda_r^2$是$Z_1\bar{Z}_1'$的特征根，由此可得
+\begin{align*}
+	Z
+	&=U_1\left(\begin{array}{c}
+		Z_1\\
+		O
+	\end{array}\right)=U_1\left(\begin{array}{c}
+	U_2(\Lambda,O)V\\
+	O
+\end{array}\right)\\
+&=U_1\begin{pmatrix}
+	U_2 & O\\
+	O & I_{m-r}
+\end{pmatrix}\begin{pmatrix}
+\Lambda & O\\
+O&O
+\end{pmatrix}V.
+\end{align*}
+命$U=U_1\begin{pmatrix}
+	U_2 & O\\
+	O & I_{m-r}
+\end{pmatrix}$，则$Z=U\begin{pmatrix}
+\Lambda & O\\
+O & O
+\end{pmatrix}V$.
+\end{proof}
+现在回到$m<n$的情形,设$Z\in R_{\text{\uppercase\expandafter{\romannumeral1}}}(m,n),Z$是$m\times n$阶矩阵.在$Z$上添加$n-m$行$0$，使其成为$n$阶方阵$Z_1=\left(\begin{array}{c}
+	Z\\
+	O
+\end{array}\right)$，用$m=n$时的Cauchy核\eqref{eq4.4.3}得
+\begin{equation}\label{eq4.4.4}
+	f(Z_1)=\frac1{V(\mathscr{U}_n)}\int_{\mathscr{U}_n}\frac{f(U_n)\dif\mu(U_n)}{\det\left(I-Z_1\bar{U}_n'\right)^n},
+\end{equation}
+这里$\mathscr{U}_n$是$n$阶酉方阵的全体\index[symbolindex]{\textbf{其它符号}! $\mathscr{U}_n$}.现在$R_{\text{\uppercase\expandafter{\romannumeral1}}}(m,n)$的特征边界为
+\[S_{\text{\uppercase\expandafter{\romannumeral1}}}(m,n)\index[symbolindex]{\textbf{点集}!$S_{\text{\uppercase\expandafter{\romannumeral1}}}(m$，$n)$}=\left\{U_{mn}\colon U_{mn}\text{为$m\times n$矩阵满足}U_{mn}\bar{U}_{mn}'=I_m\right\}.\]
+对于$U_{mn}\in S_{\text{\uppercase\expandafter{\romannumeral1}}}(m,n)$，存在$(n-m)\times n$阶矩阵$V$，使得$\left(\begin{array}{c}
+	U_{mn}\\
+	V
+\end{array}\right)$为酉方阵$U_n$，因而
+\[\left(\begin{array}{c}
+	U_{mn}\\
+	V
+\end{array}\right)\left(\bar{U}_{mn}',\bar{V}'\right)=\begin{pmatrix}
+U_{mn}\bar{U}_{mn}' & U_{mn}\bar{V}'\\
+V\bar{U}_{mn}' & V\bar{V}'
+\end{pmatrix}=I_n,\]
+所以
+\begin{equation}\label{eq4.4.5}
+	V\bar{V}'=I_{n-m},\quad U_{mn}\bar{V}'=O.
+\end{equation}
+于是
+\[I-Z_1\bar{U}_n'=\begin{pmatrix}
+	I-Z\bar{U}_{mn}' & -Z\bar{V}'\\
+	O & I
+\end{pmatrix},\]
+\[\det\left(I-Z_1\bar{U}_n'\right)=\det\left(I-Z\bar{U}_{mn}'\right).\]
+如果记
+\[E=\left\{V\colon V\text{是$(n-m)\times n$矩阵},V\bar{V}'=I_{n-m},U_{mn}\bar{V}'=O\right\}.\]
+那么\eqref{eq4.4.4}便可写成
+\begin{align}\label{eq4.4.6}
+	f\left(\begin{array}{c}
+		Z\\
+		O
+	\end{array}\right)
+&=\frac1{V(\mathscr{U}_n)}\int_{S_{\text{\uppercase\expandafter{\romannumeral1}}}}\int_E \frac{f\left(\begin{array}{c}
+		U_{mn}\\
+		V
+	\end{array}\right)\dif\mu(U_{mn})\dif\mu(V)}{\det\left(I-Z\bar{U}_{mn}'\right)^n}\notag\\
+&=\frac1{V(\mathscr{U}_n)}\int_{S_{\text{\uppercase\expandafter{\romannumeral1}}}}\frac{\dif\mu(U_{mn})}{\det\left(I-Z\bar{U}_{mn}'\right)^n}\int_E f\left(\begin{array}{c}
+	U_{mn}\\
+	V
+\end{array}\right)\dif\mu(V).
+\end{align}
+对固定的$U_{mn}$，由引理\ref{lem4.4.1}，存在$m$阶酉方阵$P$和$n$阶酉方阵$Q$，使得$PU_{mn}Q=(\Lambda,O)$.但因$U_{mn}\bar{U}_{mn}'=I_m$，所以$\Lambda=I_m$.因而有
+\begin{equation}\label{eq4.4.7}
+	PU_{mn}Q=(I_{m},O).
+\end{equation}
+由\eqref{eq4.4.5}和\eqref{eq4.4.7}可得
+\[(I_m,O)\bar{Q}'\bar{V}'=PU_{mn}Q\bar{Q}'\bar{V}'=PU_{mn}\bar{V}'=O,\]
+取共轭转置得
+\begin{equation}\label{eq4.4.8}
+	VQ\left(\begin{array}{c}
+		I_{m}\\
+		O
+	\end{array}\right)=O.
+\end{equation}
+如果记$VQ=(A,W)$，这里$A$是$(n-m)\times m$阶矩阵，$W$是$n-m$阶方阵，那么从\eqref{eq4.4.8}得$A=O$，因而$VQ=(O,W)$，即$V=(O,W)\bar{Q}'$.由于
+\[I_{n-m}=VQ\bar{Q}'\bar{V}'=(O,W)\left(\begin{array}{c}
+	O\\
+	\bar{W}'
+\end{array}\right)=W\bar{W}',\]
+所以$W$是$n-m$阶酉方阵，而且从$V\bar{V}'=W\bar{W}'$知道$\dif\mu(V)=\dif\mu(W)$.于是\eqref{eq4.4.6}中关于$V$在$E$上的积分可写为
+\begin{equation}\label{eq4.4.9}
+	\int_E f\left(\begin{array}{c}
+		U_{mn}\\
+		V
+	\end{array}\right)\dif\mu(V)=\int_{\mathscr{U}_{n-m}}f\left(\begin{array}{c}
+	U_{mn}\\
+	(O,W)\bar{Q}'
+\end{array}\right)\dif\mu(W).
+\end{equation}
+如果记$g(W)=f\left(\begin{array}{c}
+	U_{mn}\\
+	(O,W)\bar{Q}'
+\end{array}\right)$，并用$S_{\text{\uppercase\expandafter{\romannumeral1}}}(n-m,n-m)$上的Cauchy积分公式得
+\[g(W)=\frac1{V(\mathscr{U}_{n-m})}\int_{\mathscr{U}_{n-m}}\frac{g(U_{n-m})\dif\mu(U_{n-m})}{\det\left(I-W\bar{U}_{n-m}'\right)^{n-m}},\]
+令$W=O$得
+\begin{align}\label{eq4.4.10}
+	g(O)
+	&=\frac1{V(\mathscr{U}_{n-m})}\int_{\mathscr{U}_{n-m}} g(U_{n-m})\dif\mu(U_{n-m})\notag\\
+	&=\frac1{V(\mathscr{U}_{n-m})}\int_{\mathscr{U}_{n-m}} g(W)\dif\mu(W)\notag\\
+	&=\frac1{V(\mathscr{U}_{n-m})}\int_{\mathscr{U}_{n-m}}f\left(\begin{array}{c}
+		U_{mn}\\
+		(O,W)\bar{Q}'
+	\end{array}\right)\dif\mu(W).
+\end{align}
+综合\eqref{eq4.4.9}，\eqref{eq4.4.10}和\eqref{eq4.4.6}，即得
+\[f\left(\begin{array}{c}
+	Z\\
+	O
+\end{array}\right)=\frac{V(\mathscr{U}_{n-m})}{V(\mathscr{U}_n)}\int_{S_{\text{\uppercase\expandafter{\romannumeral1}}}}\frac{f\left(\begin{array}{c}
+	U_{mn}\\
+	O
+\end{array}\right)\dif\mu(U_{mn})}{\det\left(I-Z\bar{U}_{mn}'\right)^n}.\]
+由\cite{华罗庚1958多复变数函数论中的典型域的调和分析}知道，
+\[\frac{V(\mathscr{U}_{n-m})}{V(\mathscr{U}_n)}=\left(V(S_{\text{\uppercase\expandafter{\romannumeral1}}})\right)^{-1}.\]
+于是得
+\begin{theorem}\label{thm4.4.2}
+	$R_{\text{\uppercase\expandafter{\romannumeral1}}}(m,n)(m\le n)$的Cauchy核为
+	\[C_{\text{\uppercase\expandafter{\romannumeral1}}}(Z,U_{mn})=\frac1{V(S_{\text{\uppercase\expandafter{\romannumeral1}}})}\frac1{\det\left(I-Z\bar{U}_{mn}'\right)^n}.\]
+\end{theorem}
+当$m=1$时，我们再一次得到\ref{sec4.1}球上的Cauchy积分公式\index{C!Cauchy积分公式}.
+
+用类似的方法可得其它三类典型域的Cauchy核\index{C!Cauchy核}如下：
+\[C_{\text{\uppercase\expandafter{\romannumeral2}}}(Z,U)=\frac1{V(S_{\text{\uppercase\expandafter{\romannumeral2}}})}\frac1{\det\left(I-Z\bar{U}\right)^{\frac12 (n+1)}},\]
+\[C_{\text{\uppercase\expandafter{\romannumeral3}}}(Z,U)=\frac1{V(S_{\text{\uppercase\expandafter{\romannumeral3}}})}\frac1{\det\left(I+Z\bar{U}\right)^{\frac12 (n-1)}},\]
+\[C_{\text{\uppercase\expandafter{\romannumeral4}}}(z,\theta,x)=\frac1{V(S_{\text{\uppercase\expandafter{\romannumeral4}}})}\frac1{\left[(x-\ee^{\ii\theta}z)(x-\ee^{-\ii\theta}z)'\right]^{\frac12 n}}.\]
+这里四类典型域的特征边界及其体积$V(S_{\text{\uppercase\expandafter{\romannumeral1}}}),V(S_{\text{\uppercase\expandafter{\romannumeral2}}}),V(S_{\text{\uppercase\expandafter{\romannumeral3}}}),V(S_{\text{\uppercase\expandafter{\romannumeral4}}})$\index[symbolindex]{\textbf{点集}!$S_{\text{\uppercase\expandafter{\romannumeral2}}}(n)$}\index[symbolindex]{\textbf{点集}!$S_{\text{\uppercase\expandafter{\romannumeral3}}}(n)$}\index[symbolindex]{\textbf{点集}!$S_{\text{\uppercase\expandafter{\romannumeral4}}}(n)$}华罗庚教授都已算出，具体数值参见\cite{华罗庚1958多复变数函数论中的典型域的调和分析}.
+\section{微分形式和Stokes公式\label{sec4.5}}
+上面讨论的是全纯函数的Cauchy积分公式，下面要讨论连续可微函数的Cauchy积分公式，讨论的主要工具是微积分基本定理在高维的推广——Stokes公式.
+\subsection{$\MR^N$中的微分形式\index{W!微分形式}}
+先从微分形式谈起.
+
+设$\Omega$是$\MR^N$中的开集，$E$是$\MR^k$中的域. $\Omega$中的$k$维曲面\index{K!$k$维曲面}是指一个$C^1$映射$\Phi\colon E\to\Omega,E$称为这曲面的\textbf{参数域}\index{C!参数域}. $\Omega$中的$k\ge1$阶\textbf{微分形式}\index{K!$k$阶微分形式}（简称为$\Omega$上的$k$形式）
+\begin{equation}\label{eq4.5.1}
+	\alpha=\sum a_{i_1\cdots i_k}(x)\dx_{i_1}\wedge\cdots\wedge\dx_{i_k},
+\end{equation}
+（这里指标$i_1,\cdots,i_k$都独立地从$1$变到$N$）是定义在$\Omega$中所有$k$维曲面所成的集合上的一个泛函，对于每一个$\Omega$中的$k$维曲面$\Phi,\alpha$对应着如下一个数：
+\[\int_\Phi \alpha=\int_E \sum a_{i_1\cdots i_k}\left(\Phi(u)\right)\det\pp{(x_{i_1},\cdots,x_{i_k})}{(u_1,\cdots,u_k)}\dif m(u),\]
+这里$\dif m(u)$是$E$上的Lebesgue测度.如果记$\Phi=(\varphi_1,\varphi_2,\cdots,\varphi_N)$，那么上面的Jacobi矩阵
+\[\pp{(x_{i_1},\cdots,x_{i_k})}{(u_1,\cdots,u_k)}=\pp{(\varphi_{i_1},\cdots,\varphi_{i_k})}{(u_1,\cdots,u_k)}.\]
+\eqref{eq4.5.1}中的系数$a_{i_1\cdots i_k}$是$\Omega$中的连续函数.
+
+$\Omega$中的$0$形式定义为$C(\Omega)$中的函数.
+
+如果对每一个$\Omega$中的$k$维曲面$\Phi$都有
+\[\int_\Phi\alpha=\int_\Phi\beta,\]
+就称这两个$k$形式$\alpha$和$\beta$是相等的.
+
+熟知交换行列式的两行将改变行列式的符号，由此得下面的反交换律
+\[\dx_i\wedge\dx_j=-\dx_j\wedge\dx_i,\]
+特别有
+\[\dx_i\wedge\dx_i=0,1\le i\le N.\]
+由此可知，在\eqref{eq4.5.1}中若出现$i_k=i_l,k\neq l$，则该项为$0$，其余的项可按照反交换律把它排成足标呈递增的的形状.于是$\alpha$可写成
+\begin{equation}\label{eq4.5.2}
+	\alpha=\sum_I A_I(x)\dx_I,
+\end{equation}
+这里$I=(i_1,\cdots,i_k),i_1<i_2<\cdots<i_k$，求和对所有这种形状的多重指标进行，其中
+\[\dx_I=\dx_{i_1}\wedge\cdots\wedge\dx_{i_k}\]
+称为\textbf{基本的$k$形式}\index{K!$k$阶微分形式!基本的$k$形式}\index[symbolindex]{\textbf{微分形式}!$\dx_I$}.\eqref{eq4.5.2}称为$\alpha$的标准表示.容易看出，每个$k$形式的标准表示是唯一的.特别$\alpha=0$的充分必要条件是\eqref{eq4.5.2}中每个$A_I=0$.
+
+设$\alpha=\sum\limits_I A_I(x)\dx_I,\beta=\sum\limits_I B_I(x)\dx_I$是两个$k$形式，$\lambda$是一个复数，定义
+\[\alpha+\beta=\sum_I (A_I(x)+B_I(x))\dx_I,\quad\lambda\alpha=\sum_I\lambda A_I(x)\dx_I.\]
+设$\dx_I,\dx_J$分别是基本的$k$形式和$l$形式，它们的乘积定义为$k+l$阶形式
+\[\dx_I\wedge\dx_J=\dx_{i_1}\wedge\cdots\wedge\dx_{i_k}\wedge\dx_{j_1}\wedge\cdots\wedge\dx_{j_l}.\]
+如果$I,J$中有公共的元素，那么$\dx_I\wedge\dx_J=0$.否则就可把它排成递增的次序.现设
+\[\alpha=\sum_I A_I(x)\dx_I,\beta=\sum_J B_J(x)\dx_J\]
+分别是$k$阶形式$\alpha$和$l$阶形式$\beta$的标准表示，定义
+\[\alpha\wedge\beta=\sum_{I,J}A_I(x)B_J(x)\dx_I\wedge\dx_J.\]
+直接验证知道，它们满足结合律和分配律，但不满足交换律.交换的结果是
+\[\alpha\wedge\beta=(-1)^{kl}\beta\wedge\alpha.\]
+函数$f$和$k$形式$\alpha$的乘积定义为$k$形式
+\[f\alpha=\alpha f=\sum_I f(x)A_I(x)\dx_I.\]
+
+现在定义微分算子$\dif$\index{W!微分算子$\dif$}对$k$形式的作用.对$0$形式$f$，定义
+\begin{equation}\label{eq4.5.2'}
+	\dif f=\sum_{j=1}^{N}\pp{f}{x_j}\dx_j,\tag{$\ref{eq4.5.2}'$}
+\end{equation}
+它是一个$1$形式.设$\alpha=\sum\limits_I A_I(x)\dx_I$是$k$形式$\alpha$的标准表示，定义
+\[\dif\alpha=\sum_I \dif A_I\wedge\dx_I=\sum_I \sum_{j=1}^{N}\pp{A_I}{x_j}\dx_j\wedge\dx_I,\]
+它是一个$k+1$形式.
+\begin{prop}\label{prop4.5.1}
+	(1)\hypertarget{4.5.1}{}
+	设$\alpha$和$\beta$分别是$C^1$的$k$形式和$l$形式，那么
+	\begin{equation}\label{eq4.5.3}
+		\dif(\alpha\wedge\beta)=(\dif\alpha)\wedge\beta+(-1)^k\alpha\wedge(\dif\beta);
+	\end{equation}
+	
+	(2)\hypertarget{4.5.1}{}
+	如果$\alpha$是$C^2$的$k$形式，那么$\dif^2\alpha=0$.
+\end{prop}
+\begin{proof}
+	\hyperlink{4.5.1}{(1)}
+	只要对特殊情况
+	\[\alpha=f\dx_I,\quad \beta=g\dx_J\]
+	证明就够了，这里$f,g\in C^1,\dx_I,\dx_J$分别是$k$阶和$l$阶的基本形式.于是$\alpha\wedge\beta=fg\dx_I\wedge\dx_J$.不妨假定$I$和$J$没有公共元素，否则\hyperlink{4.5.1}{(1)}中的三项都等于$0$.写$\dx_I\wedge\dx_J=\varepsilon\dx_M$，其中$\dx_M=\dx_{m_1}\wedge\cdots\wedge\dx_{m_{k+l}},\varepsilon$取$+1$或$-1$取决于置换$\binom{i_1\cdots i_k\, j_1\cdots j_l}{m_1\cdots m_k\cdots m_{k+l}}$是偶的或是奇的.于是
+	\begin{align*}
+		\dif(\alpha\wedge\beta)
+		&=\dif(fg\varepsilon\dx_M)=\varepsilon(f\dif g+g\dif f)\wedge\dx_M\\
+		&=(g\dif f+f\dif g)\wedge\dx_I\wedge\dx_J.
+	\end{align*}
+因为$\dif g$是一个$1$形式，$\dx_I$是一个$k$形式，所以
+\[\dif g\wedge\dx_I=(-1)^k \dx_I\wedge\dif g.\]
+因为
+\begin{align*}
+	\dif(\alpha\wedge\beta)
+	&=g\dif f\wedge\dx_I\wedge\dx_J+f\dif g\wedge\dx_I\wedge\dx_J\\
+	&=(\dif f\wedge\dx_I)\wedge(g\dx_J)+(-1)^k(f\dx_I)\wedge(\dif g\wedge\dx_J)\\
+	&=(\dif\alpha)\wedge\beta+(-1)^k\alpha\wedge\dif\beta.
+\end{align*}
+
+\hyperlink{4.5.1}{(2)}
+先对$0$形式$f$来证明$\dif^2 f=0$.
+\[\dif^2 f=\dif(\dif f)=\dif\left(\sum_{j=1}^{N}\pp{f}{x_j}\dx_j\right)=\sum_{i,j=1}^{N}\pppp{f}{x_i}{x_j}\dx_i\wedge\dx_j,\]
+因为$\pppp{f}{x_i}{x_j}=\pppp{f}{x_j}{x_i},\dx_i\wedge\dx_j=-\dx_j\wedge\dx_i$，所以$\dif^2 f=0$.
+
+现设$\alpha=f\dx_I$，那么$\dif\alpha=\dif f\wedge\dx_I$，由于$\dif(\dx_I)=0$，利用\eqref{eq4.5.3}便得
+\[\dif^2\alpha=\dif(\dif f\wedge\dx_I)=\dif^2 f\wedge\dx_I-\dif f\wedge\dif(\dx_I)=0.\]
+命题证毕.
+\end{proof}
+现在讨论微分形式的坐标变换.是$\Omega_1$和$\Omega_2$分别是$\MR^N$和$\MR^M$中的开集，$T\colon\Omega_1\to\Omega_2$是一个$C^1$映射，它的分量记为$t_1,\cdots,t_M$，即$T=(t_1,\cdots,t_M)$，每个$t_j(j=1,\cdots,M)$是$\Omega_1$中的$C^1$函数.如果$\alpha=\sum\limits_I A_I(y)\dy_I$是$\Omega_2$中的$k$形式，那么
+\[\alpha_T=\sum_I A_I(T(x))\dif t_I\]
+是$\Omega_1$中的$k$形式，其中$\dif t_I=\dif t_{i_1}\wedge\cdots\wedge\dif t_{i_k}$，每个$\dif t_i$都是$1$形式：
+\[\dif t_i=\sum_{j=1}^{N}\pp{t_i}{x_j}\dx_j,\quad 1\le i\le M.\]
+称$\alpha_T$\index[symbolindex]{\textbf{微分形式}!$\alpha_T$}为$\alpha$的\textbf{拉回}\index{W!微分形式的拉回}.微分形式$\alpha$和它的拉回$\alpha_T$间有下列重要性质.
+\begin{prop}\label{prop4.5.2}
+	设$\alpha$和$\beta$分别是$\Omega_2$中的$k$形式和$l$形式，那么
+	
+	(1)\hypertarget{4.5.2}{}
+	若$k=l$，则$(\alpha+\beta)_T=\alpha_T+\beta_T$；
+	
+	(2)\hypertarget{4.5.2}{}
+	$(\alpha\wedge\beta)_T=\alpha_T\wedge\beta_T$；
+	
+	(3)\hypertarget{4.5.2}{}
+	设$\Omega_0\subset\MR^P$，如果$S\colon\Omega_0\to\Omega_1$是$C^1$映射，那么
+	\[(\alpha_T)_S=\alpha_{TS};\]
+	
+	(4)\hypertarget{4.5.2}{}
+	若$\alpha$是$C^1$类$k$形式，$T$是$C^2$类映射，则
+	\[(\dif\alpha)_T=\dif(\alpha_T).\]
+\end{prop}
+\begin{proof}
+	\hyperlink{4.5.2}{(1)}和\hyperlink{4.5.2}{(2)}是显然的.现在证明\hyperlink{4.5.2}{(3)}.从\hyperlink{4.5.2}{(2)}知道，$((\alpha\wedge\beta)_T)_S=(\alpha_T\wedge\beta_T)_S=(\alpha_T)_S\wedge(\beta_T)_S,(\alpha\wedge\beta)_{TS}=\alpha_TS\wedge\beta_{TS}$.这就是说，如果\hyperlink{4.5.2}{(3)}对$\alpha$和$\beta$成立，那么也对$\alpha\wedge\beta$成立.由于每个形式是由$0$形式和$1$形式经过加法和乘法构成，而对$0$形式\hyperlink{4.5.2}{(3)}显然成立，因而只须对$1$形式证明\hyperlink{4.5.2}{(3)}就行了.分别用$x,y,z$记$\Omega_0,\Omega_1,\Omega_2$中的元素，记
+	\[T=(t_1,\cdots,t_M),\quad S=(s_1,\cdots,s_N),\quad TS=(r_1,\cdots,r_M).\]
+	现设$\alpha=\dif z_q,q=1,\cdots,M$是$\Omega_2$中的$1$形式，那么
+	\begin{align*}
+		\alpha_T
+		&=\dif t_q=\sum_{j=1}^{N}\pp{t_q}{y_j}\dy_j,\\
+		(\alpha_T)_S
+		&=\sum_{j=1}^{N}\pp{t_q}{y_j}(S(x))\dif s_j=\sum_{j=1}^{N}\pp{t_q}{y_j}(S(x))\sum_{i=1}^{P}\pp{s_j}{x_i}\dx_i\\
+		&=\sum_{i=1}^{P}\left(\sum_{j=1}^{N}\pp{t_q}{y_j}(S(x))\pp{s_j}{x_i}(x)\right)\dx_i=\sum_{i=1}^{P}\pp{r_q}{x_i}(x)\dx_i\\
+		&=\dif r_q=\alpha_{TS}.
+	\end{align*}
+
+再证明\hyperlink{4.5.2}{(4)}.
+如果$f$是一个$0$形式，那么
+\[f_T(x)=f(Tx),\quad \dif f=\sum_{j=1}^{M}\pp{f}{y_j}\dy_j.\]
+于是
+\begin{align*}
+	\dif(f_T)
+	&=\sum_{j=1}^{N}\pp{f_T}{x_j}(x)\dx_j=\sum_{j=1}^{N}\sum_{i=1}^{M}\pp{f}{y_i}(Tx)\pp{t_i}{x_j}(x)\dx_j\\
+	&=\sum_{j=1}^{M}\pp{f}{y_i}(Tx)\dif t_i=(\dif f)_T.
+\end{align*}
+如果$\dy_I=\dy_{i_1}\wedge\cdots\wedge\dy_{i_k}$，那么$(\dy_I)_T=\dif t_{i_1}\wedge\cdots\wedge\dif t_{i_k}$.由命题\ref{prop4.5.1}\hyperlink{4.5.1}{(2)}得$\dif((\dy_I)_T)=0$.设$\alpha=f\dy_I$，则$\alpha_T=f_T(x)(\dy_I)_T$.由命题\ref{prop4.5.1}\hyperlink{4.5.1}{(1)}得
+\begin{align*}
+	\dif(\alpha_T)
+	&=\dif(f_T)\wedge(\dy_I)_T+f_T\wedge\dif((\dy_I)_T)\\
+	&=(\dif f)_T\wedge(\dy_I)_T=(\dif f\wedge\dy_I)_T=(\dif\alpha)_T.\qedhere
+\end{align*}
+\end{proof}
+\begin{prop}\label{prop4.5.3}
+	(1)\hypertarget{4.5.3}{}
+	设$\beta$是$\Omega_1\subset \MR^N$中的$k$形式，$\Phi$是$\Omega_1$中的$k$维曲面，其参数域为$E\subset\MR^k$，记$I\colon E\to\MR^k$为恒等映射，它是以$E$为参数域的一个$k$维曲面，那么
+	\begin{equation}\label{eq4.5.4}
+		\int_\Phi \beta=\int_I \beta_\Phi;
+	\end{equation}
+
+(2)\hypertarget{4.5.3}{}
+设$\Omega_1,\Omega_2$分别为$\MR^N$和$\MR^M$中的域，$T\colon\Omega_1\to\Omega_2$是$C^1$类映射，$\alpha$是$\Omega_2$中的$k$形式，$\Phi$是$\Omega_1$中的$k$维曲面，那么
+\begin{equation}\label{eq4.5.5}
+	\int_\Phi \alpha_T=\int_{T\Phi}\alpha.
+\end{equation}
+\end{prop}
+\begin{proof}
+	\hyperlink{4.5.3}{(1)}
+	只要讨论
+	\[\beta=f(x)\dx_{i_1}\wedge\cdots\wedge\dx_{i_k}\]
+	这种$k$形式就够了.设$\Phi=(\varphi_1,\cdots,\varphi_N)$，那么
+	\[\beta_\Phi=f(\Phi(u))\dif\varphi_{i_1}\wedge\cdots\wedge\dif\varphi_{i_k}.\]
+	如果我们能证明
+	\begin{equation}\label{eq4.5.6}
+		\dif\varphi_{i_1}\wedge\cdots\wedge\dif\varphi_{i_k}=\det\pp{(\varphi_{i_1},\cdots,\varphi_{i_k})}{(u_1,\cdots,u_k)}\dif u_1\wedge\cdots\wedge\dif u_k,
+	\end{equation}
+那么一方面
+\[\int_\Phi \beta=\int_E f(\Phi(u))\det\pp{(\varphi_{i_1},\cdots,\varphi_{i_k})}{(u_1,\cdots,u_k)}\dif m(u).\]
+另一方面，由于\eqref{eq4.5.6}
+\[\beta_\Phi=f(\Phi(u))\det\pp{(\varphi_{i_1},\cdots,\varphi_{i_k})}{(u_1,\cdots,u_k)}\dif u_1\wedge\cdots\wedge\dif u_k,\]
+所以
+\[\int_I \beta_\Phi=\int_E f(\Phi(u))\det\pp{(\varphi_{i_1},\cdots,\varphi_{i_k})}{(u_1,\cdots,u_k)}\dif m(u),\]
+这是因为$I$是恒等映射.因而\eqref{eq4.5.4}成立.现在来证明\eqref{eq4.5.6}.因为$\dif\varphi_{i_p}=\sum\limits_{q=1}^k \pp{\varphi_{i_p}}{u_q}\dif u_q$，若记$a_{pq}=\pp{\varphi_{i_p}}{u_q}$，那么
+\[\dif\varphi_{i_1}\wedge\cdots\wedge\dif\varphi_{i_k}=\sum_{q_1,\cdots,q_k=1}^k a_{1q_1}\cdots a_{kq_k}\dif u_{q_1}\wedge\cdots\wedge u_{q_k}.\]
+由反交换关系可得
+\[\dif u_{q_1}\wedge\cdots\wedge u_{q_k}=\tau(q_1\cdots q_k)\dif u_1\wedge\cdots\wedge \dif u_k,\]
+这里如果$(q_1\cdots q_k)$是偶排列，$\tau(q_1\cdots q_k)=1$；如果$(q_1\cdots q_k)$是奇排列，$\tau(q_1\cdots q_k)=-1$.于是
+\begin{align*}
+	\dif\varphi_{i_1}\wedge\cdots\wedge\dif\varphi_{i_k}
+	&=\sum_{q_1,\cdots,q_k=1}^k \tau(q_1\cdots q_k)a_{1q_1}\cdots a_{kq_k}\dif u_1\wedge\cdots\wedge u_k\\
+	&=\det\pp{(\varphi_{i_1},\cdots,\varphi_{i_k})}{(u_1,\cdots,u_k)}\dif u_1\wedge\cdots\wedge\dif u_k.
+\end{align*}
+这就证明了\eqref{eq4.5.6}.
+	
+	\hyperlink{4.5.3}{(2)}
+	现在来证明\eqref{eq4.5.5}就很简单了.命$\beta=\alpha_T$，先用\eqref{eq4.5.4}，再用命题\ref{prop4.5.2}\hyperlink{4.5.2}{(3)}，最后再用\eqref{eq4.5.4}，即得
+	\[\int_\Phi \alpha_T=\int_\Phi \beta=\int_I \beta_\Phi=\int_I (\alpha_T)_\Phi=\int_I \alpha_{T\Phi}=\int_{T\Phi}\alpha.\qedhere\]
+\end{proof}
+前面我们把$k$形式定义为$k$维曲面构成的集合上的泛函，它的对应关系是通过一个积分式来表示的.实际上，我们也可反过来看，把$k$维曲面定义成由$k$形式组成的集合上的泛函，它的对应关系是同一个积分式.由于数值函数是可以相加的，这样$k$维曲面的有限和也就有意义了.通常称$k$维曲面的有限和为$k$维链\index{K!$k$维链}.设$\Psi=\Phi_1+\cdots\Phi_s$是一个$k$维链，$k$形式$\alpha$在链$\Psi$上的积分定义为
+\[\int_\Psi \alpha=\sum_{j=1}^{s}\int_{\Phi_j}\alpha.\]
+
+下面是一个链的重要例子.
+
+设$E$是$\MR^k$中的闭单位立方体，即
+\[E=\{u=(u_1,\cdots,u_k)\colon 0\le u_j\le 1,j=1,\cdots,k\},\]
+记$I\colon E\to\MR^k$是恒等映射，那么$I$是$\MR^k$中以$E$为参数域的一个$k$维曲面.如果定义立方体的“面”为
+\[F_{j,0}(v)=(v_1,\cdots,v_{j-1},0,v_j,\cdots,v_{k-1}),\]
+\[F_{j,1}(v)=(v_1,\cdots,v_{j-1},1,v_j,\cdots,v_{k-1}),j=1,\cdots,k,\]
+这里$v$跑遍$\MR^{k-1}$中的单位立方体（这$2k$个“面”都是$\MR^k$中的$k-1$维曲面，参数域为$\MR^{k-1}$中的单位立方体），那么$I$的边界可以定义为
+\begin{equation}\label{eq4.5.7}
+	\partial I=\sum_{j=1}^{k}(-1)^j(F_{j,0}-F_{j,1}),
+\end{equation}
+它是$\MR^k$中的$k-1$维链.
+
+仍设$\Omega$是$\MR^N$中的开集，$\Phi\colon E\to\Omega$是一个$C^2$类的$k$维曲面，这里$E$是$\MR^k$中的单位立方体.我们定义$\Phi$的定向边界$\partial\Phi$为如下的
+\begin{equation}\label{eq4.5.8}
+	\partial\Phi=\sum_{j=1}^{k}(-1)^j(\Phi\circ F_{j,0}-\Phi\circ F_{j,1}),
+\end{equation}
+简记为$\partial\Phi=\Phi(\partial I)$.
+\subsection{Stokes公式\index{S!Stokes公式}}
+现在可以证明下面的
+\begin{theorem}[（\textbf{Stokes}）]\label{thm4.5.4}
+	设$\Omega,\Phi,\partial\Phi$均如上所述，$\alpha$是$\Omega$上的系数为$C^1$类函数的$k-1$形式，那么
+	\begin{equation}\label{eq4.5.9}
+		\int_{\partial\Phi}\alpha=\int_\Phi \dif\alpha.
+	\end{equation}
+\end{theorem}
+\begin{proof}
+	证明分为两部分.先证明
+	\begin{equation}\label{eq4.5.10}
+		\int_{\partial I}\alpha=\int_I \dif\alpha,
+	\end{equation}
+这里$I$是$\MR^k$中以$E$为参数域的$k$维曲面，$\partial I$如\eqref{eq4.5.7}所示.不妨设
+\[\alpha=f\dx_1\wedge\cdots\wedge[i]\wedge\cdots\wedge\dx_k,\]
+这里$[i]$表示缺$\dx_i$项.由于$F_{j,0}$或$F_{j,1}$表示第$j$个坐标是$0$或$1$，因此当$\alpha$中出现$\dx_j$时，$\int_{F_{j,0}}\alpha=\int_{F_{j,1}}\alpha=0$；当$\alpha$中不出现$\dx_j$时，则
+\begin{align*}
+	\int_{F_{j,0}}\alpha
+	=\int_{E_{k-1}}f(x_1,\cdots,x_{j-1},0,\cdots,x_k)\dx_1\cdots[i]\cdots\dx_k,\\
+	\int_{F_{j,1}}\alpha
+	=\int_{E_{k-1}}f(x_1,\cdots,x_{j-1},1,\cdots,x_k)\dx_1\cdots[i]\cdots\dx_k,
+\end{align*}
+这里$E_{k-1}$记$\MR^{k-1}$中的单位立方体.于是
+\begin{align*}
+	\int_{\partial I}\alpha
+	=&\sum_{j=1}^{k}(-1)^j\left(\int_{F_{j,0}}\alpha-\int_{F_{j,1}}\alpha\right)\\
+	=&(-1)^i \int_{E_{k-1}}\left\{f(x_1,\cdots,x_{i-1},0,\cdots,x_k)-\right.\\
+	&\left. f(x_1,\cdots,x_{i-1},1,\cdots,x_k)\right\}\dx_1\cdots[i]\cdots\dx_k\\
+	=&(-1)^{i+1}\int_{E_{k-1}}\left(\int_{0}^{1}\pp{f}{x_i}\dx_i\right)\dx_1\cdots[i]\cdots\dx_k\\
+	=&(-1)^{i+1}\int_{E_k} \pp{f}{x_1}\dx_1\cdots\dx_k,
+\end{align*}
+这里$E_k$记$\MR^k$中的单位立方体.另一方面
+\begin{align*}
+	\int_I \dif\alpha
+	&=\int_I \sum_{j=1}^{k}\pp{f}{x_j}\dx_j\wedge\dx_1\wedge\cdots\wedge[i]\wedge\cdots\wedge\dx_k\\
+	&=\int_I \pp{f}{x_i}\dx_i\wedge\dx_1\wedge\cdots\wedge[i]\wedge\cdots\wedge\dx_k\\
+	&=(-1)^{i-1}\int_I \pp{f}{x_i}\dx_1\wedge\cdots\wedge\dx_k\\
+	&=(-1)^{i-1}\int_{E_k}\pp{f}{x_i}\dx_1\cdots\dx_k,
+\end{align*}
+由此即得\eqref{eq4.5.10}.现在很容易证明\eqref{eq4.5.9}.因为$\Phi=\Phi\circ I$，先用命题\ref{prop4.5.3}\hyperlink{4.5.3}{(2)}，再用等式\eqref{eq4.5.10}，命题\ref{prop4.5.2}\hyperlink{4.5.2}{(4)}，最后再用命题\ref{prop4.5.3}\hyperlink{4.5.3}{(2)}即得
+\[\int_{\partial\Phi}\alpha=\int_{\Phi(\partial I)}\alpha=\int_{\partial I}\alpha_\Phi=\int_I \dif(\alpha_\Phi)=\int_I (\dif\alpha)_\Phi=\int_{\Phi\circ I}\dif\alpha=\int_\Phi \dif\alpha.\qedhere\]
+\end{proof}
+在应用Stokes公式时，经常遇到的是$k=N$的情形，适当选择参数域后，$\Phi$就是域$\Omega$.由于在定理\ref{thm4.5.4}中要求$\Phi$是$C^2$的，在现在的情况下，相应地要求域$\Omega$的边界$\partial\Omega$是$C^2$的.
+
+所谓域$\Omega$的边界$\partial\Omega$是$C^j(j\ge1)$的，是指存在一个$C^j$函数$\rho\colon\MR^N\to\MR$，使得
+\[\Omega=\{x\in\MR^N\colon\rho(x)<0\},\]
+而且$\grad\rho(x)\neq0$对所有$x\in\partial\Omega$成立.$\rho$称为域$\Omega$的\textbf{定义函数}（关于可微边界及定义函数的确切含义，请参阅定义\ref{def5.3.1}）.
+
+例如$\MR^3$中的单位球，它的定义函数就是
+\[\rho(x,y,z)=x^2+y^2+z^2-1.\]
+也可以把它看成$\MR^3$中的三维曲面$\Phi\colon E\to\MR^3,\Phi$的表达式是
+\[x=r\sin\theta\cos\varphi,\quad y=r\sin\theta\sin\varphi,\quad z=r\cos\theta,\]
+相应的参数域$E$是
+\[0\le r<1,\quad 0\le\varphi\le2\pi,\quad 0\le\theta\le\pi.\]
+
+在这种情况下，Stokes定理可以表达为
+\begin{theorem}\label{thm4.5.5}
+	设$\Omega$是$\MR^N$中的域，具有$C^2$定向边界$\partial\Omega$.如果$\alpha$是系数为$C^1$函数的$\bar{\Omega}$上的$N-1$形式，那么
+	\[\int_{\partial\Omega}\alpha=\int_\Omega \dif\alpha.\]
+\end{theorem}
+\subsection{$\MC^n$中的微分形式}
+作为本节的结尾，我们讨论$\MC^n$中的微分形式.把$\MC^n$看成$\MR^{2n}$，上面讨论的一切对$\MC^n$都有效，但$\MC^n$的复结构本身又有一些特殊的性质.在$\MC^n$中取实坐标$x_1,y_1,\cdots,x_n$，\\
+$y_n$，把算子$\dif$作用到函数$z_j=x_j+\ii y_j,\bar{z}_j=x_j-\ii y_j$可得如下的$1$形式
+\[\dif z_j=\dx_j+\ii\dy_j,\quad \dif\bar{z}_j=\dx_j-\ii\dy_j,\quad j=1,\cdots,n.\]
+于是
+\[\dx_j=\frac12(\dz_j+\dzz_j)\quad \dy_j=\frac1{2\ii}(\dz_j-\dzz_j).\]
+因此$\MC^n$中的$k$形式可表为
+\[f=\sum_{|I|=p}\sum_{|J|=q}f_{IJ}(z)\dz_I\wedge\dzz_J.\]
+这里$I=(i_1,\cdots,i_p),J=(j_1,\cdots,j_q),1\le i_1<i_2<\cdots<i_p\le n,1\le j_1<j_2<\cdots<j_q\le n,p+q=k,\dz_I=\dz_{i_1}\wedge\cdots\wedge\dz_{i_p},\dzz_J=\dzz_{j_1}\wedge\cdots\wedge\dzz_{j_q},f_{IJ}$都是函数.这样一个微分形式称为是$(p,q)$型的\index{W!微分形式!$(p$，$q)$微分形式}.
+
+设$\varphi$是一个函数，由\eqref{eq4.5.2'}得
+\[\dif\varphi=\sum_{j=1}^{n}\left(\pp{\varphi}{x_j}\dx_j+\pp{\varphi}{y_j}\dy_j\right).\]
+如果利用\ref{sec1.1}\eqref{eq1.1.3}引进的算子$\pp{}{z_j}$和$\pp{}{\bar{z}_j}$，那么上式也可写成
+\begin{equation}\label{eq4.5.11}
+	\dif\varphi=\sum_{j=1}^{n}\left(\pp{\varphi}{z_j}\dz_j+\pp{\varphi}{\bar{z}_j}\dzz_j\right).
+\end{equation}
+引进算子$\partial$和$\bar{\partial}$如下\index{S!算子$\partial$和$\bar{\partial}$}
+\[\partial\varphi=\sum_{j=1}^{n}\pp{\varphi}{z_j}\dz_j,\quad \bar{\partial}\varphi=\sum_{j=1}^{n}\pp{\varphi}{\bar{z}_j}\dzz_j.\]
+由\eqref{eq4.5.11}可得$\dif$和$\partial,\bar{\partial}$的关系\index[symbolindex]{\textbf{导数}!$\partial$，$\bar{\partial}$，$\dif$}
+\[\dif=\partial+\bar{\partial}.\]
+
+设$f=\sum\limits_{I,J}f_{IJ}\dz_I\wedge\dzz_J$是一个$(p,q)$形式，那么
+\[\dif f=\sum_{I,J}(\dif f_{IJ})\wedge\dz_I\wedge\dzz_J=\partial f+\bar{\partial}f,\]
+这里
+\[\partial f=\sum_{I,J}(\partial f_{IJ})\wedge\dz_I\wedge\dzz_J,\quad\bar{\partial}f=\sum_{I,J}(\bar{\partial}f_{IJ})\wedge\dz_I\wedge\dzz_J.\]
+由此可见，算子$\partial$把$(p,q)$形式映为$(p+1,q)$形式，算子$\bar{\partial}$把$(p,q)$形式映为$(p,q+1)$形式.
+
+从命题\ref{prop4.5.1}\hyperlink{4.5.1}{(2)}知道$\dif^2=0$，即$(\partial+\bar{\partial})^2=0$，即
+\begin{equation}\label{eq4.5.12}
+	\partial^2+(\partial\bar{\partial}+\bar{\partial}\partial)+\bar{\partial}^2=0.
+\end{equation}
+设$f$是$(p,q)$形式，则$\partial^2 f,(\partial\bar{\partial}+\bar{\partial}\partial)f$和$\bar{\partial}^2 f$分别是$(p+2,q),(p+1,q+1)$和$(p,q+2)$形式，所以从\eqref{eq4.5.12}得
+\begin{equation}\label{eq4.5.13}
+	\partial^2=0,\quad \partial\bar{\partial}+\bar{\partial}\partial=0,\quad \bar{\partial}^2=0.
+\end{equation}
+关于微分形式和Stokes公式的内容可参阅\cite{徐森林1981流形}和\cite{rudin1976principles}.
+\section{单位分解\label{sec4.6}}
+在讨论$\bar{\partial}$问题时，需要用到单位分解的概念.在这一节中，我们要证明这种单位分解是存在的，并由它推出一个有用的结论.
+
+先给出下面的
+\begin{definition}\label{def4.6.1}
+	设$\varphi$是$\MR^N$上的连续函数，使$\varphi$不取零值的点集的闭包称为$\varphi$的\textbf{支集}\index{H!函数的支集}，记为$\supp\varphi$\index[symbolindex]{\textbf{点集}!$\supp\varphi$}，即
+	\[\supp\varphi=\bar{\left\{x\in\MR^N\colon \varphi(x)\neq0\right\}}.\]
+\end{definition}
+\begin{definition}\label{def4.6.2}
+	设$G$是$\MR^N$中的开集，$C^k(\MR^N)$中具有紧支集\index[symbolindex]{\textbf{函数和映射}!$C^k(\MR^N)$}，且其紧支集包含在$G$中的函数的全体记为$C_0^k(G)$\index[symbolindex]{\textbf{函数和映射}!$C_0^k(G)$}，即
+	\[C_0^k(G)=\left\{\varphi\in C^k(\MR^N)\colon\supp\varphi\text{紧},\supp\varphi\subset G\right\}.\]
+\end{definition}
+我们的目的是要证明下面的.
+\begin{theorem}\label{thm4.6.3}
+	设$G$是$\MR^N$中的开集，$\{G_i\colon i\in I\}$是覆盖$G$的一个开集族，即$G=\bigcup\limits_{i\in I}G_i$，在必存在$C_0^\infty(\MR^N)$中的函数列$\{f_j\},j=1,2,\cdots$使得\index[symbolindex]{\textbf{函数和映射}!$C_0^\infty(\MR^N)$}
+	
+	(1)\hypertarget{4.6.3}{}
+	对于每个$j,\supp f_j$含于某个$G_i$之中；
+	
+	(2)\hypertarget{4.6.3}{}
+	对于任意$x\in\MR^N,0\le f_j(x)\le1,j=1,2,\cdots$；
+	
+	(3)\hypertarget{4.6.3}{}
+	对于每个$x\in G,\sum\limits_{j=1}^\infty f_j(x)=1$.
+	
+	这里的$\{f_j\}$称为从属于$\{G_i\colon i\in I\}$的一个单位分解\index{D!单位分解}.
+\end{theorem}
+为证这个定理，先证明下面两个引理.
+\begin{lemma}\label{lem4.6.4}
+	设$G$是$\MR^N$中的开集，则必存在一列子集$K_j\subset G$，满足下列条件：
+	
+	(1)\hypertarget{4.6.4}{}
+	$K_j$是紧的，$j=1,2,\cdots$；
+	
+	(2)\hypertarget{4.6.4}{}
+	$\bigcup\limits_{j=1}^\infty K_j=G$；
+	
+	(3)\hypertarget{4.6.4}{}
+	$K_j\subset\mathrm{int}(K_{j+1}),j=1,2,\cdots,\mathrm{int}(K_{j+1})$记$K_{j+1}$的内部.
+\end{lemma}
+\begin{proof}
+	命$G_\varepsilon=\{x\in G\colon d(x,\MR^N\setminus G)\ge\varepsilon\},B(0,r)$为$\MR^N$中以原点为中心，$r$为半径的球.那么$K_j=\bar{B(0,j)}\cap G_{\frac1j}$就是要找的一列子集.因为$\bar{B(0,j)}$和$G_{\frac1j}$都是闭的，所以$K_j$是闭的.因为$B(0,j)$是有界的，所以$K_j$也是有界的，因而$K_j$是紧的，而且$K_j\subset G$.为了证明\hyperlink{4.6.4}{(2)}，任取$x\in G$，当然有$\varepsilon=d(x,\MR^N\setminus G)>0$.对于这个$x$，存在充分大的$j_0$，使得$x\in\bar{B(0,j_0)}$.今取$j>\max\left\{j_0,\frac1{\varepsilon}\right\}$，当然$x\in\bar{B(0,j)}$，而且$d(x,\MR^N\setminus G)=\varepsilon>\frac1j$，即$x\in G_{\frac1j}$.因而$x\in\bar{B(0,j)}\cap G_{\frac1j}=K_j$，这就证明了$G=\bigcup\limits_{j=1}^\infty K_j$.现在证明\hyperlink{4.6.4}{(3)}，取$x_0\in K_j$，则$x_0\in G_{\frac1j}$.因而$d(x_0,\MR^N\setminus G)\ge\frac1j>\frac1{j+1}$，所以$x_0\in G_{\frac1{j+1}}$.取$x_0$的邻域
+	\[U(x_0)=\left\{x\in\MR^N\colon d(x,x_0)<\frac1j-\frac1{j+1}\right\}.\]
+	于是对于$x\in U(x_0)$有
+	\begin{align*}
+		d(x,\MR^N\setminus G)
+		&\ge d(x_0,\MR^N\setminus G)-d(x,x_0)\\
+		&\ge \frac1j-\left(\frac1j-\frac1{j+1}\right)=\frac1{j+1},
+	\end{align*}
+即$U(x_0)\subset G_{\frac1{j+1}}$，故$x_0$是$G_{\frac1{j+1}}$的内点，即$G_{\frac1j}\subset \mathrm{int}\left(G_{\frac1{j+1}}\right)$.此外，显然有$\bar{B(0,j)}\subset B(0,j+1)$，因而$K_j\subset\mathrm{int}(K_{j+1})$.
+\end{proof}
+称满足上述\hyperlink{4.6.4}{(1)}、\hyperlink{4.6.4}{(2)}、\hyperlink{4.6.4}{(3)}三条的子列序列$\{K_j\}$为$G$的一个\textbf{正规穷竭}\index{Z!正规穷竭}.
+\begin{lemma}\label{lem4.6.5}
+	设$G$是$\MR^N$中的开集，如果$G$的某些开子集$Q$组成的集族$\{Q\}$构成$G$的一个开集基，即$G$的任意开子集均可表为$\{Q\}$中某些开集的并，那么从$\{Q\}$中可以选出一列开集$Q_j,j=1,2,\cdots$使得
+	
+	(1)\hypertarget{4.6.5}{}
+	$G=\bigcup\limits_{j=1}^\infty Q_j$；
+	
+	(2)\hypertarget{4.6.5}{}
+	$G$的任意紧子集最多只与$\{Q_j\}$中的有限多个相交.
+\end{lemma}
+\begin{proof}
+	设$\{K_j\}$是$G$的一个正规穷竭，命
+	\[U_j=\mathrm{int}(K_{j+1})\setminus K_{j-2},\quad V_j=K_j\setminus\mathrm{int}(K_{j-1}),\]
+	这里记$K_0=K_{-1}$为空集.显然$U_j$是开集，$V_j$为紧集，$V_j\subset U_j$，且$G=\bigcup\limits_{j=1}^\infty V_j$.任取$a\in V_j\subset U_j$，由于$U_j$可表成$\{Q\}$中某些开集的并，故从$\{Q\}$中可选出某个$Q_{a,j}$，使得$a\in Q_{a,j}\subset U_j$.显然$\{Q_{a,j}\colon a\in V_j\}$是$V_j$的一个开覆盖，故可选出有限个$Q_{a_1,j},\cdots,Q_{a_{s_j},j}$覆盖$V_j$.于是
+	\begin{equation}\label{eq4.6.1}
+		\left\{Q_{a_k,j}\colon k=1,\cdots,s_j;j=1,2,\cdots\right\}
+	\end{equation}
+便是要找的那列开集.事实上，容易看出
+\[G=\bigcup_{j=1}^\infty \bigcup_{k=1}^{s_j} Q_{a_k,j}.\]
+从$U_j$的构造，可知$G$的任意紧集只与有限个$U_j$相交，而每个$U_j$又只与\eqref{eq4.6.1}中有限多个$Q_{a_k,j}$相交，因而每个紧集只与\eqref{eq4.6.1}中有限多个开集相交.
+\end{proof}
+\begin{proof}[\textbf{定理\ref{thm4.6.3}的证明}]
+	任取$a\in G$，则必有$G_i$使得$a\in G_i$，取充分小的$r>0$，使得$\bar{B(a,r)}\subset G_i$，这里$B(a,r)$是以$a$为中心，$r$为半径的球.命
+	\[f_{a,r}(x)=\begin{cases}
+		\exp\left(\frac1{|x-a|^2-r^2}\right), & |x-a|<r,\\
+		0, & |x-a|\ge r,
+	\end{cases}\]
+则$f_{a,r}\in C_0^\infty(\MR^N)$，且$\supp f_{a,r}=\bar{B(a,r)}\subset G_i$.让$a$跑遍$G_i,i$跑遍$I$，则$\{B(a,r)\}$构成$G$的一个开集基.于是由引理\ref{lem4.6.5}，可以选出一列球
+\begin{equation}\label{eq4.6.2}
+	B(a_j,r_j),\quad j=1,2,\cdots,
+\end{equation}
+使得$G=\bigcup\limits_{j=1}^\infty B(a_j,r_j)$，且$G$的任意紧集只与\eqref{eq4.6.2}中有限个球相交.设对应于$B(a_j,r_j)$的函数为$f_{a_j,r_j}(x)$，对于任意$x\in G$，它只属于有限多个$B(a_j,r_j)$.因此级数$\sum\limits_{j=1}^\infty f_{a_j,r_j}(x)$只有有限多项，记
+\[S(x)=\sum_{j=1}^{\infty}f_{a_j,r_j}(x)>0,\]
+则$f_j(x)=\frac1{S(x)}f_{a_j,r_j}(x)$为满足\hyperlink{4.6.3}{(1)}、\hyperlink{4.6.3}{(2)}、\hyperlink{4.6.3}{(3)}的函数列
+\end{proof}
+作为单位分解定理的一个应用，我们有
+\begin{corollary}\label{cor4.6.6}
+	设$G$是$\MR^N$中的开集，$K$是$G$的一个紧子集.设$V$是$K$的一个开邻域，$V\subset G$，那么存在函数$\varphi$，满足下列条件：
+	
+	(1)\hypertarget{4.6.6}{}
+	$\varphi\in C_0^\infty(V)$；
+	
+	(2)\hypertarget{4.6.6}{}
+	$0\le\varphi\le1$；
+	
+	(3)\hypertarget{4.6.6}{}
+	$\varphi\equiv1$在$K$的邻域中成立.
+\end{corollary}
+\begin{proof}
+	对$\varepsilon>0$，记$V(K,\varepsilon)=\{x\in\MR^N\colon d(x,K)<\varepsilon\}$.选择$\varepsilon>0$，使得$K\subset V(K,\varepsilon)\subset\bar{V}(K,2\varepsilon)\subset V$.命
+	\[G_1=V(K,2\varepsilon),\quad G_2=G\setminus\bar{V}(K,\varepsilon),\]
+	则$G_1,G_2$便构成$G$的一个开覆盖.应用定理\ref{thm4.6.3}于这一覆盖，存在从属于这一覆盖的单位分解$\{f_j\}$.命
+	\begin{equation}\label{eq4.6.3}
+		\varphi={\sum_j}'f_j,
+	\end{equation}
+这里${\sum\limits_{j}}'$表示对这样一些$j$求和，它对应的$f_j$满足$\supp f_j\subset G_1$，因而\hyperlink{4.6.6}{(1)}和\hyperlink{4.6.6}{(2)}成立.现证当$x\in V(K,\varepsilon)$时，恒有$\varphi(x)=1$.因为如果某个指标$k$不出现在\eqref{eq4.6.3}的和式中，这就意味着$\supp f_k\not\subset G_1$，因为$\supp f_k\subset G_2$，即$f_k(x)=0$.于是
+\[\varphi={\sum_j}'f_j(x)=\sum_j f_j(x)=1.\qedhere\]
+\end{proof}
+在下面的讨论中，我们将多次用到这个推论.
+\section{复平面上非齐次Cauchy积分公式及其应用\label{sec4.7}}
+\subsection{非齐次Cauchy积分公式\index{F!非齐次Cauchy积分公式}}
+前面讨论的是全纯函数的Cauchy积分公式，现在我们要建立连续可微函数的\\
+Cauchy积分公式.先从$n=1$的情形说起.
+\begin{theorem}\label{thm4.7.1}
+	设$\Omega$是$\MC$中具有光滑定向边界的有界域.如果$f\in C^1(\bar{\Omega})$，那么对每个$a\in\Omega$有
+	\begin{equation}\label{eq4.7.1}
+		f(a)=\frac1{2\pi\ii}\int_{\partial\Omega}\frac{f(\lambda)}{\lambda-a}\dif\lambda+\frac1{2\pi\ii}\int_\Omega \frac1{\lambda-a}\pp{f}{\bar{\lambda}}(\lambda)\dif\lambda\wedge\dif\bar{\lambda}.
+	\end{equation}
+\end{theorem}
+\begin{proof}
+	取$\varepsilon>0$充分小，使得
+	\[D_\varepsilon=\{\lambda\colon|\lambda-a|\le\varepsilon\}\subset\Omega.\]
+	记$\Omega_\varepsilon=\Omega\setminus D_\varepsilon$，考虑$(1,0)$形式$\beta=\frac{f(\lambda)}{\lambda-a}\dif\lambda$.因为$\frac1{\lambda-a}$在$\Omega_\varepsilon$中全纯，故在$\Omega_\varepsilon$中有
+	\[\dif\beta=\partial\beta+\bar{\partial}\beta=\frac1{\lambda-a}\pp{f}{\bar{\lambda}}\dif\bar{\lambda}\wedge\dif\lambda.\]
+	在$\Omega_\varepsilon$上用Stokes公式
+	\[\int_{\partial\Omega}\beta-\int_{\partial D_\varepsilon}\beta=\int_{\Omega_\varepsilon}\dif\beta=\int_{\Omega_\varepsilon}\frac1{\lambda-a}\pp{f}{\bar{\lambda}}\dif\bar{\lambda}\wedge\dif\lambda.\]
+	令$\varepsilon\to0,\partial D_\varepsilon$上的积分趋于$2\pi\ii f(a),\Omega_\varepsilon$上的积分收敛于$\Omega$上的积分.由此即得\eqref{eq4.7.1}.
+\end{proof}
+注意，如果$f\in H(\Omega)$，则$\pp{f}{\bar{\lambda}}=0$，\eqref{eq4.7.1}就变成大家熟知的Cauchy积分公式.
+
+公式\eqref{eq4.7.1}有时也被称为非齐次的Cauchy积分公式.
+
+这个简单的公式\eqref{eq4.7.1}在解$\bar{\partial}$问题时有重要的应用.
+
+所谓$\bar{\partial}$问题\index{P!$\bar{\partial}$问题}是指在域$\Omega$上给定一个$(p,q+1)$形式$f$，要在$\Omega$上找一个$(p,q)$形式$u$，使得
+\begin{equation}\label{eq4.7.2}
+	\bar{\partial}u=f
+\end{equation}
+在$\Omega$上成立.
+
+由\ref{sec4.5}的\eqref{eq4.5.13}知道$\bar{\partial}^2=0$，所以上述问题有解的必要条件是$\bar{\partial}f=0$.
+
+当$p=q=0$时，这个问题特别重要，这时$\bar{\partial}$问题可叙述为：给定一个$(0,1)$形式$f=\sum\limits_{j=1}^n f_j(z)\dzz_j$，满足$\bar{\partial}f=0$，要找一个函数$u$，使得$\bar{\partial}u=f$.
+\subsection{平面上$\bar{\partial}$问题的解}
+定理\ref{thm4.7.1}可以用来解决平面上的$\bar{\partial}$问题.
+\begin{theorem}\label{thm4.7.2}
+	设$\Omega$是$\MC$中的有界域，$f\in C^1(\Omega)$且有界，命
+	\begin{equation}\label{eq4.7.3}
+		u(z)=\frac1{2\pi\ii}\int_\Omega \frac{f(\lambda)}{\lambda-z}\dif\lambda\wedge\dif\bar{\lambda},z\in\Omega,
+	\end{equation}
+则$u\in C^1(\Omega)$，且$\pp{u}{\bar{z}}=f,\Vert u\Vert_\infty \le C\Vert f\Vert_\infty$，这里$C$是一个常数，$\Vert u\Vert_\infty=\sup_\Omega |u|$.
+\end{theorem}
+\begin{proof}
+	扩充$f$的定义到整个复平面上，当$z\notin\Omega$时，定义$f(z)=0$.这时\eqref{eq4.7.3}可写为
+	\[u(z)=\frac1{2\pi\ii}\int_\MC \frac{f(\lambda)}{\lambda-z}\dif\lambda\wedge\dif\bar{\lambda}=\frac1{2\pi\ii}\int_\MC f(z+\zeta)\frac{\dif\zeta\wedge\dif\bar{\zeta}}{\zeta}.\]
+	从$f\in C^1(\Omega)$即得$u\in C^1(\Omega)$.固定$a\in\Omega$，取$a$的邻域$V$，使得$a\in V\subset\Omega$.根据推论\ref{cor4.6.6}，存在$\psi\in C^\infty(\MC)$，使得$\psi|_V\equiv1$，且$\supp\psi\subset\Omega$.若记
+	\[u_1(z)=\frac1{2\pi\ii}\int_\MC \frac{(\psi f)(\lambda)}{\lambda-z}\dif\lambda\wedge\dif\bar{\lambda},\quad u_2(z)=\frac1{2\pi\ii}\int_\MC \frac{(1-\psi)f}{\lambda-z}\dif\lambda\wedge\dif\bar{\lambda},\]
+	则$u=u_1+u_2$.由于$(1-\psi)f|_V=0$，所以
+	\[u_2(z)=\frac1{2\pi\ii}\int_{\MC\setminus V}\frac{(1-\psi)f}{\lambda-z}\dif\lambda\wedge\dif\bar{\lambda}.\]
+	故当$z\in V$时，$u_2$的被积函数是$z$的全纯函数，因而$\pp{u_2}{\bar{z}}=0$.于是在$V$上有
+	\begin{align*}
+		\pp{u}{\bar{z}}
+		&=\pp{u_1}{\bar{z}}=\pp{}{\bar{z}}\left(\frac{1}{2\pi\ii}\int_\MC (\psi f)(z+\zeta)\frac{\dif\zeta\wedge\dif\bar{\zeta}}{\zeta}\right)\\
+		&=\frac1{2\pi\ii}\int_\MC \left\{\pp{(\psi f)}{\lambda}\pp{\lambda}{\bar{z}}+\pp{(\psi f)}{\bar{\lambda}}\pp{\bar{\lambda}}{\bar{z}}\right\}\frac1\zeta \dif\zeta\wedge\dif\bar{\zeta}\\
+		&=\frac1{2\pi\ii}\int_\MC \pp{(\psi f)}{\bar{\lambda}}\frac1\zeta \dif\zeta\wedge\dif\bar{\zeta}=\frac1{2\pi\ii}\int_\MC \pp{(\psi f)}{\bar{\lambda}}\frac1{\lambda-z}\dif\lambda\wedge\dif\bar{\lambda}.
+	\end{align*}
+因为$\psi f\in C^1(\MC)$，且在$\MC$中有紧支集，故由定理\ref{thm4.7.1}，上式右端等于$(\psi f)(z)=f(z)$.特别有
+\[\pp{u}{\bar{z}}(a)=f(a).\]
+因为$\Omega$是有界域，存在充分大的$R$，使以$\Omega$中任意点$z$为中心，$R$为半径的圆盘均能盖住$\Omega$.由于$\dif\lambda=\dx+\ii\dy,\dif\bar{\lambda}=\dx-\ii\dy,\dif\bar{\lambda}\wedge\dif\lambda=2\ii\dx\wedge\dy$，所以对任意$z\in\Omega$，有
+\begin{align*}
+	|u(z)|
+	&\le\frac1{2\pi}\int_\Omega \frac{|f(\lambda)|}{|\lambda-z|}\left|\dif\lambda\wedge\dif\bar{\lambda}\right|\\
+	&\le\frac{\Vert f\Vert_\infty}{\pi}\int_{B(z,R)}\frac{\dx\dy}{r}=2R\Vert f\Vert_\infty.\qedhere
+\end{align*}
+\end{proof}
+注意，因为$\bar{\partial}u=\pp{u}{\bar{\lambda}}\dif\bar{\lambda}=f\dif\bar{\lambda}$，定理\ref{thm4.7.2}中的$u$实际上给出了右端$(0,1)$形式$f\dif\bar{\lambda}$的$\bar{\partial}$问题的解，而且给出了解的一致估计\index{Y!一致估计}
+\[\Vert u\Vert_\infty\le C\Vert f\Vert_\infty.\]
+\subsection{具有紧支集的$\bar{\partial}$问题}
+定理\ref{thm4.7.1}也可用来解决高维的具有紧支集的$\bar{\partial}$问题.
+\begin{definition}\label{def4.7.3}
+	设$f=\sum\limits_{|I|=p}\sum\limits_{|J|=q}f_{IJ}(z)\dz_I\wedge\dzz_J$是$\MC^n$中的$(p,q)$形式，各系数$f_{IJ}$的支集的并称为$f$的支集\index{H!函数的支集}\index{W!微分形式的支集}，即
+	\[\supp f=\bigcup_{I,J} \supp f_{IJ}.\]
+\end{definition}
+\begin{theorem}\label{thm4.7.4}
+	设$n>1,f=\sum\limits_{j=1}^n f_j(z)\dzz_j$是$\MC^n$中的$(0,1)$形式，$f_j\in C^1(\MC^n),j=1,\cdots,n$.如果$f$具有紧支集$K$，且满足$\bar{\partial}f=0$.记$\MC^n\setminus K$的无界部分为$\Omega_0$，那么存在唯一的函数$u\in C^1(\MC^n)$，使得$\bar{\partial}u=f$，且在$\Omega_0$上有$u\equiv0$.
+\end{theorem}
+\begin{proof}
+	定义
+	\[u(z)=\frac1{2\pi\ii}\int_\MC f_1(\lambda,z_2,\cdots,z_n)\frac{\dif\lambda\wedge\dif\bar{\lambda}}{\lambda-z_1},\quad z\in\MC^n.\]
+	若记$\lambda-z_1=\zeta$，则上式也可写为
+	\[u(z)=\frac1{2\pi\ii}\int_\MC f_1(z_1+\zeta,z_2,\cdots,z_n)\frac{\dif\zeta\wedge\dif\bar{\zeta}}{\zeta}.\]
+	从$f_1\in C^1(\MC^n)$即知$u\in C^1(\MC^n)$.由定理\ref{thm4.7.2}知$\pp{u}{\bar{z}_1}=f_1$.现在要证明$\pp{u}{\bar{z}_j}=f_j,j=2,\cdots,n$.由于
+	\[\bar{\partial}f=\sum_{j=1}^{n}\sum_{k=1}^{n}\pp{f_j}{\bar{z}_k}\dif\bar{z}_k\wedge\dif\bar{z}_j=\sum_{k<j}\left(\pp{f_j}{\bar{z}_k}-\pp{f_k}{\bar{z}_j}\right)\dif\bar{z}_k\wedge\dif\bar{z}_j,\]
+	故从$\bar{\partial}f=0$得$\pp{f_j}{\bar{z}_k}=\pp{f_k}{\bar{z}_j}$.于是对于$j=2,\cdots,n$有
+	\begin{align*}
+		\pp{u}{\bar{z}_j}(z)
+		&=\frac1{2\pi\ii}\int_\MC \pp{f_1}{\bar{z}_j}(\lambda,z_2,\cdots,z_n)\frac{\dif\lambda\wedge\dif\bar{\lambda}}{\lambda-z_1}\\
+		&=\frac1{2\pi\ii}\int_\MC \pp{f_j}{\bar{z}_1}(\lambda,z_2,\cdots,z_n)\frac{\dif\lambda\wedge\dif\bar{\lambda}}{\lambda-z_1}=f_j(z).
+	\end{align*}
+最后的等式用了定理\ref{thm4.7.1}和$f_j$具有紧支集的条件.这就证明了$\bar{\partial}u=f$.因为$f$具有紧支集$K$，故在$\Omega_0$中当然有$f=0$，即$\bar{\partial}u=0$，所以$u$在$\Omega_0$中全纯.因为$K$是紧的，只要$|z_2|$充分大，$(z_1,z_2,\cdots,z_n)\notin K$，便有$u(z)=0$.由$\Omega_0$的连通性即知$u|_{\Omega_0}=0$.现在容易证明$u$的唯一性.如果有另一个$u_1$也满足$\bar{\partial}u_1=f$，那么$\bar{\partial}(u-u_1)=0$，即$u-u_1\in H(\MC^n)$，由于在$\Omega_0$上有$u-u_1=0$，由唯一性定理得$u\equiv u_1$在$\MC^n$上成立，唯一性得证.
+\end{proof}
+\subsection{Hartogs全纯开拓定理\index{D!定理!Hartogs全纯开拓定理}}
+定理\ref{thm4.7.4}可以用来证明下列重要的Hartogs全纯开拓定理.
+\begin{theorem}\label{thm4.7.5}
+	设$n>1,\Omega$是$\MC^n$中的域，$K$是$\Omega$中的紧集.如果$\Omega\setminus K$是连通的，那么每一个$\Omega\setminus K$上的全纯函数都可全纯开拓到$\Omega$上去.
+\end{theorem}
+\begin{proof}
+	设$f$是$\Omega\setminus K$上的一个全纯函数.取$K$的邻域$V$，使得$K\subset V\subset\Omega$.由推论\ref{cor4.6.6}，存在$\varphi\in C^\infty(\MC^n)$，使得$\varphi|_V\equiv1$，且$\varphi$有紧支集$K_0\subset\Omega$.定义
+	\[g=\begin{cases}
+		f\bar{\partial}\varphi, &\text{在$\Omega\setminus K$上},\\
+		0, &\MC^n\text{的其余处}.
+	\end{cases}\]
+因为在$V$及$\MC^n\setminus K_0$上$\bar{\partial}\varphi=0$，所以$g$是一个系数为$C^\infty$函数且支集落在$K_0$中的$\MC^n$中的$(0,1)$形式.设$\Omega_0$是$\MC^n\setminus K_0$的无界部分，那么由定理\ref{thm4.7.4}，$\bar{\partial}$问题$\bar{\partial}u=g$的解$u$在$\Omega_0$上恒等于$0$.定义
+\[h=\begin{cases}
+	u+(1-\varphi)f, &\text{在$\Omega\setminus K$上},\\
+	u, &\text{在$V$上}.
+\end{cases}\]
+因为$\varphi|_V=1$，所以$h$是在$\Omega$上有定义的函数，且$h\in C^\infty(\Omega)$.事实上，$h\in H(\Omega)$，这是因为在$V$上，$\bar{\partial}h=\bar{\partial}u=g=0$，而在$\Omega\setminus K$上，因为$f\in H(\Omega\setminus K)$，所以
+\[\bar{\partial}h=\bar{\partial}u-\bar{\partial}(\varphi f)=\bar{\partial}u-f\bar{\partial}\varphi=g-g=0.\]
+现在证明$h|_{\Omega\setminus K}=f$.因为在$\Omega_0\cap(\Omega\setminus K)$上，$u=0,\varphi=0$，所以$h=f$.因为$K$是紧的，所以$\Omega_0\cap(\Omega\setminus K)$不空，且$\Omega\setminus K$是连通的.由全纯函数的唯一性定理知道$h=f$在$\Omega\setminus K$上成立.
+\end{proof}
+定理\ref{thm4.7.5}是推论\ref{cor1.3.6}的推广.粗略地说，当$n>1$时，有“洞”的域上的全纯函数都能全纯开拓到“洞”中去；或者说全纯域是没有“洞”的.这是多复变和单复变的一个重要区别.
+\section{Bochner-Martinelli积分公式\label{sec4.8.1}}
+现在我们要把定理\ref{thm4.7.1}推广到$\MC^n$，建立$\MC^n$中连续可微函数的Cauchy积分公式.
+
+设$z,\zeta$是$\MC^n$中两个点，我们称\index[symbolindex]{\textbf{微分形式}!$K_{B\text{-}M}(z$，$\zeta)$}
+\[K_{B\text{-}M}(z,\zeta)=\frac{\sum\limits_{j=1}^n (-1)^{j-1}\left(\bar{\zeta}_j-\bar{z}_j\right)\dif\bar{\zeta}_1\wedge\cdots\wedge[j]\wedge\cdots\wedge\dif\bar{\zeta}_n\wedge\dif\zeta_1\wedge\cdots\wedge\dif\zeta_n}{|\zeta-z|^{2n}}\]
+为 Bochner-Martinelli 核\index{B!Bochner-Martinelli核}，它是关于$\zeta$的$(n,n-1)$形式.
+
+当$n=1$时，
+\[K_{B\text{-}M}(z,\zeta)=\frac{\left(\bar{\zeta}-\bar{z}\right)\dif\zeta}{|\zeta-z|^2}=\frac{\dif\zeta}{\zeta-z},\]
+它就是单复变中的 Cauchy 核.
+
+引进记号\index[symbolindex]{\textbf{微分形式}!$\omega(z)$}\index[symbolindex]{\textbf{微分形式}!$\eta(z)$}
+\[\omega(z)=\dz_1\wedge\cdots\wedge\dz_n,\]
+\[\eta(z)=\sum_{j=1}^{n}(-1)^{j-1}z_j\dz_1\wedge\cdots\wedge[j]\wedge\cdots\wedge\dz_n,\]
+那么 Bochner-Martinelli 核可简单地表为
+\[K_{B\text{-}M}(z,\zeta)=\frac{\eta\left(\bar{\zeta}-\bar{z}\right)\wedge\omega(\zeta)}{|\zeta-z|^{2n}},\]
+这里$\eta$有时也称为\textbf{Leray形式}\index{L!Leray形式}.
+\begin{lemma}\label{lem4.8.1}
+	设$a\in\MC^n$，对任意$\varepsilon>0$有
+	\begin{equation}\label{eq4.8.1}
+		\int_{\partial B(a,\varepsilon)} \eta\left(\bar{\zeta}\right)\wedge\omega(\zeta)=n c_n \varepsilon^{2n},
+	\end{equation}
+这里$c_n=(-1)^{\frac{n(n-1)}{2}}\frac{(2\pi\ii)^n}{n!}$.
+\end{lemma}
+\begin{proof}
+	容易知道
+	\begin{align*}
+		\bar{\partial}\eta\left(\bar{\zeta}\right)
+		&=\sum_{j=1}^{n}(-1)^{j-1}\sum_{k=1}^{n}\pp{\bar{\zeta}_j}{\bar{\zeta}_k}\dif\bar{\zeta}_k\wedge\dif\bar{\zeta}_1\wedge\cdots\wedge[j]\wedge\cdots\wedge\dif\bar{\zeta}_n\\
+		&=\sum_{j=1}^{n}(-1)^{j-1}\dif\bar{\zeta}_j\wedge\dif\bar{\zeta}_1\wedge\cdots\wedge[j]\wedge\cdots\wedge\dif\bar{\zeta}_n\\
+		&=n\omega\left(\bar{\zeta}\right).
+	\end{align*}
+利用Stokes公式即得
+\begin{align}\label{eq4.8.2}
+	\int_{\partial B(a,\varepsilon)} \eta\left(\bar{\zeta}\right)\wedge\omega(\zeta)
+	&=\int_{B(a,\varepsilon)}\dif\left(\eta\left(\bar{\zeta}\right)\wedge\omega(\zeta)\right)=\int_{B(a,\varepsilon)}\bar{\partial}\left(\eta\left(\bar{\zeta}\right)\wedge\omega(\zeta)\right)\notag\\
+	&=\int_{B(a,\varepsilon)}\left(\bar{\partial}\eta\left(\bar{\zeta}\right)\right)\wedge\omega(\zeta)=n\int_{B(a,\varepsilon)}\omega\left(\bar{\zeta}\right)\wedge\omega(\zeta).
+\end{align}
+由于$\dif\bar{\zeta}_j\wedge\dif\zeta_j=(\dx_j-\ii\dy_j)\wedge(\dx_j+\ii\dy_j)=2\ii\dx_j\wedge\dy_j$，所以
+\begin{align*}
+	\omega\left(\bar{\zeta}\right)\wedge\omega(\zeta)
+	&=\dif\bar{\zeta}_1\wedge\cdots\wedge\dif\bar{\zeta}_n\wedge\dif\zeta_1\wedge\cdots\wedge\dif\zeta_n\\
+	&=(-1)^{\frac{n(n-1)}{2}}(2\ii)^n \dx_1\wedge\dy_1\wedge\cdots\wedge\dx_n\wedge\dy_n\\
+	&=(-1)^{\frac{n(n-1)}{2}}(2\ii)^n\dif m_{2n},
+\end{align*}
+这里$\dif m_{2n}$是$\MR^{2n}$中的Lebesgue测度.于是
+\begin{align*}
+	\int_{B(a,\varepsilon)}\omega\left(\bar{\zeta}\right)\wedge\omega(\zeta)
+	&=(-1)^{\frac{n(n-1)}{2}}(2\ii)^n m_{2n}(B(a,\varepsilon))\\
+	&=(-1)^{\frac{n(n-1)}{2}}\frac{(2\pi\ii)^n}{n!}\varepsilon^{2n}=c_n \varepsilon^{2n}.
+\end{align*}
+把它代入\eqref{eq4.8.2}即得\eqref{eq4.8.1}.
+\end{proof}
+下面是定理\ref{thm4.7.1}在$\MC^n$中的推广.
+\begin{theorem}\label{thm4.8.2}
+	设$\Omega$是$\MC^n$中具有$C^2$边界的有界域.如果$f\in C^1(\bar{\Omega})$，那么对每个$z\in\Omega$有
+	\begin{equation}\label{eq4.8.3}
+		f(z)=\frac1{nc_n}\int_{\partial\Omega}f(\zeta)K_{B\text{-}M}(z,\zeta)-\frac1{nc_n}\int_\Omega \left(\bar{\partial}f\right)\wedge K_{B\text{-}M}(z,\zeta).
+	\end{equation}
+\eqref{eq4.8.3}式称为Bochner-Martinelli积分公式\index{B!Bochner-Martinelli积分公式}.
+\end{theorem}
+\begin{proof}
+	证明的方法和证明定理\ref{thm4.7.1}完全一样.固定$z\in\Omega$，取充分小的$\varepsilon>0$，使得$\bar{B}(z,\varepsilon)\subset\Omega$.记$\Omega_\varepsilon=\Omega\setminus\bar{B}(z,\varepsilon)$.容易知道$\partial\Omega_\varepsilon=\partial\Omega\cup\partial B(z,\varepsilon)$.对形式$f(\zeta)K_{B\text{-}M}(z,\zeta)$在$\Omega_\varepsilon$上用Stokes公式得
+	\begin{equation}\label{eq4.8.4}
+		\int_{\partial\Omega}f(\zeta)K_{B\text{-}M}(z,\zeta)-\int_{\partial B(z,\varepsilon)}f(\zeta)K_{B\text{-}M}(z,\zeta)=\int_{\Omega_\varepsilon}\dif\left(f(\zeta)K_{B\text{-}M}(z,\zeta)\right).
+	\end{equation}
+现在来计算\eqref{eq4.8.4}右端的被积形式.由于$K_{B\text{-}M}(z,\zeta)$是$(n,n-1)$形式，所以\\
+$\partial\left(f(\zeta)K_{B\text{-}M}(z,\zeta)\right)=0$，因而有
+\begin{align*}
+	\dif\left(f(\zeta)K_{B\text{-}M}(z,\zeta)\right)
+	&=\bar{\partial}\left(f(\zeta)K_{B\text{-}M}(z,\zeta)\right)\\
+	&=\bar{\partial}f(\zeta)\wedge K_{B\text{-}M}(z,\zeta)+f(\zeta)\bar{\partial} K_{B\text{-}M}(z,\zeta).
+\end{align*}
+但
+\begin{align*}
+	\bar{\partial}K_{B\text{-}M}(z,\zeta)
+	&=\sum_{j=1}^{n}\pp{}{\bar{\zeta}_j} \left(\frac{\bar{\zeta}_j-\bar{z}_j}{|\zeta-z|^{2n}}\right)\omega\left(\bar{\zeta}\right)\wedge\omega(\zeta)\\
+	&=\sum_{j=1}^{n}\left\{\frac1{|\zeta-z|^{2n}}-n\frac{\left|\bar{\zeta}_j-\bar{z}_j\right|^2}{|\zeta-z|^{2n+2}}\right\}\omega\left(\bar{\zeta}\right)\wedge\omega(\zeta)\\
+	&=\left(\frac{n}{|\zeta-z|^{2n}}-\frac{n}{|\zeta-z|^{2n}}\right)\omega\left(\bar{\zeta}\right)\wedge\omega(\zeta)=0,
+\end{align*}
+所以$\dif\left(f(\zeta)K_{B\text{-}M}(z,\zeta)\right)=\bar{\partial}f(\zeta)\wedge K_{B\text{-}M}(z,\zeta)$，代入\eqref{eq4.8.4}得
+\begin{equation}\label{eq4.8.5}
+	\int_{\partial\Omega}f(\zeta)K_{B\text{-}M}(z,\zeta)-\int_{\partial B(z,\varepsilon)}f(\zeta)K_{B\text{-}M}(z,\zeta)=\int_{\Omega_\varepsilon}\bar{\partial}f(\zeta)\wedge K_{B\text{-}M}(z,\zeta).
+\end{equation}
+写
+\begin{align*}
+	\int_{\partial B(z,\varepsilon)}f(\zeta)K_{B\text{-}M}(z,\zeta)
+	=&f(z)\int_{\partial B(z,\varepsilon)}\frac{\eta\left(\bar{\zeta}-\bar{z}\right)\wedge\omega(\zeta)}{|\zeta-z|^{2n}}+\\
+	&\int_{\partial B(z,\varepsilon)} \frac{(f(\zeta)-f(z))\eta\left(\bar{\zeta}-\bar{z}\right)\wedge\omega(\zeta)}{|\zeta-z|^{2n}}\\
+	=& I_1+I_2.
+\end{align*}
+由引理\ref{lem4.8.1}知道$I_1=nc_nf(z)$.由于$f\in C^1(\bar{\Omega})$，所以当$\zeta\in\partial B(z,\varepsilon)$时，有$|f(\zeta)-f(z)|\le C|\zeta-z|$，仍由引理\ref{lem4.8.1}得$\lim\limits_{\varepsilon\to0}I_2=0$.因而
+\begin{equation}\label{eq4.8.6}
+	\lim_{\varepsilon\to0}\int_{\partial B(z,\varepsilon)}f(\zeta) K_{B\text{-}M}(z,\zeta)=nc_n f(z).
+\end{equation}
+在\eqref{eq4.8.5}中命$\varepsilon\to0$，利用\eqref{eq4.8.6}即得\eqref{eq4.8.3}.
+\end{proof}
+\begin{corollary}\label{cor4.8.3}
+	设$\Omega$是$\MC^n$中具有$C^2$边界的有界域，如果$f\in C^1(\bar{\Omega})\cap H(\Omega)$，那么对每个$z\in\Omega$有
+	\begin{equation}\label{eq4.8.7}
+		f(z)=\frac1{nc_n}\int_{\partial\Omega}f(\zeta)K_{B\text{-}M}(z,\zeta).
+	\end{equation}
+\end{corollary}
+\begin{proof}
+	因为$f\in C^1(\bar{\Omega})$，所以\eqref{eq4.8.3}成立.又因$f\in H(\Omega),\bar{\partial}f=0$，从\eqref{eq4.8.3}即得\eqref{eq4.8.7}.
+\end{proof}
+公式\eqref{eq4.8.7}用全纯函数的边界值表示了全纯函数，而且积分核$K_{B\text{-}M}(z,\zeta)$不因域而异，它是一种Cauchy积分公式.但是它有一个明显的缺点，核$K_{B\text{-}M}(z,\zeta)$不是$z$的全纯函数.因此对一般的$f$而言，积分
+\[\int_{\partial\Omega}f(\zeta)K_{B\text{-}M}(z,\zeta)\]
+不一定表示全纯函数，这是和单复变的Cauchy积分公式的最大的不同之处.正是由于这个原因，公式\eqref{eq4.8.3}不能用来解$n>1$时的$\bar{\partial}$问题.我们将在\ref{sec6.7.1}中对这一问题作进一步的讨论.
+\section*{注记}\addcontentsline{toc}{section}{注记}
+Cauchy积分公式在复分析中的重要性是众所周知的.在多复变中，它首先被推广到多圆柱（定理\ref{thm1.2.1}）.正如我们在第一章中已经看到的，用这个公式可以把单复变中很多结果推广到多复变.这是一个比较老的结果.但人们很长时间不知道球的Cauchy积分公式是什么样子，直到20世纪50年代中期，华罗庚教授\cite{华罗庚1958多复变数函数论中的典型域的调和分析}得到了四类典型域的Cauchy积分公式，作为第一类典型域的一种特殊情形，人们才得到球的Cauchy积分公式，1964年Bungart\cite{bungart1964boundary}又重新独立地得到了这个公式.这里的证明选自\cite{rudin2008function}.华罗庚教授通过群表示论的方法，直接计算出四类典型域上的完备正交系，同时又在它们的特征边界上规范正交，从而获得四类典型域的Cauchy核.关于连续可微函数的Cauchy积分公式（定理\ref{thm4.7.1}）首先是由D. Pompeiu在1912年证明的，但长期以来似乎被人们遗忘了.直到1950年，A. Grothendieck和P. Dulbeault用它来解单复变的非齐次Cauchy-Riemann方程（即定理\ref{thm4.7.2}）时，人们才发现它的意义所在.关于Hartogs全纯开拓定理（定理\ref{thm4.7.5}），我们这里采用的是L. Ehrenpreis\cite{ehrenpreis1961new}的证明，他用具有紧支集的$\bar{\partial}$问题的解（定理\ref{thm4.7.4}）作为工具.这一定理的其它证明方法可参见\cite[p.159]{range1998holomorphic}或\cite{bochner1943analytic}.Pompeiu公式（定理\ref{thm4.7.1}）在$\MC^n$中的推广，即Bochner-Martinelli积分公式首先于1938年由E. Martinelli得到，后于1941年又被S. Bochner重新独立地得到.这个公式的最大缺点，正如正文中所指出的那样，它的积分核不是$z$的全纯函数.在\ref{sec6.7.1}中我们将要通过它来构造一个对$z$全纯的核，也只有在构造出全纯的核之后，积分表示理论才能成为多复变中一个有用的工具.这一点在第\ref{chap6}章中将得到进一步的阐明.关于积分表示的理论可参阅\cite{range1998holomorphic}.

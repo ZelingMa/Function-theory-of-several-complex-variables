@@ -1,0 +1,1042 @@
+\chapter{正交系与Bergman核函数\label{chap3}}
+
+\section{$(L^2\cap H)(\Omega)$上存在完备的正交系\label{sec3.1}}
+\subsection{$(L^2\cap H)(\Omega)$是Hilbert空间}
+设$\Omega$是$\MC^n$中的有界域，$\Omega$上平方可积函数的全体记为$L^2(\Omega)$\index[symbolindex]{\textbf{函数和映射}!$L^2(\Omega)$}，即
+\[L^2(\Omega)=\left\{f\colon\Omega\to\MC\colon\int\limits_{\Omega}|f(z)|^2\dif m_{2n}(z)<\infty\right\}.\]
+$L^2(\Omega)$中全纯函数的全体记为$(L^2\cap H)(\Omega)$\index[symbolindex]{\textbf{函数和映射}!$(L^2\cap H)(\Omega)$}，它是本章的主要研究对象.我们将首先证明$(L^2\cap H)(\Omega)$是一个Hilbert空间，它存在着可数的规范正交系.在此基础上，我们引进$\Omega$的Bergman核函数的概念，它是研究有界域的重要工具.
+
+设$\Omega$是$\MC^n$中的有界域.在$(L^2\cap H)(\Omega)$中引进内积如下：\index[symbolindex]{\textbf{其它符号}! $\langle f$，$g\rangle$}
+\[\langle f,g\rangle=\int\limits_{\Omega}f(z)\bar{g}(z)\dif m_{2n}(z),\quad f,g\in(L^2\cap H)(\Omega),\]
+$\Vert f\Vert=\sqrt{\langle f,f\rangle}$是$f$的范数.容易用常规的方法证明它是一个内积空间.为了证明它是一个Hilbert空间，我们先证明下面的引理.这个引理虽然简单，但在本章的讨论中却起着关键作用.
+\begin{lemma}\label{lem3.1.1}
+	任意固定$a\in\Omega$及以$a$为中心的闭多圆柱$\bar{P}(a,r)=\{z\in\MC^n\colon|z_j-a_j|\le r_j,j=1,\cdots,n\}\subset\Omega$，则对任意$f\in(L^2\cap H)(\Omega)$，有下列估计
+	\begin{equation}\label{eq3.1.1}
+		|f(a)|\le\frac1{\pi^{\frac{n}2}r_1\cdots r_n}\Vert f\Vert.
+	\end{equation}
+\end{lemma}
+\begin{proof}
+	不妨设$a=0$.命$f$在$P(0,r)$中的展开式为
+	\[f(z)=\sum_\alpha c_\alpha z^\alpha,\quad c_\alpha=\frac{(\DD^\alpha f)(0)}{\alpha!}.\]
+	于是
+	\begin{align*}
+		\Vert f\Vert^2
+		&=\int\limits_\Omega |f(z)|^2 \dif m_{2n}(z)\ge\int\limits_P |f(z)|^2 \dif m_{2n}(z)\\
+		&=\sum_{\alpha,\beta} c_\alpha \bar{c}_\beta\int\limits_P z^\alpha\bar{z}^\beta \dif m_{2n}(z)\\
+		&=\sum_\alpha |c_\alpha|^2 \int\limits_P |z^\alpha|^2 \dif m_{2n}(z)\ge |c_0|^2 \pi^n r_1^2\cdots r_n^2.
+	\end{align*}
+由此即得\eqref{eq3.1.1}.
+\end{proof}
+从这简单的引理\ref{lem3.1.1}可得一有用的推论.
+\begin{corollary}\label{cor3.1.2}
+	设$K$是$\Omega$中的紧集，则存在一个与$K$有关的常数$M(K)$，使得对任意$f\in(L^2\cap H)(\Omega)$及$z\in K$有
+	\[|f(z)|\le M(K)\Vert f\Vert.\]
+\end{corollary}
+\begin{proof}
+	设$d(\partial\Omega,\bar{K})=\rho$，取$r=\frac{\rho}{2\sqrt{n}}$，则对每个$z\in\bar{K},\bar{P}(z,r)=\{|\zeta_j-z_j|<r,j=1,\cdots,n\}\subset\Omega$.事实上，当$\zeta\in\bar{P}(z,r)$时，$|\zeta_j-z_j|<\frac{\rho}{2\sqrt{n}},j=1,\cdots,n$.所以
+	\[|\zeta-z|^2=\sum_{j=1}^{n}|\zeta_j-z_j|^2<\sum_{j=1}^{n}\frac{\rho^2}{4n}=\frac{\rho^2}{4},\]
+	即$\zeta\in\Omega$.由引理\ref{lem3.1.1}即得
+	\[|f(z)|\le\frac{1}{\pi^{\frac n2}r^n}\Vert f\Vert.\qedhere\]
+\end{proof}
+现在可以证明
+\begin{theorem}\label{thm3.1.3}
+	$(L^2\cap H)(\Omega)$是一个Hilbert空间.
+\end{theorem}
+\begin{proof}
+	只要证明$(L^2\cap H)(\Omega)$是完备的.任取$(L^2\cap H)(\Omega)$中一个Cauchy序列$\{f_k\}$，设$K$是$\Omega$中任意一个紧集，由推论\ref{cor3.1.2}，存在$M(K)$，使得
+	\[|f_l(z)-f_k(z)|\le M(K)\Vert f_l-f_k\Vert<M(K)\varepsilon\]
+	对每个$z\in K$及充分大的$l,k$成立，因而$\{f_k\}$在$\Omega$中内闭一致收敛，设其收敛到$f$，则$f\in H(\Omega)$.根据Fatou引理，
+	\[\int\limits_\Omega\varliminf_{k\to\infty}|f_l-f_k|^2\dif m_{2n}\le\lim_{k\to\infty}\int\limits_\Omega|f_l-f_k|^2\dif m_{2n}=\lim_{k\to\infty}\Vert f_l-f_k\Vert^2,\]
+	这说明当$l$充分大时，$\int\limits_\Omega|f_l-f|^2\dif m_{2n}<\varepsilon$，即当$l\to\infty$时，$\Vert f_l-f\Vert\to0$.因而$\{f_k\}$按范数收敛于$f$.今取定$l$，使$\Vert f_l-f\Vert<1$，于是
+	\[\Vert f\Vert\le\Vert f_l-f\Vert+\Vert f_l\Vert\le1+\Vert f_l\Vert<+\infty.\]
+	由此即知$f\in(L^2\cap H)(\Omega)$，所以$(L^2\cap H)(\Omega)$是完备的，因而是Hilbert空间.
+\end{proof}
+\subsection{$(L^2\cap H)(\Omega)$上规范正交系的基本性质}
+\begin{definition}\label{def3.1.4}
+	如果$(L^2\cap H)(\Omega)$中一列函数$\{\varphi_k\}$满足$\langle\varphi_k,\varphi_l\rangle=\delta_{kl}$，就称$\{\varphi_k\}$为$(L^2\cap H)(\Omega)$中一组\textbf{规范正交系}\index{G!规范正交系}.
+\end{definition}
+设$\{\varphi_k\}$是$(L^2\cap H)(\Omega)$中一组规范正交系，$f$是$(L^2\cap H)(\Omega)$中任一函数，命$a_k=\int\limits_\Omega f(z)\bar{\varphi}_k(z)\dif m_{2n}(z)=\langle f,\varphi_k\rangle$.称$\sum\limits_{k=1}^\infty a_k\varphi_k(z)$为$f$对正交系$\{\varphi_k\}$的Fourier级数.容易证明下面的Bessel不等式\index{B!Bessel不等式}.
+\begin{prop}\label{prop3.1.5}
+	设$\{\varphi_k\}$是$(L^2\cap H)(\Omega)$上的一组规范正交系，$\{a_k\}$是$f\in(L^2\cap H)(\Omega)$的Fourier系数，则
+	\[\sum_{k=1}^{\infty}|a_k|^2\le\Vert f\Vert^2.\]
+\end{prop}
+\begin{proof}
+	对任意正整数$N$，
+	\begin{align*}
+		0\le\left\Vert f-\sum_{k=1}^{N}a_k\varphi_k\right\Vert^2
+		&=\int\limits_\Omega\left(f-\sum_{k=1}^{N}a_k\varphi_k\right)\left(\bar{f}-\sum_{k=1}^{N}\bar{a}_k\bar{\varphi}_k\right)\dif m_{2n}\\
+		&=\Vert f\Vert^2-\sum_{k=1}^{N}|a_k|^2.
+	\end{align*}
+由此即得所要证的不等式.
+\end{proof}
+在进一步讨论规范正交系的性质时，我们还需要
+\begin{lemma}\label{lem3.1.6}
+	设$\{\varphi_k\}$是$(L^2\cap H)(\Omega)$中一组规范正交系，那么对任意$\Omega$中的紧集$K$，存在$M(K)$，使得对任意$z\in K$及正整数$N$，均有
+	\[\sum_{k=1}^{N}|\varphi_k(z)|^2\le M(K).\]
+\end{lemma}
+\begin{proof}
+	对于固定的$z\in K$，命$f(\zeta)=\sum\limits_{k=1}^N\bar{\varphi_k(z)}\varphi_k(\zeta)$，则
+	\begin{align*}
+		\Vert f\Vert^2
+		&=\int\limits_\Omega \left|\sum_{k=1}^{N}\bar{\varphi_k(z)}\varphi_k(\zeta)\right|^2\dif m_{2n}(\zeta)\\
+		&=\int\limits_\Omega\left(\sum_{k=1}^{N}\bar{\varphi_k(z)}\varphi_k(\zeta)\right)\left(\sum_{l=1}^{N}\varphi_l(z)\bar{\varphi_l(\zeta)}\right)\dif m_{2n}(\zeta)\\
+		&=\sum_{k,l=1}^{N}\bar{\varphi_k(z)}\varphi_l(z)\int\limits_\Omega\varphi_k(\zeta)\bar{\varphi_l(\zeta)}\dif m_{2n}(\zeta)=\sum_{k=1}^{N}|\varphi_k(z)|^2.
+	\end{align*}
+所以$f\in(L^2\cap H)(\Omega)$.于是由推论\ref{cor3.1.2}，存在$M_1(K)$，使得对任意$z\in K$有$|f(z)|\le M_1(K)\Vert f\Vert$，此即
+\begin{align*}
+	\left\{\sum_{k=1}^{N}|\varphi_k(z)|^2\right\}^2&\le M_1^2(K)\int\limits_\Omega\left|\sum_{k=1}^{N}\bar{\varphi_k(z)}\varphi_k(\zeta)\right|^2\dif m_{2n}(\zeta)\\
+	&=M_1^2(K)\sum_{k=1}^{N}|\varphi_k(z)|^2.
+\end{align*}
+让$M(K)=M_1^2(K)$，即得所要证的不等式.
+\end{proof}
+\begin{theorem}\label{thm3.1.7}
+	设$\{\varphi_k\}$是$(L^2\cap H)(\Omega)$中的一组规范正交系，$\sum\limits_{k=1}^\infty |a_k|^2<\infty$，那么
+	
+	(1)\hypertarget{3.1.7}{}
+	$\sum\limits_{k=1}^\infty a_k\varphi_k(z)$在$\Omega$上内闭一致收敛于$(L^2\cap H)(\Omega)$中的函数$g$；
+	
+	(2)\hypertarget{3.1.7}{}
+	$\lim\limits_{N\to\infty}\left\Vert g-\sum\limits_{k=1}^N a_k\varphi_k\right\Vert=0$；
+	
+	(3)\hypertarget{3.1.7}{}
+	$a_k$就是$g$的Fourier系数，即$a_k=\langle g,\varphi_k\rangle$.
+\end{theorem}
+\begin{proof}
+	\hyperlink{3.1.7}{(1)}任取$K\subset\subset\Omega$，由引理\ref{lem3.1.6}，
+	\[\left|\sum_{k=N}^{\infty}a_k\varphi_k(z)\right|^2\le\sum_{k=N}^{\infty}|a_k|^2\sum_{k=N}^{\infty}\left|\varphi_k(z)\right|^2\le M(K)\sum_{k=N}^{\infty}|a_k|^2<\varepsilon,\]
+	故$\sum\limits_{k=1}^\infty a_k\varphi_k(z)$在$\Omega$上内闭一致收敛，设其和函数为$g(z)$，则$g\in H(\Omega)$，而且
+	\begin{align*}
+		\Vert g\Vert^2
+		&=\int\limits_\Omega\lim_{N\to\infty}\left|\sum_{k=1}^{N}a_k\varphi_k(z)\right|^2\dif m_{2n}(z)\\
+		&=\lim_{k\to\infty}\int\limits_{\Omega}\left|\sum_{k=1}^{N}a_k\varphi_k(z)\right|^2\dif m_{2n}(z)=\sum_{k=1}^{\infty}|a_k|^2<\infty.
+	\end{align*}
+所以$g\in(L^2\cap H)(\Omega)$.
+
+\hyperlink{3.1.7}{(2)}
+\begin{align*}
+	\left\Vert g-\sum_{k=1}^{N}a_k\varphi_k\right\Vert^2
+	&=\int\limits_\Omega\left|g-\sum_{k=1}^{N}a_k\varphi_k\right|^2\dif m_{2n}\\
+	&=\int\limits_\Omega\lim_{l\to\infty}\left|\sum_{k=1}^{l}a_k\varphi_k(z)-\sum_{k=1}^{N}a_k\varphi_k(z)\right|^2\dif m_{2n}(z)\\
+	&\le\lim_{l\to\infty}\int\limits_\Omega\left|\sum_{k=N+1}^{l}a_k\varphi_k(z)\right|^2\dif m_{2n}(z)\\
+	&=\sum_{k=N+1}^{\infty}|a_k|^2<\varepsilon.
+\end{align*}
+即
+\[\lim_{N\to\infty}\left\Vert g-\sum_{k=1}^{N}a_k\varphi_k\right\Vert=0.\]
+
+\hyperlink{3.1.7}{(3)}
+固定$k$，取充分大的$N$，则
+\[a_k=\int\limits_\Omega\left(\sum_{l=1}^{N}a_l\varphi_l\right)\bar{\varphi}_k\dif m_{2n},\]
+所以
+\begin{align*}
+	\left|\int\limits_\Omega g\bar{\varphi}_k\dif m_{2n}-a_k\right|
+	&\le\int\limits_\Omega\left|g-\sum_{l=1}^{N}a_l\varphi_l\right|\left|\bar{\varphi}_k\right|\dif m_{2n}\\
+	&\le\left\Vert g-\sum_{l=1}^{N}a_l\varphi_l\right\Vert\Vert\varphi_k\Vert\to0,N\to\infty,
+\end{align*}
+即$a_k=\langle g,\varphi_k\rangle$.
+\end{proof}
+\begin{theorem}\label{thm3.1.8}
+	设$\{\varphi_k\}$是$(L^2\cap H)(\Omega)$上的规范正交系，则
+	\[K(z,\zeta)=\sum_{k=1}^{\infty}\varphi_k(z)\bar{\varphi_k(\zeta)}\]
+	是$(z,\bar{\zeta})\in\Omega\times\Omega$的全纯函数；当$\zeta$固定时，$K(z,\zeta)$对$z$而言属于$(L^2\cap H)(\Omega)$.
+\end{theorem}
+\begin{proof}
+	由引理\ref{lem3.1.6}，$\sum\limits_{k=1}^\infty\left|\bar{\varphi_k(\zeta)}\right|^2<\infty$，故由定理\ref{thm3.1.7}\hyperlink{3.1.7}{(1)}，对每个$\zeta,K(z,\zeta)\in(L^2\cap H)(\Omega)$.当$z$固定时，$K(z,\zeta)$是$\bar{\zeta}$的全纯函数，根据Hartogs定理，$K(z,\zeta)$是$(z,\bar{\zeta})$的全纯函数.
+\end{proof}
+\subsection{$(L^2\cap H)(\Omega)$上存在完备的规范正交系}
+下面我们要给出完备正交系\index{W!完备正交系}的概念，为此先证明
+\begin{theorem}\label{thm3.1.9}
+	设$\{\varphi_k\}$是$(L^2\cap H)(\Omega)$中的规范正交系，则从下列三条中的任意一条可推出其它两条：
+	
+	(1)\hypertarget{3.1.9}{}
+	对任意$f\in(L^2\cap H)(\Omega)$内闭一致地成立下列表达式
+	\[f(z)=\sum_{k=1}^{\infty}a_k\varphi_k(z),\quad a_k=\langle f,\varphi_k\rangle;\]
+	
+	(2)\hypertarget{3.1.9}{}
+	对任意$f\in(L^2\cap H)(\Omega)$，如果$\langle f,\varphi_k\rangle=0,k=1,2,\cdots$，那么$f\equiv0$；
+	
+	(3)\hypertarget{3.1.9}{}
+	若$a_k=\langle f,\varphi_k\rangle$，则$\sum\limits_{k=1}^\infty|a_k|^2=\Vert f\Vert^2$.
+\end{theorem}
+\begin{proof}
+	\hyperlink{3.1.9}{(1)}$\implies$\hyperlink{3.1.9}{(3)}.
+	因为$a_k=\langle f,\varphi_k\rangle$，由Bessel不等式，$\sum\limits_{k=1}^\infty |a_k|^2\le\Vert f\Vert^2$，故由定理\ref{thm3.1.7}\hyperlink{3.1.7}{(2)}，
+	\[\lim_{N\to\infty}\left\Vert f-\sum_{k=1}^{N}a_k\varphi_k\right\Vert=0.\]
+	但易知
+	\[\left\Vert f-\sum_{k=1}^{N}a_k\varphi_k\right\Vert^2=\Vert f\Vert^2-\sum_{k=1}^{N}|a_k|^2,\text{故\hyperlink{3.1.9}{(3)}成立}.\]
+	
+	\hyperlink{3.1.9}{(3)}$\implies$\hyperlink{3.1.9}{(2)}
+	显然.
+	
+	\hyperlink{3.1.9}{(2)}$\implies$\hyperlink{3.1.9}{(1)}.
+	任取$f\in(L^2\cap H)(\Omega)$，命$a_k=\langle f,\varphi_k\rangle$，则由Bessel不等式$\sum\limits_{k=1}^\infty|a_k|^2<\infty$，再由定理\ref{thm3.1.7}\hyperlink{3.1.7}{(3)}，$a_k=\langle g,\varphi_k\rangle$，于是$\langle f-g,\varphi_k\rangle=0$.由假定$f-g\equiv0$，因而
+	\[f(z)\equiv g(z)=\sum_{k=1}^{\infty}a_k\varphi_k(z).\qedhere\]
+\end{proof}
+\begin{definition}\label{def3.1.10}
+	设$\{\varphi_k\}$是$(L^2\cap H)(\Omega)$中的规范正交系，只要定理\ref{thm3.1.9}的三条性质中有一条成立，就称$\{\varphi_k\}$是完备的.
+\end{definition}
+由此可见，定理\ref{thm3.1.9}中的三条性质对完备的规范正交系都是成立的.问题是在$(L^2\cap H)(\Omega)$中是否存在这样的完备规范正交系？按照一般的Hilbert空间理论，这样的完备规范正交系是一定存在的，但不一定是可数的.Bergman首先证明$(L^2\cap H)(\Omega)$中存在着可数的完备规范正交系.
+\begin{theorem}\label{thm3.1.11}
+	$(L^2\cap H)(\Omega)$中存在可数的完备规范正交系.
+\end{theorem}
+\begin{proof}
+	通过下面三步给出定理的证明.
+	
+	（一）\hypertarget{3.1.11}{}\,
+	不妨设$0\in\Omega$.我们把多重指标$\alpha=(\alpha_1,\cdots,\alpha_n)$按下列规定来排序：
+	
+	如果$\alpha=(\alpha_1,\cdots,\alpha_n),\beta=(\beta_1,\cdots,\beta_n)$满足下面两条中的一条，就说$\alpha<\beta$：
+	
+	(a)如果$|\alpha|<|\beta|$；
+	
+	(b)当$|\alpha|=|\beta|$时，存在某个$k,1\le k\le n$，使得$\alpha_n=\beta_n,\cdots,a_{k+1}=\beta_{k+1},\alpha_k<\beta_k$.
+	
+	按照这个规定，任何两个指标都可比较大小.对于给定的$\alpha$，定义
+	\[E^\alpha=\left\{f\in(L^2\cap H)(\Omega)\colon(\DD^\alpha f)(0)=1;\text{若}\beta<\alpha,(\DD^\beta f)(0)=0\right\}.\]
+	容易看出$E^\alpha$不是空集，因为$\frac{z^\alpha}{\alpha!}\in E^\alpha$.考虑$(L^2\cap H)(\Omega)$上的泛函
+	\[F(f)=\Vert f\Vert^2,\quad f\in(L^2\cap H)(\Omega).\]
+	我们提出在$E^\alpha$中求上述泛函的极小解，即找$h\in E^\alpha$，使得$\Vert h\Vert^2=\inf\left\{\Vert f\Vert^2\colon f\in E^\alpha\right\}$.下面证明，这样的$h$是存在的.命$A=\inf\left\{\Vert f\Vert^2\colon f\in E^\alpha\right\}$，取一串$f_k\in E^\alpha$，使得$\Vert f_k\Vert^2\to A$.由推论\ref{cor3.1.2}，对任意紧集$K\subset\subset\Omega$及$z\in K$有$|f_k(z)|\le M(K)\cdot\Vert f_k\Vert$，从$\Vert f_k\Vert^2\to A$即知$\{f_k\}$是一正规族，故可选出内闭一致收敛的子列，这个子列仍记为$\{f_k\}$，设其极限函数为$h$，则$h\in H(\Omega)$.因为$f_k\in E^\alpha$，且$h$是$f_k$的内闭一致收敛的极限，所以
+	\[(\DD^\alpha h)(0)=1,(\DD^\beta h)(0)=0,\text{如果}\beta<\alpha.\]
+	另外对任意$K\subset\subset\Omega$，
+	\[\int\limits_K |h|^2\dif m_{2n}=\lim_{k\to\infty}\int\limits_K |f_k|^2\dif m_{2n}\le\lim_{k\to\infty}\int\limits_\Omega|f_k|^2\dif m_{2n}=A,\]
+	因而$\int\limits_\Omega |h|^2\dif m_{2n}\le A$，这说明$h\in E^\alpha$，且$\Vert h\Vert^2\le A$.按$A$的定义，应有$\Vert h\Vert^2\ge A$，所以$\Vert h\Vert^2=A$.从$(\DD^\alpha h)(0)=1$知道$h\not\equiv0$，因而$A>0$.从上面的讨论得知，$h$是上述问题的极小解，因为它与$E^\alpha$有关，我们把它记为$h_\alpha$.
+	
+	（二）\,
+	我们证明$\{h_\alpha\}$是$(L^2\cap H)(\Omega)$中的正交系.
+	
+	为此先证明$h_\alpha$有下列性质：如果$g\in(L^2\cap H)(\Omega)$，且对任意$\beta\le\alpha$有$(\DD^\beta g)(0)=0$，那么$\langle h_\alpha,g\rangle=0$.
+	
+	事实上，对任意复数$c$，
+	\[\DD^\alpha (h_\alpha+cg)(0)=(\DD^\alpha h_\alpha)(0)+c(\DD^\alpha g)(0)=1,\]
+	而当$\beta<\alpha$时，$\DD^\beta(h_\alpha+cg)(0)=0$，所以$h_\alpha+cg\in E^\alpha$，因而$\Vert h_\alpha+cg\Vert^2\ge A$.但另一方面，
+	\[\Vert h_\alpha+cg\Vert^2=\Vert h_\alpha\Vert^2+|c|^2\Vert g\Vert^2+c\langle g,h_\alpha\rangle+\bar{c}\langle h_\alpha,g\rangle.\]
+	若取$c=-\frac{\langle h_\alpha,g\rangle}{\Vert g\Vert^2}$，则
+	\[\Vert h_\alpha+cg\Vert^2=\Vert h_\alpha\Vert^2-\frac{\left|\langle h_\alpha,g\rangle\right|^2}{\Vert g\Vert^2}.\]
+	故若$\langle h_\alpha,g\rangle\neq0$，则从上式得$\Vert h_\alpha+cg\Vert^2<\Vert h_\alpha\Vert^2=A$，这与$\Vert h_\alpha+cg\Vert^2\ge A$相矛盾，因而$\langle h_\alpha,g\rangle=0$.
+	
+	从$h_\alpha$的这一性质，容易证明\hyperlink{3.1.11}{（一）}中极值问题的解是唯一的.因若有$h_\alpha$和$\tilde{h}_\alpha$两个解，那么
+	\[\DD^\alpha(h_\alpha-\tilde{h}_\alpha)(0)=0,\text{当}\beta<\alpha\text{时},\DD^\beta(h_\alpha-\tilde{h}_\alpha)(0)=0.\]
+	根据上面的性质，
+	\[\langle h_\alpha,h_\alpha-\tilde{h}_\alpha\rangle=\langle\tilde{h}_\alpha,h_\alpha-\tilde{h}_\alpha\rangle=0,\]
+	即$\langle h_\alpha-\tilde{h}_\alpha,h_\alpha-\tilde{h}_\alpha\rangle=\Vert h_\alpha-\tilde{h}_\alpha\Vert^2=0$，所以$h_\alpha=\tilde{h}_\alpha$.
+	
+	现在证明$\{h_\alpha\}$是$(L^2\cap H)(\Omega)$中的正交系.任取$\alpha\neq\beta$，不妨设$\alpha<\beta$，则对任意$\gamma=(\gamma_1,\cdots,\gamma_n)\le\alpha$，必有$\gamma<\beta$，因而$(\DD^\gamma h_\beta)(0)=0$，由\hyperlink{3.1.11}{（二）}中所证的性质$\langle h_\alpha,h_\beta\rangle=0$.命$\varphi_\alpha=\frac{h_\alpha}{\Vert h_\alpha\Vert}$，则$\{\varphi_\alpha\}$是$(L^2\cap H)(\Omega)$中一组规范正交系.
+	
+	（三）\hypertarget{3.1.11}{}\,
+	我们证明$\{\varphi_\alpha\}$是$(L^2\cap H)(\Omega)$中的完备的规范正交系.
+	
+	任取$f\in(L^2\cap H)(\Omega)$，让$\{a_\alpha\}$是一个待定的数列.命
+	\begin{equation}\label{eq3.1.2}
+		f_\alpha(z)=\sum_{\beta\le\alpha}a_\beta \varphi_\beta(z).
+	\end{equation}
+现选取$a_\beta$，使得当$\beta\le\alpha$时有
+\begin{equation}\label{eq3.1.3}
+	(\DD^\beta f_\alpha)(0)=(\DD^\beta f)(0).
+\end{equation}
+这是做得到的.因若把$\alpha$前面的多重指标按规定的次序排成$\beta^{(1)}<\beta^{(2)}<\cdots<\alpha$，则\eqref{eq3.1.2}可写成
+\[f_\alpha(z)=a_{\beta^{(1)}}\varphi_{\beta^{(1)}}+a_{\beta^{(2)}}\varphi_{\beta^{(2)}}+\cdots+a_\alpha\varphi_\alpha.\]
+于是根据$\varphi_\beta$的选取，即可得
+\[(\DD^{\beta^{(1)}} f_\alpha)(0)=a_{\beta^{(1)}}\frac1{\Vert h_{\beta^{(1)}}\Vert},\]
+\[(\DD^{\beta^{(2)}}f_\alpha)(0)=a_{\beta^{(1)}}(\DD^{\beta^{(2)}}\varphi_{\beta^{(1)}})(0)+a_{\beta^{(2)}}\frac1{\Vert h_{\beta^{(2)}}\Vert},\]
+\[\cdots\cdots\cdots\cdots\]
+\[(\DD^\alpha f_\alpha)(0)=a_{\beta^{(1)}}(\DD^{\alpha}\varphi_{\beta^{(1)}})(0)+\cdots+a_{\alpha}\frac1{\Vert h_{\alpha}\Vert}.\]
+因而等式\eqref{eq3.1.3}为
+\[a_{\beta^{(1)}}\frac1{\Vert h_{\beta^{(1)}}\Vert}=(\DD^{\beta^{(1)}}f)(0),\]
+\[a_{\beta^{(1)}}(\DD^{\beta^{(2)}}\varphi_{\beta^{(1)}})(0)+a_{\beta^{(2)}}\frac1{\Vert h_{\beta^{(2)}}\Vert}=(\DD^{\beta^{(2)}}f)(0),\]
+\[\cdots\cdots\cdots\cdots\]
+\[a_{\beta^{(1)}}(\DD^{\alpha}\varphi_{\beta^{(1)}})(0)+\cdots+a_{\alpha}\frac1{\Vert h_{\alpha}\Vert}=(\DD^{\alpha}f)(0).\]
+这个线性方程组的系数行列式为$(\Vert h_{\beta^{(1)}}\Vert\cdots\Vert h_\alpha\Vert)^{-1}\neq0$，因而$a_\beta(\beta\le\alpha)$是唯一确定的.现在对每个$\beta\le\alpha$有$\DD^\beta(f_\alpha-f)(0)=0$，故由\hyperlink{3.1.11}{（二）}中所证的性质，$\langle f_\alpha-f,\varphi_\alpha\rangle=0$，即$\langle f_\alpha,\varphi_\alpha\rangle=\langle f,\varphi_\alpha\rangle=a_\alpha$.这说明$a_\alpha$是$f$相对于正交系$\{\varphi_\alpha\}$的Fourier系数，$\sum\limits_\alpha|a_\alpha|^2\le\Vert f\Vert^2$.于是由定理\ref{thm3.1.7}\hyperlink{3.1.7}{(1)}，
+\[\sum_{\alpha\ge0}a_\alpha\varphi_\alpha(z)=g(z)\in(L^2\cap H)(\Omega).\]
+由\eqref{eq3.1.2}知$g(z)=\lim\limits_{|\alpha|\to\infty}f_\alpha(z)$，因而对任意多重指标$\beta$，
+\[(\DD^\beta g)(0)=\lim_{|\alpha|\to\infty} (\DD^\beta f_\alpha)(0)=(\DD^\beta f)(0).\]
+所以$f\equiv g$，即$f(z)=\sum\limits_{\alpha\ge0}a_\alpha\varphi_\alpha(z)$，这就证明了$\{\varphi_\alpha\}$是完备的.
+\end{proof}
+由于$\{\varphi_\alpha\}$是可数的，故可用一个指标来表示它.所以$(L^2\cap H)(\Omega)$上的完备规范正交系可表示为$\{\varphi_k\},k=0,1,2,\cdots$.由于$\varphi_\alpha=\frac{h_\alpha}{\Vert h_\alpha\Vert}$，根据$h_\alpha$的性质，有
+\[\DD^\beta \varphi_\alpha(0)=\begin{cases}
+	0, &\beta<\alpha,\\
+	\Vert h_\alpha\Vert^{-1}, &\beta=\alpha.
+\end{cases}\]
+因此$\{\varphi_k\}$在原点附近分别有如下的展开式
+\begin{alignat*}{6}
+	&\varphi_0(z)
+	=&a_0^{(0)}+&&a_1^{(0)}z_1+&&\cdots+a_n^{(0)}z_n+\cdots,\quad &&a_0^{(0)}\neq0,\\
+	&\varphi_1(z)
+	=&  &&a_1^{(1)}z_1+&&\cdots+a_n^{(1)}z_n+\cdots,\quad &&a_1^{(1)}\neq0,\\
+	& & && && \cdots\cdots\cdots\cdots  &&\\
+	&\varphi_n(z)
+	=& && &&a_n^{(n)}z_n+\cdots,\quad &&a_n^{(n)}\neq0,\\
+	& & && && \cdots\cdots\cdots\cdots  &&
+\end{alignat*}
+这一事实在\ref{sec3.5.1}中讨论Bergman度量方阵的正定性时将要用到.
+\section{有界圆型域的完备正交系\label{sec3.2}}
+\subsection{圆型域上全纯函数的展开式}
+上节通过一个极值问题证明，对$\MC^n$中的有界域$\Omega,(L^2\cap H)(\Omega)$中存在完备的规范正交系$\{\varphi_k\}$，但这是一个纯粹的存在性的证明，对于$\{\varphi_k\}$本身的形状一点信息也得不到.但若对域加一些限制，例如$\Omega$是圆型域或Reinhardt域，就能对$\{\varphi_k\}$的形状作出一些判断.
+\begin{theorem}\label{thm3.2.1}
+	设$\Omega$是$\MC^n$中包含原点的圆型域，那么每个$f\in H(\Omega)$必能在$\Omega$上展为齐次多项式组成的内闭一致收敛的级数
+	\[f(z)=\sum_{k=0}^{\infty} P_k(z),\]
+	其中$P_k(z)$是$k$次齐次多项式.
+\end{theorem}
+\begin{proof}
+	取$\rho>1$，记$\Omega_\rho=\frac1\rho \Omega$，那么$\Omega_\rho$也是包含原点的圆型域.考虑函数
+	\[\psi(z)=\frac1{2\pi\ii}\int\limits_{|\lambda|=\rho}f(\lambda z)\frac{\dif\lambda}{\lambda-1},\quad z\in\Omega_\rho,\quad f\in H(\Omega).\]
+	它是$\Omega_\rho$中的全纯函数.当$z$在原点的一个小邻域中，$|\lambda|\le\rho$时，$\lambda z$仍在原点的小邻域中，因此$f(\lambda z)$作为单复变数$\lambda$的函数在$|\lambda|\le\rho$中全纯，于是由单复变的Cauchy积分公式，
+	\[\frac1{2\pi\ii}\int\limits_{|\lambda|=\rho} \frac{f(\lambda z)}{\lambda-1}\dif\lambda=f(z).\]
+	因此在原点附近$\psi(z)=f(z)$.
+	
+	当$|\lambda|=\rho$时，
+	\[\frac1{\lambda-1}=\frac1\lambda \frac{1}{1-\frac1\lambda}=\sum_{k=0}^{\infty}\left(\frac1\lambda\right)^{k+1},\]
+	若命
+	\begin{equation}\label{eq3.2.1}
+		P_k(z)=\frac1{2\pi\ii}\int\limits_{|\lambda|=\rho}\frac{f(\lambda z)}{\lambda^{k+1}}\dif\lambda,
+	\end{equation}
+则
+\begin{equation}\label{eq3.2.2}
+	\psi(z)=\sum_{k=0}^{\infty}P_k(z).
+\end{equation}
+不难证明$P_k(z)$是$z$的$k$次齐次多项式.事实上，如果命$\tau=\ee^{\ii\theta}\lambda$，则
+\begin{align}\label{eq3.2.3}
+	P_k(\ee^{\ii\theta}z)
+	&=\frac1{2\pi\ii}\int\limits_{|\lambda|=\rho}\frac{f(\ee^{\ii\theta}\lambda z)}{\lambda^{k+1}}\dif\lambda\notag\\
+	&=\ee^{\ii k\theta}\left\{\frac1{2\pi\ii}\int\limits_{|\tau|=\rho}\frac{f(\tau z)}{\tau^{k+1}}\dif\tau\right\}=\ee^{\ii k\theta}P_k(z).
+\end{align}
+另一方面，由\eqref{eq3.2.1}知$P_k(z)$在原点附近全纯，故有展开式
+\[P_k(z)=\sum_{\alpha\ge0}c_\alpha z^\alpha,\]
+由\eqref{eq3.2.3}即得
+\[\sum_{\alpha\ge0}(\ee^{\ii|\alpha|\theta}-\ee^{\ii k\theta})c_\alpha z^\alpha=0.\]
+故当$|\alpha|\neq k$时，$c_\alpha=0$，因而在原点附近$P_k$是$k$次齐次多项式，但$P_k$在$\Omega_\rho$中全纯，故由唯一性定理，$P_k$是$\Omega_\rho$上的$k$次齐次多项式$P_k(z)=\sum\limits_{|\alpha|=k}c_\alpha z^\alpha$，注意到\eqref{eq3.2.2}以及$\psi$和$f$在原点附近恒等的事实，我们有
+\[c_\alpha=\frac1{\alpha!}(\DD^\alpha \psi)(0)=\frac1{\alpha!}(\DD^\alpha f)(0).\]
+这说明$\psi$的展开式和$\rho$无关，让$\rho\to1$，即知\eqref{eq3.2.2}在$\Omega$上也成立.既然$\psi$和$f$在原点附近相等，根据唯一性定理，两者在$\Omega$上相等，因而有
+\[f(z)=\sum_{k=0}^{\infty} P_k(z).\]
+由定理\ref{thm1.5.19}，它是内闭一致收敛的.
+\end{proof}
+\subsection{有界圆型域的完备正交系}
+有了上面的定理，我们就可对有界圆型域上的完备规范正交系的形状作出一些判断.
+\begin{theorem}\label{thm3.2.2}
+	设$\Omega$是$\MC^n$中包含原点的有界圆型域，那么在$(L^2\cap H)(\Omega)$中存在一组完备的规范正交系$\{\varphi_{kl}\},k=0,1,\cdots;l=1,\cdots,m_k,m_k=\binom{n+k-1}{k}$，每个$\varphi_{kl}$是$k$次齐次多项式.特别$\varphi_0=\varphi_{01}=\left(V(\Omega)\right)^{-\frac12},V(\Omega)$是域$\Omega$的体积.
+\end{theorem}
+\begin{proof}
+	考虑单项式$z^\alpha=z_1^{\alpha_1}\cdots z_n^{\alpha_n}$，满足$|\alpha|=k$的单项式共有$m_k=\binom{n+k-1}{k}$个，把这$m_k$个单项式按照某一种次序排成$m_k$维行向量
+	\[z^{[k]}=(z_1^k,z_1^{k-1}z_2,\cdots,z_n^k).\]
+	用$H_k$记方阵
+	\[H_k=\int\limits_\Omega {z^{[k]}}'\bar{z}^{[k]}\dif m_{2n}(z),\]
+	由于$\Omega$是有界域，$H_k$存在.显然$H_k$是一个Hermite方阵，而且是正定的.事实上，任取$m_k$维向量$u\neq0$，则
+	\[uH_k{\bar{u}}'=\int\limits_\Omega {uz^{[k]}}' \bar{z}^{[k]} {\bar{u}}'\dif m_{2n}(z)=\int\limits_\Omega\left|{uz^{[k]}}'\right|^2\dif m_{2n}(z)>0.\]
+	因而必有非异方阵$A_k$，使得$H_k=A_k'\bar{A}_k$，即
+	\begin{equation}\label{eq3.2.4}
+		\int\limits_\Omega\left(z^{[k]}A_k^{-1}\right)'\left(\bar{z^{[k]}A_k^{-1}}\right)\dif m_{2n}(z)=I_{m_k},
+	\end{equation}
+若命$\varphi^{[k]}=z^{[k]}A_k^{-1}$，则$\varphi^{[k]}$是$m_k$维向量.由于$z^{[k]}$的每一分量都是$z^\alpha(|\alpha|=k)$这种形状的单项式，所以$\varphi^{[k]}$的每一分量是$z_1,\cdots,z_n$的$k$次齐次多项式.若记
+\[\varphi^{[k]}=(\varphi_{k1},\cdots,\varphi_{km_k}),\]
+则由\eqref{eq3.2.4}得
+\begin{equation}\label{eq3.2.5}
+	\int\limits_\Omega \varphi_{kj}\bar{\varphi}_{kl}\dif m_{2n}(z)=\delta_{jl}.
+\end{equation}
+现在考虑函数系
+\begin{equation}\label{eq3.2.6}
+	\{\varphi_{kl}\},k=0,1,\cdots;\quad l=1,\cdots,m_k,
+\end{equation}
+其中每一个$\varphi_{kl}$是$z_1,\cdots,z_n$的$k$次齐次多项式，且由\eqref{eq3.2.5}知，当$k$固定时，所得的$m_k$个函数是规范正交的.现设$k\neq j$，由于$\Omega$是圆型的，变换$w=\ee^{\ii\theta}z$把$\Omega$变成$\Omega$，因而
+\begin{align*}
+	\int\limits_\Omega \varphi_{kl}(z)\bar{\varphi_{js}(z)}\dif m_{2n}(z)
+	&=\int\limits_\Omega \varphi_{kl}(\ee^{-\ii\theta}w)\bar{\varphi_{js}(\ee^{-\ii\theta}w)}\dif m_{2n}(w)\\
+	&=\ee^{\ii(j-k)\theta}\int\limits_\Omega\varphi_{kl}(w)\bar{\varphi_{js}(w)}\dif m_{2n}(w),
+\end{align*}
+由此得
+\[\int\limits_\Omega \varphi_{kl}(z)\bar{\varphi_{js}(z)}\dif m_{2n}(z)=0,\quad k\neq j.\]
+这就证明了\eqref{eq3.2.6}是$(L^2\cap H)(\Omega)$中一个规范正交系.特别当$k=0$，记$\varphi_0=\varphi_{01}$，它是一个常数，因为它是规范的，
+\[\int\limits_\Omega|\varphi_0|^2\dif m_{2n}=|\varphi_0|^2 V(\Omega)=1,\]
+所以可取$\varphi_0=\left(V(\Omega)\right)^{-\frac12}$.
+
+最后证明\eqref{eq3.2.6}是完备的.我们证明，如果$f\in(L^2\cap H)(\Omega)$，且$\langle f,\varphi_{kl}\rangle=0,k=0,1,\cdots;l=1,\cdots,m_k$，则$f\equiv0$.事实上，由定理\ref{thm3.2.1}，$f$在$\Omega$上能写成
+\begin{equation}\label{eq3.2.7}
+	f(z)=\sum_{k=0}^{\infty}P_k(z),\quad z\in\Omega,
+\end{equation}
+其中$P_k$是$k$次齐次多项式.因为$z^{[k]}=\varphi^{[k]}A_k$，即每个$z^\alpha(|\alpha|=k)$都能用$\varphi_{k1},\cdots,\varphi_{km_k}$线性表出，因而$P_k(z)$也能用$\varphi_{k1},\cdots,\varphi_{km_k}$线性表出，记
+\[P_k(z)=\sum_{l=1}^{m_k}a_{kl}\varphi_{kl}(z).\]
+
+今取一列域$\Omega_k$，使得$\bar{\Omega}_k\subset\Omega_{k+1},\bigcup\limits_{k=1}^\infty \Omega_k=\Omega$，而且要求每个$\Omega_k$是圆型的，这是一定能办到的.因为如果$\Omega_k$不是圆型的，就用$\Omega_k'=\{\ee^{\ii\theta}z\colon z\in\Omega_k,0\le\theta\le2\pi\}$来代替它.于是
+\begin{align*}
+	\langle f,\varphi_{kl}\rangle
+	&=\int\limits_\Omega f(z)\bar{\varphi_{kl}(z)}\dif m_{2n}(z)\\
+	&=\lim_{m\to\infty}\int\limits_{\Omega_m}\sum_{j=0}^{\infty} P_j(z)\bar{\varphi_{kl}(z)}\dif m_{2n}(z)\\
+	&=\lim_{m\to\infty}\sum_{j=0}^{\infty}\int\limits_{\Omega_m}\sum_{s=1}^{m_j}a_{js}\varphi_{js}(z)\bar{\varphi_{kl}(z)}\dif m_{2n}(z)\\
+	&=\lim_{m\to\infty}\sum_{j=0}^{\infty}\sum_{s=1}^{m_j}a_{js}\int\limits_{\Omega_m}\varphi_{js}(z)\bar{\varphi_{kl}(z)}\dif m_{2n}(z).
+\end{align*}
+这里$\int\limits_{\Omega_m}\sum_{j=0}^{\infty}=\sum_{j=0}^{\infty}\int\limits_{\Omega_m}$是因为$\sum_{j=0}^{\infty}P_j(z)$在$\bar{\Omega}_m$上一致收敛.
+
+因为当$j\neq k$时，$\varphi_{js}$和$\varphi_{kl}$在任何圆型域上正交，因而有
+\begin{align*}
+	\langle f,\varphi_{kl}\rangle
+	&=\lim_{m\to\infty}\sum_{s=1}^{m_k}a_{ks}\int\limits_{\Omega_m}\varphi_{ks}(z)\bar{\varphi_{kl}(z)}\dif m_{2n}(z)\\
+	&=\sum_{s=1}^{m_k}a_{ks}\int\limits_\Omega \varphi_{ks}(z)\bar{\varphi_{kl}(z)}\dif m_{2n}(z)=a_{kl}.
+\end{align*}
+由假定$\langle f,\varphi_{kl}\rangle=0$，所以$a_{kl}=0$，因而$P_k(z)\equiv0$，从而$f\equiv0$.
+\end{proof}
+对于包含原点的有界Reinhardt域，有更强的结果.因为在定理\ref{thm1.3.3}中，我们已经证明过，每个包含原点的Reinhardt域$\Omega$上的全纯函数$f$，在$\Omega$上有幂级数展开式
+\[f(z)=\sum_{\alpha\ge0}a_\alpha z^\alpha.\]
+容易直接证明$\left\{\frac{z^\alpha}{\Vert z^\alpha\Vert}\right\}$是Reinhardt域上的一组规范正交系，再用证明\ref{thm3.2.2}的方法可以证明它是完备的.因而有
+\begin{theorem}\label{thm3.2.3}
+	设$\Omega$是$\MC^n$中包含原点的有界Reinhardt域，那么$\left\{\frac{z^\alpha}{\Vert z^\alpha\Vert}\right\}$是$(L^2\cap H)(\Omega)$中一组完备的规范正交系.
+\end{theorem}
+\section{Bergman核函数\label{sec3.3}}
+\subsection{核函数的基本性质}
+设$\Omega$是$\MC^n$中的有界域，在\ref{sec3.1}我们证明了$(L^2\cap H)(\Omega)$中存在完备的规范正交系，利用这个正交系，我们给出$\Omega$的Bergman核函数的概念.
+\begin{definition}\label{def3.3.1}
+	设$\Omega$是$\MC^n$中的有界域，$\{\varphi_k\}$是$(L^2\cap H)(\Omega)$中一组完备的规范正交系，称
+	\[K(z,\zeta)\index[symbolindex]{\textbf{函数和映射}!$K(z$，$\zeta)$}=\sum_{k=0}^{\infty}\varphi_k(z)\bar{\varphi_k(\zeta)},z,\zeta\in\Omega\]
+	是$\Omega$的\textbf{Bergman核函数}\index{B!Bergman核函数}.
+\end{definition}
+由定理\ref{thm3.1.8}，$K(z,\zeta)$是$z$和$\bar{\zeta}$的全纯函数，当$\zeta$固定时，$K(z,\zeta)$对$z$而言是$(L^2\cap H)(\Omega)$中的元素.
+
+容易看出$\bar{K(z,\zeta)}=K(\zeta,z)$.
+
+核函数的再生性是它的重要性质.
+\begin{theorem}\label{thm3.3.2}
+	对任意$f\in(L^2\cap H)(\Omega)$，有等式
+	\[f(z)=\int\limits_\Omega K(z,\zeta)f(\zeta)\dif m_{2n}(\zeta),\quad z\in\Omega.\]
+\end{theorem}
+\begin{proof}
+	因$f(z)=\sum\limits_{k=0}^\infty a_k\varphi_k(z)$，其中$a_k=\int\limits_\Omega f(\zeta)\bar{\varphi_k(\zeta)}\dif m_{2n}(\zeta)$.只要证明
+	\[\lim_{m\to\infty}\left\{\int\limits_\Omega f(\zeta)K(z,\zeta)\dif m_{2n}(\zeta)-\sum_{k=0}^{m}a_k\varphi_k(z)\right\}=0.\]
+	由Schwarz不等式和Fatou引理，即得
+	\begin{align*}
+		\left|\int\limits_\Omega f(\zeta)K(z,\zeta)\dif m_{2n}(\zeta)-\sum_{k=0}^{m}a_k\varphi_k(z)\right|
+		&=\left|\int\limits_\Omega f(\zeta)\sum_{k=m+1}^{\infty}\varphi_k(z)\bar{\varphi_k(\zeta)}\dif m_{2n}(\zeta)\right|\\
+		&\le\Vert f\Vert\left\{\int\limits_\Omega\left|\sum_{k=m+1}^{\infty}\varphi_k(z)\bar{\varphi_k(\zeta)}\right|^2\dif m_{2n}(\zeta)\right\}^{\frac12}\\
+		&\le \Vert f\Vert\lim_{N\to\infty}\left\{\int\limits_\Omega\left|\sum_{k=m+1}^{N}\varphi_k(z)\bar{\varphi_k(\zeta)}\right|^2\dif m_{2n}(\zeta)\right\}^{\frac12}\\
+		&=\Vert f\Vert \sum_{k=m+1}^{\infty}|\varphi_k(z)|^2<\varepsilon,\quad m>m_0.
+	\end{align*}
+最后的不等式是因为$\sum\limits_{k=0}^\infty|\varphi_k(z)|^2<\infty$.这就是要证明的.
+\end{proof}
+\begin{corollary}\label{cor3.3.3}
+	对任意$g\in L^2(\Omega)$，命
+	\[(Pg)(z)=\int\limits_\Omega K(z,\zeta)g(\zeta)\dif m_{2n}(\zeta),\]
+	则$P$是$L^2(\Omega)$到$(L^2\cap H)(\Omega)$之上的投影算子.
+\end{corollary}
+\begin{proof}
+	因为$(L^2\cap H)(\Omega)$是$L^2(\Omega)$的一个闭子空间，故对每个$g\in L^2(\Omega)$，有正交分解$g=g_1+g_2$，其中$g_1\in(L^2\cap H)(\Omega),g_2\perp(L^2\cap H)(\Omega)$，由定理\ref{thm3.3.2}，$Pg_1=g_1$.由于$K(\zeta,z)$对$\zeta$而言是$(L^2\cap H)(\Omega)$中的函数，所以
+	\[\int\limits_\Omega g_2(\zeta)K(z,\zeta)\dif m_{2n}(\zeta)=\int\limits_\Omega g_2(\zeta)\bar{K(\zeta,z)}\dif m_{2n}(\zeta)=0.\]
+	即$Pg_2=0$.于是
+	\[Pg=P(g_1+g_2)=Pg_1=g_1.\qedhere\]
+\end{proof}
+我们称$P$为$L^2(\Omega)$到$(L^2\cap H)(\Omega)$上的Bergman\textbf{投影算子}\index{B!Bergman投影算子}.
+
+从核函数的定义来看，似乎核函数依赖于完备正交系的选取，其实不然.对于任意给定的$\zeta\in\Omega$，定义$(L^2\cap H)(\Omega)$上的线性泛函如下：
+\[T_\zeta(f)=f(\zeta),\quad f\in(L^2\cap H)(\Omega).\]
+由推论\ref{cor3.1.2}，$|f(\zeta)|\le M(\zeta)\Vert f\Vert$，所以$T_\zeta$是Hilbert空间$(L^2\cap H)(\Omega)$上的有界线性泛函，根据Riesz表示定理\index{D!定理!Riesz表示定理}，存在唯一的$g_\zeta \in(L^2\cap H)(\Omega)$，使得
+\begin{equation}\label{eq3.3.1}
+	T_\zeta (f)=\langle f,g_\zeta\rangle
+\end{equation}
+对每个$f\in(L^2\cap H)(\Omega)$成立.特别选取$f=\varphi_k$，从\eqref{eq3.3.1}得$\varphi_k(\zeta)=\langle\varphi_k,g_\zeta\rangle$，或者$\bar{\varphi_k(\zeta)}=\langle g_\zeta,\varphi_k\rangle$，即$\bar{\varphi_k(\zeta)}$是$g_\zeta$的Fourier系数，因而有
+\begin{equation}\label{eq3.3.2}
+	g_\zeta(z)=\sum_{k=0}^{\infty}\bar{\varphi_k(\zeta)}\varphi_k(z)=K(z,\zeta).
+\end{equation}
+这说明核函数$K(z,\zeta)$就是$g_\zeta(z)$，它和正交系的选取无关.把\eqref{eq3.3.2}代入\eqref{eq3.3.1}，我们再一次得到定理\ref{thm3.3.2}.
+
+当然核函数是取复数值的，但当$\zeta=z$时，它取正数值.
+\begin{prop}\label{prop3.3.4}
+	对每个$z\in\Omega$，均有$K(z,z)>0$.
+\end{prop}
+\begin{proof}
+	按定义
+	\[K(z,z)=\sum_{k=0}^{\infty}|\varphi_k(z)|^2\ge0.\]
+	若有某点$z_0\in\Omega$，使得$K(z_0,z_0)=0$，则必有$\varphi_k(z_0)=0,k=0,1,2,\cdots$，因而对任意$f\in(L^2\cap H)(\Omega)$，有
+	\[f(z_0)=\sum_{k=0}^{\infty}a_k\varphi_k(z_0)=0.\]
+	这是不可能的，因为$1\in(L^2\cap H)(\Omega)$.
+\end{proof}
+下面的命题给出了乘积域的核函数的计算方法.
+\begin{prop}\label{prop3.3.5}
+	设$\Omega_1$和$\Omega_2$分别是$\MC^n$和$\MC^m$中的有界域，$\Omega=\Omega_1\times\Omega_2$，若用$K_1,K_2,K$分别记$\Omega_1,\Omega_2,\Omega$的核函数，那么$K=K_1K_2$.
+\end{prop}
+\begin{proof}
+	记$z'=(z_1,\cdots,z_n),z''=(z_{n+1},\cdots,z_{n+m}),z=(z',z'')$，我们要证明
+	\begin{equation}\label{eq3.3.3}
+		K(z,\zeta)=K_1(z',\zeta')K_2(z'',\zeta'').
+	\end{equation}
+当$z',\zeta'\in\Omega_1,z'',\zeta''\in\Omega_2$时，命
+\begin{equation}\label{eq3.3.4}
+	g(z,\zeta)=K_1(z',\zeta')K_2(z'',\zeta'').
+\end{equation}
+由核函数的再生性，
+\begin{align*}
+	g(t,\zeta)
+	&=\int\limits_\Omega g(z,\zeta)K(t,z)\dif m_{2(n+m)}(z)\\
+	&=\int\limits_\Omega K_1(z',\zeta')K_2(z'',\zeta'')K(t,z)\dif m_{2(n+m)}(z)\\
+	&=\int\limits_{\Omega_1} K_1(z',\zeta')\dif m_{2n}(z')\int\limits_{\Omega_2} K_2(z'',\zeta'')K(t,z)\dif m_{2m}(z''),
+\end{align*}
+再利用核函数的再生性得
+\begin{align*}
+	&\int\limits_{\Omega_2} K_2(z'',\zeta'')K(t,z)\dif m_{2m}(z'')\\
+	=&\bar{\int\limits_{\Omega_2} K_2(\zeta'',z'')K(z',z'',t)\dif m_{2m}(z'')}=\bar{K(z',\zeta'',t)},
+\end{align*}
+于是
+\begin{align*}
+	g(t,\zeta)
+	&=\int\limits_{\Omega_1} K_1(z',\zeta')\bar{K(z',\zeta'',t)}\dif m_{2n}(z')\\
+	&=\bar{\int\limits_{\Omega_1} K_1(\zeta',z')K(z',\zeta'',t)\dif m_{2n}(z')}\\
+	&=\bar{K(\zeta',\zeta'',t)}=K(t,\zeta).
+\end{align*}
+从\eqref{eq3.3.4}即得\eqref{eq3.3.3}.
+\end{proof}
+下面的定理给出了两个双全纯等价域的核函数之间的关系.
+\begin{theorem}\label{thm3.3.6}
+	设$\Omega$和$\Omega_1$为$\MC^n$中的有界域，双全纯映射$w=f(z)$把$\Omega$一一地映为$\Omega_1,\Omega$和$\Omega_1$的核函数分别记为$K(z,\zeta)$和$K_1(w,\eta)$，那么
+	\[K(z,\zeta)=K_1(w,\eta)\det f'(z)\bar{\det f'(\zeta)},\]
+	这里$w=f(z),\eta=f(\zeta)$.
+\end{theorem}
+\begin{proof}
+	在\ref{sec2.1}中，我们曾记$(Jf)(z)=\det f'(z)$，称它为$f$在$z$点处的复Jacobian，称$(J_\MR f)(z)$为$f$在$z$点处的实Jacobian，两者的关系是
+	\[(J_\MR f)(z)=\left|(Jf)(z)\right|^2.\]
+	现在我们证明，如果$\{\varphi_k(z)\}$是$(L^2\cap H)(\Omega)$上的完备规范正交系，那么
+	\begin{equation}\label{eq3.3.5}
+		\left\{\varphi_k(f^{-1}(w))(Jf^{-1})(w)\right\}
+	\end{equation}
+是$(L^2\cap H)(\Omega_1)$上的完备规范正交系.事实上，对$\Omega$上的积分作变量代换$z=f^{-1}(w)$，就得到
+\begin{align*}
+	\delta_{kl}
+	&=\int\limits_\Omega \varphi_k(z)\bar{\varphi_l(z)}\dif m_{2n}(z)\\
+	&=\int\limits_{\Omega_1} \varphi_k(f^{-1}(w))\bar{\varphi_l(f^{-1}(w))}|(Jf^{-1})(w)|^2\dif m_{2n}(w)\\
+	&=\int\limits_{\Omega_1}\left\{\varphi_k(f^{-1}(w))(Jf^{-1})(w)\right\} \bar{\left\{\varphi_l(f^{-1}(w))(Jf^{-1})(w)\right\}}\dif m_{2n}(w).
+\end{align*}
+这说明\eqref{eq3.3.5}是$(L^2\cap H)(\Omega_1)$上的规范正交系.为了说明\eqref{eq3.3.5}也是完备的，我们只要证明，如果对任意$g\in(L^2\cap H)(\Omega_1)$有
+\begin{equation}\label{eq3.3.6}
+	\int\limits_{\Omega_1}g(w) \bar{\varphi_k(f^{-1}(w))(Jf^{-1})(w)}\dif m_{2n}(w)=0,\quad k=1,2,\cdots
+\end{equation}
+那么$g\equiv0$.对\eqref{eq3.3.6}作变量代换$w=f(z)$，注意到
+\[(Jf)(z)\dif m_{2n}(z)=\bar{(Jf^{-1})(w)}\dif m_{2n}(w),\]
+\eqref{eq3.3.6}可写成
+\begin{equation}\label{eq3.3.7}
+	\int\limits_\Omega g(f(z))\varphi_k(z)(Jf)(z)\dif m_{2n}(z)=0.
+\end{equation}
+由于$\{\varphi_k\}$是$(L^2\cap H)(\Omega)$上的完备正交系，从\eqref{eq3.3.7}可得
+\[g(f(z))(Jf)(z)=0.\]
+因为$f$是双全纯的，由定理\ref{thm2.2.3}，$(Jf)(z)$在$\Omega$上处处不为$0$，因而$g(w)=0$.既然\eqref{eq3.3.6}是$(L^2\cap H)(\Omega_1)$上的完备规范正交系，所以$\Omega_1$的核函数
+\begin{align*}
+	K_1(w,\eta)
+	&=\sum_{k=0}^{\infty}\varphi_k(f^{-1}(w))(Jf^{-1})(w)\bar{\varphi_k(f^{-1}(\eta))(Jf^{-1})(\eta)}\\
+	&=(Jf^{-1})(w)\bar{(Jf^{-1})(\eta)}\sum_{k=0}^{\infty}\varphi_k(f^{-1}(w))\bar{\varphi_k(f^{-1}(\eta))}\\
+	&=(Jf^{-1})(w)\bar{(Jf^{-1})(\eta)}K(z,\zeta).
+\end{align*}
+这就是要证明的.
+\end{proof}
+现在来计算一个具体域的核函数.
+\begin{example}\label{exa3.3.7}
+	计算$\MC^n$中单位球$B_n$的核函数.
+\end{example}
+\begin{solution}
+	由定理\ref{thm1.4.6}，
+	\[\int\limits_{B_n}|z^\alpha|^2\dif m_{2n}(z)=\frac{\pi^n}{n!}\int\limits_{B_n}|z^\alpha|^2\dif \nu_{n}(z)=\frac{\pi^n \alpha!}{(n+|\alpha|)!}.\]
+	因此$\left\{\left(\frac{(n+|\alpha|)!}{\pi^n\alpha!}\right)^{\frac12} z^\alpha\right\}$是$(L^2\cap H)(B_n)$的完备规范正交系，所以$B_n$的核函数是
+	\begin{align*}
+		K(z,\zeta)
+		&=\sum_{\alpha\ge0}\frac{(n+|\alpha|)!}{\pi^n\alpha!}z^\alpha \bar{\zeta}^\alpha\\
+		&=\frac1{\pi^n}\sum_{k=0}^{\infty}\frac{(n+k)!}{k!}\sum_{|\alpha|=k} \frac{k!}{\alpha!}z^\alpha\bar{\zeta}^\alpha\\
+		&=\frac1{\pi^n}\sum_{k=0}^{\infty}(n+k)\cdots(k+1)\langle z,\zeta\rangle^k\\
+		&=\frac{n!}{\pi^n}\frac1{(1-\langle z,\zeta\rangle)^{n+1}}.\qedhere
+	\end{align*}
+\end{solution}
+命$n=1$，就得到单位圆盘的核函数为
+\[\frac1{\pi}\frac1{(1-z\bar{\zeta})^2},\]
+这里$z,\zeta$都是模小于$1$的复数.
+
+因为单位多圆柱是由$n$个单位圆盘构成的乘积域，由命题\ref{prop3.3.5}，即得多圆柱$U^n$的核函数为
+\[\frac1{\pi^n}\prod_{j=1}^{n}\frac1{(1-z_j\bar{\zeta}_j)^2}.\]
+
+当然，直接从完备的规范正交系出发来计算$U^n$的核函数也不困难.
+\subsection{核函数与域的自同构}
+核函数与域的自同构有着密切的关系.
+\begin{theorem}\label{thm3.3.8}
+	如果$\Omega$是$\MC^n$中的有界域.
+	
+	(1)\hypertarget{3.3.8}{}
+	如果$\psi\in\Aut(\Omega)$，那么对任意$z\in\Omega$有
+	\begin{equation}\label{eq3.3.8}
+		\left|\det\psi'(z)\right|^2=\frac{K(z,z)}{K(\psi(z),\psi(z))}.
+	\end{equation}
+	
+	(2)\hypertarget{3.3.8}{}
+	如果$\Omega$是包含原点的可递域，$w=\varphi_a(z)$是把$a\in\Omega$映为原点的全纯自同构，那么
+	\begin{equation}\label{eq3.3.9}
+		K(a,a)=c\left|\det\varphi_a'(a)\right|^2.
+	\end{equation}
+	特别，如果$\Omega$是圆型域，那么$c=\left(V(\Omega)\right)^{-1}$.
+\end{theorem}
+\begin{proof}
+	\hyperlink{3.3.8}{(1)}
+	利用定理\ref{thm3.3.6}可得
+	\[K(z,z)=K(\psi(z),\psi(z))|\det\psi'(z)|^2,\]
+	这就是\eqref{eq3.3.8}.
+	
+	\hyperlink{3.3.8}{(2)}
+	在\hyperlink{3.3.8}{(1)}中取$\psi=\varphi_a,z=a$，即得
+	\[K(a,a)=K(0,0)|\det\varphi_a'(a)|^2=c|\det\varphi_a'(a)|^2.\]
+	这就是\eqref{eq3.3.9}.如果$\Omega$是圆型域，由定理\ref{thm3.2.2}，可取$\varphi_0=(V(\Omega))^{-\frac12}$，于是
+	\[K(0,0)=\sum_{k=0}^{\infty}\varphi_k(0)\bar{\varphi_k(0)}=|\varphi_0|^2=(V(\Omega))^{-1}.\qedhere\]
+\end{proof}
+定理\ref{thm3.3.8}的两部分有着不同的作用.如果知道域的核函数，那么通过\eqref{eq3.3.8}，可以算出自同构的Jacobian.例如，我们已经算出球$B_n$的核函数为
+\[K(z,\zeta)=\frac{n!}{\pi^n}\frac1{(1-\langle z,\zeta\rangle)^{n+1}}.\]
+今设$\psi\in\Aut(B_n)$且有$\psi(a)=0$.由\eqref{eq3.3.8}即得
+\[|\det\psi'(z)|^2=\left(\frac{1-|\psi(z)|^2}{1-|z|^2}\right)^{n+1}.\]
+把命题\ref{prop2.3.11}的等式代入上式，我们再一次得到定理\ref{thm2.3.12}的等式
+\[|\det\psi'(z)|^2=\left(\frac{1-|a|^2}{|1-\bar{a}z'|^2}\right)^{n+1}.\]
+
+定理\ref{thm3.3.8}的第二部分起着相反的作用.我们知道，由于$(L^2\cap H)(B_n)$和$(L^2\cap H)(U^n)$中的完备规范正交系容易算出，所以$B_n$和$U^n$上的核函数可以通过正交系直接算得.对其它一些域，这个办法往往行不通.定理\ref{thm3.3.8}\hyperlink{3.3.8}{(2)}告诉我们，如果能先算出$|\det\psi_z'(z)|^2$的值，由此即得$K(z,z)$.虽然它还不是$K(z,\zeta)$，但由它唯一确定了$K(z,\zeta)$（下面的命题\ref{prop3.3.9}将证明这一事实）.因此等式\eqref{eq3.3.9}给出了不通过正交系，而是由域的自同构来计算核函数的方法，\ref{sec3.4}中将用这个方法给出四类典型域的核函数.
+\begin{prop}\label{prop3.3.9}
+	设$\Omega$是$\MC^n$中的有界域，$\Omega$的核函数$K(z,\zeta)$由$K(z,z)$所唯一确定.
+\end{prop}
+实际上，它是一般命题\ref{prop3.3.10}的特殊情形.
+\begin{prop}\label{prop3.3.10}
+	设$f(z,\zeta)$是$\MC^{2n}$原点附近的全纯函数.如果$f(z,z)=0$在原点附近成立，那么在原点附近有
+	\[f(z,\zeta)\equiv0.\]
+\end{prop}
+\begin{proof}
+	命$w=\frac12(z+\zeta),\eta=\frac1{2\ii}(z-\zeta)$，则
+	\[f(z,\zeta)=f(w+\ii\eta,w-\ii\eta)=g(w,\eta),\]
+	$g(w,\eta)$也是$\MC^{2n}$原点附近的全纯函数，它在原点附近的Taylor展开式为
+	\[g(w,\eta)=\sum_{\alpha\ge0}a_\alpha w^\beta \eta^\delta,\]
+	这里$\alpha=(\alpha_1,\cdots,\alpha_{2n})$是$2n$维的多重指标，$\alpha=(\beta,\delta),\beta=(\beta_1,\cdots,\beta_n),\delta=(\delta_1,\cdots,\delta_n)$都是$n$维多重指标.如果记$z_j=x_j+\ii y_j,j=1,\cdots,n,x=(x_1,\cdots,x_n),y=(y_1,\cdots,y_n)$，那么$z=x+\ii y$，而当$\zeta=\bar{z}$时，$w=x,\eta=y$.因而从$f(z,\bar{z})=0$得$g(x,y)=0$，即
+	\[g(x,y)=\sum_{\alpha\ge0}a_\alpha x^\beta y^\delta\equiv0.\]
+	这是$g$在$\MR^{2n}$原点附近的Taylor展开式，由此即得$a_\alpha=0$，即$g(w,\eta)\equiv0$，所以$f(z,\zeta)\equiv0$.
+\end{proof}
+还以单位球$B_n$为例，由定理\ref{thm2.3.12}得
+\[|\det\varphi_a'(z)|^2=\left(\frac{1-|a|^2}{|1-\langle z,a\rangle|^2}\right)^{n+1},\]
+因而
+\[|\det\varphi_a'(a)|^2=\frac1{(1-|a|^2)^{n+1}},\]
+所以
+\[K(z,z)=\frac{n!}{\pi^n}\frac1{(1-|z|^2)^{n+1}},\quad z\in B_n.\]
+再由命题\ref{prop3.3.9}即得
+\[K(z,\zeta)=\frac{n!}{\pi^n}\frac1{(1-\langle z,\zeta\rangle)^{n+1}}.\]
+\section{典型域的核函数\label{sec3.4}}
+\subsection{四类典型域}\label{subsec3.4.1}
+这一节我们将利用上一节的定理\ref{thm3.3.8}\hyperlink{3.3.8}{(2)}来计算四类典型域的核函数.先给出对称域的定义.
+\begin{definition}\label{def3.4.1}
+	设$\Omega$是$\MC^n$中的域，$a\in\Omega$.如果存在$\varphi\in\Aut(\Omega)$，使得$\varphi(a)=a$，而对其它$z\neq a,\varphi(z)\neq z$，而且$\varphi^2=I$（恒等变换），则称$\Omega$是对于$a$点是对称的.如果$\Omega$对于它的每一点都是对称的，则称$\Omega$是\textbf{对称域}\index{Y!域!对称域}.
+\end{definition}
+例如，单位球$B_n$是对称域，因为对于任意$a\neq0,a\in B_n$，命$b=\frac{2a}{1+|a|^2}$，容易直接验证，$\varphi_b$便是$\Aut(B_n)$中使$a$为其唯一不动点且满足$\varphi_b^2=I$的全纯自同构；如果$a=0$，那么变换$w=zU,U=\begin{pmatrix}
+	-1 & & & \\
+	& -1 & &\\
+	& & \ddots&\\
+	& & & -1
+\end{pmatrix}$，就是仅使原点为不动点的对合变换.所以$B_n$对其每点都是对称的.
+
+E. Cartan\index{C!Cartan, E.}在1935年证明了，除$n=16$和$n=27$维的复空间外，任何一个有界对称域必和下面四类域之一或四类域中若干个域的拓扑积全纯等价，并用矩阵的形式把它们表示如下：
+\[R_{\text{\uppercase\expandafter{\romannumeral1}}}(m,n)=\{Z\colon Z\text{是$m\times n$复矩阵，$I_m-Z\bar{Z}'>0$}\},\]
+这里$I_m$是$m$阶单位方阵.当$m=1$时，$R_{\text{\uppercase\expandafter{\romannumeral1}}}$就是单位球.\\$R_{\text{\uppercase\expandafter{\romannumeral1}}}(m,n)$\index[symbolindex]{\textbf{点集}!$R_{\text{\uppercase\expandafter{\romannumeral1}}}(m$，$n)$}称为\textbf{第一类典型域}或\textbf{矩阵双曲空间}.
+\[R_{\text{\uppercase\expandafter{\romannumeral2}}}(n)=\{Z\colon Z\text{是$n$阶对称方阵$Z=Z'$，$I_n-Z\bar{Z}>0$}\},\]
+$R_{\text{\uppercase\expandafter{\romannumeral2}}}(n)$\index[symbolindex]{\textbf{点集}!$R_{\text{\uppercase\expandafter{\romannumeral2}}}(n)$}称为\textbf{第二类典型域}或\textbf{对称方阵双曲空间}.
+\[R_{\text{\uppercase\expandafter{\romannumeral3}}}(n)=\{Z\colon Z\text{是$n$阶斜对称方阵$Z=-Z'$，$I_n+Z\bar{Z}>0$}\},\]
+$R_{\text{\uppercase\expandafter{\romannumeral3}}}(n)$\index[symbolindex]{\textbf{点集}!$R_{\text{\uppercase\expandafter{\romannumeral3}}}(n)$}称为\textbf{第三类典型域}或\textbf{斜对称方阵双曲空间}.
+\[R_{\text{\uppercase\expandafter{\romannumeral4}}}(n)=\{z\colon z=(z_1,\cdots,z_n),|zz'|^2+1-2\bar{z}z'>0,|zz'|<1\},\]
+$R_{\text{\uppercase\expandafter{\romannumeral4}}}(n)$\index[symbolindex]{\textbf{点集}!$R_{\text{\uppercase\expandafter{\romannumeral4}}}(n)$}称为\textbf{第四类典型域}或\textbf{Lie球双曲空间}.
+
+由于这四类典型域都是有界可递的圆型域，所以由定理\ref{thm3.3.8}，它们的核函数为
+\[K(z,z)=K(0,0)|\det\varphi_z'(z)|^2,\]
+其中$K(0,0)=(V(\Omega))^{-1}$.因此，计算这四类典型域的核函数的关键，是要算出它们的把$z$变为原点的全纯自同构的Jacobian.在这一节中，我们将给出计算$R_{\text{\uppercase\expandafter{\romannumeral1}}}$的核函数的详细过程，其它三类域的核函数的算法是类似的，不再一一细述，有兴趣的读者可参阅\cite{华罗庚1958多复变数函数论中的典型域的调和分析}或\cite{陆启铿1956多复变数函数与酉几何}.
+\subsection{$R_{\text{\uppercase\expandafter{\romannumeral1}}}(m,n)$的全纯自同构}
+我们分下面几步来计算$R_{\text{\uppercase\expandafter{\romannumeral1}}}$的核函数.
+
+先写出$\Aut(R_{\text{\uppercase\expandafter{\romannumeral1}}})$中把某点$Z_0$变为$O$的变换.
+\begin{theorem}\label{thm3.4.2}
+	设$A$是$m$阶方阵，$B$是$m\times n$矩阵，$C$是$n\times m$矩阵，$D$是$n$阶方阵，它们满足：
+	\begin{equation}\label{eq3.4.1}
+		\bar{A}A'-\bar{B}B'=I_m,\quad \bar{A}C'=\bar{B}D',\quad \bar{C}C'-\bar{D}D'=-I_n,
+	\end{equation}
+那么
+\begin{equation}\label{eq3.4.2}
+	W=(AZ+B)(CZ+D)^{-1}
+\end{equation}
+把$R_{\text{\uppercase\expandafter{\romannumeral1}}}$一一地变为自己.
+\end{theorem}
+为此先证明
+\begin{lemma}\label{lem3.4.3}
+	设$Z\in R_{\text{\uppercase\expandafter{\romannumeral1}}}$.
+	
+	(1)\hypertarget{3.4.3}{}
+	若$n$阶方阵$D$和$n\times m$矩阵$C$满足$\bar{C}C'-\bar{D}D'=-I_n$，那么$CZ+D$可逆；
+	
+	(2)\hypertarget{3.4.3}{}
+	若$m$阶方阵$A$和$m\times n$矩阵$B$满足$\bar{A}A'-\bar{B}B'=I_m$，那么$Z\bar{B}'+\bar{A}'$可逆.
+\end{lemma}
+\begin{proof}
+	\hyperlink{3.4.3}{(1)}
+	从$\bar{D}D'=\bar{C}C'+I_n$知道$\bar{D}D'$正定.因而$D$可逆.命$K=D^{-1}C$，则
+	\begin{align*}
+		I_n-K\bar{K}'
+		&=I_n-D^{-1}C\bar{C}'(\bar{D}')^{-1}\\
+		&=I_n-D^{-1}(-I_n+D\bar{D}')(\bar{D}')^{-1}=D^{-1}(\bar{D}')^{-1}>0,
+	\end{align*}
+	由此得
+	\begin{align*}
+		I_n-KZ\bar{(KZ)}'
+		&=I_n-KZ\bar{Z}'\bar{K}'\\
+		&=I_n-K\bar{K}'+K(I-Z\bar{Z}')\bar{K}'>0.
+	\end{align*}
+今若$CZ+D=DKZ+D=D(KZ+I)$不可逆，即$KZ+I$不可逆，则存在非零向量$\xi$，使得$\xi(KZ+I)=0$，即$\xi=-\xi KZ$.于是$\xi\bar{\xi}'=\xi KZ\bar{(KZ)}'\bar{\xi}'$，或者$\xi\left\{I-KZ(\bar{KZ})'\right\}\bar{\xi}'=0$，这与$I-KZ(\bar{KZ})'>0$矛盾，因而$CZ+D$可逆.
+	
+	\hyperlink{3.4.3}{(2)}
+	从$\bar{A}A'=\bar{B}B'+I_m$知道$A$可逆.若$Z\bar{B}'+\bar{A}'$不可逆，由于$Z\bar{B}'+\bar{A}'=(Z\bar{B}'(\bar{A}')^{-1}+I_m)\bar{A}'$，则$Z\bar{N}'+I_m$不可逆，这里$N=A^{-1}B$.因而存在非零向量$\eta$，使得$\eta(Z\bar{N}'+I_m)=0$，即$\eta Z\bar{N}'=-\eta$，因而$\eta\bar{\eta}'=\eta Z\bar{N}'N\bar{Z}'\bar{\eta}'$，即$I_m-Z\bar{N}'N\bar{Z}'$非正定.但容易看出
+	\begin{align*}
+		I_n-\bar{N}'N
+		&=I_n-\bar{B}'(\bar{A}')^{-1}A^{-1}B=I_n-\bar{B}'(I_m+B\bar{B}')^{-1}B\\
+		&=(I_n+\bar{B}'B)^{-1}>0.
+	\end{align*}
+最后一个等式可直接验证而得.于是
+\begin{align*}
+	I_n-Z\bar{N}'N\bar{Z}'
+	&=I_m-Z\bar{Z}'+Z\bar{Z}'-Z\bar{N}'N\bar{Z}'\\
+	&=I_m-Z\bar{N}'N\bar{Z}'+Z(I_n-\bar{N}'N)\bar{Z}'>0.
+\end{align*}
+这与$I_m-Z\bar{N}'N\bar{Z}'$非正定相矛盾.
+\end{proof}
+\begin{lemma}\label{lem3.4.4}
+	设$A,B,C,D$如定理\ref{thm3.4.2}所示，则它们满足的关系式\eqref{eq3.4.1}和下列等式等价：
+	\begin{equation}\label{eq3.4.3}
+		\bar{A}'A-\bar{C}'C=I_m,\quad \bar{A}'B=\bar{C}'D,\quad \bar{B}'B-\bar{D}'D=-I_n.
+	\end{equation}
+\end{lemma}
+\begin{proof}
+	命$T=\begin{pmatrix}
+		A & B\\
+		C & D
+	\end{pmatrix}$，通过直接验证，\eqref{eq3.4.1}等价于
+\[\bar{T}\begin{pmatrix}
+	I_m & 0\\
+	0 & -I_n
+\end{pmatrix}T'=\begin{pmatrix}
+I_m & 0\\
+0 & -I_n
+\end{pmatrix}.\]
+由此可见$T$可逆.上式两端先取共轭，然后再取其逆得
+\[(\bar{T}')^{-1}\begin{pmatrix}
+	I_m & 0\\
+	0 & -I_n
+\end{pmatrix}T^{-1}=\begin{pmatrix}
+I_m & 0\\
+0 & -I_n
+\end{pmatrix},\]
+即
+\[\begin{pmatrix}
+	I_m & 0\\
+	0 & -I_n
+\end{pmatrix}=\bar{T}'\begin{pmatrix}
+I_m & 0\\
+0 & -I_n
+\end{pmatrix}T.\]
+直接计算即知它与\eqref{eq3.4.3}等价.
+\end{proof}
+\begin{proof}[\textbf{定理\ref{thm3.4.2}的证明}]
+	先证明\eqref{eq3.4.2}可写为
+	\begin{equation}\label{eq3.4.4}
+		W=(Z\bar{B}'+\bar{A}')^{-1}(Z\bar{D}'+\bar{C}').
+	\end{equation}
+这只要证明
+\[(Z\bar{B}'+\bar{A}')^{-1}(Z\bar{D}'+\bar{C}')=(AZ+B)(CZ+D)^{-1}.\]
+即
+\[(Z\bar{B}'+\bar{A}')(AZ+B)=(Z\bar{D}'+\bar{C}')(CZ+D),\]
+或者
+\[Z(\bar{B}'A-\bar{D}'C)Z+(\bar{A}'A-\bar{C}'C)Z+\]
+\begin{equation}\label{eq3.4.5}
+	Z(\bar{B}'B-\bar{D}'D)+(\bar{A}'B-\bar{C}'D)=O.
+\end{equation}
+由\eqref{eq3.4.3}即知\eqref{eq3.4.5}成立.现在从\eqref{eq3.4.5}成立.现在从\eqref{eq3.4.4}得
+\begin{align*}
+	I_m-W\bar{W}'
+	=&I_m-(Z\bar{B}'+\bar{A}')^{-1}(Z\bar{D}'+\bar{C}')\cdot\\
+	&(D\bar{Z}'+C)(B\bar{Z}'+A)^{-1}\\
+	=&(Z\bar{B}'+\bar{A}')^{-1}\left\{(Z\bar{B}'+\bar{A}')(B\bar{Z}'+A)-\right.\\
+	&\left.(Z\bar{D}'+\bar{C}')(D\bar{Z}'+C)\right\}(B\bar{Z}'+A)^{-1}\\
+	=&(Z\bar{B}'+\bar{A}')^{-1}\left\{Z(\bar{B}'B-\bar{D}'D)\bar{Z}'+\right.\\
+	&\left.(\bar{A}'B-\bar{C}'D)\bar{Z}'+Z(\bar{B}'A-\bar{D}'C)+\right.\\
+	&\left.(\bar{A}'A-\bar{C}'C)\right\}\bar{((Z\bar{B}'+\bar{A}')^{-1})}'\\
+	=&(Z\bar{B}'+\bar{A}')^{-1}(I_m-Z\bar{Z}')\bar{((Z\bar{B}'+\bar{A}')^{-1})}'.
+\end{align*}
+由此可见，从$I_m-Z\bar{Z}'>0$，可得$I_m-W\bar{W}'>0$，反之亦然.
+\end{proof}
+\begin{theorem}\label{thm3.4.5}
+	$\Aut(R_{\text{\uppercase\expandafter{\romannumeral1}}})$中把$Z_0$变为$O$的变换是
+	\begin{equation}\label{eq3.4.6}
+		W=A(Z-Z_0)(I-\bar{Z}_0' Z)^{-1}D^{-1},
+	\end{equation}
+其中$A$与$D$适合
+\begin{equation}\label{eq3.4.7}
+	A'\bar{A}=(I-\bar{Z}_0Z_0')^{-1},\quad D'\bar{D}=(I-Z_0'\bar{Z}_0)^{-1}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+	由定理\ref{thm3.4.2}，变换
+	\begin{equation}\label{eq3.4.8}
+		W=(AZ+B)(CZ+D)^{-1}
+	\end{equation}
+是$R_{\text{\uppercase\expandafter{\romannumeral1}}}$的一个全纯自同构，为了使它把$Z_0$变为$O$，我们要求$(AZ_0+B)(CZ_0+D)^{-1}=O$，为此只要$B=-AZ_0$，这时\eqref{eq3.4.1}变为
+\begin{equation}\label{eq3.4.9}
+	\bar{A}(I-\bar{Z}_0 Z_0')A'=I_m,C'=-\bar{Z}_0 D',\quad \bar{D}(I-Z_0'\bar{Z}_0)D'=I_n.
+\end{equation}
+从\eqref{eq3.4.9}即得\eqref{eq3.4.7}，把\eqref{eq3.4.9}代入\eqref{eq3.4.8}便得\eqref{eq3.4.6}.
+\end{proof}
+\subsection{$R_{\text{\uppercase\expandafter{\romannumeral1}}}(m,n)$的全纯自同构的行列式}
+把$\Aut(R_{\text{\uppercase\expandafter{\romannumeral1}}})$中把$Z_0$变为$O$的变换记为$W=\varphi_{Z_0}(Z)$.下一步就可着手计算\\$\det\varphi_{Z_0}'(Z)$.现在的困难是这里的$Z$和$W$都是$m\times n$矩阵，处理这一类问题需要新的技巧.
+
+是$w=F(z)$是把$\MC^n$中的域$\Omega$映入$\MC^n$的全纯映射，它的分量为$w_j=f_j(z_1,\cdots,z_n)$，\\
+$j=1,\cdots,n$，易知
+\[\dif w_j=\pp{f_j}{z_1}\dif z_1+\cdots+\pp{f_j}{z_n}\dif z_n,\quad j=1,\cdots,n.\]
+若记$\dif w=(\dif w_1,\cdots,\dif w_n)',\dif z=(\dif z_1,\cdots,\dif z_n)'$，则有
+\[\dif w=F'(z)\dif z.\]
+因此若能把微分向量$\dif w,\dif z$写成$\dif w=A\dif z$这种形式，那么$A$就是变换的Jacobi方阵.下面我们将要遇到的$\dif W=P\dif ZQ$这种形式的关系，其中$\dif W,\dif Z$是$m\times n$矩阵，$P$是$m$阶方阵，$Q$是$n$阶方阵，要把这种关系写成向量形式的关系$\dif w=A\dif z$，需要引进矩阵的直积\index{J!矩阵的直积}的概念.
+
+设$A=(a_{ij}),B=(b_{ij})$分别为$m,n$阶方阵，定义$A,B$的直积为\index[symbolindex]{\textbf{其它符号}! $A\times B$}
+\begin{align*}
+	A\times B
+	&=\begin{pmatrix}
+		a_{11}B &\cdots &a_{1m}B\\
+		\vdots & & \vdots\\
+		a_{m1}B & \cdots& a_{mm}B
+	\end{pmatrix}\\
+&=\begin{pmatrix}
+	a_{11}b_{11} & \cdots & a_{11}b_{1n} & \cdots &a_{1m}b_{11} & \cdots &a_{1m}b_{1n}\\
+	\vdots & &\vdots & &\vdots & & \vdots\\
+	a_{11}b_{n1} & \cdots & a_{11}b_{nn} & \cdots &a_{1m}b_{n1} & \cdots &a_{1m}b_{nn}\\
+	\vdots & &\vdots & &\vdots & & \vdots\\
+	a_{m1}b_{11} & \cdots & a_{m1}b_{1n} & \cdots &a_{mm}b_{11} & \cdots &a_{mm}b_{1n}\\
+	\vdots & &\vdots & &\vdots & & \vdots\\
+	a_{m1}b_{n1} & \cdots & a_{m1}b_{nn} & \cdots &a_{mm}b_{n1} & \cdots &a_{mm}b_{nn}
+\end{pmatrix},
+\end{align*}
+它是$mn$阶方阵，它的每一行、每一列都用两个指标来表示，因此它的第$(j\alpha)$行、第$(k\beta)$列的元为
+\[c_{(j\alpha)(k\beta)}=a_{jk}b_{\alpha\beta}.\]
+
+直积有下列基本性质：
+
+(1)\hypertarget{3.4.3.1}{}
+$\det(A\times I_n)=\det A^n,\det(I_m\times B)=\det B^m$.
+
+(2)\hypertarget{3.4.3.1}{}
+设$A,C$为$m$阶方阵，$B,D$为$n$阶方阵，那么
+\[(A\times B)(C\times D)=AC\times BD.\]
+
+(3)\hypertarget{3.4.3.1}{}
+设$A$、$B$分别是$m$、$n$阶方阵，那么
+\begin{equation}\label{eq3.4.10}
+	\det(A\times B)=\det A^n\det B^m.
+\end{equation}
+\begin{proof}
+	\hyperlink{3.4.3.1}{(1)}
+	直接从定义可得这两等式.
+	
+	\hyperlink{3.4.3.1}{(2)}
+	用$p_{(j\alpha)(k\beta)},q_{(j\alpha)(k\beta)}$分别记$A\times B$和$C\times D$的元，那么$(A\times B)(C\times D)$的第$(j\alpha)$行、第$(k\beta)$列的元为
+	\begin{align*}
+		\sum_{l=1}^{m}\sum_{\gamma=1}^{n}p_{(j\alpha)(l\gamma)}q_{(l\gamma)(k\beta)}
+		&=\sum_{l=1}^{m}\sum_{\gamma=1}^{n}a_{jl}b_{\alpha\gamma}c_{lk}d_{\gamma\beta}\\
+		&=\left(\sum_{l=1}^{m}a_{jl}c_{lk}\right)\left(\sum_{\gamma=1}^{n}b_{\alpha\gamma}d_{\gamma\beta}\right),
+	\end{align*}
+这就是$AC\times BD$的第$(j\alpha)$行、第$(k\beta)$列的元.
+	
+	\hyperlink{3.4.3.1}{(3)}
+	从\hyperlink{3.4.3.1}{(2)}可得$(A\times I_n)(I_m\times B)=A\times B$，再由\hyperlink{3.4.3.1}{(1)}即得\eqref{eq3.4.10}.
+\end{proof}
+\begin{lemma}\label{lem3.4.6}
+	设$m\times n$矩阵$X,Y$满足下列关系
+	\begin{equation}\label{eq3.4.11}
+		Y=AXB,
+	\end{equation}
+其中$A,B$分别为$m$和$n$阶方阵.如果把$X,Y$的元素排成行向量
+\[x=(x_{11},\cdots,x_{1n},\cdots,x_{m1},\cdots,x_{mn}),\]
+\[y=(y_{11},\cdots,y_{1n},\cdots,y_{m1},\cdots,y_{mn}).\]
+那么\eqref{eq3.4.11}可写成$y'=(A'\times B)'x'$.
+\end{lemma}
+\begin{proof}
+	从\eqref{eq3.4.11}可得
+	\begin{equation}\label{eq3.4.12}
+		y_{j\alpha}=\sum_{k=1}^{m}\sum_{\beta=1}^{n}a_{jk}x_{k\beta}b_{\beta\alpha}=\sum_{k=1}^{m}\sum_{\beta=1}^{n}x_{k\beta}(a_{jk}b_{\beta\alpha}),
+	\end{equation}
+这里$(a_{jk}b_{\beta\alpha})$正是$A\times B$的第$(k\beta)$行、$(j\alpha)$列的元，因而\eqref{eq3.4.12}可用矩阵形式写成$y=x(A'\times B)$，写成列向量就得$y'=(A'\times B)'x'$.
+\end{proof}
+现在来计算$\det\varphi_{Z_0}'(Z_0)$.对变换
+\[W=A(Z-Z_0)(I-\bar{Z}_0'Z)^{-1}D^{-1}\]
+进行微分，注意到矩阵微分的两个基本等式
+\[\dif(PD)=\dif P\cdot Q+P\dif Q,\dif P^{-1}=-P^{-1}\dif PP^{-1},\]
+即得
+\begin{align*}
+	\dif W
+	&=A\left\{\dif Z(I-\bar{Z}_0'Z)^{-1}-\right.\\
+	&\left. (Z-Z_0)(I-\bar{Z}_0'Z)^{-1}\dif(I-\bar{Z}_0'Z)(I-\bar{Z}_0'Z)^{-1}\right\}D^{-1}.
+\end{align*}
+在上式中命$Z=Z_0$，并注意到$(I-\bar{Z}_0'Z_0)^{-1}=\bar{D}'D$，即得
+\begin{equation}\label{eq3.4.13}
+	\dif W=A\dif Z\bar{D}'.
+\end{equation}
+现在把$\dif W,\dif Z$的元素排成下列两个列向量：
+\[\dif w=(\dif w_{11},\cdots,\dif w_{1n},\cdots,\dif w_{m1},\cdots,\dif w_{mn})',\]
+\[\dif z=(\dif z_{11},\cdots,\dif z_{1n},\cdots,\dif z_{m1},\cdots,\dif z_{mn})'.\]
+根据引理\ref{lem3.4.6}，\eqref{eq3.4.13}便可写成
+\[\dif w=(A'\times\bar{D}')'\dif z.\]
+这就是说
+\[\varphi_{Z_0}'(Z_0)=(A'\times\bar{D}')'.\]
+由直积的性质\hyperlink{3.4.3.1}{(3)}，
+\[\det\varphi_{Z_0}'(Z_0)=\det(A'\times\bar{D}')=\det A^n\det\bar{D}^m.\]
+注意到\eqref{eq3.4.7}，即得
+\begin{align*}
+	|\det\varphi_{Z_0}'(Z_0)|^2
+	&=\det(A\bar{A}')^n\det(D\bar{D}')^m\\
+	&=\det(I-Z_0\bar{Z}_0')^{-(m+n)}.
+\end{align*}
+因而由定理\ref{thm3.3.8}得
+\[K_{\text{\uppercase\expandafter{\romannumeral1}}}(Z,Z)=\frac1{V(R_{\text{\uppercase\expandafter{\romannumeral1}}})}\frac1{\det(I-Z\bar{Z}')^{m+n}}.\]
+再从命题\ref{prop3.3.9}即得
+\begin{theorem}\label{thm3.4.7}
+	$R_{\text{\uppercase\expandafter{\romannumeral1}}}$的核函数是
+	\[K_{\text{\uppercase\expandafter{\romannumeral1}}}(Z,W)=\frac1{V(R_{\text{\uppercase\expandafter{\romannumeral1}}})}\frac1{\det(I-Z\bar{W}')^{m+n}}.\]
+\end{theorem}
+用类似的方法，可以算得$R_{\text{\uppercase\expandafter{\romannumeral2}}},R_{\text{\uppercase\expandafter{\romannumeral3}}},R_{\text{\uppercase\expandafter{\romannumeral4}}}$的核函数分别为
+\begin{align*}
+	K_{\text{\uppercase\expandafter{\romannumeral2}}}(Z,W)
+	&=\frac1{V(R_{\text{\uppercase\expandafter{\romannumeral2}}})}\frac1{\det(I-Z\bar{W})^{n+1}},\\
+	K_{\text{\uppercase\expandafter{\romannumeral3}}}(Z,W)
+	&=\frac1{V(R_{\text{\uppercase\expandafter{\romannumeral3}}})}\frac1{\det(I+Z\bar{W})^{n-1}},\\
+	K_{\text{\uppercase\expandafter{\romannumeral4}}}(z,w)
+	&=\frac1{V(R_{\text{\uppercase\expandafter{\romannumeral4}}})}\frac1{(1+|zw'|^2-2z\bar{w}')^n}.
+\end{align*}
+四类典型域的体积已由华罗庚\index{H!华罗庚}教授\cite{华罗庚1958多复变数函数论中的典型域的调和分析}算出，它们分别是
+\begin{align*}
+	V(R_{\text{\uppercase\expandafter{\romannumeral1}}})
+	&=\frac{(m-1)!\cdots 2!1!(n-1)!\cdots2!1!}{(m+n-1)!\cdots2!1!}\pi^{mn},\\
+	V(R_{\text{\uppercase\expandafter{\romannumeral2}}})
+	&=\frac{\pi^{\frac12 n(n+1)}}{n!}\frac{2!4!\cdots (2n-2)!}{(n+1)!(n+2)!\cdots (2n-1)!},\\
+	V(R_{\text{\uppercase\expandafter{\romannumeral3}}})&=\pi^{\frac12 n(n-1)}\frac{2!4!\cdots(2n-4)!}{(n-1)!n!\cdots(2n-3)!},\\
+	V(R_{\text{\uppercase\expandafter{\romannumeral4}}})
+	&=\frac{\pi^n}{2^{n-1}n!}.
+\end{align*}
+\section{Bergman度量\label{sec3.5.1}}
+\subsection{Bergman度量方阵}
+Bergman核函数的重要作用之一，是可以通过它在有界域上引进Bergman度量，它相对于单位圆盘上的Poincar\'e度量.
+
+设$\Omega$是$\MC^n$中的有界域，$K(z,\zeta)$是$\Omega$的核函数，记
+\[T_{jk}(z,z)=\pppp{\log K(z,z)}{z_j}{\bar{z}_k},\quad j,k=1,\cdots,n,\]
+称$T=(T_{jk})_{1\le j,k\le n}$为$\Omega$的\textbf{度量方阵}\index{B!Bergman度量方阵}\index[symbolindex]{\textbf{其它符号}! $T(z$，$z)$}.容易看出$T$是一个Hermite方阵：$\bar{T}'=T$.
+\begin{theorem}\label{thm3.5.1}
+	有界域$\Omega$的度量方阵$T(z,z)$在$\Omega$中每点都是正定的.
+\end{theorem}
+\begin{proof}
+	对于任意$u\in\MC^n,u\neq0$，我们要证明
+	\[uT(z,z)\bar{u}'=\sum_{j,k=1}^{n}\pppp{\log K(z,z)}{z_j}{\bar{z}_k}u_j\bar{u}_k>0,\quad z\in\Omega.\]
+	因为$K(z,z)=\sum\limits_{k=0}^\infty \varphi_k(z)\bar{\varphi_k(z)}$，所以
+	\begin{align*}
+		\pppp{\log K}{z_j}{\bar{z}_k}
+		&=\frac1K \pppp{K}{z_j}{\bar{z}_k}-\frac1{K^2} \pp{K}{z_j}\pp{K}{\bar{z}_k}\\
+		&=\frac1{K^2}\left\{\sum_{l=0}^{\infty}|\varphi_l(z)|^2\sum_{l=0}^{\infty}\pp{\varphi_l}{z_j}\bar{\pp{\varphi_l}{z_k}}-\left(\sum_{l=0}^{\infty}\pp{\varphi_l}{z_j}\bar{\varphi}_l\right)\left(\sum_{l=0}^{\infty}\varphi_l\bar{\pp{\varphi_l}{z_k}}\right)\right\},
+	\end{align*}
+\begin{align*}
+	K^2\sum_{j,k=1}^{n}\pppp{\log K}{z_j}{\bar{z}_k}u_j\bar{u}_k
+	=&\sum_{l=0}^{\infty}|\varphi_l(z)|^2\sum_{l=0}^{\infty}\left(\sum_{j=1}^{n}\pp{\varphi_l}{z_j}u_j\right)\bar{\left(\sum_{k=1}^{n}\pp{\varphi_l}{z_k}u_k\right)}-\\
+	&\left(\sum_{l=0}^{\infty}\bar{\varphi}_l\sum_{j=1}^{n}\pp{\varphi_l}{z_j}u_j\right)\left(\sum_{l=0}^{\infty}\varphi_l \bar{\left(\sum_{k=1}^{n}\pp{\varphi_l}{z_k}u_k\right)}\right).
+\end{align*}
+记$a_l=\sum\limits_{j=1}^{n}\pp{\varphi_l}{z_j}u_j$，则上式可写为
+	\begin{equation}\label{eq3.5.1}
+		K^2\sum_{j,k=1}^{n}\pppp{\log K}{z_j}{\bar{z}_k}u_j\bar{u}_k=\sum_{l=0}^{\infty}|\varphi_l(z)|^2\sum_{l=0}^{\infty}|a_l|^2-\left|\sum_{l=0}^{\infty}a_l\bar{\varphi}_l\right|^2\ge0.
+	\end{equation}
+这里已经用了Schwarz不等式.如果有某点$z$使等号成立，则有$a_l=\lambda\varphi_l$，即
+	\begin{equation}\label{eq3.5.2}
+		\sum_{j=1}^{n}\pp{\varphi_l}{z_j}u_j=\lambda\varphi_l,\quad l=0,1,\cdots
+	\end{equation}
+由\ref{sec3.1}最后的说明知道，$\varphi_l$在原点附近有展开式：
+\begin{alignat*}{6}
+	&\varphi_0(z)
+	=&a_0^{(0)}+&&a_1^{(0)}z_1+&&\cdots+a_n^{(0)}z_n+\cdots,\quad &&a_0^{(0)}\neq0,\\
+	&\varphi_1(z)
+	=&  &&a_1^{(1)}z_1+&&\cdots+a_n^{(1)}z_n+\cdots,\quad &&a_1^{(1)}\neq0,\\
+	&\cdots\cdots\cdots\cdots  & && &&  &&\\
+	&\varphi_n(z)
+	=& && &&a_n^{(n)}z_n+\cdots,\quad &&a_n^{(n)}\neq0.
+\end{alignat*}
+所以当$l\ge1$时，$\varphi_l(0)=0,\pp{\varphi_l(0)}{z_j}=a_j^{(l)}$，在\eqref{eq3.5.2}中命$z=0$，得线性方程组
+\[\sum_{j=1}^{n}a_j^{(l)}u_j=0,\quad l=1,\cdots,n.\]
+它的系数行列式为$a_1^{(1)}\cdots a_n^{(n)}\neq0$，因而$u=0$，这说明\eqref{eq3.5.1}中等号不能成立，因而$T(z,z)>0$.
+\end{proof}
+\begin{theorem}\label{thm3.5.2}
+	设$\Omega$和$\Omega_1$为$\MC^n$中的有界域，双全纯映射$w=f(z)$把$\Omega$一一地映为$\Omega_1$，$\Omega$和$\Omega_1$的度量方阵分别为$T(z,z)$和$T_1(w,w)$，那么
+	\begin{equation}\label{eq3.5.3}
+		T(z,z)=\left(\dd{f(z)}{z}\right)' T_1(w,w)\bar{\left(\dd{f(z)}{z}\right)}.
+	\end{equation}
+\end{theorem}
+\begin{proof}
+	设$\Omega$和$\Omega_1$的核函数分别为$K(z,z)$和$K_1(w,w)$，则由定理\ref{thm3.3.6}，得
+	\[K(z,z)=K_1(w,w)\det\dd{f(z)}{z}\bar{\det\dd{f(z)}{z}},\]
+	取对数得
+	\[\log K(z,z)=\log K_1(w,w)+\log\det\dd{f(z)}{z}+\log\bar{\det\dd{f(z)}{z}}.\]
+	注意到右端第二项是$z$的全纯函数，第三项是$\bar{z}$的全纯函数，因而
+	\[\pppp{\log K(z,z)}{z_j}{\bar{z}_k}=\sum_{p,q=1}^{n}\pppp{\log K_1(w,w)}{w_p}{\bar{w}_q}\pp{w_p}{z_j}\bar{\pp{w_q}{z_k}}.\]
+	这就是\eqref{eq3.5.3}.
+\end{proof}
+\subsection{Bergman度量}
+根据定理\ref{thm3.5.1}，我们给出下面的
+\begin{definition}\label{def3.5.3}
+	设$\Omega$是$\MC^n$中的有界域，$K(z,z)$是它的核函数，称
+	\[\dif s^2=\sum_{j,k=1}^{n}\pppp{\log K(z,z)}{z_j}{\bar{z}_k}\dif z_j\dif \bar{z}_k=\dif z \, T(z,z) (\dif\bar{z})'\]
+	为域$\Omega$的\textbf{Bergman度量}\index{B!Bergman度量}.
+\end{definition}
+两个全纯等价域上的Bergman度量有下面的关系.
+\begin{theorem}\label{thm3.5.4}
+	设$\Omega$和$\Omega_1$为$\MC^n$中的有界域，双全纯映射$w=f(z)$把$\Omega$一一地映为$\Omega_1$，$\Omega$和$\Omega_1$的度量方阵分别为$T(z,z)$和$T_1(w,w)$，那么
+	\[\dif z \, T(z,z)(\dif\bar{z})'=\dif w \, T_1(w,w)(\dif\bar{w})'.\]
+\end{theorem}
+\begin{proof}
+	由定理\ref{thm3.5.2}，
+	\[T(z,z)=\left(\dd{f(z)}{z}\right)' T_1(w,w)\bar{\left(\dd{f(z)}{z}\right)}.\]
+	注意到
+	\[\dif w=\dif z\left(\dd{f(z)}{z}\right)',\quad (\dif\bar{w})'=\bar{\dd{f(z)}{z}}(\dif\bar{z})',\]
+	所以
+	\begin{align*}
+		\dif w \, T_1(w,w)(\dif\bar{w})'
+		&=\dif z\left(\dd{f(z)}{z}\right)' T_1(w,w)\bar{\dd{f(z)}{z}}(\dif\bar{z})'\\
+		&=\dif z \, T(z,z)(\dif\bar{z})'.\qedhere
+	\end{align*}
+\end{proof}
+由此立刻可得
+\begin{corollary}\label{cor3.5.5}
+	有界域$\Omega$上的Bergman度量在$\Omega$的全纯自同构下不变.
+\end{corollary}
+通过Bergman度量可以定义曲线在Bergman度量下的长度，以及$\Omega$中两点在Bergman度量下的距离.
+\begin{definition}\label{def3.5.6}
+	设$\Omega$是$\MC^n$中的有界域，$T(z,z)$是它的度量方阵，$\gamma\colon[0,1]\to\Omega$是$\Omega$中的$C^1$曲线，定义$\gamma$的Bergman长度\index{B!Bergman长度}为\index[symbolindex]{\textbf{其它符号}! $\vert\gamma\vert_{B(\Omega)}$}
+	\begin{align*}
+		|\gamma|_{B(\Omega)}
+		&=\int_{0}^{1}\left\{\gamma'(t)T(\gamma(t),\gamma(t))\bar{(\gamma'(t))}'\right\}^{\frac12}\dif t\\
+		&=\int_{0}^{1}\left\{\sum_{j,k=1}^{n}\pppp{\log K(\gamma(t),\gamma(t))}{z_j}{\bar{z}_k}\gamma_j'(t)\bar{\gamma_k'(t)}\right\}^{\frac12}\dif t.
+	\end{align*}
+\end{definition}
+\begin{definition}\label{def3.5.7}
+	设$z,w$是$\Omega$中两点，$\Omega$中连接$z,w$的$C^1$曲线的全体记为$Q$，即
+	\[Q=\{\gamma\colon[0,1]\to\Omega\text{是$C^1$曲线}\colon\gamma(0)=z,\gamma(1)=w\}.\]
+	$z,w$的Bergman距离\index{B!Bergman距离}$\delta_{B(\Omega)}(z,w)$\index[symbolindex]{\textbf{其它符号}! $\delta_{B(\Omega)}(z$，$w)$}定义为
+	\[\delta_{B(\Omega)}(z,w)=\inf\{|\gamma|_{B(\Omega)}\colon\gamma\in Q\}.\]
+\end{definition}
+从定理\ref{thm3.5.4}立刻得到下面的
+\begin{theorem}\label{thm3.5.8}
+	设$\Omega$和$\Omega_1$是$\MC^n$中两个有界域，$w=f(z)$把$\Omega$一一地映为$\Omega_1$.
+	
+	(1)
+	设$\gamma\colon[0,1]\to\Omega$是$\Omega$中的$C^1$曲线，那么
+	\[|\gamma|_{B(\Omega)}=|f(\gamma)|_{B(\Omega_1)};\]
+	
+	(2)
+	设$z,w$是$\Omega$中任意两点，那么
+	\[\delta_{B(\Omega)}(z,w)=\delta_{B(\Omega_1)}(f(z),f(w)).\]
+\end{theorem}
+\begin{corollary}\label{cor3.5.9}
+	设$\Omega$是$\MC^n$中的有界域，$f\in\Aut(\Omega)$.
+	
+	(1)
+	对于$\Omega$中任意$C^1$曲线$\gamma,|\gamma|_{B(\Omega)}=|f(\gamma)|_{B(\Omega)}$；
+	
+	(2)
+	设$z,w$是$\Omega$中任意两点，那么
+	\[\delta_{B(\Omega)}(z,w)=\delta_{B(\Omega)}(f(z),f(w)).\]
+\end{corollary}
+已知单位球$B_n$的核函数$K(z,z)=\frac{n!}{\pi^n}(1-|z|^2)^{-(n+1)}$，容易直接算出$B_n$的Bergman度量为
+\[\dif s^2=\frac{n+1}{(1-|z|^2)^2}\left\{(1-|z|^2)|\dif z|^2+|\langle z,\dif z\rangle|^2\right\}.\]
+当$n=1$时，即单位圆盘的Bergman度量为
+\[\dif s^2=\frac{2|\dif z|^2}{(1-|z|^2)^2}.\]
+它就是通常的Poincar\'e度量\index{P!Poincar\'e度量}.
+\section*{注记}\addcontentsline{toc}{section}{注记}
+本章的大部分内容是属于 S. Bergman\cite{bergman1951kernel}的.华罗庚教授\cite{华罗庚1958多复变数函数论中的典型域的调和分析}用两种方法计算出四类典型域的 Bergman 核函数：一种是通过群表示论的方法，直接算出四类典型域上完备的规范正交系，从而得到核函数；另一种是通过四类典型域的全纯自同构来计算它们的核函数.我们采用了第二种方法.由于只有极少数的几类域的 Bergman 核函数能精确地计算出来，因此对于 Bergman核函数的渐近性质的了解显得特别注意.这方面的一项重要工作已由 C. Fefferman 完成.关于这方面的材料，有兴趣的读者可参阅\cite{fefferman1974bergman}.
+
+本章的内容可参阅\cite{华罗庚1958多复变数函数论中的典型域的调和分析}，\cite{陆启铿1956多复变数函数与酉几何,陆启铿1961多复变数函数引论,陆启铿1963典型流形与典型域}和\cite{krantz2001function}.

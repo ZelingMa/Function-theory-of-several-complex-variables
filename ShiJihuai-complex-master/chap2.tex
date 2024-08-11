@@ -1,0 +1,2205 @@
+\chapter{全纯映射\label{chap2}}
+在第\ref{chap1}章中，我们讨论了多复变数全纯函数的基本性质.我们看到，在某些方面，它与单复变数全纯函数有本质的差别.从映射的角度来看，单复变数函数把平面点集映成平面点集，而$n$个复变数的函数则是把$\mathbb{C}^n$中的点集映成平面上的点集.因此有必要考虑下面的函数组：
+\[F=(f_1,\cdots,f_m),\]
+其中每一个分量$f_j$都是$\Omega\subset\mathbb{C}^n$上的函数.这样，$F$就把$\Omega$映成$\mathbb{C}^m$中的点集，称它为$\Omega\to\MC^m$的映射.本章讨论有关全纯映射的一些性质.
+\section{全纯映射的导数\label{sec2.1}}
+\subsection{全纯映射的导数}
+\begin{definition}\label{def2.1.1}
+	设$\Omega$为$\MC^n$中的域，$f_1,\cdots,f_m\in H(\Omega)$，称$F=(f_1,\cdots,f_m)\colon\Omega\to\MC^m$为\textbf{全纯映射}\index{Q!全纯映射}.
+\end{definition}
+在单变数的情形，如果$f$在$z_0$可微，则有
+\[f(z_0+h)-f(z_0)=f'(z_0)h+o(h),\]
+这里导数$f'(z_0)$可以看成是由$f$和$z_0$确定的一个线性算子$A\colon h\to f'(z_0)h$.下面就用这种观点来定义全纯映射的导数.
+\begin{definition}\label{def2.1.2}
+	设$\Omega$是$\MC^n$中的域，$F\colon\Omega\to\MC^m$是一个映射.对于给定的$z\in\Omega$，如果存在$A\in L(\MC^n,\MC^m)$，使得
+	\begin{equation}\label{eq2.1.1}
+		F(z+h)-F(z)=Ah+o(|h|),
+	\end{equation}
+就称$F$在$z$点可微，称$A$为$F$在$z$点的\textbf{导数}\index{Q!全纯映射的导数}，并记$F'(z)=A$.这里$h\in\MC^n,L(\MC^n,\MC^m)$表示$\MC^n\to\MC^m$的线性映射的全体.\eqref{eq2.1.1}的含义是
+\[\lim_{h\to0}\frac{\left|F(z+h)-F(z)-Ah\right|}{|h|}=0,\]
+其中分子在$\MC^m$中取模，分母在$\MC^n$中取模.
+\end{definition}
+现在来看，如果$F\colon\Omega\to\MC^m$是全纯映射，$F'(z)$是否存在？
+
+设$F=(f_1,\cdots,f_m)$，因为每个$f_j$都是$\Omega$中的全纯函数，对于任意$z\in\Omega,f_j$可在$z$的邻域中展开为幂级数
+\[f_1(z+h)=f_1(z)+\pp{f_1(z)}{z_1}h_1+\cdots+\pp{f_1(z)}{z_n}h_n+o(|h|),\]
+\[\cdots\cdots\cdots\cdots\]
+\[f_m(z+h)=f_m(z)+\pp{f_m(z)}{z_1}h_1+\cdots+\pp{f_m(z)}{z_n}h_n+o(|h|),\]
+写成列向量的形式，有
+\[F(z+h)=F(z)+Ah+o(|h|),\]
+这里$A=\left(\pp{f_i(z)}{z_j}\right)_{1\le i\le m\atop 1\le j\le n}$.由此我们得到结论：全纯映射$F\colon\Omega\to\MC^m$在$\Omega$中处处可微，其导数
+\[F'(z)\index[symbolindex]{\textbf{函数和映射}!$F'(z)$}=
+\begin{pmatrix}
+	\pp{f_1(z)}{z_1} & \cdots & \pp{f_1(z)}{z_n}\\
+	\vdots  & & \vdots \\
+	\pp{f_m(z)}{z_1} & \cdots &\pp{f_m(z)}{z_n}
+\end{pmatrix}
+,\]
+这是一个$m\times n$矩阵，它就是$F$的Jacobi矩阵.
+\begin{prop}\label{prop2.1.3}
+	设$\Omega_1,\Omega_2$分别是$\MC^k,\MC^m$中的域，
+	\[F\colon\Omega_1\to\Omega_2,\quad G\colon\Omega_2\to\MC^n\]
+	都是全纯映射，那么它们的复合\index{Q!全纯映射的复合}$H=G\circ F$是$\Omega_1\to\MC^n$的全纯映射，而且$H'(z)=G'(w)F'(z)$.
+\end{prop}
+\begin{proof}
+	设$F=(f_1,\cdots,f_m),G=(g_1,\cdots,g_n)$，其中$f_j=f_j(z_1,\cdots,z_k)\in H(\Omega_1),j=1,\cdots,m$；$g_i=g_i(w_1,\cdots,w_m)\in H(\Omega_2),i=1,\cdots,n$.则$H=(h_1,\cdots,h_n)$，其中
+	\[h_j=g_j(f_1,\cdots,f_m),\quad j=1,\cdots,n.\]
+	于是
+	\begin{equation}\label{eq2.1.2}
+		\pp{h_j}{\bar{z}_l}=\sum_{s=1}^{m}\left(\pp{g_j}{w_s}\pp{w_s}{\bar{z}_l}+\pp{g_j}{\bar{w}_s}\pp{\bar{w}_s}{\bar{z}_l}\right),
+	\end{equation}
+\begin{equation}\label{eq2.1.3}
+	\pp{h_j}{z_l}=\sum_{s=1}^{m}\left(\pp{g_j}{w_s}\pp{w_s}{z_l}+\pp{g_j}{\bar{w}_s}\pp{\bar{w}_s}{z_l}\right),
+\end{equation}
+$j=1,\cdots,n$；$l=1,\cdots,k$.由Cauchy-Riemann方程组
+\[\pp{w_s}{\bar{z}_l}=0,\quad \pp{g_j}{\bar{w}_s}=0.\]
+\eqref{eq2.1.2}，\eqref{eq2.1.3}分别变成
+\begin{equation}\label{eq2.1.4}
+	\pp{h_j}{\bar{z}_l}=0,\quad j=1,\cdots,n;\quad l=1,\cdots,k,
+\end{equation}
+\begin{equation}\label{eq2.1.5}
+	\pp{h_j}{z_l}=\sum_{s=1}^{m}\pp{g_j}{w_s}\pp{w_s}{z_l}.
+\end{equation}
+根据Hartogs定理（定理\ref{thm1.5.14}），从\eqref{eq2.1.4}得$h_j\in H(\Omega_1),j=1,\cdots,n$，所以$H$是全纯映射.从\eqref{eq2.1.5}得
+\[H'(z)=G'(w)F'(z).\qedhere\]
+\end{proof}
+\subsection{复Jacobian和实Jacobian}
+设$\Omega$是$\MC^n$中的域，$F\colon \Omega\to\MC^n$是全纯映射，这时$F'(z)$是一个$n$阶方阵，称
+\[(JF)(z)\index[symbolindex]{\textbf{函数和映射}!$(JF)(z)$}=\det F'(z)\]
+为$F$在$z$点的\textbf{复Jacobian}\index{F!复Jacobian}.
+
+如果记$z_j=x_j+\ii y_j,f_j=u_j+\ii v_j$，那么$F=(f_1,\cdots,f_n)$也可看成$x_1,\cdots,x_n,y_1,\cdots$，\\
+$y_n$到$u_1,\cdots,u_n,v_1,\cdots,v_n$的一个映射，它的Jacobi矩阵为
+\[
+\begin{pmatrix}
+	\pp{(u_1,\cdots,u_n)}{(x_1,\cdots,x_n)} & \pp{(u_1,\cdots,u_n)}{(y_1,\cdots,y_n)}\\
+	\pp{(v_1,\cdots,v_n)}{(x_1,\cdots,x_n)} & 
+	\pp{(v_1,\cdots,v_n)}{(y_1,\cdots,y_n)}
+\end{pmatrix}.\]
+这样一个由$F$所确定的$2n\times 2n$矩阵的行列式称为$F$的\textbf{实Jacobian}\index{S!实Jacobian}，记为$(J_\MR F)(z)$\index[symbolindex]{\textbf{函数和映射}!$(J_\MR F)(z)$}.为了导出$(JF)(z)$和$(J_\MR F)(z)$之间的关系，先证明一个简单的代数引理.
+\begin{lemma}\label{lem2.1.4}
+	设$A=(a_{jk})$是$n$阶复方阵，$a_{jk}=b_{jk}+\ii c_{jk}$，记$B=(b_{jk}),C=(c_{jk})$，
+	\[\tilde{A}=
+\begin{pmatrix}
+	B & -C\\
+	C &  B
+\end{pmatrix},\]
+那么，$\det\tilde{A}=\left|\det A\right|^2$.
+\end{lemma}
+\begin{proof}
+	因为$A=B+C\ii$，所以
+	\begin{align*}
+		\det\tilde{A}
+		&=\det\begin{pmatrix}
+			B & -C\\
+			C & B
+		\end{pmatrix}
+	=\det\begin{pmatrix}
+		B-C\ii & -C\\
+		C+B\ii & B
+	\end{pmatrix}\\
+&=\det\begin{pmatrix}
+	B-C\ii & -C\\
+	\ii(B-C\ii) & B
+\end{pmatrix}=\det\begin{pmatrix}
+B-C\ii & -C\\
+O & B+C\ii
+\end{pmatrix}\\
+&=\det(B+C\ii)\det(B-C\ii)=\left|\det A\right|^2.\qedhere
+	\end{align*} 
+\end{proof}
+\begin{prop}\label{prop2.1.5}
+	设$JF$和$J_\MR F$分别是全纯映射$F$的复Jacobian和实Jacobian，那么
+	\[(J_\MR F)(z)=\left|(J F)(z)\right|^2.\]
+\end{prop}
+\begin{proof}
+	若记
+	\[A=\begin{pmatrix}
+		\pp{f_1}{z_1} & \cdots & \pp{f_1}{z_n}\\
+		\vdots  & & \vdots \\
+		\pp{f_n}{z_1} & \cdots &\pp{f_n}{z_n}
+	\end{pmatrix}\]
+为$f$的复Jacobi方阵，$B$和$C$分别记为
+\[B=\begin{pmatrix}
+	\pp{u_1}{x_1} & \cdots & \pp{u_1}{x_n}\\
+	\vdots &  & \vdots\\
+	\pp{u_n}{x_1}  &\cdots & \pp{u_n}{x_n}
+\end{pmatrix},\quad C=-\begin{pmatrix}
+\pp{u_1}{y_1} & \cdots & \pp{u_1}{y_n}\\
+\vdots &  & \vdots\\
+\pp{u_n}{y_1}  &\cdots & \pp{u_n}{y_n}
+\end{pmatrix},\]
+则因
+\[\pp{f_j}{z_k}=\pp{u_j}{x_k}-\ii\pp{u_j}{y_k}=\pp{v_j}{y_k}+\ii\pp{v_k}{x_k},\quad j,k=1,\cdots,n,\]
+故有\quad $A=B+\ii C$，而且$f$的实Jacobi方阵为
+\[\begin{pmatrix}
+	B & -C\\
+	C &  B
+\end{pmatrix}.\]
+于是，从引理\ref{lem2.1.4}即得本命题.
+\end{proof}
+\section{单叶全纯映射\label{sec2.2}\index{D!单叶全纯映射}}
+\subsection{单叶全纯映射的基本性质}
+在单复变中，单叶全纯函数有两个基本性质：
+
+(1)\hypertarget{2.2.1}{}
+若$f$是域$\Omega\subset\MC$中的单叶全纯函数，那么$f'(z)$在$\Omega$中处处不等于$0$.但逆命题不成立，即若$f'(z)$在$\Omega$中处处不为$0$，$f$未必是$\Omega$中的单叶函数.但下面的结论成立：
+
+(2)\hypertarget{2.2.1}{}
+若存在$z_0\in\Omega$使得$f'(z_0)\neq0$，则$f$在$z_0$的邻域中是单叶的.
+
+下面我们把这两个性质推广到$\MC^n$中的全纯映射.
+\begin{theorem}\label{thm2.2.1}
+	设$\Omega$是$\MC^n$中的域，$F\colon\Omega\to\MC^n$是全纯映射.如果存在$a\in\Omega$，使得$F'(a)$可逆，那么一定存在$a$和$F(a)$的邻域$V$和$W$，使得$F$一一地把$V$映成$W$，而且$F$的逆映射$G\colon W\to V$是全纯的，$G'(w)=(F'(z))^{-1}$对$z\in V$成立.
+\end{theorem}
+\begin{proof}
+	因为$F'(a)$可逆，所以$\det F'(a)\neq0$.把$F$看成$\MR^{2n}\to\MR^{2n}$上的实映射，由命题\ref{prop2.1.5}，
+	\[(J_\MR F)(a)=\left|(JF)(a)\right|^2 >0.\]
+	于是，根据实变函数的反函数存在定理，存在$a$和$F(a)$的邻域$V$和$W$，使得$F$一一地把$V$映为$W$.由于$(JF)(a)$是$a$的连续函数，故可取充分小的$V$，使$(JF)(z)\neq0$对所有$z\in V$成立，因而$F'$在$V$中每点都是可逆的.剩下来要证明的是逆映射$G=(g_1,\cdots,g_n)$在$W$上是全纯的.因对每点$z\in V$，有$G(F(z))=z$，即
+	\[g_j(F(z))=z_j,\quad j=1,\cdots,n.\]
+	上式两端对$\bar{z}_k$求导数，得
+	\[\sum_{s=1}^{n}\left(\pp{g_j}{w_s}\pp{w_s}{\bar{z}_k}+\pp{g_j}{\bar{w}_s}\pp{\bar{w}_s}{\bar{z}_k}\right)=0,\]
+	由于$\pp{w_s}{\bar{z}_k}=\pp{f_s}{\bar{z}_k}=0$，上式变为
+	\[\sum_{s=1}^{n}\pp{g_j}{\bar{w}_s}\bar{\left(\pp{w_s}{z_k}\right)}=0,\quad k=1,\cdots,n.\]
+	这是一个以$\bar{\left(\pp{w_s}{z_k}\right)}_{1\le k,s\le n}$为系数矩阵的线性方程组，因为
+	\[\det\bar{\left(\pp{w_s}{z_k}\right)}=\bar{(JF)(z)}\neq0,\quad z\in V,\]
+	所以$\pp{g_j}{\bar{w}_s}=0,j,s=1,\cdots,n$，由Hartogs定理，$g_j\quad(j=1,\cdots,n)$都在$W$上全纯，因而$G$是$W$上的全纯映射.根据命题\ref{prop2.1.3}，将$G(F(z))=z$对$z$求导数，即得$G'(w)F'(z)=I_n$，这里$I_n$是$n$阶单位方阵，因而$G'(w)=(F'(z))^{-1}$.
+\end{proof}
+\begin{definition}\label{def2.2.2}
+	设$\Omega$是$\MC^n$中的域，$F\colon\Omega\to\MC^n$是一个映射，如果对任意$z,w\in\Omega,z\neq w$，有$F(z)\neq F(w)$，就称$F$是$\Omega$上的一个\textbf{单叶映射}.
+\end{definition}
+对于单叶的全纯映射有下面的
+\begin{theorem}\label{thm2.2.3}
+	设$\Omega$是$\MC^n$中的域，$F\colon\Omega\to\MC^n$是全纯映射.如果$F$在$\Omega$上是单叶的，那么$\det F'(z)$在$\Omega$上处处不为$0$.
+\end{theorem}
+\textbf{证明的思路}\quad 任取$a\in\Omega$，构造$a$的邻域$U$，使得$F$在$F(U)$上有全纯的逆映射$G$，即$G(F(z))=z$在$U$上成立，求导数得$G'(F(z))F'(z)=I_n$，命$z=a$，并取行列式得
+\[\det G'(F(a))\det F'(a)=1,\]
+所以$\det F'(a)\neq0$，定理就得到了证明.
+\begin{proof}
+	在所设的条件下，我们先证明$\det F'(z)$不可能在$\Omega$上恒等于$0$，即若命
+	\[A=\{z\in\Omega\colon \det F'(z)=0\},\]
+	我们要证明$A\neq\Omega$.用反证法，如果$A=\Omega$，那么对于任意的$z\in\Omega$，均有 $\rank F'(z)<n$.命
+	\[s=\max\{\rank F'(z)\colon z\in\Omega\},\]
+	则$s<n$.如果$s=0$，则$\pp{f_j}{z_k}\equiv0,j,k=1,\cdots,n$，这里$f_j$是映射$F$的各个分量，这时$F$是常向量，这和$F$的单叶性相矛盾，因而$0<s<n$.于是存在$p\in\Omega$，使得 $\rank F'(p)=s<n$.这时方程组
+	\[w_j=f_j(z_1,\cdots,z_n),\quad j=1,\cdots,n\]
+	的前$s$个方程在$p$附近可以对变数$z_1,\cdots,z_s$解出
+	\begin{equation}\label{eq2.2.1}
+		z_j=\varphi_j(z_{s+1},\cdots,z_n,w_1,\cdots,w_s),\quad j=1,\cdots,s.
+	\end{equation}
+它们也满足后面$n-s$个方程：
+\[w_j=f_j(\varphi_1,\cdots,\varphi_s,z_{s+1},\cdots,z_n),\quad j=s+1,\cdots,n.\]
+如果记$F(p)=q$，把$q$固定，在$p$的附近随意取$z_{s+1},\cdots,z_n$的值，由\eqref{eq2.2.1}再定出$z_1,\cdots,z_s$的值，这样得到的$z$在映射$F$下的像都是$q$，这就和$F$的单叶性相矛盾了.因而$A\neq\Omega$.
+
+现任取$a\in\Omega$，$P$是以$a$为中心的一个小多圆柱，使得$\bar{P}\subset\Omega$，则$\partial P$是紧的，因而$K=F(\partial P)$也是紧的.由于$a\notin\partial P$，$F$是单叶的，所以$F(a)\notin K$.取以$F(a)$为中心的小多圆柱$V$，使得$\bar{V}\cap K=\varnothing$，命$U=F^{-1}(V)\cap P$，那么$U$是$a$的一个邻域，我们来证明$F$在$F(U)$上有全纯的逆映射.
+
+因为$\det F'(z)$是$\Omega$上的全纯函数，从$A\neq\Omega$便知$U\setminus A$不是空集，因若$U=A$，这就是说$\det F'(z)$在$U$上处处为$0$，由唯一性定理，$\det F'(z)$在$\Omega$上处处为$0$，这与$A\neq\Omega$相矛盾.于是对于任意$z\in U\setminus A,\det F'(z)\neq0$.由刚才证明的定理\ref{thm2.2.1}，$D=F(U\setminus A)$是$\MC^n$中的开集，而且存在$g\colon D\to U\setminus A,g$在$D$上是全纯的，使得
+\begin{equation}\label{eq2.2.2}
+	F(g(w))=w,\quad w\in D.
+\end{equation}
+根据$U$的定义，$F(U)\subset V$，所以$D=F(U\setminus A)\subset V$，下面将证明$g$可以全纯开拓到$V$上去.首先从\eqref{eq2.2.2}可得
+\begin{equation}\label{eq2.2.3}
+	\det F'(g(w))\det g'(w)=1,\quad w\in D.
+\end{equation}
+其次注意$F\colon U\to V$是逆紧\index{N!逆紧映射}的，即对$V$中的任意紧集$C,F^{-1}(C)$是$U$中的紧集.这是因为$F(\partial P)$和$V$不相交，由$F$的连续性，存在$\partial P$的邻域$N$，使得$F(N)$和$V$不相交，所以不可能存在$b\in\partial P$，使得$F(b)\in C\subset V$，因而$F^{-1}(C)$在$P$中是相对紧的，于是$F^{-1}(C)\cap U$是紧的.
+
+现设$\eta\in(\partial D)\cap V,w^{(k)}$是$D$中一列点，当$k\to\infty$时，$w^{(k)}\to\eta$.因为$F\colon U\to V$是逆紧的，所以$g(w^{(k)})=F^{-1}(w^{(k)})$在$U$的一个紧子集内，因而它的每个极限点都在$U$中.另一方面$w^{(k)}\to\eta\in\partial D$，所以$g(w^{(k)})$趋于$A$中的点.总之，$g(w^{(k)})$的极限点都在$A\cap U$上.于是当$k\to\infty$时，$\det F'(g(w^{(k)}))\to 0$，由\eqref{eq2.2.3}得
+\begin{equation}\label{eq2.2.4}
+	\det g'(w^{(k)})\to\infty,\quad k\to\infty.
+\end{equation}
+现在定义
+\begin{equation}\label{eq2.2.5}
+	h(w)=
+	\begin{cases}
+		(\det g'(w))^{-1} &,w\in D,\\
+		0 &,w\in V\setminus D.
+	\end{cases}
+\end{equation}
+由\eqref{eq2.2.4}知$h$在$V$上连续，于是由Rad\'o定理（定理\ref{thm1.6.3}），$h$在$V$上全纯，且由\eqref{eq2.2.5}知道，
+\[V\setminus D=\{w\in V\colon h(w)=0\}.\]
+若记$g=(g_1,\cdots,g_n)$，则因$g(D)=U\setminus A$，而$U\subset P$，所以每个$g_j(j=1,\cdots,n)$都在$D$上有界.于是由Riemann可去奇点定理（定理\ref{thm1.6.1}），每个$g_j$都能全纯开拓到$V$上.因而存在唯一的全纯映射$G\colon V\to\bar{U}\subset\Omega$，使得$G|_D=g$.由于$F\circ G$在$D$上是恒等变换，所以在$V$上也是恒等变换，即$G$是$F$在$F(U)$上的全纯逆映射.
+\end{proof}
+\begin{definition}\label{def2.2.4}
+	设$\Omega$是$\MC^n$中的域，$F\colon \Omega\to\MC^n$是全纯映射.如果$F$有全纯的逆映射$F^{-1}$，就称$F$是\textbf{双全纯映射}\index{S!双全纯映射}.
+\end{definition}
+从定理\ref{thm2.2.3}和定理\ref{thm2.2.1}立刻可得
+\begin{corollary}\label{cor2.2.5}
+	设$\Omega$是$\MC^n$中的域，$F\colon \Omega\to\MC^n$是单叶的全纯映射，那么$F$是$\Omega$到$F(\Omega)$之上的双全纯映射.
+\end{corollary}
+\subsection{全纯映射列的基本性质}
+现在讨论全纯映射列的性质.
+\begin{theorem}\label{thm2.2.6}
+	设$\Omega$是$\MC^n$中的域，$F_k\colon \Omega\to\MC^n$是$\Omega$上满足下面两个条件的全纯映射列：
+	
+	(1)\hypertarget{2.2.6}{}
+	$F_k$在域$\Omega$上内闭一致收敛于全纯映射$F$；
+	
+	(2)\hypertarget{2.2.6}{}
+	存在$a\in\Omega$，使得$\det F'(a)\neq0$.
+	
+	那么
+	
+	(a)\hypertarget{2.2.6.1}{}
+	存在$a$的邻域$U$以及充分大的整数$k_0$，当$k\ge k_0$时，$F_k$在$U$中是双全纯的.
+	
+	(b)\hypertarget{2.2.6.1}{}
+	存在$F(a)$的邻域$V$，使得当$k\ge k_0$时有
+	\[V\subset F_k(U).\]	
+\end{theorem}
+\begin{proof}
+	\hyperlink{2.2.6.1}{(a)}\, 因为$\det F'(a)\neq0$，由定理\ref{thm2.2.1}，存在以$a$为中心、$r$为半径的球$B(a,r)$，$F$在$\bar{B}(a,r)$中是双全纯的.现在要证存在$\rho<r$及$k_0$，当$k\ge k_0$时，$F_k$在$\bar{B}(a,\rho)$中是单叶的.不然的话，必有一列自然数$k_1<k_2<\cdots\to\infty$及两个收敛于$a$的点列$b^{(k)}$和$c^{(k)}$，使得$F_{k_m}(b^{(m)})=F_{k_m}(c^{(m)})$.显然，当$m\to\infty$时，$r_m=|b^{(m)}-c^{(m)}|\to0$.现在要导出$\det F'(a)=0$的矛盾.记$d^{(m)}=\frac1{r_m}(c^{(m)}-b^{(m)})$，则$|d^{(m)}|=1$.不妨设$\lim\limits_{m\to\infty} d^{(m)}=d$，否则可取子列收敛于它.记
+	\[\Phi_m(t)=F_{k_m}(b^{(m)}+td^{(m)})-F_{k_m}(b^{(m)}).\]
+	如果记$\Phi(t)=\lim\limits_{m\to\infty}\Phi_m(t)$，那么$\Phi(t)=F(a+td)-F(a)$.由于$\Phi_m(r_m)=F_{k_m}(c^{(m)})-F_{k_m}(b^{(m)})=0,\Phi_m(0)=0$，因而可得$\Phi'(0)=0$.设$F=(f_1,\cdots,f_n),\Phi=(\varphi_1,\cdots,\varphi_n)$，那么
+	\[\varphi_j'(0)=\sum_{k=1}^{n}\pp{f_j}{z_k}(a)d_k=0,\quad j=1,\cdots,n.\]
+	因为\quad $|d_1|^2+\cdots|d_n|^2=|d|^2=1$，这说明上面的齐次方程组有非零解$(d_1,\cdots,d_n)$，所以$\det F'(a)=0$，这和条件\hyperlink{2.2.6}{(2)}矛盾.
+	
+	\hyperlink{2.2.6.1}{(b)}\, 上面已经证明，存在以$a$为中心，$\rho$为半径的球$B(a,\rho)$，使得当$k\ge k_0$时，$F$和$F_k$在$B(a,\rho)$中是双全纯的，因而$F(a)$是$F(B)$的内点.于是存在$\delta>0$，使得对任意$\zeta\in\partial B,|F(\zeta)-F(a)|>\delta$.因为$F_k$在$\partial B$上一致收敛，所以当$k\ge k_0$时，对任意$\zeta\in\partial B,|F_k(\zeta)-F(\zeta)|<\frac{\delta}{2}$.于是对任意$\zeta\in\partial B$，当$k\ge k_0$时有
+	\[	|F_k(\zeta)-F(a)|
+		\ge|F(\zeta)-F(a)|-|F_k(\zeta)-F(\zeta)|>\frac{\delta}{2}.
+	\]
+现在命$V=B\left(F(a),\frac{\delta}{2}\right)$，则$V\subset F_k(B)$.
+\end{proof}
+从定理\ref{thm2.2.6}马上可得下面的
+\begin{corollary}\label{cor2.2.7}
+	设$\Omega$是$\MC^n$中的域，$F_k\colon\Omega\to\MC^n$是一列全纯映射.如果它在$\Omega$上内闭一致收敛于$F$，而$F$是$\Omega$上的单叶全纯映射，那么对任意紧集$K\subset\Omega$，存在整数$k_0$，当$k\ge k_0$时，$F_k$在$K$上是单叶的.
+\end{corollary}
+\begin{proof}
+	如果定理不成立，那么存在自然数列$k_1<k_2<\cdots\to\infty$及$K$中两点列$a^{(m)},b^{(m)}$，使得
+	\[F_{k_m}(a^{(m)})=F_{k_m}(b^{(m)}),\quad m=1,2,\cdots,\]
+	由于$K$是紧的，不妨设$a^{(m)}\to a,b^{(m)}\to b$，由上式即得$F(a)=F(b)$，因为$F$是单叶的，所以$a=b$，即$a^{(m)}\to a,b^{(m)}\to a$.这等于说，$F_{k_m}$在$a$的邻域中不是单叶的，这和定理\ref{thm2.2.6}矛盾.
+\end{proof}
+定理\ref{thm2.2.6}和推论\ref{cor2.2.7}都是从极限映射的单叶性来推断映射序列的单叶性，下面的定理则是从映射序列的单叶性来推断极限映射的单叶性，它也可以看成是Hurwitz定理（定理\ref{thm1.2.10}）在全纯映射方面的推广.
+\begin{theorem}\label{thm2.2.8}
+	设$\Omega$是$\MC^n$中的域，$F_k\colon\Omega\to\MC^n$是$\Omega$上一列内闭一致收敛于$F$的全纯映射.如果每个$F_k$都是单叶的，那么$F$或者是$\Omega$上的退化映射\index{T!退化映射}（即$\det F'(z)\equiv 0,z\in\Omega$），或者也是$\Omega$上的单叶映射.
+\end{theorem}
+\begin{proof}
+	由定理\ref{thm2.2.3}，$\det F_k'(z)$在$\Omega$上处处不为$0$，由于$\det F_k'(z)$是$\Omega$上的全纯函数，且
+	\[\lim\limits_{k\to\infty}\det F_k'(z)=\det F'(z)\]
+	在$\Omega$上内闭一致地成立，故由定理\ref{thm1.2.10}，$\det F'(z)$在$\Omega$上或者恒等于$0$，或者处处不为$0$.我们要证明，如果$\det F'(z)$在$\Omega$上处处不为$0$，那么$F$在$\Omega$上是单叶的.任取$a,b\in\Omega,a\neq b$，要证$F(a)\neq F(b)$.不妨设$a=0,F(a)=0$.于是要证，如果$|b|>0$，那么$|F(b)|>0$.由于$\det F'(0)\neq 0$，故存在$B(0,\rho)$，使得$F$在$\bar{B}(0,\rho)$上是单叶的.因此如果$b\in B(0,\rho)$，当然有$|F(b)|>0$.现设$b\notin B(0,\rho)$，由于$\det F'(0)\neq 0$，由定理\ref{thm2.2.6}，存在$k_0$，当$k\ge k_0$时，$F_k$在$B(0,\rho)$中是单叶的，且存在以$F(0)=0$为中心的邻域$V$，使得当$k\ge k_0$时有$V\subset F_k(B(0,\rho))$，设$V=B(0,\sigma)$，因为$b\notin B(0,\rho)$，所以$F_k(b)\notin B(0,\sigma)$，即$|F_k(b)|\ge\sigma$，让$k\to\infty$，即得$|F(b)|\ge\sigma>0$.
+\end{proof}
+\section{H. Cartan定理和球的全纯自同构\label{sec2.3}}
+\subsection{H. Cartan定理}
+设$\Omega$是$\MC^n$中的域，如果$F$是把$\Omega$映为自己的双全纯映射，就称$F$是$\Omega$的\textbf{全纯自同构}\index{Q!全纯自同构}，或简称\textbf{自同构}.$\Omega$的自同构的全体记为$\Aut(\Omega)$\index[symbolindex]{\textbf{函数和映射}!$\Aut(\Omega)$}.显然$\Aut(\Omega)$在映射的复合运算下构成一个群，称为$\Omega$的\textbf{自同构群}\index{Q!全纯自同构群}.
+
+在单复变中已经知道，单位圆盘$U$的自同构群是由下述变换组成的：
+\[w=\ee^{\ii\theta}\frac{z-a}{1-\bar{a}z},\quad a\in U,\quad \theta\in\MR.\]
+
+一般来说，确定一个域的自同构群是相当困难的.在这一节中，我们将要给出两个比较简单的域（多圆柱和球）的自同构群，并讨论与它们有关的一些性质.
+
+我们先从两个一般性定理讲起，它们都是属于 H. Cartan 的.
+\begin{theorem}\label{thm2.3.1}\index{D!定理!Cartan定理}
+	设$\Omega$是$\MC^n$中的有界域，如果$F\colon\Omega\to\Omega$是全纯的，且对于某点$a\in\Omega$有$F(a)=a$和$F'(a)=I_n$，那么$F(z)=z$对所有$z\in\Omega$成立.
+\end{theorem}
+\begin{proof}
+	为简单起见，不妨设$a=0$，因为$\Omega$是有界域，故必存在$0<r<R<\infty$，使得$rB\subset\Omega\subset RB$，这里$rB$和$RB$分别记中心在原点，半径为$r$和$R$的球.设$F=(f_1,\cdots,f_n)$，由假设得
+	\[f_j(0)=0,\quad\pp{f_i}{z_j}(0)=\delta_{ij},\quad i,j=1,\cdots,n.\]
+	根据推论\ref{cor1.3.4}，$f_j$可在$rB$中展开为
+	\[f_j(z)=z_j+P_2^{(j)}(z)+\cdots,\quad j=1,\cdots,n.\]
+	这里$P_2^{(j)},P_3^{(j)},\cdots$分别是$z$的$2$次，$3$次$\cdots$齐次多项式，因而可写
+	\begin{equation}\label{eq2.3.1}
+		F(z)=z+\sum_{s=2}^{\infty}F_s(z),
+	\end{equation}
+这里$F_s(z)=(P_s^{(1)}(z),\cdots,P_s^{(n)}(z))$，我们要证明
+\[F_s(z)\equiv0,\quad s=2,3,\cdots\]
+设第一个不为$0$的是$F_m,m\ge2$，则\eqref{eq2.3.1}可写为
+\begin{equation}\label{eq2.3.2}
+	F(z)=z+\sum_{s=m}^{\infty} F_s(z).
+\end{equation}
+注意到$P_m^{(j)}(z)=\sum\limits_{|\alpha|=m} a_\alpha z^\alpha$，所以
+\begin{align*}
+	P_m^{(j)}(F(z))
+	&=P_m^{(j)}(f_1,\cdots,f_n)=\sum_{|\alpha|=m}a_\alpha f_1^{\alpha_1}\cdots f_n^{\alpha_n}\\
+	&=\sum_{|\alpha|=m}a_\alpha(z_1+\cdots)^{\alpha_1}\cdots(z_n+\cdots)^{\alpha_n}\\
+	&=\sum_{|\alpha|=m} a_\alpha z^\alpha +\cdots=P_m^{(j)}(z)+\cdots,
+\end{align*}
+因而
+\[F_m(F(z))=F_m(z)+\cdots.\]
+记\quad$F^2=F\circ F,F^k=F\circ F^{k-1}$，那么
+\begin{align*}
+	F^2(z)
+	&=F(F(z))=F(z)+F_m(F(z))+\cdots\\
+	&=z+2F_m(z)+\cdots,
+\end{align*}
+一般可得
+\[F^k(z)=z+kF_m(z)+\cdots,k=1,2,\cdots,z\in rB.\]
+因为$F_m(z)$的每个分量都是$m$次齐次多项式，所以
+\[F^k(\ee^{\ii\theta}z)=\ee^{\ii\theta}z+k\ee^{\ii m\theta}F_m(z)+\cdots,\]
+于是
+\begin{equation}\label{eq2.3.3}
+	kF_m(z)=\frac1{2\pi}\int_{-\pi}^{\pi} F^k(\ee^{\ii\theta}z)\ee^{-\ii m\theta}\mathrm{d}\theta,
+\end{equation}
+这里积分是对$F^k$的每个分量进行的.因为$F$把$\Omega$映入$\Omega$，所以$F^k$也把$\Omega$映入$\Omega$，因而
+\[|F^k(\ee^{\ii\theta}z)|<R\]
+对所有$z\in rB$及$-\pi\le\theta\le\pi$成立，由\eqref{eq2.3.3}即得
+\[k|F_m(z)|<R,k=1,2,\cdots\]
+对每个$z\in rB$成立，因而$F_m(z)=0$，再由定理\ref{thm1.1.3}即得$F(z)=z$在$\Omega$上成立.
+\end{proof}
+\begin{definition}\label{def2.3.2}
+	设$\Omega$是$\MC^n$中的域，如果对任意$z\in\Omega$及实数$\theta$，均有$\ee^{\ii\theta}z\in\Omega$，就称$\Omega$为\textbf{圆型域}\index{Y!域!圆型域}.
+\end{definition}
+显然，球和多圆柱都是圆型域，Reinhardt域也一定是圆型域，但圆型域不一定是Reinhardt域.例如，$\Omega=\{(z_1,\cdots,z_n)\colon|z_1+\cdots+z_n|<1\}$显然是圆型域，但却不是Reinhardt域.
+
+对于圆型域上的双全纯映射，有下面的 H. Cartan 定理.
+\begin{theorem}\label{thm2.3.3}
+	设$\Omega_1$和$\Omega_2$都是$\MC^n$中包含原点的圆型域，其中$\Omega_1$是有界的.如果$F\colon\Omega_1\to\Omega_2$是双全纯映射，且$F(0)=0$，那么$F$一定是线性映射.
+\end{theorem}
+\begin{proof}
+命$G=F^{-1}$，因为$G(F(z))=z$，由命题\ref{prop2.1.3}得$G'(0)F'(0)=I_n$，对于固定的实数$\theta$，定义
+\[H(z)=G(\ee^{-\ii\theta}F(\ee^{\ii\theta}z)),\quad z\in\Omega_1.\]
+因为$\Omega_1$和$\Omega_2$都是圆型域，所以$H$是$\Omega_1\to\Omega_1$的全纯映射，而且$H(0)=0,H'(0)=G'(0)F'(0)=I_n$，且因$\Omega_1$是有界的，由定理\ref{thm2.3.1}，$H(z)=z$对$z\in\Omega_1$成立.因此可得
+\[F(z)=F(H(z))=F(G(\ee^{-\ii\theta}F(\ee^{\ii\theta}z)))=\ee^{-\ii\theta}F(\ee^{\ii\theta}z),\]
+即
+\begin{equation}\label{eq2.3.4}
+	F(\ee^{\ii\theta}z)=\ee^{\ii\theta} F(z)
+\end{equation}
+对任意$z\in\Omega_1$及实数$\theta$成立.在原点附近作$F(z)$的齐次展开式
+\begin{equation}\label{eq2.3.5}
+	F(z)=F'(0)z+F_m(z)+\cdots,\quad m\ge2,
+\end{equation}
+这里$F(z),z,F_m(z),\cdots$都写成列向量，$F_m(z)$的每个分量都是$m$次齐次多项式.在\eqref{eq2.3.5}\\
+中用$\ee^{\ii\theta}z$代替$z$，并注意到\eqref{eq2.3.4}，即得
+\begin{equation}\label{eq2.3.6}
+	F(z)=F'(0)z+\ee^{\ii(m-1)\theta} F_m(z)+\cdots,
+\end{equation}
+比较\eqref{eq2.3.5}与\eqref{eq2.3.6}，即得$F_m(z)=0$，因而$F(z)=F'(0)z$.
+\end{proof}
+从定理\ref{thm2.3.3}可得如下的
+\begin{corollary}\label{cor2.3.4}
+	设$\Omega$是$\MC^n$中包含原点的圆型域，如果$F\in\Aut(\Omega)$，且$F(0)=0$，那么$F$一定是线性映射.
+\end{corollary}
+\begin{proof}
+	只要在定理\ref{thm2.3.3}中取$\Omega_1=\Omega_2=\Omega$.
+\end{proof}
+注意，定理\ref{thm2.3.3}中关于$\Omega_1$是有界域的假定是必要的.如果$\Omega_1$不是有界域，结论就可能不成立.例如
+\[\Omega=\{(z_1,z_2)\in\MC^2\colon|z_1z_2|<1\},\]
+显然$\Omega$不是有界域.任取$h\colon U\to\MC$，这里$U$记单位圆盘，要求$h$是$U$中处处不为$0$的全纯函数.考虑映射
+\[F_h(z_1,z_2)=(z_1 h(z_1z_2),z_2 h^{-1}(z_1z_2)).\]
+由于$\left|z_1 h(z_1z_2)z_2 h^{-1}(z_1z_2)\right|=|z_1z_2|<1$，所以$F_h(\Omega)\subset\Omega$，又因为$\left(F_h\circ F_{\frac1h}\right)(z_1,z_2)=(z_1,z_2)$，所以$(F_h)^{-1}=F_{\frac1h}$，因而$F_h$是把$\Omega$映为$\Omega$的双全纯映射，而且$F_h(0,0)=0$，因而定理\ref{thm2.3.3}的条件都满足，但$F_h$不是线性映射，原因就是$\Omega$不是有界域.实际上，这也是推论\ref{cor2.3.4}的一个反例.如果假定$h(0)=1$，那么
+\[F_h '(0)=
+\begin{pmatrix}
+	h(0) & 0\\
+	0 & h^{-1}(0)
+\end{pmatrix}=I_2.\]
+这也给出了定理\ref{thm2.3.1}的反例.
+\begin{definition}\label{def2.3.5}
+	设$\Omega$是$\MC^n$中的域.如果对任意两点$a,b\in\Omega$，一定存在$\varphi\in\Aut(\Omega)$，使得$\varphi(a)=b$，就称$\Omega$为\textbf{可递域}\index{Y!域!可递域}或\textbf{齐性域}\index{Y!域!齐性域}.
+\end{definition}
+可递域有很多良好的性质.
+\begin{theorem}\label{thm2.3.6}
+	设$\Omega_1$和$\Omega_2$都是$\MC^n$中包含原点的圆型域，其中$\Omega_1$是有界可递域.如果存在双全纯映射$F$把$\Omega_1$映为$\Omega_2$，那么一定存在线性映射把$\Omega_1$映为$\Omega_2$.
+\end{theorem}
+\begin{proof}
+	设$a=F^{-1}(0)$.因为$\Omega_1$是可递的，必存在$\varphi\in\Aut(\Omega_1)$，使得$\varphi(0)=a$.命$G=F\circ\varphi$，于是
+	\[G(\Omega_1)=F(\varphi(\Omega_1))=F(\Omega_1)=\Omega_2,\]
+	而且$G(0)=F(\varphi(0))=F(a)=0$，应用定理\ref{thm2.3.3}，即知$G$是线性映射.
+\end{proof}
+\subsection{多圆柱和球的自同构}
+现在应用 H. Cartan 定理分别给出单位多圆柱$U^n$和单位球$B_n$的自同构群.
+\begin{theorem}\label{thm2.3.7}
+	对于每个$f\in\Aut(U^n)$，一定存在$a\in U^n$，实数$\theta_1,\cdots\theta_n$和置换$\tau\colon(1,\cdots,n)\to(1,\cdots,n)$，使得
+	\[f(z)=\left(\ee^{\ii\theta_1}\frac{z_{\tau(1)}-a_1}{1-\bar{a}_1 z_{\tau(1)}},\cdots,\ee^{\ii\theta_n}\frac{z_{\tau(n)}-a_n}{1-\bar{a}_n z_{\tau(n)}}\right).\]
+\end{theorem}
+\begin{proof}
+	分两种情况讨论：
+	
+	（一）\hypertarget{2.3.7}{}\quad 先设$f(0)=0$，这时我们证明
+	\[f(z)=(\ee^{\ii\theta_1}z_{\tau(1)},\cdots,\ee^{\ii\theta_n}z_{\tau(n)}).\]
+	事实上，在这种情况下，根据推论\ref{cor2.3.4}，$f$是一个线性映射.今设$f=(f_1,\cdots,f_n)$，则
+	\begin{equation}\label{eq2.3.7}
+		f_k(z)=\sum_{j=1}^n a_{kj}z_j,\quad k=1,\cdots,n,\quad a_{kj}\in\MC.
+	\end{equation}
+因为当$z\in U^n$时，$|f_k(z)|<1,k=1,\cdots,n$.若设$a_{kj}=|a_{kj}|\ee^{-\ii\varphi_j}$，选取$z_j=r\ee^{\ii\varphi_j},0<r<1$，则有$\sum\limits_{j=1}^n |a_{kj}|<\frac1r$，让$r\to 1$，得
+\begin{equation}\label{eq2.3.8}
+	\sum_{j=1}^{n}|a_{kj}|\le1,\quad k=1,\cdots,n.
+\end{equation}
+下面我们证明，对$j=1,\cdots,n$有
+\begin{equation}\label{eq2.3.9}
+	\max_{1\le k\le n}|a_{kj}|=1.
+\end{equation}
+事实上，固定$j$，取点列$z^{(l)}=\left(0,\cdots,1-\frac1l,\cdots,0\right),z^{(l)}$中除了第$j$个坐标为$1-\frac1l$外，其他坐标均为$0$，显然$z^{(l)}\in U^n$，它以$(0,\cdots,1,\cdots,0)$为极限点，所以$f(z^{(l)})$的极限点也在$U^n$的边界上.由\eqref{eq2.3.7}知$f_k(z^{(l)})=\left(1-\frac1l\right)a_{kj}$，因而
+\[f(z^{(l)})=\left(1-\frac1l\right)(a_{1j},\cdots,a_{nj})\to(a_{1j},\cdots,a_{nj})\in\partial U^n,\]
+这就证明了\eqref{eq2.3.9}.今取$j=1$，则有相应的$k(1)$，使得$|a_{k(1),1}|=1$，由\eqref{eq2.3.8}得$a_{k(1),j}=0,j=2,\cdots,n$.对$j=2$，有相应的$k(2)$，使得$|a_{k(2),2}|=1$，而且$k(2)\neq k(1)$，不然的话，便有$|a_{k(1),2}|=1$，这和刚才证明的$a_{k(1),2}=0$相矛盾.继续做下去，对每个$j=1,\cdots,n$，必有$k(j)$，使得$|a_{k(j),j}|=1,a_{k(j),i}=0(i\neq j)$，而且$(k(1),\cdots,k(n))$是$(1,\cdots,n)$的一个置换.若记$\tau$是上述置换的逆置换，则
+\[|a_{k,\tau(k)}|=1,\quad a_{j,\tau(k)}=0(j\neq k)\]
+代入\eqref{eq2.3.7}，即得$f_k(z)=\ee^{\ii\theta_k}z_{\tau(k)}$.
+
+	（二）\hypertarget{2.3.7}{}\quad 现设$f(a)=0,a\neq0$.作全纯映射
+	\[g(z)=\left(\frac{z_1-a_1}{1-\bar{a}_1z_1},\cdots,\frac{z_n-a_n}{1-\bar{a}_n z_n}\right),\]
+	显然$g\in\Aut(U^n)$，且$g(a)=0$.命
+	\begin{equation}\label{eq2.3.10}
+		F=g\circ f^{-1},
+	\end{equation}
+当然$F\in\Aut(U^n)$，而且$F(0)=g(a)=0$，根据刚才讨论过的\hyperlink{2.3.7}{（一）}，$F(z)=(\ee^{\ii\theta_1}z_{\tau(1)},\cdots,\ee^{\ii\theta_n}z_{\tau(n)})$，由\eqref{eq2.3.10}得$f(z)=F^{-1}(g(z))$，把$F^{-1}$和$g$的表达式代入，即得所要证的结果.
+\end{proof}
+现在讨论单位球$B_n$的全纯自同构.
+\begin{theorem}\label{thm2.3.8}
+	设$\varphi\in\Aut(B_n)$.如果$\varphi(0)=0$，那么$\varphi$是一酉变换，即存在酉方阵$U$，使得
+	\[\varphi(z)=zU,\quad z\in B_n.\]
+\end{theorem}
+\begin{proof}
+	首先由推论\ref{cor2.3.4}，$\varphi$是一线性映射.写$\varphi(z)=zT$，这里$T$是一个$n$阶可逆方阵.对于任意$z\in B_n$，如果$|z|<|zT|$，那么$\frac{z}{|zT|}\in B_n$，因而$\left(\frac{z}{|zT|}\right)T\in B_n$.但$\left|\left(\frac{z}{|zT|}\right)T\right|=1$，这不可能.同理可证$|z|>|zT|$也不可能.所以对任意$z\in B_n$有$|z|=|zT|$，因而$T$是酉方阵.
+\end{proof}
+这个定理确定了全部把原点映为原点的$B_n$的自同构.
+
+为了确定$B_n$的全纯自同构，对于$a\in B_n$，设法构造$\varphi_a\in\Aut(B_n)$，使得$\varphi_a(a)=0$.仿照单位圆盘的情形，写
+\begin{equation}\label{eq2.3.11}
+	w=\varphi_a(z)=\frac{a-zA}{1-\bar{a}z'},
+\end{equation}
+这里$z=(z_1,\cdots,z_n),w=(w_1,\cdots,w_n),a=(a_1,\cdots,a_n)$都是行向量，$z'$表示$z$的转置，是一个列向量，因而\eqref{eq2.3.11}的分母是一个复数.\eqref{eq2.3.11}的分子上的$A$是一个待定的$n$阶方阵，分子表示一个行向量.现在的问题是要适当选取$A$，使得\eqref{eq2.3.11}是我们需要的自同构.直接计算可得
+\begin{align*}
+	1-w\bar{w}'
+	&=\frac1{|1-\bar{a}z'|^2}(1-\bar{a}z'-\bar{z}a'+\bar{a}z'\bar{z}a'-a\bar{a}'+zA\bar{a}'+a\bar{A}'\bar{z}'-zA\bar{A}'\bar{z}').
+\end{align*}
+为了化简上式，我们要求$A\bar{a}'=\bar{a}'$，或者$a=a\bar{A}'$.于是得
+\[1-|w|^2=\frac1{|1-\bar{a}z'|^2}(s^2+\bar{a}z'\bar{z}a'-zA\bar{A}'\bar{z}'),\]
+其中$s^2=1-a\bar{a}'=1-|a|^2$.注意到
+\[\bar{a}z'\bar{z}a'=|\bar{a}z'|^2=|a\bar{z}'|^2=z\bar{a}'a\bar{z}',\]
+上式可写为
+\[1-|w|^2=\frac1{|1-\bar{a}z'|^2}\left\{s^2+z(\bar{a}' a-A\bar{A}')\bar{z}'\right\}.\]
+如果能选取$A$，使得$\bar{a}'a-A\bar{A}'=-s^2 I_n$，那么便有
+\begin{equation}\label{eq2.3.12}
+	1-|w|^2=\frac{s^2}{|1-\bar{a}z'|^2}(1-|z|^2).
+\end{equation}
+这样，\eqref{eq2.3.11}便是把$B_n$映入$B_n$的全纯映射了.现在问题归结为寻找满足下述条件的$n$阶方阵$A$：
+\begin{numcases}{}
+	A\bar{a}' =\bar{a}',\label{eq2.3.13}\\
+	 A\bar{A}' -\bar{a}' a=s^2 I_n.\label{eq2.3.14}
+\end{numcases}
+为此，如果$a\neq0$，命$P=\frac1{|a|^2}\bar{a}' a$；如果$a=0$，命$P=0$.不难验证
+\[A=sI_n+(1-s)P\]
+便满足条件\eqref{eq2.3.13}和\eqref{eq2.3.14}.于是得
+\begin{theorem}\label{thm2.3.9}
+	对于每个$a\in B_n$，记$s^2=1-|a|^2$，如果$a\neq0,P=\frac1{|a|^2}\bar{a}' a$；如果$a=0,P=0.A=sI_n+(1-s)P$，那么
+	\[\varphi_a(z)\index[symbolindex]{\textbf{函数和映射}!$\varphi_a$}=\frac{a-zA}{1-\bar{a}z'}\]
+	具有下列性质：
+	
+	(1)\hypertarget{2.3.9}{}
+	$\varphi_a(0)=a,\varphi_a(a)=0$；
+	
+	(2)\hypertarget{2.3.9}{}
+	$\varphi_a '(0)=a'\bar{a}-A',\varphi_a '(a)=-\frac{A'}{s^2}$，这里$\varphi_a'(0),\varphi_a'(a)$分别记映射$\varphi_a$在$z=0$和$z=a$处的导数；
+	
+	(3)\hypertarget{2.3.9}{}
+	对$z\in\bar{B}_n$，有
+	\[1-|\varphi_a(z)|^2=\frac{(1-|a|^2)(1-|z|^2)}{|1-\bar{a}z'|^2};\]
+	
+	(4)\hypertarget{2.3.9}{}
+	$\varphi_a$是对合变换，即$\varphi_a(\varphi_a(z))=z$；
+	
+	(5)\hypertarget{2.3.9}{}
+	$\varphi_a\in\Aut(B_n)$.
+\end{theorem}
+\begin{proof}
+	\hyperlink{2.3.9}{(1)}
+	$\varphi_a(0)=a$是显然的.由\eqref{eq2.3.13}得$a=a\bar{A}'=aA$，所以$\varphi_a(a)=0$.
+	
+	\hyperlink{2.3.9}{(2)}
+	因为
+	\begin{align*}
+		\varphi_a(z)
+		&=(a-zA)(1+\bar{a}z'+o(|z|))\\
+		&=a-zA+z\bar{a}'a+o(|z|)\\
+		&=\varphi_a(0)+z(\bar{a}'a-A)+o(|z|),
+	\end{align*}
+根据全纯映射导数的定义\ref{def2.1.2}，即得
+\[\varphi_a'(0)=a'\bar{a}-A'.\]
+为了计算$\varphi_a'(a)$，注意
+\begin{align*}
+	\varphi_a(a+h)-\varphi_a(a)
+	&=\varphi_a(a+h)=-\frac{hA}{s^2}\left(1-\frac{\bar{a}h'}{s^2}\right)^{-1}\\
+	&=-\frac{hA}{s^2}\left(1+\frac{\bar{a}h'}{s^2}+o(|h|)\right)\\
+	&=-\frac{hA}{s^2}+o(|h|),
+\end{align*}
+由此即得$\varphi_a'(a)=-\frac{A'}{s^2}$.
+	
+	\hyperlink{2.3.9}{(3)}
+	由\eqref{eq2.3.12}即得.
+	
+	\hyperlink{2.3.9}{(4)}
+	记$H=\varphi_a \circ\varphi_a$，则有\hyperlink{2.3.9}{(3)}知，$H$是把$B_n$映入$B_n$的全纯映射，由\hyperlink{2.3.9}{(1)}得$H(0)=\varphi_a(\varphi_a(0))=0$.由命题\ref{prop2.1.3}及\hyperlink{2.3.9}{(2)}可得
+	\[H'(0)=\varphi_a'(a)\varphi_a'(0)=-\frac{A'}{s^2}(a'\bar{a}-A')=I_n.\]
+	于是由定理\ref{thm2.3.1}即得$\varphi_a(\varphi_a(z))=z$对$z\in B_n$成立.
+	
+	\hyperlink{2.3.9}{(5)}
+	由\hyperlink{2.3.9}{(3)}知，$\varphi_a$是把$B_n$映入$B_n$的全纯映射，由\hyperlink{2.3.9}{(4)}得$\varphi_a^{-1}=\varphi_a$是全纯的，因而$\varphi_a\in\Aut(B_n)$.
+\end{proof}
+利用这个定理中找到的$\varphi_a$，我们可以定出$\Aut(B_n)$的全部自同构.
+\begin{theorem}\label{thm2.3.10}
+	设$\psi\in\Aut(B_n)$.如果$\psi(a)=0$，则必存在唯一的酉方阵$U$，使得对每个$z\in B_n$，有
+	\[\psi(z)=\varphi_a(z)U.\]
+\end{theorem}
+\begin{proof}
+	记$f=\psi\circ\varphi_a$，则$f\in\Aut(B_n)$，且$f(0)=\psi(a)=0$，由定理\ref{thm2.3.8}知$f$是一个酉变换，即存在酉方阵$U$，使得$\psi(\varphi_a(w))=wU$.命$\varphi_a(w)=z$，则$w=\varphi_a(z)$，因而得$\psi(z)=\varphi_a(z)U.U$的唯一性是显然的.
+\end{proof}
+利用这个定理，可把定理\ref{thm2.3.9}\hyperlink{2.3.9}{(3)}写成更一般的形式.
+\begin{prop}\label{prop2.3.11}
+	是$\psi\in\Aut(B_n)$.如果$\psi(a)=0$，则对$z\in\bar{B}_n,w\in\bar{B}_n$，有等式
+	\begin{equation}\label{eq2.3.15}
+		1-\psi(z)\bar{\psi(w)}'=\frac{(1-|a|^2)(1-z\bar{w}')}{(1-\bar{a}z')(1-a\bar{w}')}.
+	\end{equation}
+\end{prop}
+\begin{proof}
+	由定理\ref{thm2.3.10}，存在酉方阵$U$，使得$\psi(z)=\varphi_a(z)U$，因而
+	\[1-\psi(z)\bar{\psi(w)}'=1-\varphi_a(z)\bar{\varphi_a(w)}'.\]
+	从$\varphi_a(z)$的表达式，可以直接算出
+	\[1-\varphi_a(z)\bar{\varphi_a(w)}'=\frac{(1-|a|^2)(1-z\bar{w}')}{(1-\bar{a}z')(1-a\bar{w}')},\]
+	所以\eqref{eq2.3.15}成立.
+\end{proof}
+在今后的讨论中，我们经常需要用$\Aut(B_n)$中的自同构对球上的积分作变换.为此要计算它的Jacobian的值.
+\begin{theorem}\label{thm2.3.12}
+	设$\psi\in\Aut(B_n)$.如果$\psi(a)=0$，那么
+	\begin{equation}\label{eq2.3.16}
+		(J_\MR \psi)(z)=\left(\frac{1-|a|^2}{|1-\bar{a}z'|^2}\right)^{n+1} .
+	\end{equation}
+\end{theorem}
+\begin{proof}
+	固定$z\in B_n$，记$w=\psi(z)$.命$f=\varphi_w\circ\psi\circ\varphi_z$，则$f\in\Aut(B_n)$，且$f(0)=0$.由定理\ref{thm2.3.8}，存在酉方阵$U$，使得$f(\zeta)=\zeta U$，由此即得$\psi(\eta)=\varphi_w(\varphi_z(\eta)U),\eta\in B_n$.由命题\ref{prop2.1.3}得
+	\[\psi'(z)=\varphi_w'(0)(\varphi_z(z)U)'=\varphi_w'(0)(\varphi_z'(z))' U,\]
+	这里$(\varphi_z'(z))'$是方阵$\varphi_z'(z)$的转置.于是
+	\begin{equation}\label{eq2.3.17}
+		\left|(J\psi)(z)\right|^2=|\det\psi'(z)|^2=|\det \varphi_w'(0)|^2|\det\varphi_z'(z)|^2.
+	\end{equation}
+由定理\ref{thm2.3.9}\hyperlink{2.3.9}{(2)}，我们有
+\[\varphi_w'(0)=w'\bar{w}-sI_n-\frac{w'\bar{w}}{1+s}=-s\left(I_n-\frac1{1+s}w'\bar{w}\right),\]
+所以
+\begin{align}\label{eq2.3.18}
+	\det\varphi_w'(0)
+	&=(-1)^n s^n\det\left(I_n-\frac1{1+s}w'\bar{w}\right)=(-1)^n s^n\left(1-\frac{|w|^2}{1+s}\right)\notag\\
+	&=(-1)^n s^{n+1}=(-1)^n(1-|w|^2)^{\frac{n+1}{2}}
+\end{align}
+由于
+\[\varphi_z'(z)=-\frac1{s^2}\left(sI_n+\frac{z'\bar{z}}{1+s}\right)=-\frac1s \left(I_n+\frac{z'\bar{z}}{s(1+s)}\right),\]
+所以
+\begin{align}\label{eq2.3.19}
+	\det\varphi_z'(z)
+	&=\frac{(-1)^n}{s^n} \det\left(I_n+\frac{z'\bar{z}}{s(1+s)}\right)\notag\\
+	&=\frac{(-1)^n}{s^n}\left(1+\frac{|z|^2}{s(1+s)}\right)=\frac{(-1)^n}{s^{n+1}}\notag\\
+	&=(-1)^n (1-|z|^2)^{-\frac{n+1}{2}}.
+\end{align}
+把\eqref{eq2.3.18}和\eqref{eq2.3.19}代入\eqref{eq2.3.17}，并注意到命题\ref{prop2.1.5}，即得
+\begin{equation}\label{eq2.3.20}
+	(J_\MR \psi)(z)=\left|(J\psi)(z)\right|^2=\left(\frac{1-|w|^2}{1-|z|^2}\right)^{n+1}
+\end{equation}
+由\eqref{eq2.3.15}可得
+\[1-|w|^2=1-|\psi(z)|^2=\frac{(1-|a|^2)(1-|z|^2)}{|1-\bar{a}z'|^2},\]
+代入\eqref{eq2.3.20}即得\eqref{eq2.3.16}.
+\end{proof}
+\subsection{多圆柱和球的非全纯等价性}
+下面给出多圆柱$U^n$和球$B_n$非全纯等价性的证明.
+\begin{definition}\label{def2.3.13}
+	设$\Omega_1$和$\Omega_2$是$\MC^n$中两个域.如果存在双全纯映射把$\Omega_1$映为$\Omega_2$，就称$\Omega_1$和$\Omega_2$是\textbf{全纯等价}\index{Q!全纯等价}的.
+\end{definition}
+在单复变中，Riemann定理断言，凡边界点多于一个的单连通域必与单位圆盘全纯等价.因此单位圆盘在单复变中是最具代表性的域.多复变中的情况要复杂得多，即使两个最简单的域——多圆柱和球也不是全纯等价的.这一事实首先由Poincar\'e所指出.
+\begin{theorem}\label{thm2.3.14}
+	单位球$B_n$是$\MC^n$中的可递域.
+\end{theorem}
+\begin{proof}
+	任取$a,b\in B_n$，则有$\varphi_a\in\Aut(B_n)$，使得$\varphi_a(a)=0$，同时有$\varphi_b\in\Aut(B_n)$，使得$\varphi_b(0)=b$，命$\psi=\varphi_b\circ\varphi_a$，则$\psi\in\Aut(B_n)$，且$\psi(a)=b$，所以$B_n$是可递域.
+\end{proof}
+\begin{theorem}\label{thm2.3.15}
+	多圆柱$U^n$和球$B_n$不全纯等价.
+\end{theorem}
+\begin{proof}
+	如果$U^n$和$B_n$全纯等价，那么存在双全纯映射$F,F(B_n)=U^n$.由于$B_n$是圆型的，而且是有界可递的，$U^n$也是圆型的.由定理\ref{thm2.3.6}，必存在线性映射把$B_n$映为$U^n$，但线性映射把球映为椭球，不可能是多圆柱.这个矛盾证明了$U^n$和$B_n$不是全纯等价的.
+\end{proof}
+这个定理的另一个证明见定理\ref{thm2.5.15}.
+\section{Schwarz引理\label{sec2.4}}
+\subsection{星形圆型域的Schwarz引理}
+在单复变中，Schwarz引理讨论把单位圆盘映入单位圆盘的全纯函数的性质：
+
+(1)\hypertarget{2.4}{}
+如果$f\colon U\to U$是全纯的，那么
+\[|f'(0)|\le1,\]
+其中等号成立的充分必要条件是$f(z)=cz,c$是模为$1$的复数.
+
+(2)\hypertarget{2.4}{}
+如果$f\colon U\to U$是全纯的，而且$f(0)=0$，那么
+\[|f(z)|\le|z|,\quad z\in U,\]
+其中等号成立的条件和\hyperlink{2.4}{(1)}相同.
+
+对$\MC^n$中的域附加适当条件，也有类似的Schwarz引理.为此，先证明下面的
+\begin{prop}\label{prop2.4.1}
+	设$\Omega$是$\MC^n$中包含原点的有界圆型凸域，对每个$z\in\MC^n$，定义
+	\[p(z)=\inf\left\{c>0\colon\frac{z}{c}\in\Omega\right\},\]
+	那么
+	
+	(1)\hypertarget{2.4.1}{}
+	$p(z)$是$\MC^n$上一个新的范数；
+	
+	(2)\hypertarget{2.4.1}{}
+	在范数$p(z)$下，$\MC^n$是一个Banach空间；
+	
+	(3)\hypertarget{2.4.1}{}
+	$\Omega=\{z\in\MC^n\colon p(z)<1\}$.
+	
+	$p(z)$通常被称为域$\Omega$的Minkowski泛函\index{M!Minkowski泛函}.
+\end{prop}
+\begin{proof}
+	\hyperlink{2.4.1}{(1)}
+	要证明$p$是$\MC^n$上的范数，就是要证明$p$满足下列三个条件：
+	
+	(a)\hypertarget{2.4.1.1}{}
+	$p(z)\ge0,p(z)=0$的充要条件是$z=0$；
+	
+	(b)\hypertarget{2.4.1.1}{}
+	$p(z+w)\le p(z)+p(w)$对任意$z,w\in\MC^n$成立；
+	
+	(c)\hypertarget{2.4.1.1}{}
+	$p(\lambda z)=|\lambda|p(z)$对任意$\lambda\in\MC,z\in\MC^n$成立.
+	
+    先证\hyperlink{2.4.1.1}{(a)}.
+	$p(z)\ge0$是显然的，$p(0)=0$也是显然的.今设$p(z)=0$，要证$z=0$.因为$\Omega$是有界域，故存在$R>0$，使得$\Omega\subset B(0,R)$.于是对任意$z\neq0,\frac{Rz}{|z|}$是长度为$R$的向量，因此$\frac{Rz}{|z|}\notin\Omega$，所以$\frac{|z|}{R}<p(z)$，即$p(z)>0$，故$p(z)=0$时必有$z=0$，这就证明了\hyperlink{2.4.1.1}{(a)}.为了证明\hyperlink{2.4.1.1}{(b)}，命$c_1=p(z)+\frac{\varepsilon}{2},c_2=p(w)+\frac{\varepsilon}{2}$，则$\frac{z}{c_1}\in\Omega,\frac{w}{c_2}\in\Omega$，由于$\Omega$是凸的，所以
+	\[\frac{z+w}{c_1+c_2}=\frac{c_1}{c_1+c_2}\frac{z}{c_1}+\frac{c_2}{c_1+c_2}\frac{w}{c_2}\in\Omega,\]
+	因而$c_1+c_2\ge p(z+w)$，即$p(z+w)\le p(z)+p(w)+\varepsilon$，让$\varepsilon\to0$即得三角形不等式.现在要证明\hyperlink{2.4.1.1}{(c)}.设$\lambda\in\MC$，由于$\Omega$是圆型的，所以从$\frac{z}{p(z)+\varepsilon}\in\Omega$可以导出$\frac{\lambda}{|\lambda|}\frac{z}{p(z)+\varepsilon}\in\Omega$，这说明$|\lambda|(p(z)+\varepsilon)\ge p(\lambda z)$，让$\varepsilon\to0$，即得$p(\lambda z)\le |\lambda|p(z)$.另一方面，由于$\frac{\lambda z}{p(\lambda z)+\varepsilon}\in\Omega$，还因为$\Omega$是圆型的，
+	\[\frac{|\lambda|z}{p(\lambda z)+\varepsilon}=\frac{\frac{|\lambda|}{\lambda}\lambda z}{p(\lambda z)+\varepsilon}\in\Omega,\]
+	所以$p(\lambda z)+\varepsilon\ge|\lambda|p(z)$，让$\varepsilon\to0$，即得$p(\lambda z)\ge|\lambda|p(z)$，因而$p(\lambda z)=|\lambda|p(z)$.所以$p$是$\MC^n$上的一个范数.
+	
+	\hyperlink{2.4.1}{(2)}
+	由于有穷维线性空间上的范数都是等价的，所以新范数$p(z)$和老范数$|z|$是等价的.因而在新范数下，$\MC^n$也是一个Banach空间.
+	
+	\hyperlink{2.4.1}{(3)}
+	任取$z\in\Omega$，因为$\Omega$是开集，故必有$0<r<1$，使得$\frac zr\in\Omega$，所以$p(z)\le r<1$.反之，如果$p(z)<1$，取$c$使得$p(z)<c<1$，于是$\frac zc\in\Omega$，由于$\Omega$是凸的且包含原点，因而$z=(1-c)\cdot 0+c\left(\frac zc\right)\in\Omega$.这就证明了
+	\[\Omega=\{z\in\MC^n\colon p(z)<1\}.\qedhere\]
+\end{proof}
+\begin{definition}\label{def2.4.2}
+	设$\Omega$是$\MC^n$中的域.如果对任意的$z\in\Omega$及$0\le r\le1$有$rz\in\Omega$，就称$\Omega$是\textbf{星形域}\index{Y!域!星形域}.
+\end{definition}
+对于星形圆型域，Schwarz引理有如下的推广.
+\begin{theorem}\label{thm2.4.3}
+	设$\Omega_1$和$\Omega_2$分别是$\MC^n$和$\MC^m$中的星形圆型域，其中$\Omega_2$还是凸的有界域.如果$F\colon\Omega_1\to\Omega_2$是全纯的，那么
+	
+	(1)\hypertarget{2.4.3}{}
+	$F'(0)$把$\Omega_1$映入$\Omega_2$；
+	
+	(2)\hypertarget{2.4.3}{}
+	如果$F(0)=0$，那么对任意$0<r<1$有$F(r\Omega_1)\subset r\Omega_2$.
+\end{theorem}
+\begin{proof}
+	因为$\Omega_2$是$\MC^m$中的圆型的有界凸域，故可仿命题\ref{prop2.4.1}的做法在$\MC^m$中引进范数：
+	\[\Vert w\Vert=\inf\{c>0\colon c^{-1}w\in\Omega_2\}.\]
+	$\MC^m$中引进这个范数后所得的空间记为$Y$，它是一个Banach空间，它的单位球正是$\Omega_2$，即
+	\[\Omega_2=\{w\in\MC^m\colon\Vert w\Vert<1\}.\]
+	
+	现在固定$z\in r\Omega_1,0<r\le 1$.因为$\Omega_1$是开的，故必有$t<r$，使得$z\in t\Omega_1$，即$r^{-1}z\in\Omega_1$.因为$\Omega_1$是星形圆型域，所以对任意$\lambda\in U,\lambda t^{-1}z\in\Omega_1$，因而$F(\lambda t^{-1}z)\in\Omega_2$.今设$T$是$Y$上任一范数为$1$的有界线性泛函，定义
+	\[g(\lambda)=T(F(\lambda t^{-1}z)),\]
+	则$g$是$U$上的全纯函数，而且
+	\[|g(\lambda)|\le\Vert T\Vert\,\Vert F(\lambda t^{-1}z)\Vert<1.\]
+	于是由单复变的Schwarz引理得$|g'(0)|\le1$.但
+	\begin{align*}
+		\frac1{\lambda}(g(\lambda)-g(0))
+		&=T\left(\frac1{\lambda}(F(\lambda t^{-1}z)-F(0))\right)\\
+		&=T(F'(0)t^{-1}z+o(1)),
+	\end{align*}
+即$g'(0)=T(F'(0)t^{-1}z)$.由Hahn-Banach定理\index{D!定理!Hahn-Banach定理}，
+\[\Vert F'(0)t^{-1}z\Vert=\sup\{|T(F'(0)t^{-1}z)|\colon T\in Y^\ast,\Vert T\Vert=1\}|\le1.\]
+这说明$F'(0)t^{-1}z\in\bar{\Omega}_2$，或者
+\[F'(0)z\in t\bar{\Omega}_2\subset r\Omega_2,\]
+即$F'(0)(r\Omega_1)\subset r\Omega_2$，这就证明了\hyperlink{2.4.3}{(1)}.
+
+如果$F(0)=0$，那么$g(0)=0$，这时由单复变的Schwarz引理得$|g(\lambda)|\le |\lambda|,\lambda\in U$.因而
+\[\Vert F(\lambda t^{-1}z)\Vert=\sup\{ |T(F(\lambda t^{-1}z))|\colon T\in Y^\ast,\Vert T\Vert=1\}\le|\lambda|.\]
+这说明$\lambda^{-1}F(\lambda t^{-1}z)\in\bar{\Omega}_2$.让$\lambda=t$，即得
+\[F(z)\in t\bar{\Omega}_2\subset r\Omega_2,\]
+因而$F(r\Omega_1)\subset r\Omega_2$.
+	\end{proof}
+看两个简单的例子.
+\begin{example}\label{exa2.4.4}
+	设$F\colon B_n\to U$是全纯的，这时
+	\[F'(0)=\left(\pp{F}{z_1}(0),\cdots,\pp{F}{z_n}(0)\right),\]
+	根据定理\ref{thm2.4.3}，它把$B_n$映入$U$，即
+	\[\left|\sum_{k=1}^{n}\pp{F}{z_k}(0)z_k\right|<1.\]
+	由此即得
+	\[\sum_{k=1}^{n}\left|\pp{F}{z_k}(0)\right|^2\le1.\]
+\end{example}
+\begin{example}\label{exa2.4.5}
+	设$F\colon U\to B_m$是全纯的，记$F=(f_1,\cdots,f_m)$，这时$F'(0)$把$\lambda\in U$映入$B_m$，即$(f_1'(0)\lambda,\cdots,f_m'(0)\lambda)\in B_m$，由此即得
+	\[\sum_{k=1}^{n}|f_k'(0)|^2 \le1.\]
+\end{example}
+如果$\Omega_1,\Omega_2$都是球，利用Schwarz引理可得
+\begin{theorem}\label{thm2.4.6}\index{D!定理!Schwarz引理}
+	(1)\hypertarget{2.4.6}{}
+	如果$F\colon B_n\to B_m$是全纯的，$a\in B_n,F(a)=b$，那么$|\varphi_b(F(z))|\le|\varphi_a(z)|$对每个$z\in B_n$成立.或者
+	\begin{equation}\label{eq2.4.1}
+		\frac{\left|1-F(z)\bar{F(a)}'\right|^2}{(1-\left|F(z)\right|^2)(1-\left|F(a)\right|^2)}\le\frac{\left|1-z\bar{a}'\right|^2}{(1-|z|^2)(1-|a|^2)}.
+	\end{equation}
+	
+	(2)\hypertarget{2.4.6}{}
+	如果$m=n$，且$F\in\Aut(B_n)$，那么$|\varphi_b(F(z))|=|\varphi_a(z)|$，即\hyperlink{2.4.6}{(1)}的等号成立.
+\end{theorem}
+\begin{proof}
+	\hyperlink{2.4.6}{(1)} 命$G=\varphi_b\circ F\circ\varphi_a$，则$G\colon B_n\to B_m$是全纯的，而且$G(0)=(\varphi_b\circ F\circ\varphi_a)(0)=0$.于是由Schwarz引理，有$|G(z)|\le|z|$，即$|(\varphi_b\circ F\circ\varphi_a)(z)|\le|z|$，由此即得
+	\begin{equation}\label{eq2.4.2}
+		|\varphi_b(F(z))|\le|\varphi_a(z)|.
+	\end{equation}
+由\eqref{eq2.4.2}再利用定理\ref{thm2.3.9}\hyperlink{2.3.9}{(3)}即得\eqref{eq2.4.1}.
+
+\hyperlink{2.4.6}{(2)}
+如果$m=n$，且$F\in\Aut(B_n)$，则$F^{-1}(b)=a$，对$F^{-1}$用\hyperlink{2.4.6}{(1)}得
+\[|\varphi_a(F^{-1}(w))|\le|\varphi_b(w)|,\]
+即$|\varphi_a(z)|\le|\varphi_b(F(z))|$，再利用\hyperlink{2.4.6}{(1)}的表达式即得
+\[|\varphi_b(F(z))|=|\varphi_a(z)|.\qedhere\]
+\end{proof}
+\subsection{全纯映射的从属原理}
+作为Schwarz引理的一个简单应用，我们引入从属映射\index{C!从属映射}的概念.
+
+设$\Omega$是$\MC^n$中包含原点的凸有界圆型域，$F\colon\Omega\to\MC^n,G\colon\Omega\to\MC^n$是两个全纯映射.如果存在全纯映射$\varphi\colon \Omega\to\Omega,\varphi(0)=0$，使得
+\[F(z)=G(\varphi(z)),\quad z\in\Omega,\]
+就说$F$从属于$G$，记为$F\prec G$\index[symbolindex]{\textbf{其它符号}! $F\prec G$}.
+
+很明显，如果$F\prec G$，那么$F(\Omega)\subset G(\Omega)$，且$F(0)=G(0)$.在一定条件下，它的逆也是成立的.
+\begin{prop}\label{prop2.4.7}
+	如果$G$是$\Omega$上的双全纯映射，那么$F\prec G$的充分必要条件是$F(0)=G(0)$和$F(\Omega)\subset G(\Omega)$.
+\end{prop}
+\begin{proof}
+	必要性已如上述，现证充分性.因为$G$是双全纯的，所以$G^{-1}$在$G(\Omega)$上全纯.于是
+	\begin{equation}\label{eq2.4.3}
+		\varphi(z)=G^{-1}(F(z)),z\in\Omega
+	\end{equation}
+在$\Omega$上全纯，且$\varphi(\Omega)\subset\Omega,\varphi(0)=0$.从\eqref{eq2.4.3}即得
+\[F(z)=G(\varphi(z)).\qedhere\]
+	\end{proof}
+从命题\ref{prop2.4.7}和Schwarz引理便可得到下面的从属原理.
+\begin{theorem}\label{thm2.4.8}\index{D!定理!从属原理}
+	设$\Omega$是$\MC^n$中包含原点的有界圆型凸域，$F\colon\Omega\to\MC^n$是全纯的，$G\colon\Omega\to\MC^n$是双全纯的.如果$F(0)=G(0)$，且$F(\Omega)\subset G(\Omega)$，那么对任意$0<r<1$有
+	\[F(r\Omega)\subset G(r\Omega).\]
+\end{theorem}
+\begin{proof}
+	从命题\ref{prop2.4.7}得知$F\prec G$，因而存在$\varphi\colon\Omega\to\Omega,\varphi(0)=0$，使得$F(z)=G(\varphi(z))$对每个$z\in\Omega$成立.但由定理\ref{thm2.4.3}\hyperlink{2.4.3}{(2)}得$\varphi(r\Omega)\subset r\Omega,0<r<1$，由此即得
+	\[F(r\Omega)=G(\varphi(r\Omega))\subset G(r\Omega).\qedhere\]
+\end{proof}
+\section{多圆盘和球上的星形映射和凸映射\label{sec2.5}}
+\subsection{多圆柱上的星形映射}
+设$f\colon U\to\MC$是单叶全纯函数，如果$f(U)$是$\MC$中的星形域，就称$f$是\textbf{星形函数}\index{X!星形函数}.如果$f(U)$是$\MC$中的凸域，就称$f$是\textbf{凸函数}\index{T!凸函数}.$f$是$U$上的星形函数或凸函数的充分必要条件分别是
+\[\Re\left(z\frac{f'(z)}{f(z)}\right)\ge0,\quad z\in U,\]
+\[\Re\left(1+z\frac{f''(z)}{f'(z)}\right)\ge0,\quad z\in U.\]
+
+现在把星形函数和凸函数的概念推广到$\MC^n$.
+\begin{definition}\label{def2.5.1}
+	设$\Omega$是$\MC^n$中包含原点的域，$f\colon\Omega\to\MC^n$是双全纯映射.如果$f(0)=0,f(\Omega)$是$\MC^n$中的星形域，就称$f$是$\Omega$上的\textbf{星形映射}\index{X!星形映射}；如果$f(\Omega)$是$\MC^n$中的欧氏凸域，就称$f$是$\Omega$上的\textbf{凸映射}\index{T!凸映射}.
+\end{definition}
+下面我们要给出$f$是$U^n$上的星形映射或凸映射的充分必要条件.为此引进映射类$P$.在下面的讨论中记$\Vert z\Vert=\max_{1\le k\le n} |z_k|,z=(z_1,\cdots,z_n)$.
+\begin{definition}\label{def2.5.2}
+	$P$是满足下面两个条件的全纯映射$g\colon U^n\to\MC^n$的全体：
+	
+	(1)\hypertarget{2.5.2}{}
+	$g(0)=0$；
+	
+	(2)\hypertarget{2.5.2}{}
+	当$\Vert z\Vert=|z_j|>0$时，
+	\[\Re\left\{\frac{g_j(z)}{z_j}\right\}\ge0,\]
+	这里$g=(g_1,\cdots,g_n)$.
+\end{definition}
+我们需要下面三个引理.
+\begin{lemma}\label{lem2.5.3}
+	设对每个$t\in I=[0,1]$，全纯映射族$\varphi(z;t)\colon U^n\to U^n$满足下面两个条件：
+	
+	(1)\hypertarget{2.5.3}{}
+	$\varphi(z;0)=z,\varphi(0;t)=0$；
+	
+	(2)\hypertarget{2.5.3}{}
+	存在$\rho>0$，使得
+	\begin{equation}\label{eq2.5.1}
+		\lim_{t\to 0^+ } \frac{z-\varphi(z;t)}{t^\rho}=g(z)
+	\end{equation}
+存在，且$g\in H(U^n)$，
+
+    那么\quad$g\in P$.
+\end{lemma}
+\begin{proof}
+	从\eqref{eq2.5.1}知道$g(0)=0$.记$\varphi(z;t)=(\varphi_1(z;t),\cdots,\varphi_n(z;t))$，从\hyperlink{2.5.3}{(1)}知必有\\
+	$\lim\limits_{t\to 0^+}\varphi_k(z;t)=z_k,k=1,\cdots,n$.命
+	\[\psi_k(z;t)=\frac{2z_k(z_k-\varphi_k(z;t))}{z_k+\varphi_k(z;t)},k=1,\cdots,n.\]
+	当$z_k\neq0$时，$\psi_k$是$U^n$中的全纯函数.由命题\ref{prop2.4.1}，
+	\begin{equation}\label{eq2.5.2}
+		\Vert\varphi(z;t)\Vert\le\Vert z\Vert.
+	\end{equation}
+于是当$\Vert z\Vert=\max_{1\le k\le n}|z_k|=|z_j|>0$时，由\eqref{eq2.5.2}可得
+\begin{align*}
+	\Re\left\{\frac{\psi_j(z;t)}{z_j}\right\}
+	&=2\Re\frac{z_j-\varphi_j}{z_j+\varphi_j}\\
+	&=\frac{z_j-\varphi_j}{z_j+\varphi_j}+\frac{\bar{z}_j-\bar{\varphi}_j}{\bar{z}_j+\bar{\varphi}_j}\\
+	&=\frac{2(|z_j|^2-|\varphi_j|^2)}{|z_j+\varphi_j|^2}\ge0.
+\end{align*}
+而由条件\hyperlink{2.5.3}{(2)}得
+\[\lim_{t\to 0^+} \frac{\psi_j(z;t)}{t^\rho}=\lim_{t\to 0^+}\frac{z_j-\varphi_j(z;t)}{t^\rho}\frac{2z_j}{z_j+\varphi_j(z;t)}=g_j(z),\]
+所以
+\begin{align*}
+	\Re\left\{\frac{g_j(z)}{z_j}\right\}
+	&=\Re\left\{\frac1{z_j}\lim\limits_{t\to 0^+}\frac{\psi_j(z;t)}{t^\rho}\right\}\\
+	&=\lim_{t\to 0^+} \frac1{t^\rho}\Re\left\{\frac{\psi_j(z;t)}{z_j}\right\}\ge0.
+\end{align*}
+这就证明了$g\in P$.
+\end{proof}
+\begin{lemma}\label{lem2.5.4}
+	设$f\colon U^n\to\MC^n$是双全纯映射，$f(0)=0$.如果全纯映射族$F(z;t)\colon U^n\to\MC^n$满足：
+	
+	(1)\hypertarget{2.5.4}{}
+	$F(z;0)=f(z),F(0;t)=0,(t\in I)$；
+	
+	(2)\hypertarget{2.5.4}{}
+	对每个$t\in I,F(z;t)\prec f(z)$；
+	
+	(3)\hypertarget{2.5.4}{}
+	存在$\rho>0$，使得
+	\[\lim_{t\to 0^+} \frac{F(z;0)-F(z;t)}{t^\rho}=h(z)\]
+	存在，且$h\in H(U^n)$.
+	
+	那么$h(z)=f'(z)g(z)$，其中$g\in P,f'(z)$是$f$的导数，即$f$的复Jacobi矩阵.
+\end{lemma}
+\begin{proof}
+	由条件\hyperlink{2.5.4}{(2)}，存在$\varphi(z;t)\colon U^n\to U^n$，使得
+	\[f(\varphi(z;t))=F(z;t),z\in U^n,t\in I,\]
+	且$\Vert\varphi(z;t)\Vert\le\Vert z\Vert$.命$\zeta=\varphi(z;t)$，把$f_j(\zeta)(j=1,\cdots,n)$在$\zeta=z$处展开成幂级数：
+	\[f_j(\zeta)=f_j(z)+\pp{f_j(z)}{z_1}(\zeta_1-z_1)+\cdots+\pp{f_j(z)}{z_n}(\zeta_n-z_n)+R_j(\zeta;z),\]
+	写成向量的形式，便得
+	\[f(\varphi(z;t))=f(z)+f'(z)(\varphi(z;t)-z)+R(\varphi(z;t),z),\]
+	这里$\frac{\Vert R(\zeta;z)\Vert}{\Vert\zeta-z\Vert}\to0$（当$\Vert\zeta-z\Vert\to0$时）.于是
+	\begin{equation}\label{eq2.5.3}
+		\frac{F(z;0)-F(z;t)}{t^\rho}
+		=f'(z)\frac{z-\varphi(z;t)}{t^\rho}-\frac{R(\varphi(z;t),z)}{t^\rho}.
+	\end{equation}
+我们证明
+\begin{equation}\label{eq2.5.4}
+	\lim_{t\to 0^+}\frac{R(\varphi(z;t),z)}{t^\rho}=0.
+\end{equation}
+因为
+\[\frac{R(\varphi(z;t),z)}{t^\rho}=\frac{R(\varphi(z;t),z)}{\varphi(z;t)-z}\frac{\varphi(z;t)-z}{t^\rho},\]
+所以只须证明，当$t\to0^+$时，$\frac{\Vert\varphi(z;t)-z\Vert}{t^\rho}$有界.若不然，则存在$\{t_k\},t_k\to0^+$使得$\frac{\Vert\varphi(z;t_k)-z\Vert}{t_k^\rho}\to\infty$.在\eqref{eq2.5.3}两端取极限得
+\begin{align*}
+	h(z)=\lim_{k\to\infty}\left\{\left(f'(z)\frac{z-\varphi(z;t_k)}{\Vert z-\varphi(z;t_k)\Vert}-\frac{R(\varphi(z;t_k),z)}{\Vert z-\varphi(z;t_k)\Vert}\right)\frac{\Vert \varphi(z;t_k)-z\Vert}{t_k^\rho}\right\},
+\end{align*}
+因为
+\[\frac{R(\varphi(z;t_k),z)}{\Vert\varphi(z;t)-z\Vert}\to0,\]
+因而只能有
+\[f'(z)\frac{z-\varphi(z;t_k)}{\Vert z-\varphi(z;t_k)\Vert}\to0,\]
+因为$(f'(z))^{-1}$存在，所以
+\[\frac{z-\varphi(z;t_k)}{\Vert z-\varphi(z;t_k)\Vert}\to0.\]
+但这是不可能的，因而\eqref{eq2.5.4}成立.现在在\eqref{eq2.5.3}两端命$t\to 0^+$，利用引理\ref{lem2.5.3}，即得$h(z)=f'(z)g(z)$，其中$g\in P$.
+\end{proof}
+\begin{lemma}\label{lem2.5.5}
+	设$f\colon U^n\to\MC^n$是全纯映射，如果存在$g\in P$，使得$f(z)=f'(z)g(z)$，那么当$\Vert z\Vert=|z_j|>0$时，
+	\[\Re \frac{g_j(z)}{z_j}>0.\]
+\end{lemma}
+\begin{proof}
+	取$a\in U^n$，使得$\Vert a\Vert=|a_j|>0$.命$\lambda_k=\frac{a_k}{a_j},k=1,\cdots,n$，则$|\lambda_k|\le1,k=1,\cdots,n$.现命$z=(\lambda_1,\cdots,\lambda_n)z_j,|z_j|<1$，则有$\Vert z\Vert=|z_j|>0$，按$g$的定义有$\Re\frac{g_j(z)}{z_j}\ge0,0<|z_j|<1$，由于·$f(z)=f'(z)g(z)$，写成分量的形式
+	\[f_j(z)=\pp{f_j(z)}{z_1}g_1(z)+\cdots\pp{f_j(z)}{z_n}g_n(z),\quad j=1,\cdots,n.\]
+	把上边等式两端的函数都在$z=0$处展开成幂级数，并比较一次项的系数可得$\pp{g_j(0)}{z_k}=\delta_{jk}$，因而$g_j(z)$在$z=0$处有展开式：
+	\[g_j(z)=z_j+o(|z|),\quad j=1,\cdots,n.\]
+	于是$\frac{g_j(z)}{z_j}\to1,z_j\to0$.由于$\Re\frac{g_j(z)}{z_j}$是$|z_j|<1$中的调和函数，既然在$0<|z_j|<1$中有$\Re\frac{g_j(z)}{z_j}\ge0$且$\lim\limits_{z_j\to0}\frac{g_j(z)}{z_j}=1$，故必有$\Re\frac{g_j(z)}{z_j}>0,|z_j|<1$.
+\end{proof}
+现在给出$f$是$U^n$上星形映射的条件.
+\begin{theorem}\label{thm2.5.6}
+	设$f\colon U^n\to\MC^n$是星形映射，那么一定存在$g\in P$，使得$f(z)=f'(z)g(z)$，这里$f$和$g$都写成列向量.反之，设$f\colon U^n\to\MC^n$是全纯映射，$f(0)=0$，对每个$z\in U^n,f'(z)$非异.如果存在$g\in P$，使得$f(z)=f'(z)g(z)$，那么$f$是$U^n$上的星形映射.
+\end{theorem}
+\begin{proof}
+	定理的前半部分容易证明.按照星形映射的定义，$f$是双全纯的，如果命
+	\[F(z;t)=(1-t)f(z),\quad t\in[0,1],\]
+	那么由命题\ref{prop2.4.7}，$F(z;t)\prec f(z)$，而且
+	\[
+	\lim_{t\to 0^+}\frac{F(z;0)-F(z;t)}{t}
+	=\lim_{t\to 0^+}\frac{f(z)-(1-t)f(z)}{t}
+	=f(z).
+	\]
+	于是从引理\ref{lem2.5.4}即得$f(z)=f'(z)g(z)$，其中$g\in P$.
+	
+	现在证明定理的后半部分.我们首先证明，如果$f$在$rU^n(0<r\le1)$中双全纯，那么$f(rU^n)$是星形域.固定$z\in rU^n$，记$\Omega=f(rU^n)$，则$f(z)\in\Omega$，只要证明对任意$t\in[0,1],(1-t)f(z)\in\Omega$.因为$\Omega$是开集，所以存在$t_0>0$，使得当$-t_0<t<t_0$时，$(1-t)f(z)\in\Omega$.因为$f$在$rU^n$中全纯，定义
+	\[\varphi(z;t)=f^{-1}((1-t)f(z)),-t_0\le t\le t_0,\]
+	或者$f(\varphi(z;t))=(1-t)f(z)$，即$\varphi(z;0)=z$.记$\varphi=(\varphi_1,\cdots,\varphi_n)$，让上式两端对$t$求导数，并让$t=0$得：
+	\[\pp{f_1(z)}{z_1}\pp{\varphi_1(z;0)}{t}+\cdots+\pp{f_1(z)}{z_n}\pp{\varphi_n(z;0)}{t}=-f_1(z),\]
+	\[\cdots\cdots\cdots\cdots\]
+	\[\pp{f_n(z)}{z_1}\pp{\varphi_1(z;0)}{t}+\cdots+\pp{f_n(z)}{z_n}\pp{\varphi_n(z;0)}{t}=-f_n(z),\]
+	写成向量形式：$f'(z)\pp{\varphi(z;0)}{t}=-f(z)$，因为$f'(z)$非异，故有$\pp{\varphi(z;0)}{t}=-(f'(z))^{-1}f(z)$.把$\varphi(z;t)$在$t=0$处展开：
+	\begin{align*}
+		\varphi(z;t)
+		&=\varphi(z;0)+\pp{\varphi(z;0)}{t}t+o(t)\\
+		&=z-(f'(z))^{-1} f(z)t+o(t)\\
+		&=z-(f'(z))^{-1} f'(z)g(z)t+o(t)\\
+		&=z-g(z)t+o(t),
+	\end{align*}
+这里$g\in P$.我们证明$\Vert\varphi(z;t)\Vert$作为$t$的函数在$0<t\le t_0$中严格单调下降.设$\Vert z\Vert=|z_j|>0$，则
+\begin{equation}\label{eq2.5.5}
+	\Vert\varphi(z;t)\Vert^2\ge|\varphi_j(z;t)|^2
+	=|z_j|^2\left(1-2t\Re\left(\frac{g_j(z)}{z_j}\right)+o(t)\right),
+\end{equation}
+故当$-t_0<t<0$时，由引理\ref{lem2.5.5}，$\Vert\varphi(z;t)\Vert>|z_j|=\Vert z\Vert=\Vert\varphi(z;0)\Vert$.取$0<s<t<t_0$，命$\tau=\frac{s-t}{1-t}$，则$-t_0<\tau<0$.记$w=\varphi(z;t)$，则有$\Vert\varphi(w;\tau)\Vert>\Vert w\Vert=\Vert\varphi(z;t)\Vert$，由此得
+\begin{align*}
+	\Vert\varphi(z;s)\Vert
+	&=\Vert f^{-1}((1-s)f(z))\Vert\\
+	&=\Vert f^{-1}((1-\tau)(1-t)f(z))\Vert\\
+	&=\Vert f^{-1}((1-\tau)f(w))\Vert\\
+	&=\Vert\varphi(w;\tau)\Vert>\Vert\varphi(z;t)\Vert.
+\end{align*}
+由此可得$\Vert\varphi(z;t_0)\Vert\le\Vert z\Vert<r$.现在取$t_0<p<2t_0-t_0^2$，命$t=\frac{p-t_0}{1-t_0}$，则$0<t<t_0$.且$1-p=(1-t_0)(1-t)$.记$\zeta=\varphi(z;t_0)=f^{-1}((1-t_0)f(z))$，则$\Vert\zeta\Vert<r$.由上面的讨论$\Vert\varphi(\zeta;t)\Vert\le\Vert\zeta\Vert<r$，即
+\begin{align*}
+	\Vert f^{-1}((1-t)f(\zeta))\Vert
+	&=\Vert f^{-1}((1-t)(1-t_0)f(z))\Vert\\
+	&=\Vert f^{-1}((1-p)f(z))\Vert<r.
+\end{align*}
+这说明$(1-p)f(z)\in\Omega$.继续这个做法，便可证明对任意$0\le t\le1,(1-t)f(z)\in\Omega$，故$\Omega$是星形域.
+
+现在证明$f$在$U^n$上是单叶的，因而双全纯.因为$f'(0)$非异，故存在$\rho>0,f$在$\rho U^n$中是单叶的.现在证明$f$在$\rho\bar{U}^n$上也是单叶的.如果存在$z,w,z\neq w,\Vert z\Vert\le\Vert w\Vert=\rho$，使得$f(z)=f(w)$.定义
+\[\varphi(z;t)=f^{-1}((1-t)f(z)),\]
+\[\varphi(w;t)=f^{-1}((1-t)f(w)).\]
+由引理\ref{lem2.5.5}和\eqref{eq2.5.5}，可取$t$充分小，使得$\varphi(z;t),\varphi(w;t)\in\rho U^n$，且$\varphi(z;t)\neq\varphi(w;t)$，但
+\[f(\varphi(z;t))=(1-t)f(z)=(1-t)f(w)=f(\varphi(w;t)).\]
+这就和$f$在$\rho U^n$上单叶相矛盾.
+
+现在再证明，如果$f$在$\rho U^n$上是单叶的，那么存在$\varepsilon>0$，使得$f$在$(\rho+\varepsilon)U^n$上是单叶的.为此，我们设法构造连续的非负函数$\psi\colon U^n\times U^n\to\MR$，使得$\psi(z,w)=0$的充分必要条件是$z\neq w$，且$f(z)=f(w)$.进而证明$\psi$在$\rho \bar{U}^n\times\rho\bar{U}^n$上取正值，因而存在$\varepsilon>0$，使得$\psi$在$(\rho+\varepsilon)U^n\times(\rho+\varepsilon)U^n$上取正值，所以当$z,w\in(\rho+\varepsilon)U^n,z\neq w$时，$f(z)\neq f(w)$，即$f$在$(\rho+\varepsilon)U^n$上是单叶的.为了构造这样的$\psi$，定义
+\begin{align*}
+	a_{jk}
+	&=\begin{cases}
+		\frac{f_j(z_1,\cdots,z_k,w_{k+1},\cdots,w_n)-f_j(z_1,\cdots,z_{k-1},w_k,\cdots,w_n)}{z_k-w_k},&z_k\neq w_k,\\
+		\pp{f_j}{z_k}(z_1,\cdots,z_k,w_{k+1},\cdots,w_n),&z_k=w_k,
+	\end{cases}\\
+&G(z,w)=\det(a_{jk}).
+\end{align*}
+命
+\[\psi(z,w)=|G(z,w)|+\sum_{j=1}^{n}|f_j(z)-f_j(w)|.\]
+如果$z,w\in U^n,z\neq w$但$f(z)=f(w)$，那么$G(z,w)$的$n$个列向量线性相关，因而$G(z,w)=0$，所以$\psi(z,w)=0$.反之，如果$\psi(z,w)=0$，则必$f(z)=f(w)$，而$\psi(z,z)=|G(z,z)|=|\det f'(z)|>0$，所以必有$z\neq w$.现因$f$在$\rho\bar{U}^n$上单叶，所以$\psi$在$\rho\bar{U}^n\times\rho\bar{U}^n$上取正值.
+\end{proof}
+\subsection{多圆柱上的凸映射}
+现在给出$f$是$U^n$上凸映射的条件.
+\begin{theorem}\label{thm2.5.7}
+	设$f\colon U^n\to\MC^n$是全纯映射，$f(0)=0,f'(z)$对每个$z\in U^n$非奇异，则$f$是$U^n$上的凸映射的充要条件是，存在单位圆盘上的凸映射$\varphi_j(j=1,\cdots,n)$和非奇异方阵$T$，使得
+	\begin{equation}\label{eq2.5.6}
+		f(z)=(\varphi_1(z_1),\cdots,\varphi_n(z_n))T.
+	\end{equation}
+\end{theorem}
+\begin{proof}
+	条件的充分性是明显的.现证必要性.设$f$是$U^n$上的凸映射，那么$f$在$U^n$上是双全纯的.如果记$f(U^n)=\Omega$，那么$\Omega$是$\MC^n$中的欧氏凸域.命
+	\[A_t(z)=(z_1\ee^{\ii A_1 t},\cdots, z_n\ee^{\ii A_n t}),\quad A_j\ge0,\quad j=1,\cdots,n,\]
+	则$A_t$是$U^n$的自同构，$A_0(z)=z$.对于任意$z\in U^n$，显然$f(A_t(z))\in\Omega,f(A_{-t}(z))\in\Omega$，由$\Omega$的欧氏凸性有
+	\[\frac12(f(A_t(z))+f(A_{-t}(z)))\in\Omega.\]
+	若记
+	\[F(z;t)=\frac12\left\{f(A_t(z))+f(A_{-t}(z))\right\},\]
+	则由命题\ref{prop2.4.7}，
+	\[F(z;t)\prec f(z),\quad 0\le t\le 1.\]
+	记$q(t)=f(A_t(z))$，把$q(t)$在$t=0$处展开得
+	\[f(A_t(z))=f(z)+q'(0)t+\frac12 q''(0)t^2+o(t^2),\]
+	\[f(A_{-t}(z))=f(z)-q'(0)t+\frac12 q''(0)t^2+o(t^2),\]
+	因而
+	\begin{align*}
+		F(z;0)-F(z;t)
+		&=f(z)-\frac12\left\{f(A_t(z))+f(A_{-t}(z))\right\}\\
+		&=\frac12\left\{(f(z)-f(A_t(z)))+(f(z)-f(A_{-t}(z)))\right\}\\
+		&=-\frac12 q''(0)t^2+o(t^2),
+	\end{align*}
+所以
+\[\lim_{t\to0^+}\frac{F(z;0)-F(z;t)}{t^2}=-\frac12 q''(0).\]
+如果记$h(z)=-\frac12 q''(0)$，通过直接计算得
+\[h(z)=\frac12\left\{\sum_{j,k=1}^{n}\pppp{f}{z_j}{z_k} A_jA_k z_jz_k +\sum_{k=1}^{n}\pp{f}{z_k} A_k^2 z_k\right\},\]
+写成分量的形式
+\begin{equation}\label{eq2.5.7}
+	2h_j(z)=\sum_{k=1}^{n}A_k^2\left(\ppp{f_j}{z_k}z_k^2+\pp{f_j}{z_k}z_k\right)+2\sum_{k=2}^{n}\sum_{l=1}^{k-1} \pppp{f_j}{z_l}{z_k}A_k A_l z_k z_l.
+\end{equation}
+由引理\ref{lem2.5.4}，存在$g\in P$，使得
+\begin{equation}\label{eq2.5.8}
+	h(z)=f'(z)g(z).
+\end{equation}
+显然，$g$和参数$A_k$的选取有关.现在固定$k,1\le k\le n$，选取$A_k=1,A_l=0,l\neq k$.我们证明，在这组$A_j$的选取下有$g_j(z)\equiv0,j\neq k$.为此，选取$z\in U^n$，使得$\Vert z\Vert=|z_j|>0,j\neq k$，但$z_k=0$.对这样的$z$，从\eqref{eq2.5.7}知$h_j(z)=0,j=1,\cdots,n$.但从$h(z)=f'(z)g(z)$可得
+\[g_j(z)=\frac{\det J_j(z)}{(J f)(z)},j=1,\cdots,n,\]
+这里$(Jf)(z)=\det f'(z)$，
+\[J_j(z)=\begin{pmatrix}
+	\pp{f_1(z)}{z_1} & \cdots & h_1 & \cdots &\pp{f_1(z)}{z_n}\\
+	\vdots & & \vdots & & \vdots\\
+	\pp{f_n(z)}{z_1} & \cdots & h_n & \cdots & \pp{f_n(z)}{z_n}
+\end{pmatrix}.\]
+因而$g_j(z)=0$，当然$\frac{g_j(z)}{z_j}=0$，故由引理\ref{lem2.5.5}得$g_j(z)\equiv0,j\neq k$.于是从\eqref{eq2.5.8}得
+\[h_j(z)=\pp{f_j(z)}{z_1}g_1(z)+\cdots+\pp{f_j(z)}{z_n}g_n(z)=\pp{f_j(z)}{z_k}g_k(z),\quad j=1,\cdots,n.\]
+比较\eqref{eq2.5.7}得
+\begin{equation}\label{eq2.5.9}
+	\ppp{f_j(z)}{z_k} z_k^2 +\pp{f_j(z)}{z_k}z_k=\pp{f_j(z)}{z_k}\psi_k(z),\quad 1\le j\le n,1\le k\le n.
+\end{equation}
+这里$\psi_k(z)=2g_k(z)\in P$.
+
+再固定$l\neq k$，并选取$A_k=1,A_l=\varepsilon,A_m=0,m\neq k,l$，从\eqref{eq2.5.7}得
+\begin{equation}\label{eq2.5.10}
+	2h_j(z)=\ppp{f_j}{z_k} z_k^2+\pp{f_j}{z_k}z_k+\varepsilon^2\left(\ppp{f_j}{z_l}z_l^2+\pp{f_j}{z_l}z_l\right)+2\varepsilon z_k z_l \pppp{f_j}{z_k}{z_l}.
+\end{equation}
+把\eqref{eq2.5.9}代入\eqref{eq2.5.10}得
+\[2h_j(z)=\pp{f_j}{z_k}\psi_k+\varepsilon^2 \pp{f_j}{z_l}\psi_l+2\varepsilon z_k z_l \pppp{f_j}{z_k}{z_l}.\]
+于是在这组参数下，相应的$g$为
+\begin{equation*}
+	\begin{aligned}
+		g_j(z)
+		&=\frac1{(J f)(z)}
+		\begin{vmatrix}
+			\pp{f_1}{z_1} & \cdots & h_1 & \cdots & \pp{f_1}{z_n}\\
+			\vdots &  &\vdots & &\vdots\\
+			\pp{f_n}{z_1} & \cdots & h_n & \cdots & \pp{f_n}{z_n} 
+		\end{vmatrix}\\
+		&=\frac1{(Jf)(z)}\left\{
+		\frac12 \begin{vmatrix}
+			\pp{f_1}{z_1} &\cdots & \pp{f_1}{z_k}\psi_k & \cdots & \pp{f_1}{z_n}\\
+			\vdots & & \vdots & & \vdots\\
+			\pp{f_n}{z_1} & \cdots & \pp{f_n}{z_k}\psi_k & \cdots & \pp{f_n}{z_n}
+		\end{vmatrix}+\right.\\
+		&\left.\frac{\varepsilon^2}{2}\begin{vmatrix}
+			\pp{f_1}{z_1} &\cdots & \pp{f_1}{z_l}\psi_l & \cdots & \pp{f_1}{z_n}\\
+			\vdots & & \vdots & & \vdots\\
+			\pp{f_n}{z_1} & \cdots & \pp{f_n}{z_l}\psi_l & \cdots & \pp{f_n}{z_n}
+		\end{vmatrix}+\right.\\
+		&\left.\varepsilon z_k z_l\begin{vmatrix}
+			\pp{f_1}{z_1} &\cdots & \pppp{f_1}{z_k}{z_l} & \cdots & \pp{f_1}{z_n}\\
+			\vdots & & \vdots & & \vdots\\
+			\pp{f_n}{z_1} & \cdots & \pppp{f_n}{z_k}{z_l} & \cdots & \pp{f_n}{z_n}
+		\end{vmatrix} \right\}.
+	\end{aligned}
+\end{equation*}
+当$j\neq k$时，第一个行列式为$0$；当$j\neq l$时，第二个行列式也为$0$，当$j=l$时，第二个行列式为$\psi_j(Jf)(z)$，所以有
+\[g_j(z)=\varepsilon\frac{z_k z_l G_j}{(Jf)(z)}+O(\varepsilon^2),\quad j\neq k.\]
+这里$G_j$表示第三个行列式.由引理\ref{lem2.5.5}，当$\Vert z\Vert=|z_j|>0$时，$\Re\left\{\frac{z_kz_lG_j}{z_j(Jf)(z)}\right\}>0$.但当$z_kz_l=0$时，上式却等于$0$，所以只能有$G_j\equiv0,j=1,\cdots,n$.因而向量$\left(\pppp{f_1}{z_k}{z_l},\cdots,\pppp{f_n}{z_k}{z_l}\right)$可以写成向量$\left(\pp{f_1}{z_1},\cdots,\pp{f_n}{z_1}\right),\cdots\left(\pp{f_1}{z_n},\cdots,\pp{f_n}{z_n}\right)$的线性组合，即
+\[\pppp{f_j}{z_k}{z_l}=c_1\pp{f_j}{z_1}+\cdots c_n\pp{f_j}{z_n},\quad j=1,\cdots,n.\]
+由此得
+\[c_j=\frac{G_j}{(Jf)(z)}=0,\quad j=1,\cdots,n.\]
+因而$\pppp{f_j}{z_k}{z_l}=0,\quad j=1,\cdots,n$.由此便得
+\begin{equation}\label{eq2.5.11}
+	f_j(z)=\sum_{m=1}^{n}a_{jm}\varphi_{jm}(z_m),\quad j=1,\cdots,n,
+\end{equation}
+这里$\varphi_{jm}$是单位圆盘上的全纯函数.把$f_j$的这个表达式代入\eqref{eq2.5.9}得
+\begin{equation}\label{eq2.5.12}
+	1+z_k\frac{\varphi_{jk}''(z_k)}{\varphi_{jk}'(z_k)}=\frac{\psi_k}{z_k},\quad 1\le j\le n,1\le k\le n.
+\end{equation}
+这说明每个$\varphi_{jk}$都是单位圆盘$U$上的凸映射.因为上式右端和$j$无关，因而
+\[1+z_k\frac{\varphi_{jk}''(z_k)}{\varphi_{jk}'(z_k)}=1+z_k \frac{\varphi_{lk}''(z_k)}{\varphi_{lk}'(z_k)},\quad j\neq l.\]
+由此便得$\varphi_{jk}=c\varphi_{lk}$.因而可在\eqref{eq2.5.11}中适当选取常数$a_{jm}$，使得$\varphi_{jk}=\varphi_{lk}=\varphi_k$.于是
+\[f_j(z)=\sum_{m=1}^{n}a_{jm}\varphi_m(z_m),\quad j=1,\cdots,n.\qedhere\]
+\end{proof}
+这个定理有很多有趣的应用，定理\ref{thm2.5.15}便是其中之一.
+\subsection{球上的星形映射}
+现在讨论球上的星形映射和凸映射.为了给出$f$是$B_n$上的星形映射或凸映射的条件，我们需要下面这些引理.
+\begin{lemma}\label{lem2.5.8}
+	设$f$是$B_n$上的双全纯映射，$f(0)=0.f(B_n)$是星形域或欧氏凸域的充分必要条件是，对任意的$0<r<1,f(rB_n)$是星形域或欧氏凸域.
+\end{lemma}
+\begin{proof}
+	条件的充分性是显然的.现证必要性.先设$f(B_n)$是星形域，要证对每个$r\in(0,1),f(rB_n)$也是星形的.为此取$a\in rB_n$，则$|a|<r,f(a)\in f(rB_n)$.由于对任意$z\in B_n,f(z)\in f(B_n)$，因为$f(B_n)$是星形的，所以对任意$t\in(0,1),tf(z)\in f(B_n)$.定义
+	\[u(z,t)=f^{-1}(tf(z)),\]
+	则$u(z,t)\in B_n$，且$u(0,t)=0$.故由Schwarz引理，$|u(z,t)|\le|z|$.特别命$z=a$，即得$|u(a,t)|\le|a|<r$.由此即得$tf(a)\in f(rB_n)$.故$f(rB_n)$是星形的.
+	
+	现在设$f(B_n)$是欧氏凸的，要证对任意$r\in(0,1),f(rB_n)$是欧氏凸的.为此取$a,b\in rB_n$，设$|b|\le|a|<r$，要证对$t\in[0,1]$，
+	\[tf(a)+(1-t)f(b)\in f(rB_n).\]
+	对于$z\in B_n$，容易知道
+	\[\frac{|\langle z,a\rangle|}{|a|^2}|b|\le\frac{|z|}{|a|}|b|\le|z|<1,\]
+	即$\frac{\langle z,a\rangle}{|a|^2}b\in B_n$，由于$f(B_n)$是欧氏凸的，所以
+	\[tf(z)+(1-t)f\left(\frac{\langle z,a\rangle}{|a|^2}b\right)\in f(B_n).\]
+	定义
+	\[v(z,t)=f^{-1}\left(tf(z)+(1-t)f\left(\frac{\langle z,a\rangle}{|a|^2}b\right)\right),\]
+	则$v(z,t)\in B_n$，且$v(0,t)=0$.由Schwarz引理$|v(z,t)|\le|z|$.命$z=a$得$|v(a,t)|\le|a|<r$，即
+	\[tf(a)+(1-t)f(b)\in f(rB_n).\qedhere\]
+\end{proof}
+\begin{lemma}\label{lem2.5.9}
+	设$\Omega$是$\MC^n$中包含原点的域，$g\colon\Omega\to\MR$是定义在$\Omega$上的实函数.如果$g$有二阶连续偏导数，则有下列Taylor展开：
+	\begin{equation}\label{eq2.5.13}
+		g(z)=g(0)+2\Re\left(\sum_{j=1}^{n}\pp{g(0)}{z_j}z_j\right)+\Re\left\{\sum_{j,k=1}^{n}\pppp{g(0)}{z_j}{z_k} z_j z_k+\sum_{j,k=1}^{n}\pppp{g(0)}{z_j}{\bar{z}_k} z_j \bar{z}_k\right\}+o(|z|^2).
+	\end{equation}
+\end{lemma}
+\begin{proof}
+	写$z_j=x_j+\ii y_j$，把$g$看成$\MR^{2n}$中的域$\Omega$上的函数，则有下列Taylor展开式：
+	\begin{align}\label{eq2.5.14}
+		&g(x_1,y_1,\cdots,x_n,y_n)\notag\\
+	   =&g(0)+\sum_{j=1}^{n}\left(\pp{g(0)}{x_j}x_j+\pp{g(0)}{y_j}y_j\right)+\notag\\
+	   &\frac12\sum_{j,k=1}^{n}\left\{\pppp{g(0)}{x_j}{x_k}x_jx_k+\pppp{g(0)}{x_j}{y_k}x_jy_k+\pppp{g(0)}{y_j}{x_k}y_jx_k+\right.\notag\\
+	   &\left.\pppp{g(0)}{y_j}{y_k}y_jy_k\right\}+o(|x|^2+|y|^2),
+	\end{align}
+利用记号
+\[\pp{}{z_j}=\frac12\left(\pp{}{x_j}-\ii\pp{}{y_j}\right),\pp{}{\bar{z}_j}=\frac12\left(\pp{}{x_j}+\ii\pp{}{y_j}\right),\]
+把$\pp{}{x_j},\pp{}{y_j},\pppp{}{x_j}{x_k}$等都化成$\pp{}{z_j},\pp{}{\bar{z}_j},\pppp{}{z_j}{z_k}$等，并利用$\bar{\left(\pp{g}{z_j}\right)}=\pp{g}{\bar{z}_j}$等关系，从\eqref{eq2.5.14}即得\eqref{eq2.5.13}.
+\end{proof}
+引进记号
+\[\pp{}{z}=\left(\pp{}{z_1},\cdots,\pp{}{z_n}\right),\quad \left(\pp{}{z}\right)'=\left(\pp{}{z_1},\cdots,\pp{}{z_n}\right)',\]
+\begin{align*}
+	\pppp{}{z'}{\bar{z}}
+	&=\left(\pp{}{z}\right)'\left(\pp{}{\bar{z}}\right)=\left(\begin{array}{ccc}
+		\pp{}{z_1} \\
+		\vdots \\
+		\pp{}{z_n}
+	\end{array}\right)
+\left(\pp{}{\bar{z}_1},\cdots,\pp{}{\bar{z}_n}\right)\\
+&=\begin{pmatrix}
+	\pppp{}{z_1}{\bar{z}_1} & \cdots & \pppp{}{z_1}{\bar{z}_n}\\
+	\vdots & & \vdots\\
+	\pppp{}{z_n}{\bar{z}_1} & \cdots & \pppp{}{z_n}{\bar{z}_n}
+\end{pmatrix}.
+\end{align*}
+\begin{lemma}\label{lem2.5.10}
+	设$\Omega$是$\MC^n$中的域，$\varphi\colon\Omega\to\MR$有二阶连续偏导数，$f\colon\Omega\to\MC^n$是双全纯映射.定义
+	\[\Phi(w)=\varphi(f^{-1}(w)),w\in f(\Omega).\]
+	那么，
+	
+	(1)\hypertarget{2.5.10}{}
+	$\pp{\varphi}{z}(\mathrm{d}z)'=\pp{\Phi}{w}(\mathrm{d}w)'$；
+	
+	(2)\hypertarget{2.5.10}{}
+	$\mathrm{d}w\pppp{\Phi}{w'}{\bar{w}}(\mathrm{d}\bar{w})'=\mathrm{d}z\pppp{\varphi}{z'}{\bar{z}}(\mathrm{d}\bar{z})'$；
+	
+	(3)\hypertarget{2.5.10}{}
+	$\mathrm{d}w\pppp{\Phi}{w'}{w}\left(\mathrm{d}w\right)'=\mathrm{d}z\pppp{\varphi}{z'}{z}\left(\mathrm{d}z\right)'-\pp{\varphi}{z}\left(\dd{f}{z}\right)^{-1}\left(\begin{array}{ccc}
+		\mathrm{d}z\pppp{f_1}{z'}{z}\left(\mathrm{d}z\right)'\\
+		\vdots\\
+		\mathrm{d}z\pppp{f_n}{z'}{z}\left(\mathrm{d}z\right)'
+	\end{array}\right).$
+\end{lemma}
+\begin{proof}
+	因为$\varphi(z)=\Phi(f(z)),f=(f_1,\cdots,f_n)$，所以
+	\[\pp{\varphi}{z_j}=\sum_{k=1}^{n}\pp{\Phi}{w_k}\pp{f_k}{z_j},\quad j=1,\cdots,n.\]
+	即
+	\[\left(\pp{\varphi}{z_1},\cdots,\pp{\varphi}{z_n}\right)=\left(\pp{\Phi}{w_1},\cdots,\pp{\Phi}{w_n}\right)\begin{pmatrix}
+		\pp{f_1}{z_1} & \cdots & \pp{f_1}{z_n}\\
+		\vdots & & \vdots\\
+		\pp{f_n}{z_1} & \cdots & \pp{f_n}{z_n}
+	\end{pmatrix},\]
+即$\pp{\varphi}{z}=\pp{\Phi}{w}\dd{f}{z}$，这里$\dd{f}{z}=f'(z)$.于是
+\[\pp{\varphi}{z}(\mathrm{d}z)'=\pp{\Phi}{w}\dd{f}{z}(\mathrm{d}z)'=\pp{\Phi}{w}(\mathrm{d}w)'.\]
+这就是\hyperlink{2.5.10}{(1)}.为了证\hyperlink{2.5.10}{(2)}，注意
+\begin{align*}
+	\pppp{\varphi}{z_i}{\bar{z}_l}
+	&=\sum_{k=1}^{n}\sum_{j=1}^{n}\pppp{\Phi}{w_k}{\bar{w}_j}\bar{\left(\pp{f_j}{z_l}\right)}\pp{f_k}{z_i}\\
+	&=\sum_{k=1}^{n}\sum_{j=1}^{n}\pp{f_k}{z_i}\pppp{\Phi}{w_k}{\bar{w}_j}\bar{\left(\pp{f_j}{z_l}\right)}.
+\end{align*}
+由此可得矩阵等式
+\[\pppp{\varphi}{z'}{\bar{z}}=\left(\dd{f}{z}\right)'\pppp{\Phi}{w'}{\bar{w}}\bar{\dd{f}{z}},\]
+或者
+\[\mathrm{d}z\pppp{\varphi}{z'}{\bar{z}}(\mathrm{d}\bar{z})'=\mathrm{d}z\left(\dd{f}{z}\right)'\pppp{\Phi}{w'}{\bar{w}}\bar{\dd{f}{z}}(\mathrm{d}\bar{z})'=\mathrm{d}w\pppp{\Phi}{w'}{\bar{w}}(\mathrm{d}\bar{w})'.\]
+最后证明\hyperlink{2.5.10}{(3)}.因为
+\[\pppp{\varphi}{z_i}{z_l}=\sum_{k=1}^{n}\left(\sum_{j=1}^{n}\pppp{\Phi}{w_k}{w_j}\pp{f_j}{z_l}\pp{f_k}{z_i}+\pp{\Phi}{w_k}\pppp{f_k}{z_i}{z_l}\right),\]
+即
+\[\pppp{\varphi}{z'}{z}=\left(\dd{f}{z}\right)'\pppp{\Phi}{w'}{w}\dd{f}{z}+\sum_{k=1}^{n}\pp{\Phi}{w_k}\pppp{f_k}{z'}{z},\]
+或者
+\[\pppp{\Phi}{w'}{w}=\left(\dd{f}{z}\right)'^{-1}\left\{\pppp{\varphi}{z'}{z}-\sum_{k=1}^{n}\pp{\Phi}{w_k}\pppp{f_k}{z'}{z}\right\}\left(\dd{f}{z}\right)^{-1},\]
+于是
+\begin{align*}
+	\mathrm{d}w\pppp{\Phi}{w'}{w}\left(\mathrm{d}w\right)'
+	&=\mathrm{d}z\left\{\pppp{\varphi}{z'}{z}-\sum_{k=1}^{n}\pp{\Phi}{w_k}\pppp{f_k}{z'}{z}\right\}\left(\mathrm{d}z\right)'\\
+	&=\mathrm{d}z\pppp{\varphi}{z'}{z}\left(\mathrm{d}z\right)'-\pp{\Phi}{w}\left(
+	\begin{array}{ccc}
+		\mathrm{d}z\pppp{f_1}{z'}{z}\left(\mathrm{d}z\right)'\\
+		\vdots\\
+		\mathrm{d}z\pppp{f_n}{z'}{z}\left(\mathrm{d}z\right)'
+	\end{array}\right)\\
+&=\mathrm{d}z\pppp{\varphi}{z'}{z}\left(\mathrm{d}z\right)'-\pp{\varphi}{z}\left(\dd{f}{z}\right)^{-1}\left(
+\begin{array}{ccc}
+	\mathrm{d}z\pppp{f_1}{z'}{z}\left(\mathrm{d}z\right)'\\
+	\vdots\\
+	\mathrm{d}z\pppp{f_n}{z'}{z}\left(\mathrm{d}z\right)'
+\end{array}\right).\qedhere
+\end{align*}
+\end{proof}
+设$z=(z_1,\cdots,z_n)\in\MC^n$，记$z_j=x_j+\ii y_j$，那么可写
+\[z=(x_1,y_1,\cdots,x_n,y_n).\]
+它可以看成是$\MR^{2n}$中的点.设另有$w=(w_1,\cdots,w_n)$，写$w_j=u_j+\ii v_j$，则$w=(u_1,v_1,\cdots,u_n,v_n)$也可看成$\MR^{2n}$中的点.现把$z,w$都看成$\MR^{2n}$中的向量，它们的内积是
+\[z\cdot w=\sum_{j=1}^{n}(x_ju_j+y_jv_j).\]
+作为$\MC^n$中的向量，它们的内积为
+\[\langle z,w\rangle=\sum_{j=1}^{n}z_j\bar{w}_j.\]
+容易看出，这两个内积之间有关系
+\[z\cdot w=\Re\langle z,w\rangle.\]
+作为实向量，它们之间的夹角$\theta$定义为
+\[\cos\theta=\frac{z\cdot w}{|z||w|}=\frac{\Re\langle z,w\rangle}{|z||w|}.\]
+所以$\theta$为锐角的充分必要条件是$\Re\langle z,w\rangle$取正值.
+
+讨论多圆柱上的星形映射时，映射类$P$起着重要的作用.对球上的星形映射，我们要引进下面的映射类$Q$.
+\begin{definition}\label{def2.5.11}
+	$Q$是满足下面两个条件的全纯映射$g\colon B_n\to\MC^n$的全体：
+	
+	(1)\hypertarget{2.5.11}{}
+	$g(0)=0$；
+	
+	(2)\hypertarget{2.5.11}{}
+	当$z\in B_n$时，$\Re \left\{g(z)\bar{z}'\right\}\ge0$.
+\end{definition}
+现在可以证明下面的
+\begin{theorem}\label{thm2.5.12}
+	设$f\colon B_n\to\MC^n$是双全纯映射，$f(0)=0$，那么$f$是星形映射的充分必要条件是存在$g\in Q$，使得
+	\begin{equation}\label{eq2.5.15}
+		f(z)=f'(z)g(z),
+	\end{equation}
+这里$f,g$都写成列向量的形式.
+\end{theorem}
+\begin{proof}
+	必要性\quad 设$f(B_n)$是星形域.由引理\ref{lem2.5.8}，对任意$t,0<t<1,f(tB_n)$也是星形域.记$\varphi_t(z)=z\bar{z}'-t^2$，则$tB_n=\{z\in\MC^n\colon\varphi_t(z)<0\}$.记$\Phi_t(w)=\varphi_t(f^{-1}(w))$，命
+	\[\Omega_t=\{w\in\MC^n\colon\Phi_t(w)<0\},\]
+	则$\Omega_t=f(tB_n)$，所以$\Omega_t$对任意$0<t<1$都是星形的.任取$w\in\partial\Omega_t$，则$\Phi_t(w)=0$.由引理\ref{lem2.5.9}，对充分小的$\varepsilon>0$有
+	\begin{align*}
+		\Phi_t\left(w+\varepsilon\pp{\Phi_t}{\bar{w}}\right)
+		&=2\Re\left(\varepsilon\pp{\Phi_t}{\bar{w}}\left(\pp{\Phi_t}{w}\right)'\right)+O(\varepsilon^2)\\
+		&=2\varepsilon\left|\pp{\Phi_t}{w}\right|^2+O(\varepsilon^2)>0.
+	\end{align*}
+这说明当$\varepsilon$充分小时，$w+\varepsilon\pp{\Phi_t}{\bar{w}}$永远在$\Omega_t$的外部，即$\pp{\Phi_t}{\bar{w}}$是$\partial\Omega_t$在$w$处的外法向量.由于对任意$0<t_0<1,(1-t_0)w\in\Omega_t$，所以$\cos\left(-\pp{\Phi_t}{\bar{w}},-w\right)>0$，即$\Re\pp{\Phi_t}{w}w'>0$.因为$\pp{\varphi_t}{z}=\pp{\Phi_t}{w}f'(z)$，而$\pp{\varphi_t}{z}=\bar{z}$，于是得$\Re\{\bar{z}(f'(z))^{-1}w'\}>0$.因为$f$记为列向量，即$w'=f(z)$，上式即$\Re\{\bar{z}(f'(z))^{-1}f(z)\}>0$.记
+\[g(z)=(f'(z))^{-1}f(z),\]
+则$g\in Q$，且$f(z)=f'(z)g(z)$.这就证明了条件的必要性.
+
+充分性\quad 如果\eqref{eq2.5.15}成立，那么对于$w\in\partial\Omega_t$，存在$\varepsilon>0$，当$0<\tau<\varepsilon$时，$(1-\tau)w\in\Omega_t$.由此可以证明对于$0<\tau<1$，都有$(1-\tau)w\in\Omega_t$.因为如果存在$\tau_1<1$使得$(1-\tau_1)w\in\partial\Omega_t$，而对所有$0<\tau<\tau_1$有$(1-\tau)w\in\Omega_t$.那么记$(1-\tau_1)w=w_0\in\partial\Omega_t$，则对任意小的正数$\tau$，若写$(1-\tau)(1-\tau_1)=1-\rho$，则$\rho>\tau_1$，于是
+\[(1-\tau)w_0=(1-\tau)(1-\tau_1)w=(1-\rho)w\notin\Omega_t,\]
+这是一个矛盾.因而$\Omega_t$是星形的，所以$f(B_n)$是星形的.
+\end{proof}
+\subsection{球上的凸映射}
+现在来讨论$f(B_n)$是欧氏凸域的条件.由引理\ref{lem2.5.8}，$f(B_n)$是欧氏凸域的充分必要条件是对任意$t\in(0,1),\Omega_t=f(tB_n)$是欧氏凸域.任取$w\in\partial\Omega_t$及在$w$处的切向量$\mathrm{d}w$，那么$\Omega_t$是欧氏凸域的条件是$w+\mathrm{d}w$在$\Omega_t$的外部，即$\Phi_t(w+\mathrm{d}w)>0$对每个$w\in\partial\Omega_t$及在$w$处的切向量$\mathrm{d}w$成立.按照引理\ref{lem2.5.9}把$\Phi_t(w+\mathrm{d}w)$展开得
+\begin{align}\label{eq2.5.16}
+	&\Phi_t(w+\mathrm{d}w)=\Phi_t(w)+2\Re\left(\mathrm{d}w\left(\pp{\Phi_t}{w}\right)'\right)+\notag\\
+	&\Re\left\{\mathrm{d}w\pppp{\phi_t}{w'}{w}(\mathrm{d}w)'+\mathrm{d}w\pppp{\Phi_t}{w'}{\bar{w}}(\mathrm{d}\bar{w})'\right\}+o(|\mathrm{d}w|^2),
+\end{align}
+因为$w\in\partial\Omega_t,\Phi_t(w)=0$；又因为$\pp{\Phi_t}{\bar{w}}$是$\partial\Omega_t$在$w$处的法向量，所以$\Re\left(\mathrm{d}w\left(\pp{\Phi_t}{w}\right)'\right)=0$.把引理\ref{lem2.5.10}的\hyperlink{2.5.10}{(2)}、\hyperlink{2.5.10}{(3)}代入\eqref{eq2.5.16}即得
+\begin{align*}
+	&\Phi_t(w+\mathrm{d}w)\\
+	=&\Re\left\{\mathrm{d}z\pppp{\varphi_t}{z'}{z}(\mathrm{d}z)'-\pp{\varphi_t}{z}\left(\dd{f}{z}\right)^{-1}\left(\begin{array}{ccc}
+		\mathrm{d}z\pppp{f_1}{z'}{z}\left(\mathrm{d}z\right)'\\
+		\vdots\\
+		\mathrm{d}z\pppp{f_n}{z'}{z}\left(\mathrm{d}z\right)'
+	\end{array}\right)+\mathrm{d}z\pppp{\varphi_t}{z'}{\bar{z}}(\mathrm{d}\bar{z})'\right\}+\\
+&o(|\mathrm{d}w|^2).
+\end{align*}
+现在$\varphi_t(z)=z\bar{z}'-t^2$，所以$\pp{\varphi_t}{z_j}=\bar{z}_j,\pppp{\varphi_t}{z_j}{z_k}=0,\pppp{\varphi_t}{z_j}{\bar{z}_k}=\delta_{jk}$，因而\\
+$\pppp{\varphi_t}{z'}{z}=0,\pppp{\varphi_t}{z'}{\bar{z}}=I_n$.于是有
+\[\Phi_t(w+\mathrm{d}w)=\Re\left\{|\mathrm{d}z|^2-\bar{z}\left(\dd{f}{z}\right)^{-1}
+\left(
+\begin{array}{ccc}
+	\mathrm{d}z\pppp{f_1}{z'}{z}\left(\mathrm{d}z\right)'\\
+	\vdots\\
+	\mathrm{d}z\pppp{f_n}{z'}{z}\left(\mathrm{d}z\right)'
+\end{array}\right)\right\}+o(|\mathrm{d}w|^2).\]
+因而$\Omega_t$是欧氏凸的充分必要条件为
+\begin{equation}\label{eq2.5.17}
+	\Re\left\{|\mathrm{d}z|^2-\bar{z}\left(\dd{f}{z}\right)^{-1}
+	\left(
+	\begin{array}{ccc}
+		\mathrm{d}z\pppp{f_1}{z'}{z}\left(\mathrm{d}z\right)'\\
+		\vdots\\
+		\mathrm{d}z\pppp{f_n}{z'}{z}\left(\mathrm{d}z\right)'
+	\end{array}\right)\right\}>0.
+\end{equation}
+为了把\eqref{eq2.5.17}写得更简洁些，我们引进如下的记号：设$A=(a_{ij}),B=(b_{ij})$分别是$m\times n$和$p\times q$矩阵，称
+\[A\times B=\begin{pmatrix}
+	a_{11}B & \cdots & a_{1n}B\\
+	\vdots & & \vdots\\
+	a_{m1}B & \cdots & a_{mn}B
+\end{pmatrix}\]
+为$A$和$B$的直积，$A\times B$是$mp\times nq$矩阵.这里我们只引进这个概念，在\ref{sec3.4}中讨论典型域的核函数时，还要研究它的一些基本性质.现在定义
+\begin{align*}
+	f''(z)
+	&=\left(\pp{}{z_1},\cdots,\pp{}{z_n}\right)\times f'(z)\\
+	&=\left(\pp{}{z_1}f'(z),\cdots,\pp{}{z_n}f'(z)\right)\\
+	&=\begin{pmatrix}
+		\ppp{f_1}{z_1} & \cdots &\pppp{f_1}{z_n}{z_1} & \cdots & \pppp{f_1}{z_1}{z_n} & \cdots & \ppp{f_1}{z_n}\\
+		\vdots & &\vdots & & \vdots & &\vdots \\
+        \ppp{f_n}{z_1} & \cdots &\pppp{f_n}{z_n}{z_1} & \cdots & \pppp{f_n}{z_1}{z_n} & \cdots & \ppp{f_n}{z_n}		
+	\end{pmatrix}
+\end{align*}
+
+设$\alpha=(\alpha_1,\cdots,\alpha_n)$，定义
+\begin{align*}
+	\alpha^2
+	&=\alpha\times\alpha=(\alpha_1,\cdots,\alpha_n)\times(\alpha_1,\cdots,\alpha_n)\\
+	&=(\alpha_1^2,\cdots,\alpha_1\alpha_n,\cdots,\alpha_n\alpha_1,\cdots,\alpha_n^2).
+\end{align*}
+这里$f''(z)$\index[symbolindex]{\textbf{函数和映射}!$f''(z)$}是$n\times n^2$矩阵，$\alpha^2$是$1\times n^2$矩阵.
+
+在\eqref{eq2.5.17}中命$\alpha=\frac{\mathrm{d}z}{|\mathrm{d}z|}$，则$\alpha$是单位向量，而且满足$\Re(\bar{z}\alpha')=0$.于是\eqref{eq2.5.17}便可写成较为简洁的形式：
+\begin{equation}\label{eq2.5.18}
+	\Re\{1-\bar{z}(f'(z))^{-1} f''(z)(\alpha^2)'\}>0.
+\end{equation}
+这样，我们已经证明了.
+\begin{theorem}\label{thm2.5.13}
+	设$f\colon B_n\to\MC^n$是双全纯映射，$f(0)=0$，那么$f(B_n)$是欧氏凸的充分必要条件是，对每一个$z\in B_n$及满足$\Re(\bar{z}\alpha')=0$的单位向量$\alpha$，有
+	\[\Re\{1-\bar{z}(f'(z))^{-1} f''(z)(\alpha^2)'\}>0.\]
+\end{theorem}
+下面看一个例子.
+\begin{example}\label{exa2.5.14}
+	如果$\eta\in\MC,|\eta|<\frac12$，那么
+	\[f(z)=(z_1+\eta z_2^2,z_2,\cdots,z_n)\]
+	是$B_n$上的凸映射.
+\end{example}
+\begin{solution}
+	事实上，$f^{-1}(z_1-\eta z_2^2,z_2,\cdots,z_n)$它是双全纯的，且$f(0)=0$，容易算出
+	\[f'(z)=\begin{pmatrix}
+		1 & 2\eta z_2 & 0 & \cdots & 0\\
+		0 & 1 & 0 &\cdots & 0\\
+		\vdots & \vdots & \vdots & & \vdots\\
+		0& 0 &0 &\cdots &1
+	\end{pmatrix},\]
+\[(f'(z))^{-1}=\begin{pmatrix}
+	1 & -2\eta z_2 & 0 & \cdots & 0\\
+	0 & 1 & 0 &\cdots & 0\\
+	\vdots & \vdots & \vdots & & \vdots\\
+	0& 0 &0 &\cdots &1
+\end{pmatrix},\]
+\[f''(z)=
+\left(\begin{array}{ccccccccccc}
+	0 & \cdots &0& 0&2\eta &\cdots &0&\cdots&0&\cdots &0\\
+	0 & \cdots &0& 0&0 &\cdots &0&\cdots&0&\cdots &0\\
+	\vdots &  &\vdots&\vdots&\vdots& &\vdots&&\vdots&&\vdots\\
+	0 & \cdots &0& 0&0&\cdots &0&\cdots&0&\cdots &0
+\end{array}
+\right).\]
+所以
+\begin{align*}
+	&\bar{z}(f'(z))^{-1}f''(z)(\alpha^2)'\\
+	&=(\bar{z}_1,-2\eta\bar{z}_1z_2+\bar{z}_2,\bar{z}_3,\cdots,\bar{z}_n)\left(\begin{array}{c}
+		2\eta\alpha_2^2\\
+		0\\
+		\vdots\\
+		0
+	\end{array}\right)\\
+&=2\eta\bar{z}_1\alpha_2^2,
+\end{align*}
+因而
+\[|\bar{z}(f'(z))^{-1}f''(z)(\alpha^2)'|<1.\]
+由定理\ref{thm2.5.13}，$f$是$B_n$上的凸映射.
+\end{solution}
+作为定理\ref{thm2.5.7}和定理\ref{thm2.5.13}的一个应用，史济怀\index{S!史济怀}\cite{史济怀1981new}给出球和多圆柱不全纯等价的一个新证明.
+\begin{theorem}\label{thm2.5.15}
+	多圆柱$U^n$和球$B_n$不全纯等价.
+\end{theorem}
+\begin{proof}
+	如果$U^n$和$B_n$全纯等价，那么存在$U^n$上的双全纯映射$f$，使得$f(U^n)=B_n$.由于$U^n$是可递的，不妨设$f(0)=0$.因为$B_n$是凸的，由定理\ref{thm2.5.7}，$f$可写为
+	\[f(z)=(g_1(z),\cdots,g_n(z_n))T,\]
+	这里$T$是$n$阶非奇异方阵，$g_j(z_j)(j=1,\cdots,n)$是单位圆盘$|z_j|<1$上的凸映射.考虑
+	\[\varphi^{(1)}(z)=(z_1,z_2,\cdots,z_n+\eta z_1^2),\quad |\eta|<\frac12.\]
+	由例\ref{exa2.5.14}，$\varphi^{(1)}$是$B_n$上的凸映射，因而$\varphi^{(1)}\circ f$是$U^n$上的凸映射，再用定理\ref{thm2.5.7}得
+	\[(\varphi^{(1)}\circ f)(z)=(h_1^{(1)}(z_1),\cdots,h_n^{(1)}(z_n))S^{(1)},\]
+	这里$S^{(1)}$是$n$阶非异方阵，$h_j^{(1)}$是$|z_j|<1$上的凸映射.由此得
+	\begin{align*}
+		(h_1^{(1)}(z_1),\cdots,h_n^{(1)}(z_n))S^{(1)}
+		&=(f_1,f_2,\cdots,f_n+\eta f_1^2)\\
+		&=(f_1,\cdots,f_n)+(0,\cdots,0,\eta f_1^2),
+	\end{align*}
+即
+\[(h_1^{(1)}(z_1),\cdots,h_n^{(1)}(z_n))S^{(1)}-(g_1(z_1),\cdots,g_n(z_n))T=(0,\cdots,0,\eta f_1^2),\]
+记$S^{(1)}=(s_{ij}^{(1)}),T=(t_{ij})$，比较两端最后一个坐标得
+\begin{align*}
+	&\left\{s_{1n}^{(1)}h_1^{(1)}(z_1)+\cdots s_{nn}^{(1)}h_n^{(1)}(z_n)\right\}-\left\{t_{1n}g_1(z_1)+\cdots t_{nn}g_n(z_n)\right\}\\
+	=&\eta(t_{11}g_1(z_1)+\cdots+t_{n1}g_n(z_n))^2.
+\end{align*}
+$t_{11},\cdots,t_{n1}$中至少有一个不为$0$，不妨设$t_{11}\neq0$.
+
+上式两端对$z_1$求导数得
+\[s_{1n}^{(1)}(h_1^{(1)}(z_1))'-t_{1n}g_1'(z_1)=2\eta(t_{11}g_1(z_1)+\cdots+t_{n1}g_n(z_n))t_{11}g_1'(z_1).\]
+因为左端是$z_1$的函数，故可得
+\[t_{21}=t_{31}=\cdots=t_{n1}=0.\]
+再考虑$\varphi^{(2)}=(z_1+\eta z_2^2,z_2,\cdots,z_n)$，由例\ref{exa2.5.14}，它是$B_n$上的凸映射，于是由定理\ref{thm2.5.7}得
+\[(\varphi^{(2)}\circ f)(z)=(h_1^{(2)}(z_1),\cdots,h_n^{(2)}(z_n))S^{(2)}.\]
+和上面一样做法，即可得
+\[t_{12}=t_{32}=\cdots=t_{n2}=0,\]
+相继考虑
+\[\varphi^{(3)}(z)=(z_1,z_2+\eta z_3^2,\cdots,z_n),\]
+\[\cdots\cdots\cdots\cdots\]
+\[\varphi^{(n)}(z)=(z_1,z_2,\cdots,z_{n-1}+\eta z_n^2,z_n),\]
+它们都是$B_n$上的凸映射，一再用定理\ref{thm2.5.7}，即可得
+\[T=\begin{pmatrix}
+	t_{11} & & & \\
+	 & t_{22} & & \\
+	 & & \ddots&\\
+	 & & &t_{nn}
+\end{pmatrix},\]
+所以
+\[f(z)=(t_{11}g_1(z_1),\cdots,t_{nn}g_n(z_n)).\]
+它当然不可能把$U^n$映为$B_n$.
+\end{proof}
+这个定理的另一个证明见定理\ref{thm2.3.15}.
+\section{球上星形映射和凸映射的增长定理和掩盖定理\label{sec2.6}}
+\subsection{球上星形映射的增长定理和掩盖定理}
+设$f$是单位圆盘$U$上的单叶全纯函数，如果$f(0)=0,f'(0)=1$，则称$f$是规范化的单叶全纯函数，用$S$记全体规范化的单叶全纯函数.对$f\in S$，熟知有如下的增长定理与$\frac14$掩盖定理：
+\begin{equation}\label{eq2.6.1}
+	\frac{|z|}{(1+|z|)^2}\le|f(z)|\le\frac{|z|}{(1-|z|)^2},\quad z\in U,
+\end{equation}
+右端的不等式给出$|f(z)|$增长的一个控制，称为增长定理\index{D!定理!增长定理}；从左端的不等式容易得到
+\[f(U)\supset\frac14 U,\]
+称为$\frac14$掩盖定理\index{D!定理!掩盖定理}.不等式中等号成立当且仅当$f$为Koebe函数\index{K!Koebe函数}$K(z)=\frac{z}{(1-z)^2}$的一个适当的旋转.
+
+如果$f\in S$且$f(U)$是凸的，则有比\eqref{eq2.6.1}更好的不等式：
+\begin{equation}\label{eq2.6.2}
+\frac{|z|}{1+|z|}\le|f(z)|\le\frac{|z|}{1-|z|},\quad z\in U,	
+\end{equation}
+从左端不等式可得$f(U)\supset\frac12 U$，等号成立当且仅当$f(z)$是$\frac{z}{1-z}$的一个适当的旋转.
+
+另外，对于$f\in S$，其导数也有一个估计，即所谓偏差定理\index{D!定理!偏差定理}：
+\begin{equation}\label{eq2.6.3}
+	\frac{1-|z|}{(1+|z|)^3}\le|f'(z)|\le\frac{1+|z|}{(1-|z|)^3},
+\end{equation}
+等号成立当且仅当$f$是Koebe函数的一个适当的旋转.
+
+1933年 H. Cartan\cite{montel1933leccons}\index{C!Cartan, H.}曾提出把单叶全纯函数的这些结果推广到多复变数的双全纯映射.设$f\colon B_n\to\MC^n$是一个双全纯映射，如果$f(0)=0,f'(0)=I_n$，就称$f$是规范化的双全纯映射.当时 H. Cartan 就指出，这种推广是不成立的.例如
+\begin{equation}\label{eq2.6.4}
+	f(z)=\left(z_1,\frac{z_2}{(1-z_1)^k}\right),
+\end{equation}
+其中$k$是正整数.显然，它是$B_2$上的规范化的双全纯映射，它当然不满足\eqref{eq2.6.1}，映射\eqref{eq2.6.4}的导数是
+\[f'(z)=\begin{pmatrix}
+	1 & 0\\
+	\frac{kz_2}{(1-z_1)^{k+1}} & \frac{1}{(1-z_1)^k}
+\end{pmatrix},\]
+$\det f'(z)=\frac1{(1-z_1)^k}$.因此，若在\eqref{eq2.6.3}中把单复变数函数的导数$f'(z)$换成全纯映射导数的行列式，\eqref{eq2.6.3}不成立.最近，Duren\index{D!Duren, P. L.}和Rudin\index{R!Rudin, W.}在\cite{duren1986distortion}中举出例子，说明对多圆柱上的规范化的双全纯映射，\eqref{eq2.6.3}也是不成立的.这样就产生一个问题，在双全纯映射上加上适当的限制，能否把这些结果推广到多复变？这个问题直到近年来才取得了实质性的进展.1989年 R. W. Barnard\index{B!Barnard, R. W.}， C. H. FitzGerald\index{F!FitzGerald, C. H.}和龚{\CJKfontspec{simsun.ttf}昇}\cite{barnard1991growth}\index{G!龚{\CJKfontspec{simsun.ttf}昇}}首先证明了下面的
+\begin{theorem}\label{thm2.6.1}
+	如果$f\colon B_n\to\MC^n$是规范化的星形映射，那么对任意$z\in B_n$有
+	\begin{equation}\label{eq2.6.5}
+		\frac{|z|}{(1+|z|)^2}\le|f(z)|\le\frac{|z|}{(1-|z|)^2},
+	\end{equation}
+不等式\eqref{eq2.6.5}是最好的，但使\eqref{eq2.6.5}中等号成立的映射有很多个.
+\end{theorem}
+稍后，C. Thomas\cite{fitzgerald1990convex}和刘太顺\index{L!刘太顺}\cite{liu1989growth}相互独立地就凸映射的情形给出了相应的结果.
+\begin{theorem}\label{thm2.6.2}
+	如果$f\colon B_n\to\MC^n$是规范化的凸映射，那么对任意$z\in B_n$有
+	\begin{equation}\label{eq2.6.6}
+		\frac{|z|}{1+|z|}\le|f(z)|\le\frac{|z|}{1-|z|},
+	\end{equation}
+不等式\eqref{eq2.6.6}是最好的，但使\eqref{eq2.6.6}中等号成立的映射有很多个.
+\end{theorem}
+为了给出定理\ref{thm2.6.1}的证明，我们先证明
+\begin{lemma}\label{lem2.6.3}
+设$g\in Q$（$Q$的定义见定义\ref{def2.5.11}），那么
+\[\frac{1-|z|}{|z|(1+|z|)}\cos\theta\le \frac1{|g(z)|}\le\frac{1+|z|}{|z|(1-|z|)}\cos\theta\]
+对$z\in B_n$成立，这里$\theta$是$z$和$g(z)$之间的夹角.
+\end{lemma}
+\begin{proof}
+	固定$\zeta\in\partial B_n,\lambda$是一复数，$0<|\lambda|<1$.因为$g\in Q$，所以
+	\[\Re\sum_{j=1}^{n}\bar{\lambda}\bar{\zeta}_jg_j(\lambda\zeta)\ge0,\]
+	即
+	\begin{equation}\label{eq2.6.7}
+		\Re\sum_{j=1}^{n}\bar{\zeta}_j\frac{g_j(\lambda\zeta)}{\lambda}\ge0.
+	\end{equation}
+定义$P(\lambda)=\sum_{j=1}^{n}\bar{\zeta}_j\frac{g_j(\lambda\zeta)}{\lambda}$，则$P$是$0<|\lambda|<1$中的全纯函数.由于$g(0)=0$，如果定义$P(0)=1$，那么$P$是单位圆盘中的全纯函数.由\eqref{eq2.6.7}，$P$具有正实部，因而得
+\begin{equation}\label{eq2.6.8}
+	\frac{1-|\lambda|}{1+|\lambda|}\le|\Re P(\lambda)|\le\frac{1+|\lambda|}{1-|\lambda|}.
+\end{equation}
+如果把$\Re\sum_{j=1}^{n}\bar{\zeta}_j\frac{g_j(\lambda\zeta)}{\lambda}$看作一个内积，那么它等于$|\zeta|\frac{|g(\lambda\zeta)|}{|\lambda|}\cdot\cos\theta$，这里$\theta$是向量$\zeta$和$\frac1\lambda g(\lambda\zeta)$之间的夹角，若记$z=\lambda\zeta$，那么$\theta$就是$z$和$g(z)$之间的夹角.注意$|z|=|\lambda||\zeta|=|\lambda|$，从\eqref{eq2.6.8}便可得
+\[\frac{1-|z|}{1+|z|}\le\frac{|g(z)|}{|z|}\cos\theta\le\frac{1+|z|}{1-|z|},\]
+这就是要证的不等式.
+\end{proof}
+\begin{proof}[\textbf{定理\ref{thm2.6.1}的证明}]
+	设$0<r<1$，取$a,|a|=r$，使得$|f(a)|$取到$|f(z)|$在$rB_n$中的最大值.因为$f(B_n)$是星形的，所以$0$到$f(a)$的直线段包含在$f(B_n)$中.用$z(s)$记这直线段在$rB_n$中的原像（$s$是弧长参数），于是
+	\[\dd{f(z(s))}{s}=\lambda(z(s))f(z(s)),\]
+	其中$\lambda(z(s))>0$.另一方面，
+	\[\dd{f(z(s))}{s}=\sum_{j=1}^{n}\pp{f}{z_j}\dd{z_j}{s}=f'(z(s))\dd{z}{s}.\]
+	由定理\ref{thm2.5.12}，存在$g\in Q$，使得$f(z)=f'(z)g(z)$.于是
+	\begin{align*}
+		\dd{f(z(s))}{s}
+		&=\lambda(z(s))f'(z(s))g(z(s))\\
+		&=f'(z(s))\dd{z}{s}.
+	\end{align*}
+因为$f'(z(s))$可逆，由上式得$\dd{z(s)}{s}=\lambda(z(s))g(z(s))$.因为$\left|\dd{z(s)}{s}\right|=1$，所以$\lambda=\frac1{|g|}$.因而得
+\begin{equation}\label{eq2.6.9}
+	\dd{f(z(s))}{s}=\frac1{|g(z(s))|}f(z(s)).
+\end{equation}
+命$\varphi(s)=|f(z(s))|^2$，由\eqref{eq2.6.9}得
+\begin{align}\label{eq2.6.10}
+	\dd{\varphi}{s}
+	&=\sum_{j,k=1}^{n}\left(\pp{f_j}{z_k}\dd{z_k}{s}\bar{f}_j+\bar{\pp{f_j}{z_k}}\bar{\dd{z_k}{s}}f_j\right)\notag\\
+	&=2\Re\sum_{j,k=1}^{n}\pp{f_j}{z_k}\dd{z_k}{s}\bar{f}_j=2\Re\sum_{j=1}^{n}\dd{f_j}{s}\bar{f}_j\notag\\
+	&=2\Re\left\{\dd{f(z(s))}{s}\bar{f(z(s))'}\right\}\notag\\
+	&=2\Re\left\{\frac1{|g(z(s))|}|f(z(s))|^2\right\}\notag\\
+	&=\frac2{|g(z(s))|}\varphi(s).
+\end{align}
+用引理\ref{lem2.6.3}的右端的不等式，得
+\begin{equation}\label{eq2.6.11}
+	\dd{}{s}\log\varphi(s)\le\frac{2(1+|z(s)|)}{|z(s)|(1-|z(s)|)}\cos\theta(s).
+\end{equation}
+这里$\theta(s)$是$z(s)$和$g(z(s))$之间的夹角，但$g(z(s))$和$\dd{z(s)}{s}$之间差正数倍，所以$\theta(s)$也是$z(s)$和$\dd{z(s)}{s}$之间的夹角，因而$\dd{|z(s)|}{s}=\cos\theta(s)$.从\eqref{eq2.6.11}的两端从$s_0$到$s_1$积分得
+\begin{align}\label{eq2.6.12}
+	\log\varphi(s_1)-\log\varphi(s_0)
+	\le&2\int_{s_0}^{s_1}\frac{1+|z(s)|}{|z(s)|(1-|z(s)|)}\cos\theta(s)\dif s\notag\\
+	=&2\int_{s_0}^{s_1}\frac{1+|z(s)|}{|z(s)|(1-|z(s)|)}\dif |z(s)|\notag\\
+	=&2\int_{|z(s_0)|}^{|z(s_1)|}\frac{1+|z|}{|z|(1-|z|)}\dif|z|\notag\\
+	=&2\log|z(s_1)|-4\log(1-|z(s_1)|)-\left\{2\log|z(s_0)|-\right.\notag\\
+	&\left.4\log(1-|z(s_0)|)\right\}.
+\end{align}
+因为$f$是规范化的，在$z=0$附近有展开式
+\[f(z)=z+o(|z|),\]
+所以当$z\to0$时，$z$和$f(z)$很接近；它又是星形的，$f(z)=f'(z)g(z)$，但$f'(0)=I_n$，所以当$z\to0$时，$f(z)$和$g(z)$也很接近，因而$z$和$g(z)$很接近，所以它们的夹角$\theta$当$z\to0$时也趋于$0$，因而$\dd{|z(s)|}{s}\to1$.现设$s_0=\varepsilon$是一个小的正数，那么$|z(s_0)|=\varepsilon+o(\varepsilon),|f(z(s_0))|=\varepsilon+o(\varepsilon)$，从而$\varphi(s_0)=\varepsilon^2+o(\varepsilon^2)$.于是从\eqref{eq2.6.12}可得
+\begin{align*}
+	\varphi(s_1)
+	&\le\varphi(s_0)\frac{|z(s_1)|^2}{(1-|z(s_1)|)^4}\frac{(1-|z(s_0)|)^4}{|z(s_0)|^2}\\
+	&\le\frac{|z(s_1)|^2}{(1-|z(s_1)|)^4}\frac{\varepsilon^2+o(\varepsilon^2)}{\varepsilon^2+o(\varepsilon^2)}.
+\end{align*}
+让$\varepsilon\to0$得
+\[\varphi(s_1)\le\frac{|z(s_1)|^2}{(1-|z(s_1)|)^4}.\]
+取$s_1$，使得$z(s_1)=a$，再把$a$记成$z$，就得
+\[|f(z)|\le\frac{|z|}{(1-|z|)^2}.\]
+不等式的另外一半容易证明，只要在不等式\eqref{eq2.6.10}中对$\frac1{|g(z(s))|}$用引理\ref{lem2.6.3}的左端的不等式，其余的证明是一样的.
+\end{proof}
+为了说明不等式\eqref{eq2.6.5}是最好的，先证明下面的
+\begin{prop}\label{prop2.6.4}
+	如果$\varphi_j(\lambda)(j=1,\cdots,n)$都是单位圆盘$|\lambda|<1$上的规范化的星形映射，那么
+	\[f(z)=(\varphi_1(z_1),\cdots,\varphi_n(z_n)),\quad z\in B_n\]
+	是$B_n$上的星形映射.
+\end{prop}
+\begin{proof}
+	记$g(z)=(f'(z))^{-1}f(z)$，则
+	\begin{align*}
+		g(z)
+		&=\begin{pmatrix}
+			(\varphi_1'(z_1))^{-1} & & \\
+			 & \ddots & \\
+			 & & (\varphi_n'(z_n))^{-1}
+		\end{pmatrix}\left(\begin{array}{c}
+		\varphi_1(z_1)\\
+		\vdots\\
+		\varphi_n(z_n)
+	\end{array}\right)\\
+&=\left(\begin{array}{c}
+	\frac{\varphi_1(z_1)}{\varphi_1'(z_1)}\\
+	\vdots\\
+	\frac{\varphi_n(z_n)}{\varphi_n'(z_n)}
+\end{array}\right)
+	\end{align*}
+于是
+\[\langle g(z),z\rangle=\sum_{j=1}^{n}g_j(z)\bar{z}_j=\sum_{j=1}^{n}\bar{z}_j\frac{\varphi_j(z_j)}{\varphi_j'(z_j)}=\sum_{j=1}^{n}|z_j|^2\frac{\varphi_j(z_j)}{z_j\varphi_j'(z_j)},\]
+因为$\Re\left(z_j\frac{\varphi_j'(z_j)}{\varphi_j(z_j)}\right)\ge0$，所以$\Re\left\{\frac{\varphi_j(z_j)}{z_j\varphi_j'(z_j)}\right\}\ge0,j=1,\cdots,n$.因而$\Re\langle g(z),z\rangle\ge0$，即$g\in Q$.由定理\ref{thm2.5.12}，$f$是$B_n$上的星形映射.
+\end{proof}
+再回到定理\ref{thm2.6.1}，命
+\[f(z)=\left(\frac{z_1}{(1-z_1)^2},\cdots,\frac{z_n}{(1-z_n)^2}\right).\]
+由命题\ref{prop2.6.4}，它是$B_n$上的规范化的星形映射.当$z=re_j$时，\eqref{eq2.6.5}的等号成立.这里$e_j$是第$j$个坐标为$1$，其它坐标为$0$的单位向量.从这个例子可以看出，实际上满足命题\ref{prop2.6.4}条件的每一个映射都可以作为我们的例子.
+
+从定理\ref{thm2.6.1}容易得到Koebe的$\frac14$掩盖定理.
+\begin{theorem}\label{thm2.6.5}
+	如果$f\colon B_n\to\MC^n$是一个星形映射，那么必有$f(B_n)\supset \frac14 B_n$，常数$\frac14$是最好的.
+\end{theorem}
+从定理\ref{thm2.6.1}的左端的不等式即得定理\ref{thm2.6.5}.
+\subsection{球上凸映射的增长定理和掩盖定理}
+\begin{proof}[\textbf{定理\ref{thm2.6.2}的证明}]
+	先证\eqref{eq2.6.6}的右端的不等式.
+	
+	因为$f$是$B_n$上的规范化的全纯映射，它在$B_n$上有展开式
+	\[f(z)=z+\sum_{k=2}^{\infty}f_k(z),\quad z\in B_n,\]
+	这里每个$f_k$都是$n$维向量，它的每一个分量都是$z$的$k$次齐次多项式，命
+	\[g_k(z)=\frac1k \sum_{j=1}^{k}f(\ee^{\ii\frac{2j\pi}{k}}z).\]
+	因为$f$是凸映射，所以$g_k\prec f$，于是存在全纯映射$\psi_k\colon B_n\to B_n,\psi_k(0)=0$，使得
+	\begin{equation}\label{eq2.6.13}
+		g_k(z)=f(\psi_k(z)),\quad z\in B_n,\quad k=1,2,\cdots
+	\end{equation}
+因为$f_k$的每个分量都是$k$次齐次多项式，所以
+\begin{align*}
+	g_k(z)
+	&=\frac1k\sum_{j=1}^{k}\left\{\ee^{\ii\frac{2j\pi}{k}}z+\sum_{l=2}^{\infty}\ee^{\ii\frac{2jl\pi}{k}}f_l(z)\right\}\\
+	&=f_k(z)+f_{2k}(z)+\cdots,
+\end{align*}
+而
+\[f(\psi_k(z))=\psi_k(z)+\sum_{l=2}^{\infty}f_l(\psi_k(z)).\]
+从\eqref{eq2.6.13}可得
+\[f_k(z)+f_{2k}(z)+\cdots=\psi_k(z)+\sum_{l=2}^{\infty}f_l(\psi_k(z)).\]
+如果把$\psi_k$也在原点展开，比较上式两端的最低次项，便知$\psi_k$的最低次项就是$f_k$.于是
+\begin{align*}
+	\frac1{2\pi}\int_{0}^{2\pi} |\psi_k(\ee^{\ii\theta}z)|^2\dif\theta
+	&=\frac1{2\pi}\int_{0}^{2\pi}\psi_k(\ee^{\ii\theta}z)\bar{\psi_k(\ee^{\ii\theta}z)'}\dif\theta\\
+	&=\frac1{2\pi}\int_{0}^{2\pi} f_k(\ee^{\ii\theta}z)\bar{f_k(\ee^{\ii\theta}z)'}\dif\theta+p\\
+	&\ge |f_k(z)|^2\quad(p\ge0).
+\end{align*}
+因为$\psi_k$是把$B_n$映入$B_n$的映射，上式左端不超过$1$，又因为$f_k$的每个分量都是多项式，所以
+\[|f_k(z)|\le1,\quad k=2,3,\cdots,\quad z\in\bar{B}_n.\]
+于是
+\[|f_k(z)|=\left||z|^k f_k\left(\frac{z}{|z|}\right)\right|\le|z|^k,\quad k=2,3,\cdots,\quad z\in B_n.\]
+由此便得
+\begin{align}\label{eq2.6.14}
+	|f(z)|
+	&\le |z|+\sum_{k=2}^{\infty} |f_k(z)|\le|z|+\sum_{k=2}^{\infty} |z|^k\notag\\
+	&=\frac{|z|}{1-|z|}.
+\end{align}
+这就证明了\eqref{eq2.6.6}的右端的不等式.
+
+因为$f(B_n)$是凸的，原点到$f(z)$的直线段完全落在$f(B_n)$中，记$z(t)=f^{-1}(tf(z))$，\\$0\le t\le1$，则$f(z(t))=tf(z)$.于是$\dd{f(z(t))}{t}=f(z)=\frac1t f(z(t))$，另一方面，
+\[\dd{f(z(t))}{t}=f'(z(t))\dd{z(t)}{t},\]
+所以
+\begin{equation}\label{eq2.6.15}
+	\frac1t f(z(t))=f'(z(t))\dd{z(t)}{t}.
+\end{equation}
+设$\varphi_a\in\Aut B_n$，则$f(\varphi_a(z))$仍然是凸映射，它的展开式为
+\[f(\varphi_a(z))=f(\varphi_a(0))+f'(a)\varphi_a'(0)z+\cdots\]
+这里$f,z$都写成列向量.命
+\begin{equation}\label{eq2.6.16}
+	h_a(z)=(\varphi_a'(0))^{-1}(f'(a))^{-1}(f(\varphi_a(z))-f(a)),
+\end{equation}
+则$h_a(z)=z+\cdots$，即$h_a(z)$是由$f(\varphi_a(z))$经过规范化后所得的凸映射.由\eqref{eq2.6.6}的右端的不等式，即得
+\begin{equation}\label{eq2.6.17}
+	|h_a(z)|\le\frac{|z|}{1-|z|}.
+\end{equation}
+把\eqref{eq2.6.16}中的$z$和$a$都用$z(t)$代替，可得
+\begin{equation}\label{eq2.6.18}
+	h_{z(t)}(z(t))=(\varphi_{z(t)}'(0))^{-1}(f'(z(t)))^{-1}(-f(z(t))).
+\end{equation}
+注意到
+\[(\varphi_{z(t)}'(0))^{-1}=\varphi_{z(t)}'(z(t))=-\frac{A}{1-|z(t)|^2},\]
+其中$A=sI+\frac1{1+s}z(t)\bar{z(t)}',s^2=1-|z(t)|^2$，并利用\eqref{eq2.6.15}，则\eqref{eq2.6.18}可写为
+\[h_{z(t)}(z(t))=\frac{A}{1-|z(t)|^2}t\dd{z(t)}{t},\]
+\begin{align*}
+	\bar{z(t)}' h_{z(t)}(z(t))
+	&=\frac{\bar{z(t)}' A}{1-|z(t)|^2}t\dd{z(t)}{t}\\
+	&=\frac{\bar{z}'(t) t}{1-|z(t)|^2}\dd{z(t)}{t},
+\end{align*}
+因而
+\begin{align*}
+	2\Re(\bar{z(t)}'h_{z(t)}(z(t)))
+	&=\frac{t}{1-|z(t)|^2}2\Re\left(\bar{z(t)}' \dd{z(t)}{t}\right)\\
+	&=\frac{2t}{1-|z(t)|^2}|z(t)|\dd{|z(t)|}{t}.
+\end{align*}
+利用\eqref{eq2.6.17}便可得
+\begin{equation}\label{eq2.6.19}
+	\frac1t\ge\frac1{|z(t)|(1+|z(t)|)}\dd{|z(t)|}{t},
+\end{equation}
+因为
+\[\dd{|f(z(t))|^2}{t}=2|f(z(t))|\dd{|f(z(t))|}{t},\]
+另一方面
+\begin{align*}
+	\dd{|f(z(t))|^2}{t}
+	&=2\Re\left(\bar{f(z(t))}' \dd{f(z(t))}{t}\right)\\
+	&=\frac2t |f(z(t))|^2.
+\end{align*}
+综合这两不等式，并利用\eqref{eq2.6.19}得
+\[\frac1{|f(z(t))|}\dd{|f(z(t))|}{t}\ge\frac1{|z(t)|(1+|z(t)|)}\dd{|z(t)|}{t}.\]
+上式两端对$t$在$(\varepsilon,1)$中积分，并注意到$z(1)=z$，得
+\[\log|f(z)|-\log|f(z(\varepsilon))|\ge\log\frac{|z|}{1+|z|}-\log\frac{|z(\varepsilon)|}{1+|z(\varepsilon)|}.\]
+注意到$\lim\limits_{\varepsilon\to0}\frac{|f(z(\varepsilon))|}{|z(\varepsilon)|}=1$，即得$\log|f(z)|\ge\log\frac{|z|}{1+|z|}$.这就是\eqref{eq2.6.6}的左端的不等式.
+\end{proof}
+\section{球上凸映射的偏差定理\label{sec2.7}}
+\subsection{双全纯映射导数行列式的一个表达式}
+在上节中我们曾经提到，如果$f$是单位圆盘上的规范化的单叶全纯映射，$f'$有如下的估计：
+\begin{equation}\label{eq2.7.1}
+	\frac{1-|z|}{(1+|z|)^3}\le|f'(z)|\le\frac{1+|z|}{(1-|z|)^3},\quad z\in U.
+\end{equation}
+如果对$f$加上凸的限制，则有更好的估计
+\begin{equation}\label{eq2.7.2}
+	\frac1{(1+|z|)^2}\le|f'(z)|\le\frac1{(1-|z|)^2},\quad z\in U.
+\end{equation}
+前面我们已经举例说明，\eqref{eq2.7.1}不能推广到高维.那么\eqref{eq2.7.2}能不能推广？首先对这个问题给出肯定回答的是 Barnard\index{B!Barnard, R. W.}、FitzGerald\index{F!FitzGerald, C. H.} 和龚{\CJKfontspec{simsun.ttf}昇}\index{G!龚{\CJKfontspec{simsun.ttf}昇}}\cite{barnard1994distortion}，他们于1990年证明了下面的结果：
+
+如果$f\colon B_2\to \MC^2$是凸映射，且$\det f'(0)=1$，那么存在常数$c_2$，使得对任意$z\in B_2$有
+\[\frac{(1-|z|)^{c_2-\frac32}}{(1+|z|)^{c_2+\frac32}}\le|\det f'(z)|\le\frac{(1+|z|)^{c_2-\frac32}}{(1-|z|)^{c_2+\frac32}},\]
+其中$\frac32\le c_2<1.761$.
+
+接着刘太顺\index{L!刘太顺}\cite{刘太顺1999n}把这结果推广到$B_n$，得到
+\begin{theorem}\label{thm2.7.1}
+	设$f\colon B_n\to\MC^n$是凸映射，且$\det f'(0)=1$，那么存在常数$c_n$，使得对任意$z\in B_n$有
+	\[\frac{(1-|z|)^{c_n-\frac{n+1}{2}}}{(1+|z|)^{c_n+\frac{n+1}{2}}}\le|\det f'(z)|\le\frac{(1+|z|)^{c_n-\frac{n+1}{2}}}{(1-|z|)^{c_n+\frac{n+1}{2}}},\]
+	其中$\frac{n+1}{2}\le c_n\le 1+\frac{\sqrt{2}}{2}(n-1)$.
+\end{theorem}
+下面我们将给出这个定理的证明.为此，先证明
+\begin{lemma}\label{lem2.7.2}
+	设$\varphi(z)=\frac{a-zA}{1-z\bar{a}'}$，其中$a,z\in B_n,A=sI+\frac{\bar{a}'a}{1+s},s^2=1-|a|^2$.如果记$\varphi=(\varphi_1,\cdots,\varphi_n)$，那么
+	
+	(1)\hypertarget{2.7.2}{}
+	$\varphi'(0)=s\left(\frac{a'\bar{a}}{1+s}-I\right)$；
+	
+	(2)\hypertarget{2.7.2}{}
+	$\pppp{\varphi_k(0)}{z'}{z}=s\left(\frac{2a_k\bar{a}'\bar{a}}{1+s}-\bar{a}'e_k-e_k'\bar{a}\right),\quad k=1,\cdots,n$.
+\end{lemma}
+\begin{proof}
+	因为$\varphi$是$B_n$中的全纯映射，把它的每个分量在$z=0$处展开成Taylor级数，然后再写成向量形式，得
+	\begin{equation}\label{eq2.7.3}
+		\varphi(z)=a+z(\varphi'(0))'+\frac12\left(z\pppp{\varphi_1(0)}{z'}{z}z',\cdots,z\pppp{\varphi_n(0)}{z'}{z}z'\right)+\cdots
+	\end{equation}
+这里$(\varphi'(0))'$，记方阵$\varphi'(0)$的转置.另一方面，注意到$aA=a,\varphi$可以写成$\varphi(z)=\frac{a-z}{1-z\bar{a}'}A$，把$\frac1{1-z\bar{a}'}$展开成幂级数得
+\begin{align*}
+	\varphi(z)
+	&=(a-z)A\sum_{k=0}^{\infty}(z\bar{a}')^k\\
+	&=(a-z)\left(sI+\frac{\bar{a}'a}{1+s}\right)(1+z\bar{a}'+(z\bar{a}')^2+\cdots)\\
+	&=\left(a-sz-\frac{z\bar{a}'a}{1+s}\right)(1+z\bar{a}'+(z\bar{a}')^2+\cdots)\\
+	&=a-sz-z\frac{\bar{a}'a}{1+s}+az\bar{a}'-szz\bar{a}'-\frac{z\bar{a}'az\bar{a}'}{1+s}+az\bar{a}'z\bar{a}'+\cdots\\
+	&=a+sz\left(\frac{\bar{a}'a}{1+s}-I\right)+\cdots,
+\end{align*}
+式中关于$z$的二次项是
+\[-szz\bar{a}'-\frac1{1+s}z\bar{a}'az\bar{a}'+az\bar{a}'z\bar{a}'=-sz\bar{a}z'+\frac{s}{1+s}z\bar{a}'a\bar{a}z',\]
+其中第二项可以写成
+\[\frac{s}{1+s}z(\bar{a}'\bar{a}a_1,\cdots,\bar{a}'\bar{a}a_n)z'.\]
+由于$z(\bar{a}'e_k+e_k' \bar{a})z'=2z_k\bar{a}z'$，所以
+\[2z\bar{a}z'=z(\bar{a}'e_1+e_1'\bar{a},\cdots,\bar{a}'e_n+e_n'\bar{a})z'.\]
+于是$z$的二次项为
+\[\frac12\left\{z\left(\frac{2sa_1\bar{a}'\bar{a}}{1+s}-s\bar{a}'e_1-se_1'\bar{a}\right)z',\cdots,z\left(\frac{2sa_n\bar{a}'\bar{a}}{1+s}-s\bar{a}'e_n-se_n'\bar{a}\right)z'\right\}.\]
+因而得
+\begin{align*}
+	\varphi(z)
+	=&a+sz\left(\frac{\bar{a}'a}{1+s}-I\right)+\\
+	&\frac12\left\{z\left(\frac{2sa_1\bar{a}'\bar{a}}{1+s}-s\bar{a}'e_1-se_1'\bar{a}\right)z',\cdots,\right.\\
+	&\left. z\left(\frac{2sa_n\bar{a}'\bar{a}}{1+s}-s\bar{a}'e_n-se_n'\bar{a}\right)z'\right\}+\cdots
+\end{align*}
+把它和\eqref{eq2.7.3}比较，即得所要证的不等式.
+\end{proof}
+实际上，引理\ref{lem2.7.2}的第一个等式已在定理\ref{thm2.3.9}中证明过.
+
+设$f\colon B_n\to\MC^n$是双全纯映射，$\varphi$如引理\ref{lem2.7.2}所述，它是$B_n$的一个全纯自同构，记$G(w)=f(\varphi(w))$，则由命题\ref{prop2.1.3}得$G'(0)=f'(a)\cdot\varphi'(0)$，所以$G$在$w=0$处的Taylor展开为
+\[G(w)=f(a)+w(\varphi'(0))'(f'(a))'+\cdots\]
+把$G$规范化以后所得的映射记为$F$，则
+\[F(w)=(G(w)-f(a))((f'(a))')^{-1}((\varphi'(0))')^{-1}.\]
+下面给出的$\det f'(\rho z)$的表达式是证明定理\ref{thm2.7.1}的关键.
+\begin{lemma}\label{lem2.7.3}
+	设$f\colon B_n\to\MC^n$是双全纯映射，$\varphi$如引理\ref{lem2.7.2}所述，它是$B_n$的一个全纯自同构，记$G(w)=f(\varphi(w))$，$G$规范化后所得的映射记为$F$.设$F$的展开式为
+	\begin{equation}\label{eq2.7.4}
+		F(w)=w+(wA^{(1)}w',\cdots,wA^{(n)}w')+\cdots
+	\end{equation}
+记$A^{(l)}=(a_{jk}^{(l)})_{1\le j,k\le n},l=1,\cdots,n$，那么
+\begin{equation}\label{eq2.7.5}
+	\dd{}{\rho}\log\det f'(\rho z)
+	=\frac{(n+1)\rho|z|^2}{1-\rho^2|z|^2}-\frac{2|z|}{1-\rho^2|z|^2}\sum_{l,j=1}^{n}a_{lj}^{(l)}\frac{z_j}{|z|},
+\end{equation}
+其中$0\le\rho\le1,z\in B_n$.
+\end{lemma}
+\begin{proof}
+	$G$在$w=0$处的展开式为
+	\begin{equation}\label{eq2.7.6}
+		G(w)=f(a)+w(\varphi'(0))'(f'(a))'+\frac12\left(w\pppp{G_1(0)}{w'}{w}w',\cdots,w\pppp{G_n(0)}{w'}{w}w'\right)+\cdots,
+	\end{equation}
+因而
+\begin{align*}
+	F(w)=
+	&(G(w)-f(a))((f'(a))')^{-1}((\varphi'(0))')^{-1}\\
+	=&w+\frac12\left(w\pppp{G_1(0)}{w'}{w}w',\cdots,w\pppp{G_n(0)}{w'}{w}w'\right)\cdot\\
+	&((f'(a))')^{-1}((\varphi'(0))')^{-1}+\cdots
+\end{align*}
+把它和\eqref{eq2.7.4}比较得
+\begin{equation}\label{eq2.7.7}
+	\left(w\pppp{G_1(0)}{w'}{w}w',\cdots,w\pppp{G_n(0)}{w'}{w}w'\right)
+	=(w2A^{(1)}w',\cdots,w2A^{(n)}w')(\varphi'(0))'(f'(a))'.
+\end{equation}
+由引理\ref{lem2.7.2}，$(\varphi'(0))'$的第$j$行、第$l$列元素为$\frac{s}{1+s}\bar{a}_j a_l-s\delta_{jl},(f'(a))'$的第$l$行、第$k$列元素为$\pp{f_k(a)}{z_l}$，所以$(\varphi'(0))'(f'(a))'$的第$j$行、第$k$列元素为
+\[\sum_{l=1}^{n}\left(\frac{s}{1+s}\bar{a}_j a_l-s\delta_{jl}\right)\pp{f_k(a)}{z_l}.\]
+从\eqref{eq2.7.7}得
+\begin{equation}\label{eq2.7.8}
+	\pppp{G_k(0)}{w'}{w}=\frac{2s}{1+s}\sum_{j,l=1}^{n}A^{(j)}\bar{a}_j a_l\pp{f_k(a)}{z_l}-2s\sum_{j=1}^{n}A^{(j)}\pp{f_k(a)}{z_j}.
+\end{equation}
+现在导出$\pppp{G_k(0)}{w'}{w}$的另一表达式.把$f$在$z=a$处展开成Taylor级数
+\begin{align*}
+	f(z)
+	=&f(a)+(z-a)(f'(a))'+\\
+	&\frac12\left((z-a)\pppp{f_1(a)}{z'}{z}(z-a)',\cdots,\right.\\
+	&\left. (z-a)\pppp{f_n(a)}{z'}{z}(z-a)'\right)+\cdots,
+\end{align*}
+因为
+\[\varphi(w)
+=a+w(\varphi'(0))'+\frac12\left(w\pppp{\varphi_1(0)}{w'}{w}w',\cdots,w\pppp{\varphi_n(0)}{w'}{w}w'\right)+\cdots,\]
+于是
+\begin{align*}
+	G(w)=
+	&f(\varphi(w))=f(a)+(\varphi(w)-a)(f'(a))'+\\
+	&\frac12\left((\varphi(w)-a)\pppp{f_1(a)}{z'}{z}(\varphi(w)-a)',\cdots,\right.\\
+	&\left.(\varphi(w)-a)\pppp{f_n(a)}{z'}{z}(\varphi(w)-a)'\right)+\cdots\\
+	=&f(a)+w(\varphi'(0))'(f'(a))'+\\
+	&\frac12\left(w\pppp{\varphi_1(0)}{w'}{w}w',\cdots,w\pppp{\varphi_n(0)}{w'}{w}w'\right)(f'(a))'+\\
+	&\frac12\left(w(\varphi'(0))'\pppp{f_1(a)}{z'}{z}\varphi'(0)w',\cdots,\right.\\
+	&\left. w(\varphi'(0))'\pppp{f_n(a)}{z'}{z}\varphi'(0)w'\right)+\cdots.
+\end{align*}
+与\eqref{eq2.7.6}比较，即得
+\begin{equation}\label{eq2.7.9}
+	\pppp{G_k(0)}{w'}{w}=
+	(\varphi'(0))'\pppp{f_k(a)}{z'}{z}\varphi'(0)+\sum_{l=1}^{n}\pppp{\varphi_l(0)}{w'}{w}\pp{f_k(a)}{z_l}.
+\end{equation}
+再比较\eqref{eq2.7.8}与\eqref{eq2.7.9}得
+\[(\varphi'(0))'\pppp{f_k(a)}{z'}{z}\varphi'(0)=
+\frac{2s}{1+s}\sum_{j,l=1}^{n}A^{(j)}\bar{a}_j a_l\pp{f_k(a)}{z_l}-2s\sum_{l=1}^{n}A^{(l)}\pp{f_k(a)}{z_l}-\sum_{l=1}^{n}\pppp{\varphi_l(0)}{w'}{w}\pp{f_k(a)}{z_l}.\]
+如果记
+\begin{align}\label{eq2.7.10}
+	B^{(l)}=
+	&\frac{2s}{1+s}a_l\sum_{j=1}^{n}\bar{a}_j((\varphi'(0))')^{-1}A^{(j)}(\varphi'(0))^{-1}-\notag\\
+	&2s((\varphi'(0))')^{-1}A^{(l)}(\varphi'(0))^{-1}-\notag\\
+	&((\varphi'(0))')^{-1}\pppp{\varphi_l(0)}{w'}{w}(\varphi'(0))^{-1},
+\end{align}
+那么
+\[\pppp{f_k(a)}{z'}{z}=\sum_{l=1}^{n}B^{(l)}\pp{f_k(a)}{z_l}.\]
+记$B^{(l)}$的第$j$行、第$k$列元为$b_{jk}^{(l)}$，从上式可得
+\begin{equation}\label{eq2.7.11}
+	\pppp{f_i(a)}{z_j}{z_k}=\sum_{l=1}^{n}b_{jk}^{(l)}\pp{f_i(a)}{z_l}.
+\end{equation}
+因为
+\begin{equation}\label{eq2.7.12}
+	\pp{}{z_k}\log\det f'(a)=\frac1{\det f'(a)}\pp{\det f'(a)}{z_k},
+\end{equation}
+而
+\begin{align*}
+	\pp{\det f'(a)}{z_k}=
+	&\begin{vmatrix}
+		\pppp{f_1(a)}{z_1}{z_k} & \pp{f_1(a)}{z_2} & \cdots & \pp{f_1(a)}{z_n}\\
+		\vdots & \vdots & &\vdots\\
+		\pppp{f_n(a)}{z_1}{z_k} & \pp{f_n(a)}{z_2} & \cdots & \pp{f_n(a)}{z_n}
+	\end{vmatrix}+\cdots+\\
+&\begin{vmatrix}
+	\pp{f_1(a)}{z_1} & \cdots & \pppp{f_1(a)}{z_n}{z_k}\\
+	\vdots & &\vdots\\
+	\pp{f_n(a)}{z_1} & \cdots & \pppp{f_n(a)}{z_n}{z_k}
+\end{vmatrix}\\
+=&\sum_{i=1}^{n} \pppp{f_i(a)}{z_1}{z_k}J_{i1}+\cdots+\sum_{i=1}^{n}\pppp{f_i(a)}{z_n}{z_k}J_{in}\\
+=&\sum_{i,j=1}^{n}\pppp{f_i(a)}{z_j}{z_k}J_{ij},
+\end{align*}
+这里$J_{ij}$是$f'(a)$中$\pp{f_i(a)}{z_j}$的代数余子式.固定$z\in B_n$，让$\rho\in[0,1]$，对$\log\det f'(\rho z)$中的$\rho$求导数：
+\begin{align*}
+	\dd{}{\rho} \log\det f'(\rho z)
+	&=\sum_{k=1}^{n}\pp{\log\det f'(\rho z)}{z_k}z_k\\
+	&=\frac1{\det f'(\rho z)}\sum_{i,j,k=1}^{n}\pppp{f_i(\rho z)}{z_j}{z_k}J_{ij}z_k\\
+	&=\frac1{\det f'(\rho z)}\sum_{i,j,k,l=1}^{n}b_{jk}^{(l)}\pp{f_i(\rho z)}{z_l} J_{ij} z_k,
+\end{align*}
+这里我们已经利用了等式\eqref{eq2.7.11}和\eqref{eq2.7.12}.注意到
+\[\sum_{i=1}^{n}J_{ij} \pp{f_i(\rho z)}{z_l}=\delta_{jl}\det f'(\rho z),\]
+上式可写成
+\[\dd{}{\rho}\log\det f'(\rho z)=\sum_{j,k,l=1}^{n}z_k\delta_{jl}b_{jk}^{(l)}=\sum_{l,k=1}^{n}b_{lk}^{(l)}z_k.\]
+容易看出$\sum\limits_{k=1}^n b_{lk}^{(l)}z_k$是列向量$B^{(l)}z'$的第$l$个元素，所以
+\begin{equation}\label{eq2.7.13}
+	\dd{}{\rho}\log\det f'(\rho z)=\sum_{l=1}^{n}(B^{(l)}z')_l .
+\end{equation}
+现在问题归结为计算$(B^{(l)}z')_l$，把$B^{(l)}$的表达式\eqref{eq2.7.10}写为
+\[B^{(l)}=X^{(l)}+Y^{(l)}+Z^{(l)},\]
+其中
+\begin{align*}
+	X^{(l)}
+	&=\frac{2s}{1+s}a_l\sum_{j=1}^{n}\bar{a}_j((\varphi'(0))')^{-1}A^{(j)}(\varphi'(0))^{-1},\\
+	Y^{(l)}
+	&=-2s((\varphi'(0))')^{-1}A^{(l)}(\varphi'(0))^{-1},\\
+	Z^{(l)}
+	&=-((\varphi'(0))')^{-1}\pppp{\varphi_l(0)}{w'}{w}(\varphi'(0))^{-1},
+\end{align*}
+这里$a=\rho z,s^2=1-\rho^2|z|^2$.因为
+\[(\varphi'(0))^{-1}=-\frac1s\left(\frac{a'\bar{a}}{s(s+1)}+I\right)=-\frac1s\left(\frac{\rho^2 z'\bar{z}}{s(s+1)}+I\right),\]
+所以
+\begin{align*}
+	(\varphi'(0))^{-1}z'
+	&=-\frac1s\left(\frac{\rho^2|z|^2z'}{s(s+1)}+z'\right)\\
+	&=-\frac1s\left(\frac{(1-s^2)z'}{s(s+1)}+z'\right)=-\frac{z'}{s^2},\\
+	\pppp{\varphi_l(0)}{w'}{w}(\varphi'(0))^{-1}z'
+	&=-s\left(\frac{2\rho^3 z_l\bar{z}'\bar{z}}{1+s}-\rho e_l'\bar{z}-\rho\bar{z}'e_l\right)\frac{z'}{s^2}\\
+	&=-\frac1s\left(\frac{2\rho^3 z_l\bar{z}'|z|^2}{1+s}-\rho e_l'|z|^2-\rho\bar{z}'z_l\right),
+\end{align*}
+于是
+\begin{align*}
+	Z^{(l)}z'
+	&=-\frac1{s^2}\left(\frac{\rho^2\bar{z}'z}{s(1+s)}+I\right)\left(\frac{2\rho^3 z_l\bar{z}'|z|^2}{1+s}-\rho e_l'|z|^2-\rho\bar{z}'z_l\right)\\
+	&=-\frac1{s^2}\left\{\frac{2\rho^5 |z|^4 z_l\bar{z}'}{s(1+s)^2}+\frac{2\rho^3 z_l\bar{z}'|z|^2}{1+s}-\frac{2\rho^3|z|^2 z_l\bar{z}'}{s(1+s)}-\rho e_l'|z|^2-\rho \bar{z}'z_l\right\},
+\end{align*}
+由于
+\begin{align*}
+	\frac{2\rho^5|z|^4z_l\bar{z}'}{s(1+s)^2}
+	&=\frac{2\rho^3|z|^2(1-s^2)z_l\bar{z}'}{s(1+s)^2}\\
+	&=\frac{2\rho^3|z|^2(1-s)z_l\bar{z}'}{s(1+s)},
+\end{align*}
+所以$Z^{(l)}z'=-\frac1{s^2}(\rho e_l'|z|^2+\rho\bar{z}'z_l)$，因而
+\begin{equation}\label{eq2.7.14}
+	(Z^{(l)}z')_l=\frac{\rho}{s^2}(|z|^2+|z_l|^2).
+\end{equation}
+因为$A^{(l)}=(a_{jk}^{(l)})_{1\le j,k\le n}$，所以
+\[A^{(l)}(\varphi'(0))^{-1}z'=-\frac1{s^2}A^{(l)}z'=-\frac1{s^2}\left(\sum_{k=1}^{n}a_{1k}^{(l)}z_k,\cdots,\sum_{k=1}^{n}a_{nk}^{(l)}z_k\right)',\]
+\[Y^{(l)}z'=-\frac{2}{s^2}\left(\frac{\rho \bar{z}'z}{s(1+s)}+I\right)\left(\sum_{k=1}^{n}a_{1k}^{(l)}z_k,\cdots,\sum_{k=1}^{n}a_{nk}^{(l)}z_k\right)',\]
+\[(Y^{(l)}z')_l=-\frac{2}{s^2}\left\{\frac{\rho^2}{s(1+s)}\bar{z}_l\sum_{j,k=1}^{n}a_{jk}^{(l)}z_jz_k+\sum_{j=1}^{n}a_{lj}^{(l)}z_j\right\}.\]
+若记
+\[Q^{(l)}=\sum_{i,j=1}^{n}a_{ij}^{(l)}z_iz_j,\quad P_i^{(l)}=\sum_{j=1}^{n}a_{ij}^{(l)}z_j,\]
+那么
+\begin{equation}\label{eq2.7.15}
+	(Y^{(l)}z')_l=-\frac{2}{s^2}\left(\frac{\rho\bar{z}_l}{s(1+s)}Q^{(l)}+P_l^{(l)}\right).
+\end{equation}
+由于
+\[((\varphi'(0))')^{-1}A^{(j)}(\varphi'(0))^{-1}z'=\frac1{s^3}\left\{\frac{\rho\bar{z}' Q^{(j)}}{s(1+s)}+\left(\sum_{k=1}^{n}a_{1k}^{(j)}z_k,\cdots,\sum_{k=1}^{n}a_{nk}^{(j)}z_k\right)'\right\},\]
+所以
+\begin{equation}\label{eq2.7.16}
+	(X^{(l)}z')_l=\frac{2\rho^4|z_l|^2}{(1+s)^2 s^3}\sum_{j=1}^{n}\bar{z}_j Q^{(j)}+\frac{2\rho^2 z_l}{(1+s)s^2}\sum_{j,k=1}^{n}\bar{z}_j z_k a_{lk}^{(j)}.
+\end{equation}
+综合\eqref{eq2.7.14}，\eqref{eq2.7.15}和\eqref{eq2.7.16}可得
+\begin{align}\label{eq2.7.17}
+	\sum_{l=1}^{n}(B^{(l)}z')_l
+	=&\sum_{l=1}^{n}(X^{(l)}z')_l+\sum_{l=1}^{n}(Y^{(l)}z')_l+\sum_{l=1}^{n}(Z^{(l)}z')_l\notag\\
+	=&\frac{2\rho^4|z|^2}{(1+s)^2s^3}\sum_{j=1}^{n}Q^{(j)}\bar{z}_j+\frac{2\rho^2}{(1+s)s^2}\sum_{j=1}^{n}Q^{(j)}\bar{z}_j-\notag\\
+	&\frac{2\rho^2}{s^3(1+s)}\sum_{l=1}^{n}Q^{(l)}\bar{z}_l-\frac{2}{s^2}\sum_{l=1}^{n}P_l^{(l)}+\frac{\rho}{s^2}(n+1)|z|^2.
+\end{align}
+注意到
+\begin{align*}
+	\frac{2\rho^4|z|^2}{(1+s)^2 s^3}
+	&=\frac{2\rho^2(1-s^2)}{(1+s)^2s^3}=\frac{2\rho^2}{s^3(1+s)}-\frac{2\rho^2}{s^2(1+s)},\\
+	\sum_{l=1}^{n}P_l^{(l)}
+	&=\sum_{l,j=1}^{n}a_{lj}^{(l)}z_j,
+\end{align*}
+\eqref{eq2.7.17}可写成
+\[\sum_{l=1}^{n}(B^{(l)}z')_l=\frac{(n+1)\rho|z|^2}{1-\rho^2|z|^2}-\frac{2}{1-\rho^2|z|^2}\sum_{l,j=1}^{n}a_{lj}^{(l)}z_j.\]
+代入\eqref{eq2.7.13}就得到所要证的等式\eqref{eq2.7.5}.
+\end{proof}
+\subsection{规范化凸映射展开式系数的估计}
+现在给出引理\ref{lem2.7.3}的等式\eqref{eq2.7.5}中$a_{lj}^{(l)}$的估计.
+\begin{lemma}\label{lem2.7.4}
+	设
+	\[f(z)=z+(zA^{(1)}z',\cdots,zA^{(n)}z')+\cdots\]
+	是$B_n$到$\MC^n$的规范化的凸映射，其中$A^{(i)}(i=1,\cdots,n)$是$n$阶对称方阵，其元素用$a_{jk}^{(i)}$表示，那么
+	
+	(1)\hypertarget{2.7.4}{} $|a_{ii}^{(i)}|\le1,i=1,\cdots,n$；
+	
+	(2)\hypertarget{2.7.4}{}	$|a_{jj}^{(i)}|\le\frac12,i,j=1,\cdots,n,i\neq j$；
+	
+	(3)\hypertarget{2.7.4}{} $|a_{ij}^{(i)}|\le\frac{\sqrt{2}}{2},i,j=1,\cdots,n,i\neq j$；
+	
+	(4)\hypertarget{2.7.4}{} $|a_{jk}^{(i)}|\le\frac12,i,j,k=1,\cdots,n,i\neq j,j\neq k,i\neq k$.
+\end{lemma}
+\begin{proof}
+	取$\zeta,\eta\in B_n$，使得$|\zeta|^2+|\eta|^2<1$，且$\Re(\zeta\bar{\eta}')=0$，那么$|\zeta+\eta|^2=|\zeta|^2+|\eta|^2+2\Re(\zeta\bar{\eta}')=|\zeta|^2+|\eta|^2<1$，即$\zeta+\eta\in B_n$，同理$\zeta-\eta\in B_n$.因为$f$是凸的，所以
+	\[\frac12\left\{f(\zeta+\eta)+f(\zeta-\eta)\right\}\in f(B_n),\]
+	如果记$g(\zeta,\eta)=f^{-1}\left(\frac12\left(f(\zeta+\eta)+f(\zeta-\eta)\right)\right)$，则$g(\zeta,\eta)\in B_n$，且$f(g(\zeta,\eta))=\frac12\left(f(\zeta+\eta)+f(\zeta-\eta)\right)$.由于
+	\[f(\zeta+\eta)=\zeta+\eta+((\zeta+\eta)A^{(1)}(\zeta+\eta)',\cdots,(\zeta+\eta)A^{(n)}(\zeta+\eta)')+\cdots,\]
+	\[f(\zeta-\eta)=\zeta-\eta+((\zeta-\eta)A^{(1)}(\zeta-\eta)',\cdots,(\zeta-\eta)A^{(n)}(\zeta-\eta)')+\cdots,\]
+	所以
+	\begin{align*}
+		f(g(\zeta,\eta))
+		&=\frac12(f(\zeta+\eta)+f(\zeta-\eta))\\
+		&=\zeta(\zeta A^{(1)}\zeta',\cdots,\zeta A^{(n)}\zeta')+(\eta A^{(1)}\eta',\cdots\eta A^{(n)}\zeta')+\cdots.
+	\end{align*}
+另一方面，
+\[f(g(\zeta,\eta))=g(\zeta,\eta)+(g(\zeta,\eta)A^{(1)}g(\zeta,\eta)',\cdots,g(\zeta,\eta)A^{(n)}g(\zeta,\eta)')+\cdots,\]
+两式比较得
+\[g(\zeta,\eta)=\zeta+(\zeta A^{(1)}\zeta',\cdots,\zeta A^{(n)}\zeta')+(\eta A^{(1)}\eta',\cdots,\eta A^{(n)}\eta')+\cdots,\]
+从$g(\zeta,\eta)\in B_n$便得
+\begin{equation}\label{eq2.7.18}
+	|\zeta+(\zeta A^{(1)}\zeta',\cdots,\zeta A^{(n)}\zeta')+(\eta A^{(1)}\eta',\cdots,\eta A^{(n)}\eta')+\cdots|<1,
+\end{equation}
+今在\eqref{eq2.7.18}中取$\zeta=0,\eta=r\ee^{\ii\theta}e_k$，得
+\[r^2|(a_{kk}^{(1)}\ee^{2\ii\theta},\cdots,a_{kk}^{(n)}\ee^{2\ii\theta})+\cdots|<1,\]
+让$r\to1$得
+\[|(a_{kk}^{(1)}\ee^{2\ii\theta},\cdots,a_{kk}^{(n)}\ee^{2\ii\theta})+\cdots|\le1,\]
+以后各项中都出现$\ee^{m\ii\theta}$，其中$m>2$.上述向量的第$k$个分量是$a_{kk}^{(k)}\ee^{2\ii\theta}+\cdots$，所以$|a_{kk}^{(k)}\ee^{2\ii\theta}+\cdots|\le1$.于是
+\begin{align*}
+	|a_{kk}^{(k)}|
+	&=\left|\frac1{2\pi}\int_{0}^{2\pi}(a_{kk}^{(k)}\ee^{2\ii\theta}+\cdots)\ee^{-2\ii\theta}\dif\theta\right|\\
+	&\le\frac1{2\pi}\int_{0}^{2\pi}|a_{kk}^{(k)}\ee^{2\ii\theta}+\cdots|\dif\theta\le1.
+\end{align*}
+这就证明了\hyperlink{2.7.4}{(1)}.
+
+在\eqref{eq2.7.18}中取$\zeta=\ee^{2\ii\theta}\zeta_je_j,\eta=\ee^{\ii\theta}\eta_ke_k,j\neq k$，且$|\zeta_j|^2+|\eta_k|^2=1$.于是取\eqref{eq2.7.18}向量中的第$j$个分量得
+\[|\ee^{2\ii\theta}\zeta_j+\ee^{4\ii\theta}\zeta_j^2a_{jj}^{(j)}+\ee^{2\ii\theta}\eta_k^2 a_{kk}^{(j)}+\cdots|\le1,\]
+由此得
+\[|\zeta_j+a_{kk}^{(j)}\eta_k^2|=\left|\frac1{2\pi}\int_{0}^{2\pi}(\ee^{2\ii\theta}\zeta_j+\ee^{4\ii\theta}\zeta_j^2 a_{jj}^{(j)}+\ee^{2\ii\theta}\eta_k^2a_{kk}^{(j)}+\cdots)\ee^{-2\ii\theta}\dif\theta\right|\le1.\]
+适当选取$\zeta_j,\eta_k$的辐角可使
+\[|a_{kk}^{(j)}|\, |\eta_k|^2<1-|\zeta_j|=\frac{|\eta_k|^2}{1+|\zeta_j|},\]
+让$\eta_k,\zeta_j\to1$，即得$|a_{kk}^{(j)}|\le\frac12$，这就是\hyperlink{2.7.4}{(2)}.
+
+在\eqref{eq2.7.18}中取$\zeta=\ee^{\ii\theta}\zeta_j e_j,\eta=\ee^{\ii\theta}\eta_j e_j+\eta_k e_k$，使得$j\neq k,|\zeta_j|^2+|\eta_j|^2+|\eta_k|^2=1$，且$\Re(\zeta_j\bar{\eta}_j)=0$.对这组$\zeta,\eta$，不等式\eqref{eq2.7.18}成立，因而有
+所以
+\[|\zeta_j \ee^{\ii\theta}+\zeta_j^2\ee^{2\ii\theta}a_{jj}^{(j)}+\ee^{2\ii\theta}\eta_j^2 a_{jj}^{(j)}+\eta_k^2a_{kk}^{(j)}+2\ee^{\ii\theta}\eta_j \eta_k a_{jk}^{(j)}+\cdots|\le1.\]
+所以
+\begin{equation}\label{eq2.7.19}
+	\left|\frac1{2\pi}\int_{0}^{2\pi}(\zeta_j \ee^{\ii\theta}+\zeta_j^2\ee^{2\ii\theta}a_{jj}^{(j)}+\ee^{2\ii\theta}\eta_j^2 a_{jj}^{(j)}+\eta_k^2a_{kk}^{(j)}+2\ee^{\ii\theta}\eta_j \eta_k a_{jk}^{(j)}+\cdots)\ee^{-\ii\theta}\dif\theta\right|\le1,
+\end{equation}
+上面积分被积函数的圆括弧中，凡有因子$\ee^{\ii\theta}$的项积分后将被保留.因为我们取的是$g(\zeta,\eta)$的第$j$个分量，由于$\zeta,\eta$的取法，凡$\zeta$的第$j$个坐标与$\eta$的第$k$个坐标相乘都会产生带$\ee^{\ii\theta}$的项，因而\eqref{eq2.7.19}左端的积分值为
+\[\zeta_j+2\eta_j \eta_k a_{jk}^{(j)}+\lambda\zeta_j \eta_k^2+o(|\eta|^2),\]
+这里$\lambda$是相应项的系数.于是从\eqref{eq2.7.19}得
+\[|\zeta_j+2\eta_j \eta_k a_{jk}^{(j)}+\lambda\zeta_j \eta_k^2+o(|\eta|^2)|\le1.\]
+若把上述不等式左端得复数记为$\tau$，则$|\tau|\le1$.注意到$|\zeta_j|<1$，因而得$\left|\frac{\zeta_j-\tau}{1-\tau\bar{\zeta}_j}\right|\le1$，即
+\[\frac{|2\eta_j \eta_k a_{jk}^{(j)}+\lambda\zeta_j \eta_k^2+o(|\eta|^2)|}{|1-|\zeta_j|^2-2\eta_j\eta_k\bar{\zeta}_j a_{jk}^{(j)}-\lambda|\zeta|^2\eta_k^2+o(|\eta|^2)|}\le1,\]
+把上式分子分母同除以$|\eta|^2$，并记$\alpha_j=\frac{\eta_j}{|\eta|},\beta_j=\frac{\zeta_j}{|\zeta|}$，那么$|\alpha_j|^2+|\alpha_k|^2=1,|\beta_j|=1$，上式可写为
+\[\frac{|2\alpha_j\alpha_k a_{jk}^{(j)}+\lambda\beta_j|\zeta|\alpha_k^2+o(1)|}{\left|\frac{1-|\zeta_j|^2}{|\eta|^2}-2\alpha_j\alpha_k\bar{\zeta}_j|\zeta|a_{jk}^{(j)}-\lambda|\zeta|^2\alpha_k^2+o(1)\right|}\le1.\]
+注意到$|\eta|^2+|\zeta_j|^2=|\eta_j|^2+|\eta_k|^2+|\zeta_j|^2=1$，所以当$|\eta|\to0$时，$|\zeta_j|=|\zeta|\to1$.故在上式中命$|\eta|\to0$，得
+\begin{equation}\label{eq2.7.20}
+	\frac{|2\alpha_j\alpha_k a_{jk}^{(j)}+\lambda\beta_j \alpha_k^2|}{|1-2\alpha_j\alpha_k\bar{\beta}_ja_{jk}^{(j)}-\lambda\alpha_k^2|}\le1
+\end{equation}
+对满足$|\alpha_j|^2+|\alpha_k|^2=1,|\beta_j|=1,\Re(\alpha_j\bar{\beta}_j)=0$的$\alpha_j,\alpha_k,\beta_j$成立.在\eqref{eq2.7.20}中命$\alpha_j=0$，则$|\alpha_k|=1$，适当选取$\alpha_k$的辐角便可得$\frac{|\lambda|}{1-|\lambda|}\le1$，即$|\lambda|\le\frac12$.从\eqref{eq2.7.20}又得
+\[\frac{2|\alpha_j|\,|\alpha_k|\,|a_{jk}^{(j)}|-|\lambda|\, |\alpha_k|^2}{|1-2\alpha_j\alpha_k\bar{\beta}_j a_{jk}^{(j)}|+|\lambda|\,|\alpha_k|^2}\le1,\]
+适当选取$\alpha_k$的辐角可得
+\[\frac{2|\alpha_j|\,|\alpha_k|\,|a_{jk}^{(j)}|-|\lambda|\, |\alpha_k|^2}{1-2|\alpha_j|\,|\alpha_k|\,|a_{jk}^{(j)}|+|\lambda|\,|\alpha_k|^2}\le1.\]
+由此得
+\[|a_{jk}^{(j)}|\le\frac{1+2|\lambda|\,|\alpha_k|^2}{4|\alpha_j|\,|\alpha_k|}\le\frac{1+|\alpha_k|^2}{4|\alpha_j|\,|\alpha_k|},\]
+在$|\alpha_j|^2+|\alpha_k|^2=1$的条件下，上式右端当$|\alpha_k|=\frac{\sqrt{3}}{3}$时取最小值$\frac{\sqrt{2}}{2}$，因而得$|a_{jk}^{(j)}|\le\frac{\sqrt{2}}{2}$，这就是\hyperlink{2.7.4}{(3)}.
+
+最后证明\hyperlink{2.7.4}{(4)}，在\eqref{eq2.7.18}中取$\zeta=\ee^{2\ii\theta}\ee^{\ii\varphi}\zeta_l e_l,\eta=\ee^{\ii\theta}\ee^{\ii\varphi}\eta_j e_j+\ee^{\ii\theta}\eta_k e_k$，使得$|\zeta_l|^2+|\eta_j|^2+|\eta_k|^2=1$，且$l\neq j,j\neq k,k\neq l$.于是
+\[|\zeta_l \ee^{2\ii\theta}\ee^{\ii\varphi}+a_{jj}^{(l)}\ee^{2\ii\theta}\ee^{2\ii\varphi}\eta_j^2+2a_{jk}^{(l)}\ee^{2\ii\theta}\ee^{\ii\varphi}\eta_j\eta_k+a_{kk}^{(l)}\eta_k^2\ee^{2\ii\theta}+\cdots|\le1,\]
+用和上面一样的方法可得
+\[|\zeta_l\ee^{\ii\varphi}+a_{jj}^{(l)}\ee^{2\ii\varphi}\eta_j^2+2a_{jk}^{(l)}\ee^{\ii\varphi}\eta_j\eta_k+a_{kk}^{(l)}\eta_k^2+\cdots|\le1,\]
+再用一次同样的方法得
+\[|\zeta_l+2a_{jk}^{(l)}\eta_j\eta_k|\le1.\]
+让$\eta_k=\eta_j$，适当选取其辐角，得
+\[|\zeta_l|+2|a_{jk}^{(l)}|\,|\eta_j|^2\le1,\]
+即
+\[|a_{jk}^{(l)}|\le\frac{1-|\zeta_l|}{2|\eta_j|^2}=\frac{1-|\zeta_l|^2}{2|\eta_j|^2}\frac1{1+|\zeta_l|}=\frac1{1+|\zeta_l|}.\]
+让$|\zeta_l|\to1$，即得$|a_{jk}^{(l)}|\le\frac12$.
+\end{proof}
+\begin{lemma}\label{lem2.7.5}
+	设$K_n$是$B_n$上规范化的凸映射的全体\index[symbolindex]{\textbf{函数和映射}!$K_n$}，对于任意$f\in K_n$，其展开式为
+	\[f(z)=z+(zA^{(1)}z',\cdots,zA^{(n)}z')+\cdots,\]
+	其中$A^{(l)}=(a_{jk}^{(l)})_{1\le j,k\le n}$.命
+	\begin{equation}\label{eq2.7.21}
+		C_n=\sup_{f\in K_n}\left|\sum_{l=1}^{n}a_{l1}^{(l)}\right|,
+	\end{equation}
+那么
+\begin{equation}\label{eq2.7.22}
+	\frac{n+1}{2}\le C_n\le1+\frac{\sqrt{2}}{2}(n-1).
+\end{equation}
+\end{lemma}
+\begin{proof}
+	由引理\ref{lem2.7.4}的 \hyperlink{2.7.4}{(1)} 和 \hyperlink{2.7.4}{(3)}，\eqref{eq2.7.22}右端的不等式是明显的.为了证明\eqref{eq2.7.22}左端的不等式，注意$B_n$的自同构
+	\[\varphi_a(z)=\frac{a-z}{1-z\bar{a}'}A,\]
+	它当然是$B_n$上的凸映射，把它规范化后所得的映射记为$\Phi_a$，即
+	\[\Phi_a(z)=(\varphi_a(z)-a)((\varphi_a'(0))')^{-1},\]
+	则$\Phi_a\in K_n$.因为
+	\[\varphi_a(z)-a=\frac1{1-z\bar{a}'}\left(-sz+\frac{saz\bar{a}'}{1+s}\right),\]
+	\[((\varphi_a'(0))')^{-1}=\frac{-1}{s}\left(\frac{\bar{a}'a}{s(1+s)}+I\right),\]
+	所以
+	\begin{align*}
+		\Phi_a(z)
+		&=\frac1{1-z\bar{a}'}\left(\frac{z\bar{a}'a}{s(1+s)}-\frac{az\bar{a}'\bar{a}'a}{s(1+s)^2}+z-\frac{az\bar{a}'}{1+s}\right)\\
+		&=\frac{z}{1-z\bar{a}'},
+	\end{align*}
+让$a\to e_1$，则$\Phi_a(z)\to\frac{z}{1-z_1}$.因为$K_n$是紧的，所以$f(z)=\frac{z}{1-z_1}\in K_n$.若记$f=(f_1,\cdots,f_n)$，则
+\[f_1(z)=\frac{z_1}{1-z_1}=z_1+z_1^2+z_1^3+\dots,\]
+\[f_2(z)=\frac{z_2}{1-z_1}=z_2+z_1z_2+z_1^2 z_2+\cdots,\]
+\[\cdots\cdots\cdots\cdots\]
+\[f_n(z)=\frac{z_n}{1-z_1}=z_n+z_1z_n+z_1^2 z_n+\cdots.\]
+$f$的二次项是
+\[(z_1^2,z_1z_2,\cdots,z_1z_n)=(zA^{(1)}z',\cdots,zA^{(n)}z').\]
+因而
+\[A^{(1)}=\begin{pmatrix}
+	1 & 0 & \cdots&0\\
+	0 & 0 & \cdots&0\\
+	\vdots & \vdots & &\vdots\\
+	0 & 0 & \cdots&0
+\end{pmatrix},\]
+\[A^{(2)}=\begin{pmatrix}
+	0 & \frac12 & 0 & \cdots & 0\\
+	\frac12 & 0 & 0 & \cdots & 0\\
+	\vdots & \vdots & \vdots & &\vdots\\
+	0 & 0 & 0 & \cdots & 0
+\end{pmatrix},\]
+\[A^{(n)}=\begin{pmatrix}
+	0 & \cdots & \frac12\\
+	\vdots & &\vdots\\
+	\frac12 & \cdots & 0
+\end{pmatrix},\]
+即$a_{11}^{(1)}=1,a_{21}^{(2)}=\frac12,\cdots,a_{n1}^{(n)}=\frac12$，所以
+\[\sum_{l=1}^{n}a_{l1}^{(l)}=1+\frac12(n-1)=\frac{n+1}{2}.\]
+由此即知在\eqref{eq2.7.22}左端成立.
+\end{proof}
+\begin{lemma}\label{lem2.7.6}
+	设
+	\[f(z)=z+(zA^{(1)}z',\cdots,zA^{(n)}z')+\cdots\]
+	是$B_n$上的规范化的凸映射，$A^{(l)}=(a_{jk}^{(l)})_{1\le j,k\le n}$，那么对任意$z\in B_n$，有
+	\begin{equation}\label{eq2.7.23}
+		\left|\sum_{l,j=1}^n a_{lj}^{(l)}\frac{z_j}{|z|}\right|\le C_n,
+	\end{equation}
+这里$C_n$如\eqref{eq2.7.21}所定义.
+\end{lemma}
+\begin{proof}
+	因为$\frac{z}{|z|}$为单位向量，故可取酉方阵$U=(u_{jk})_{1\le j,k\le n}$使其第一行为$\frac{\bar{z}}{|z|}$.命$z=wU$，则
+	\begin{align*}
+		f(wU)\bar{U}'
+		&=w+(wUA^{(1)}U'w',\cdots,wUA^{(n)}U'w')\bar{U}'+\cdots\\
+		&=w+(w\tilde{A}^{(1)}w',\cdots,w\tilde{A}^{(n)}w')+\cdots.
+	\end{align*}
+记$\tilde{A}^{(l)}=(\tilde{a}_{jk}^{(l)})$，我们来确定$\tilde{A}^{(l)}$.因为
+\[wUA^{(m)}U'w'=\sum_{i,l=1}^{n}\sum_{j,k=1}^{n}w_j u_{ij}a_{jk}^{(m)}\bar{u}_{lk}w_l,\]
+所以$(wUA^{(1)}U'w',\cdots,wUA^{(n)}U'w')\bar{U}'$的第$s$个元素为
+\[\sum_{m=1}^{\infty}\sum_{i,l=1}^{n}\sum_{j,k=1}^{n}w_i u_{ij}a_{jk}^{(m)}\bar{u}_{lk}w_l\bar{u}_{sm}=\sum_{i,l=1}^{n}\sum_{j,k=1}^{n}w_iu_{ij}\left(\sum_{m=1}^{n}a_{jk}^{(m)}\bar{u}_{sm}\right)\bar{u}_{lk}w_l.\]
+由此可知$\tilde{A}^{(s)}$的$(i,l)$元素为
+\[\tilde{a}_{il}^{(s)}=\sum_{j,k=1}^{n}u_{ij}\left(\sum_{m=1}^{n}a_{jk}^{(m)}\bar{u}_{sm}\right)\bar{u}_{lk}.\]
+因而
+\begin{align*}
+	\sum_{i=1}^{n}\tilde{a}_{i1}^{(i)}
+	&=\sum_{i=1}^{n}\sum_{j,k=1}^{n}u_{ij}\left(\sum_{m=1}^{n}a_{jk}^{(m)}\bar{u}_{im}\right)\bar{u}_{1k}\\
+	&=\sum_{m,j,k=1}^{n}\left(\sum_{i=1}^{n}u_{ij}\bar{u}_{im}\right)a_{jk}^{(m)}\bar{u}_{1k}\\
+	&=\sum_{j,k=1}^{n}a_{jk}^{(j)}\bar{u}_{1k}=\sum_{j,k=1}^{n}a_{jk}^{(j)}\frac{z_k}{|z|}.
+\end{align*}
+因为$f(wU)\bar{U}'\in K_n$，由$C_n$的定义即知\eqref{eq2.7.23}成立.
+\end{proof}
+\subsection{定理\ref{thm2.7.1}的证明}
+\begin{proof}[\textbf{定理\ref{thm2.7.1}的证明}]
+	在引理\ref{lem2.7.3}的等式\eqref{eq2.7.5}中，对$\rho$从$0$到$1$积分，注意到$\det f'(0)=1$，便得
+	\begin{equation}\label{eq2.7.24}
+		\log\det f'(z)=(n+1)|z|^2\int_{0}^{1}\frac{\rho\dif\rho}{1-\rho^2|z|^2}-\int_{0}^{1}\frac{2|z|}{1-\rho^2|z|^2}\left(\sum_{i,j=1}^{n}a_{ij}^{(i)}\frac{z_j}{|z|}\right)\dif\rho.
+	\end{equation}
+因为
+\begin{align*}
+	(n+1)|z|^2\int_{0}^{1}\frac{\rho\dif\rho}{1-\rho^2|z|^2}
+	&=-\frac{n+1}{2}\log(1-|z|^2),\\
+	\int_{0}^{1}\frac{2|z|}{1-\rho^2|z|^2}\dif\rho
+	&=\log\frac{1+|z|}{1-|z|},
+\end{align*}
+并利用引理\ref{lem2.7.6}得
+\[\left|\log\left\{(1-|z|^2)^{\frac{n+1}{2}}\det f'(z)\right\}\right|\le C_n\log\frac{1+|z|}{1-|z|}.\]
+由此即得
+\[|\det f'(z)|\le\frac{(1+|z|)^{C_n-\frac{n+1}{2}}}{(1-|z|)^{C_n+\frac{n+1}{2}}}.\]
+这就证明了定理\ref{thm2.7.1}的右端的不等式.从\eqref{eq2.7.24}可以直接得到
+\[\log\det f'(z)=-\frac{n+1}{2}\log(1-|z|^2)-\int_{0}^{1}\frac{2|z|}{1-\rho^2|z|^2}\left(\sum_{i,j=1}^{n}a_{ij}^{(i)}\frac{z_j}{|z|}\right)\dif\rho,\]
+或者
+\[\det f'(z)=(1-|z|^2)^{-\frac{n+1}{2}}\exp\left\{-\int_{0}^{1}\frac{2|z|}{1-\rho^2|z|^2}\left(\sum_{i,j=1}^{n}a_{ij}^{(i)}\frac{z_j}{|z|}\right)\dif\rho\right\},\]
+所以
+\begin{align*}
+	|\det f'(z)|
+	&\ge (1-|z|^2)^{-\frac{n+1}{2}}\ee^{-C_n\log\frac{1+|z|}{1-|z|}}\\
+	&=\frac{(1-|z|)^{C_n-\frac{n+1}{2}}}{(1+|z|)^{C_n+\frac{n+1}{2}}}.
+\end{align*}
+定理\ref{thm2.7.1}证毕.
+\end{proof}
+龚{\CJKfontspec{simsun.ttf}昇}等在\cite{barnard1994distortion}中猜测，$C_n=\frac{n+1}{2}$，这时相应的偏差定理为
+\[\frac1{(1+|z|)^{n+1}}\le|\det f'(z)|\le\frac1{(1-|z|)^{n+1}}.\]
+这是单位圆盘上凸映射偏差定理的推广，但目前尚未得到证明.
+\section{双全纯映射族的凸性半径\label{sec2.8}}
+\subsection{$B_n$上规范化双全纯映射族不存在凸性半径}
+用$S$记单位圆盘$U$上满足条件$f(0)=0$和$f'(0)=1$的双全纯映射$f$的全体. R. Nevanlinna\index{N!Nevanlinna, R.}在1920年证明了下列事实：存在$r_0\in(0,1)$，使得对每个$f\in S,f(r_0 U)$都是$\MC$上的凸域，而对任何$r>r_0$，必存在$g\in S$，使得$g(rU)$不是凸域，称$r_0$为函数族$S$的凸性半径.容易证明\cite{戈卢津1956复变函数的几何理论}，$r_0=2-\sqrt{3}$.
+
+多圆柱$U^n$和球$B_n$是单位圆盘在$\MC^n$中的两种推广，对于$U^n$和$B_n$上的双全纯映射，是否存在类似于单位圆盘的凸性半径？
+
+设$f\colon U^2\to\MC^2$定义为$f(z)=(z_1+az_2^2,z_2)$，其中$a$是一复数，$a\neq0$.容易看出，它是双全纯的，而且$f(0)=0$，但它显然不能写为
+\[f(z)=(g_1(z_1),g_2(z_2))T.\]
+由定理\ref{thm2.5.7}，对任意$r\in(0,1),f(rU^2)$都不是凸的.这说明对多圆柱上的双全纯映射族不存在凸性半径问题.
+
+对于球$B_n$不存在上面这样的例子.
+\begin{theorem}\label{thm2.8.1}
+	设$f\colon B_n\to\MC^n$是一个双全纯映射$f(0)=0$，那么存在$r_f\in(0,1]$，使得$f(r_f B_n)$是欧氏凸域，而对任意$\rho>r_f,f(\rho B_n)$不是欧氏凸域.
+\end{theorem}
+\begin{proof}
+	因为$f$是双全纯映射，对任意$z\in B_n,\det\left(\dd{f}{z}\right)\neq0$.故在$|z|\le\delta$中，\\
+	$\min\left|\det\left(\dd{f}{z}\right)\right|>0$.在矩阵$\dd{f}{z}$中，设$\pp{f_i}{z_j}$的代数余子式为$g_{ij}$，那么
+	\[\left(\dd{f}{z}\right)^{-1}=\frac1{\det\left(\dd{f}{z}\right)}\begin{pmatrix}
+		g_{11} & \cdots & g_{n1}\\
+		\vdots & & \vdots\\
+		g_{1n} & \cdots & g_{nn}
+	\end{pmatrix}.\]
+于是
+\begin{align*}
+	\left|\bar{z}\left(\dd{f}{z}\right)^{-1}\ddd{f}{z}(\alpha^2)'\right|
+	&=\left|\left(\det\left(\dd{f}{z}\right)\right)^{-1}\sum_{j,k,p,q=1}^{n}\pppp{f_j}{z_p}{z_q}\alpha_p\alpha_q g_{jk}\bar{z}_k\right|\\
+	&\le\left|\det\left(\dd{f}{z}\right)\right|^{-1}\sum_{j,k,p,q=1}^{n}\left|\pppp{f_j}{z_p}{z_q}\right|\, |g_{jk}|\, |z_k|.
+\end{align*}
+所以当$z\to0$时，$\bar{z}\left(\dd{f}{z}\right)^{-1}\ddd{f}{z}(\alpha^2)'$对所有单位向量$\alpha$一致趋于$0$.因此存在$r\in(0,1)$，当$|z|<r$时，
+\[\left|\bar{z}\left(\dd{f}{z}\right)^{-1}\ddd{f}{z}(\alpha^2)'\right|<1\]
+对所有单位向量$\alpha$成立.由定理\ref{thm2.5.13}，$f(rB_n)$是欧氏凸的.命
+\[r_f=\sup\left\{r\colon f(rB_n)\text{是欧氏凸域}\right\}.\]
+显然，当$f$是$B_n$上的凸映射时，$r_f=1$，否则$r_f<1$.而当$\rho>r_f$时，$f(\rho B_n)$不是欧氏凸域.
+\end{proof}
+在上述定理的基础上，我们给出下面的
+\begin{definition}\label{def2.8.2}
+	设$\MCF$是$B_n$上的双全纯映射族.如果存在$r_0\in(0,1]$，使得对任意$f\in\MCF,f(r_0 B_n)$是欧氏凸域，而对任意$\rho>r_0$，存在$g\in\MCF$，使得$g(\rho B_n)$不是欧氏凸域，我们就称$r_0$为$\MCF$的\textbf{凸性半径}\index{T!凸性半径}.
+\end{definition}
+和单复变的情形不同，$B_n$上的规范化的全纯映射族不存在凸性半径.
+\begin{theorem}\label{thm2.8.3}
+	$B_n$上的规范化的双全纯映射族$S$不存在凸性半径.
+\end{theorem}
+\begin{proof}
+	取一列双全纯映射：
+	\[f^{(k)}(z)=(z_1+kz_2^2,z_2,\cdots,z_n),\quad k=1,\cdots,n.\]
+	显然$f^{(k)}\in S$.记$z_j=x_j+\ii y_j,\alpha_j=a_j+\ii b_j,j=1,\cdots,n$.通过直接计算可得
+	\[\Re\left\{\bar{z}\left(\dd{f^{(k)}}{z}\right)^{-1}\ddd{f^{(k)}}{z}(\alpha^2)'\right\}=2k\left\{x_1(a_2^2-b_2^2)+2a_2b_2y_1\right\}.\]
+	固定$r\in(0,1)$，选择充分大的$k$，使得$r^2-\frac{4}{k^2}>0$.取$x_1=0,y_1=\frac{2}{k},0<x_2<\frac1{\sqrt{2}}\sqrt{r^2-\frac{4}{k^2}},y_2=-x_2,x_3=y_3=\cdots=0$，那么$|z|<r$，再取单位向量
+	\[\alpha=\left(-\frac1{\sqrt{2}},\frac12(1+\ii),0,\cdots,0\right),\]
+	那么$\Re(\bar{z}\alpha')=0$，但$\Re\left\{\bar{z}\left(\dd{f^{(k)}}{z}\right)^{-1}\ddd{f^{(k)}}{z}(\alpha^2)'\right\}=2$.由定理\ref{thm2.5.13}，$f^{(k)}(rB_n)$不是欧氏凸域.这说明不论$r$多么小，总能选择充分大的$k$，使得$f^{(k)}(rB_n)$不是欧氏凸域，因此$S$不存在凸性半径.
+\end{proof}
+但在$S$上再加上适当的限制，可以证明凸性半径存在.
+\subsection{凸性半径存在的条件}
+\begin{theorem}\label{thm2.8.4}
+	设$\tilde{S}$是$B_n$上的规范化的双全纯映射的正规族，那么$\tilde{S}$存在凸性半径.
+\end{theorem}
+为了证明这个定理，我们先证明下面的
+\begin{lemma}\label{lem2.8.5}
+	设$f^{(k)}$是$S$中一列双全纯映射，它在$B_n$的任一紧子集上一致收敛于$f$.如果$f(rB_n)$是欧氏凸的，那么对任意$\varepsilon>0$，一定存在$k_0$，使得当$k>k_0$时，$f^{(k)}((r-\varepsilon)B_n)$是欧氏凸的.
+\end{lemma}
+\begin{proof}
+	因为
+	\[\left|\det\left(\dd{f(0)}{z}\right)\right|=\lim_{k\to\infty}\left|\det\left(\dd{f^{(k)}(0)}{z}\right)\right|=1,\]
+	所以由定理\ref{thm2.2.8}，$f$是$B_n$上的双全纯映射.因为$f(rB_n)$是凸的，由定理\ref{thm2.5.13}，对$z\in rB_n$及所有满足$\Re(\bar{z}\alpha')=0$的单位向量$\alpha$，有
+	\begin{equation}\label{eq2.8.1}
+	\Re\left\{1-\bar{z}\left(\dd{f}{z}\right)^{-1}\ddd{f}{z}(\alpha^2)'\right\}>0.
+	\end{equation}
+记
+\[H=\left\{(z,\alpha)\colon |z|\le r-\varepsilon,|\alpha|=1,\Re(\bar{z}\alpha')=0\right\},\]
+$H$是$\MR^{4n}$中的紧集.容易知道
+\[h(z,\alpha)=\Re\left\{\bar{z}\left(\dd{f}{z}\right)^{-1}\ddd{f}{z}(\alpha^2)'\right\}\]
+在$H$上有最大值，设$(z^{(0)},\alpha^{(0)})$达到了最大值.由\eqref{eq2.8.1}知$h(z^{(0)},\alpha^{(0)})<1$.选取$\eta>0$，使得
+\[h(z^{(0)},\alpha^{(0)})+\eta<1.\]
+记
+\[h^{(k)}(z,\alpha)=\Re\left\{\bar{z}\left(\dd{f^{(k)}}{z}\right)^{-1}\ddd{f^{(k)}}{z}(\alpha^2)'\right\},\quad (z,\alpha)\in H,\]
+则$h^{(k)}$在$H$上一致收敛于$h$.于是，当$k>k_0$时，有
+\[h^{(k)}(z,\alpha)<h(z,\alpha)+\eta\le h(z^{(0)},\alpha^{(0)})+\eta<1\]
+对所有$(z,\alpha)\in H$成立.由定理\ref{thm2.5.13}，$f^{(k)}((r-\varepsilon)B_n)$是欧氏凸的.
+\end{proof}
+\begin{proof}[\textbf{定理\ref{thm2.8.4}的证明}]
+	由定理\ref{thm2.8.1}，对每个$f\in\tilde{S}$，存在$r(f)\in(0,1)$.\\
+	命$r_0=\inf\left\{r(f)\colon f\in\tilde{S}\right\}$，我们证明$r_0>0$.如果$r_0=0$，那么存在一列$f^{(k)}\in\tilde{S}$，使得$\lim\limits_{k\to\infty} r(f^{(k)})=0$.因为$\tilde{S}$是正规族，故从$\{f^{(k)}\}$中可以取出一个内闭一致收敛的子列，不妨设这个子列就是它自己，它的极限映射是$f$.因为$\lim\limits_{k\to\infty} r(f^{(k)})=0$，所以存在$k_1$，当$k>k_1$时，$r(f^{(k)})<\frac12 r(f)$.另一方面，因为$f(r(f)B_n)$是欧氏凸的，由引理\ref{lem2.8.5}存在$k_2$，当$k>k_2$时，$f^{(k)}\left(\frac12 r(f) B_n\right)$是欧氏凸的.因此当$k>\max\{k_1,k_2\}$时，从$f^{(k)}\left(\frac12 r(f)B_n\right)$是欧氏凸的导致$r(f^{(k)})\ge\frac12 r(f)$，这和$r(f^{(k)})<\frac12 r(f)$相矛盾.这个矛盾证明了$r_0>0$.取$g\in\tilde{S}$，显然$r(g)\ge r_0$.因为$g(r(g)B_n)$是欧氏凸的，所以$g(r_0 B_n)$也是欧氏凸的.任取$\rho>r_0$，如果对所有$f\in\tilde{S},f(\rho B_n)$都是欧氏凸的，那么$\rho\le r_0$，这不可能.因此$r_0$是$\tilde{S}$的凸性半径.
+\end{proof}
+由定理\ref{thm2.6.1}，$B_n$上每个规范化的星形映射的模有下列估计
+\[|f(z)|\le\frac{|z|}{(1-|z|)^2},\quad z\in B_n.\]
+因此$B_n$上的规范化的星形映射族是局部一致有界的，由定理\ref{thm1.2.9}，它是一个正规族.于是从定理\ref{thm2.8.4}即得
+\begin{theorem}\label{thm2.8.6}
+	$B_n$上的规范化的星形映射族存在凸性半径.
+\end{theorem}
+一个很自然的猜测是：$B_n$上规范化的星形映射族的凸性半径$r_0=2-\sqrt{3}$.但现在还没有得到证明.
+
+本节材料取自\cite{史济怀1982bound}.
+\section*{注记}\addcontentsline{toc}{section}{注记}
+首先讨论域之间的全纯映射的是 K. Reinhardt，他讨论的域就是现在所谓的Reinhardt域.对全纯映射理论发展作出主要贡献的是 H. Cartan\cite[141—254，255—275，336—369]{cartan1979collected}.关于单叶映射的定理\ref{thm2.2.3}首先是由 Clements 证明的，这里的证明选自\cite{narasimhan1971several}. $n=2$时，球$B_2$的全纯自同构首先出现在 Poincar\'e 的工作中，球和多圆柱的非全纯等价性也是 Poincar\'e 于1906年首先证明的.现在关于这一重要事实的证明已有不少，这里的定理\ref{thm2.3.15}的证明选自\cite{rudin2008function}，定理\ref{thm2.5.15}的证明选自\cite{史济怀1981new}.多圆柱和球上星形映射和凸映射的判别法的证明选自\cite{suffridge1970principle}和\cite{kikuchi1973starlike}.这些结果在Banach空间上的推广可参见\cite{suffridge1973starlike}.多圆柱上凸映射的表示定理（定理\ref{thm2.5.7}）有一些有趣的应用，可参见\cite{miller1976subordinating}和\cite{史济怀1981new}.\ref{sec2.1}——\ref{sec2.4}的内容可参阅文献\cite{krantz2001function}和\cite{rudin2008function}；\ref{sec2.6}的内容可参阅\cite{barnard1991growth}，\cite{dong1992growth}，\cite{gong1991growth}，\cite{liu1989growth}，\cite{fitzgerald1990convex}；\ref{sec2.7}的内容可参阅\cite{barnard1994distortion}，\cite{duren1986distortion}，\cite{刘太顺1999n}，\ref{sec2.8}的内容可参阅\cite{戈卢津1956复变函数的几何理论}和\cite{史济怀1982bound}.关于星形映射和凸映射的增长定理、掩盖定理和偏差定理，龚{\CJKfontspec{simsun.ttf}昇}与国内外的合作者们做了大量的工作，取得了很多新的进展，详细情形可参见龚{\CJKfontspec{simsun.ttf}昇}的综合性文章\cite{gong1993biholomorphic}和他的专著\cite{龚昇1995多复变数的凸映照与星形映照}，其中有大量的参考文献可供进一步研究时查阅.

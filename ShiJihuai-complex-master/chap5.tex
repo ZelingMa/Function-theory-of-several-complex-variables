@@ -1,0 +1,1048 @@
+\chapter{全纯凸域和拟凸域\label{chap5}}
+在\ref{sec1.3}中，我们介绍了多复变中一种与单复变有本质差异的现象——Hartogs现象.也就是说，$n>1$时，在$\MC^n$中存在这样一种域，其上的所有全纯函数都可全纯开拓到比它更大的域中去.在复平面$\MC$上，这样的域是不存在的.我们把不发生Hartogs现象的域称为全纯域.即若不存在比$\Omega$更大的域$\Omega'$，使得$H(\Omega)$中所有函数都能全纯开拓到$\Omega'$中去，就称$\Omega$为全纯域.在\ref{sec1.3}中，我们还证明了，欧氏凸域一定是全纯域.但全纯域未必是欧氏凸的.在本章中，我们要引进全纯凸域和拟凸域的概念，它们恰好都刻画了全纯域.
+\section{全纯凸域\label{sec5.1}}
+\subsection{欧氏凸域的特征}
+在引进全纯凸域的概念之前，我们再深入讨论一下欧氏凸域.为方便起见，我们只讨论复平面上的凸域.从解析几何中知道，平面上一条直线$l(z)=ax+by+c=0$把平面分成两部分：
+\[H_l^+=\{z\in\MC\colon l(z)>0\},\quad H_l^-=\{z\in\MC\colon l(z)<0\}.\]
+现在利用上面这种术语给出平面上欧氏凸域的定义.
+\begin{definition}\label{def5.1.1}
+	设$G$是$\MC$的一个子集.如果对每个$z_0\in\MC\setminus G$，存在通过$z_0$的直线$l$，使得$G\subset H_l^-,G$就称为\textbf{欧氏凸的}\index{Y!域!欧氏凸域}.
+\end{definition}
+下面给出集合$G$的几何凸包的概念.
+\begin{definition}\label{def5.1.2}
+	设$G$是$\MC$的一个子集，称\index[symbolindex]{\textbf{点集}!$\widehat{G}$}
+	\[\widehat{G}=\left\{z\in\MC\colon l(z)\le\sup_{\zeta\in G}l(\zeta),\text{对所有实线性函数$l$}\right\}\]
+	为$G$的\textbf{几何凸包}\index{J!几何凸包}.
+\end{definition}
+$G$的几何凸包有下列简单性质.
+\begin{prop}\label{prop5.1.3}
+	设$G\subset\MC$是任一子集，则
+	
+	(1)\hypertarget{5.1.3}{}
+	$G\subset\widehat{G}$；
+	
+	(2)\hypertarget{5.1.3}{}
+	$\widehat{G}$是闭的和欧氏凸的；
+	
+	(3)\hypertarget{5.1.3}{}
+	如果$G$是闭的和欧氏凸的，那么$G=\widehat{G}$；
+	
+	(4)\hypertarget{5.1.3}{}
+	$\widehat{\widehat{G}}=\widehat{G}$；
+	
+	(5)\hypertarget{5.1.3}{}
+	设$G_1\subset G_2\subset\MC$，则$\widehat{G}_1\subset\widehat{G}_2$.
+\end{prop}
+\begin{proof}
+	\hyperlink{5.1.3}{(1)}
+	从$\widehat{G}$的定义即明.
+	
+	\hyperlink{5.1.3}{(2)}
+	我们证明$\MC\setminus\widehat{G}$是开的.任取$z_0\in\MC\setminus\widehat{G}$，因为$z_0\notin\widehat{G}$，故存在$l\in L$，这里$L$是实线性函数的全体，使得$l(z_0)>\sup_{\zeta\in G}l(\zeta)$.因为$l$是连续的，所以$l(z)>\sup_{\zeta\in G}l(\zeta)$在$z_0$的一个邻域中成立，因而$\MC\setminus\widehat{G}$是开的，即$\widehat{G}$是闭的.为了证明$\widehat{G}$是欧氏凸的，取$z_0$和$l$如上.记$l^\ast(z)=l(z)-l(z_0)$，则直线$g=\{z\in\MC\colon l^\ast(z)=0\}$通过$z_0$，且当$z\in\widehat{G}$时，
+	\[l^\ast(z)\le\sup_{\zeta\in G} l^\ast(\zeta)=\sup_{\zeta\in G}l(\zeta)-l(z_0)<0,\]
+	即$\widehat{G}\subset H_g^-$，因而$\widehat{G}$是欧氏凸的.
+	
+	\hyperlink{5.1.3}{(3)}
+	已知$G\subset\widehat{G}$，现证$\widehat{G}\subset G$.任取$z_0\in\widehat{G}$，如果$z_0\notin G$，因为$G$是闭的，所以存在$z_1\in G$，使得$z_1$离$z_0$的距离最短.记线段$z_0z_1$的中点为$z_2$，则因$z_2$离$z_0$比$z_1$离$z_0$更近，所以$z_2\notin G$.由于$G$是欧氏凸的，存在$l\in L$，使得$l(z_2)=0,G\subset H_l^-$，即$l(z)<0$对所有$z\in G$成立.但$l(z_0)>0$，因而$z_0\notin\widehat{G}$，这是矛盾.
+	
+	\hyperlink{5.1.3}{(4)}
+	从\hyperlink{5.1.3}{(2)}和\hyperlink{5.1.3}{(3)}即得.
+	
+	\hyperlink{5.1.3}{(5)}
+	因为对所有$l\in L$，有$\sup_{\zeta\in G_1}l(\zeta)\le\sup_{\zeta\in G_2}l(\zeta)$，由此即得$\widehat{G}_1\subset\widehat{G}_2$.
+\end{proof}
+\begin{corollary}\label{cor5.1.4}
+	$\widehat{G}$是包含$G$的最小的闭欧氏凸集\index{Z!最小的闭欧氏凸集}.
+\end{corollary}
+\begin{proof}
+	如果$G\subset M,M$是闭的欧氏凸集，那么由命题\ref{prop5.1.3}的\hyperlink{5.1.3}{(5)}和\hyperlink{5.1.3}{(3)}得$\widehat{G}\subset\widehat{M}=M$.
+\end{proof}
+\begin{corollary}\label{cor5.1.5}
+	如果$G$是有界的，那么$\widehat{G}$也是有界的.
+\end{corollary}
+\begin{proof}
+	因为$G$是有界的，必有一闭矩形$Q$使得$G\subset Q$.因为$Q$是闭的欧氏凸集，故由推论\ref{cor5.1.4}，$\widehat{G}\subset Q$，即$\widehat{G}$是有界的.
+\end{proof}
+\begin{prop}\label{prop5.1.6}
+	设$G\subset\MC$是一个开集，那么$G$是欧氏凸的充分必要条件是从$K\subset\subset G$能推出$\widehat{K}\subset\subset G$.
+\end{prop}
+回忆一下，记号$K\subset\subset G$是指$K$相对于$G$是紧的，即$\bar{K}$是紧的，且$\bar{K}\subset G$（见定义\ref{def1.2.4}）.
+\begin{proof}
+	必要性\quad
+	设$G$是欧氏凸的，且$K\subset\subset G$.因为$\bar{K}$是紧的，所以$K$有界.从命题\ref{prop5.1.3}\hyperlink{5.1.3}{(2)}和推论\ref{cor5.1.5}知道$\widehat{K}$是有界的且是闭的，因而是紧的.现在证明$\widehat{K}\subset G$.如果存在$z_0\in\widehat{K}\setminus G$，因为$G$是欧氏凸的，所以存在$l\in L$，使得$l(z_0)=0$，对$\forall z\in G$有$l(z)<0$.由于$\bar{K}\subset G$，且$\bar{K}$是紧的，所以
+	\[\sup_{z\in K}l(z)\le\sup_{z\in\bar{K}}l(z)<0=l(z_0).\]
+	这和$z_0\in\widehat{K}$相矛盾.因而$\widehat{K}\subset G$.
+	
+	充分性\quad
+	如果$K\subset\subset G$蕴含$\widehat{K}\subset\subset G$，我们要证$G$是欧氏凸的.我们知道，过$z_0$的直线$g$可用复数表示为$g=\{z\colon z=z_0+ta,t\in\MR.\text{$a$是一个固定的复数}\}$.我们用$g^+$和$g^-$分别表示$g$的正、负射线，即
+	\[g^+=\{z\colon z=z_0+ta,t\ge0\},\quad g^-=\{z\colon z=z_0+ta,t\le 0\}.\]
+	现取$z_0\notin G$，我们证明过$z_0$的每条直线$g$，或者$g^+\cap G=\varnothing$，或者$g^-\cap G=\varnothing$.不然的话，存在这样的$g$，使得$g^+\cap G\neq\varnothing,g^-\cap G\neq\varnothing$，设
+	\[z_1=z_0+t_1a\in g^+\cap G,\]
+	\[z_2=z_0+t_2a\in g^-\cap G.\]
+	命$p_1=\frac{-t_2}{t_1-t_2}>0,p_2=1-p_1=\frac{t_1}{t_1-t_2}>0$，则$p_1z_1+p_2z_2=z_0$.设$l\in L$是任意线性函数，我们证明
+	\[l(z_0)\le m=\max\{l(z_1),l(z_2)\}.\]
+	不妨设$l(z)=ax+by$是齐次的（因为对非齐次的只要加上常数就行），于是
+	\begin{align*}
+		l(z_0)
+		&=l(p_1z_1+p_2z_2)=p_1l(z_1)+p_2l(z_2)\\
+		&\le m(p_1+p_2)=m.
+	\end{align*}
+现在命$K=\{z_1,z_2\}$，则$K\subset\subset G$，因而$\widehat{K}\subset\subset G$.因为对每个$l\in L$均有
+\[l(z_0)\le\max\{l(z_1),l(z_2)\}=\sup_{z\in K}l(z),\]
+所以$z_0\in\widehat{K}$，这和$z_0\notin G$相矛盾.这样我们就证明了过$z_0\notin G$的每一条直线最多只能有半条和$G$相交.绕$z_0$适当转动这种直线，即可得到和$G$不相交的直线$g$，且使$G\subset H_g^-$.因而$G$是欧氏凸的.
+\end{proof}
+命题\ref{prop5.1.6}可以用来作为欧氏凸域的定义.
+\subsection{全纯凸域及其特征}
+现在回到全纯域，从全纯域的定义可以看出，一个全纯域经过全纯坐标变换后所得的域仍然是全纯域，但欧氏凸域却没有这个性质.从命题\ref{prop5.1.6}的角度来看，由于定义几何凸包时用的是线性函数，它在全纯坐标变换下当然不再保持线性了.如果把线性函数换成全纯函数，这种在全纯坐标变换下的不变性便可保持，这就引出全纯凸域的概念.
+\begin{definition}\label{prop5.1.7}
+	设$G$是$\MC^n$中的开集，$K\subset G$是$G$的一个子集，称\index[symbolindex]{\textbf{点集}!$\widehat{K}$}
+	\[\widehat{K}=\left\{z\in G\colon|f(z)|\le\sup_{\zeta\in K}|f(\zeta)|,\text{对每一个}f\in H(G)\right\}\]
+	为$K$在$G$中的\textbf{全纯凸包}\index{Q!全纯凸包}.
+\end{definition}
+和几何凸包一样，全纯凸包也有下面的简单性质.
+\begin{prop}\label{prop5.1.8}
+	设$G$是$\MC^n$中的开集，$K$是$G$的子集，那么
+	
+	(1)\hypertarget{5.1.8}{}
+	$K\subset\widehat{K}$；
+	
+	(2)\hypertarget{5.1.8}{}
+	$\widehat{K}$是$G$中的闭集；
+	
+	(3)\hypertarget{5.1.8}{}
+	$\widehat{\widehat{K}}=\widehat{K}$；
+	
+	(4)\hypertarget{5.1.8}{}
+	如果$K_1\subset K_2\subset G$，那么$\widehat{K}_1\subset\widehat{K}_2\subset G$；
+	
+	(5)\hypertarget{5.1.8}{}
+	如果$K$有界，那么$\widehat{K}$也有界.
+\end{prop}
+\begin{proof}
+	\hyperlink{5.1.8}{(1)}
+	显然.
+	
+	\hyperlink{5.1.8}{(2)}
+	和命题\ref{prop5.1.3}\hyperlink{5.1.3}{(2)}一样，证明$G\setminus\widehat{K}$是开集.
+	
+	\hyperlink{5.1.8}{(3)}
+	由\hyperlink{5.1.8}{(1)}知$\widehat{K}\subset\widehat{\widehat{K}}$.因为当$z\in\widehat{K}$时，对任意$f\in H(G)$有$|f(z)|\le\sup_{\zeta\in K}|f(\zeta)|$，所以$\sup_{\zeta\in\widehat{K}}|f(z)|\le\sup_{\zeta\in\widehat{K}}|f(\zeta)|$对任意$f\in H(G)$成立.现在任取$z\in\widehat{\widehat{K}}$，则
+	\[|f(z)|\le\sup_{\zeta\in\widehat{K}}|f(\zeta)|\le\sup_{\zeta\in K}|f(\zeta)|,\]
+	即$z\in\widehat{K}$，所以$\widehat{\widehat{K}}\subset\widehat{K}$.
+	
+	\hyperlink{5.1.8}{(4)}
+	若取$z\in\widehat{K}_1$，则对每个$f\in H(G)$有
+	\[|f(z)|\le\sup_{\zeta\in K_1}|f(\zeta)|\le\sup_{\zeta\in K_2}|f(\zeta)|,\]
+	即$z\in\widehat{K}_2$，由此$\widehat{K}_1\subset\widehat{K}_2$.
+	
+	\hyperlink{5.1.8}{(5)}
+	如果$K$有界，则必存在$R>0$使得
+	\[K\subset\left\{z=(z_1,\cdots,z_n)\colon|z_j|\le R,j=1,\cdots,n\right\}.\]
+	命$f_k(z)=z_k$，则$f_k\in H(G)$.于是$z\in\widehat{K}$时，有
+	\[|z_k|=|f_k(z)|\le\sup_{\zeta\in K}|f_k(z)|=\sup_{\zeta\in K}|z_k|\le R.\]
+	所以$\widehat{K}$是有界的.
+\end{proof}
+现在给出全纯凸域的定义.
+\begin{definition}\label{def5.1.9}
+	设$G$是$\MC^n$中的开集，如果对任意$K\subset G$，从$K\subset\subset G$能推出$\widehat{K}\subset\subset G$，就称$G$是\textbf{全纯凸的}\index{Y!域!全纯凸域}.
+\end{definition}
+从命题\ref{prop5.1.6}我们自然猜想到全纯域就是全纯凸域，这个猜想是完全正确的，它的证明将在下节中给出.下面先给出一个域是否全纯凸域的充分必要条件.为此先证明几个引理.
+
+在引理\ref{lem4.6.4}中已经证明，如果$G\subset\MC^n$是一个开集，那么一定存在$G$的一个正规穷竭$\{K_j\}$，即$\{K_j\}$是满足下面三个条件的$G$的一列子集：
+
+(1)
+$K_j$是紧的，$j=1,2,\cdots$；
+
+(2)
+$\bigcup\limits_{j=1}^\infty K_j=G$；
+
+(3)
+$K_j\subset\mathrm{int}(K_{j+1}),j=1,2,\cdots$.
+
+如果$G$是全纯凸的，我们还可要求$K_j=\widehat{K}_j$.这就是下面的
+\begin{lemma}\label{lem5.1.10}
+	设$G$是$\MC^n$中的开集.如果$G$是全纯凸的，那么一定存在$G$的一个正规穷竭$\{K_j\}$，使得
+	\[K_j=\widehat{K}_j,j=1,2,\cdots.\]
+\end{lemma}
+\begin{proof}
+	设$\{K_j\}$是$G$的一个正规穷竭，那么对每个$j$，都有$K_j\subset\subset G$，因为$G$是全纯凸的，所以$\widehat{K}_j\subset\subset G$，因而$\widehat{K}_j$是$G$的紧子集.今用归纳法构造一列新子集.命$K_1^\ast=\widehat{K}_1$，则$\widehat{K}_1^\ast=\widehat{\widehat{K}}_1=\widehat{K}_1=K_1^\ast$.现假定$K_1^\ast,\cdots,K_{j-1}^\ast$已定义好，它们满足$K_l^\ast$是紧的且$\widehat{K}_l^\ast=K_l^\ast,l=1,\cdots,j-1$.对于$K_{j-1}^\ast$，一定存在充分大的正整数$\lambda(j)$，使得$K_{j-1}^\ast \subset\mathrm{int}(K_{\lambda(j)})$.今定义$K_j^\ast=\widehat{K}_{\lambda(j)}$，则$\widehat{K}_j^\ast=\widehat{\widehat{K}}_{\lambda(j)}=\widehat{K}_{\lambda(j)}=K_j^\ast$，且$K_j^\ast$是紧的，而且
+	\[K_j^\ast\subset\mathrm{int}(K_{\lambda(j+1)})\subset\mathrm{int}(\widehat{K}_{\lambda(j+1)})=\mathrm{int}(
+	K_{j+1}^\ast),\]
+	\[\bigcup_{j=1}^\infty K_j^\ast=\bigcup_{j=1}^\infty \widehat{K}_{\lambda(j)}\supset\bigcup_{j=1}^\infty K_{\lambda(j)}=G.\]
+	因此$\{K_j^\ast\}$就是要找的一列子集.
+\end{proof}
+\begin{lemma}\label{lem5.1.11}
+	设$G$是$\MC^n$中的开集，$K$是$G$的一个子集.对于任意给定的正数$\varepsilon,M$和$p\in G\setminus\widehat{K}$，存在$f\in H(G)$，使得$\sup_{z\in K}|f(z)|<\varepsilon,|f(p)|>M$.
+\end{lemma}
+\begin{proof}
+	因为$p\notin\widehat{K}$，故必存在$h\in H(G)$，使得
+	\[|h(p)|>\sup_{z\in K}|h(z)|.\]
+	取$s$满足$|h(p)|>s>\sup_{z\in K}|f(z)|$，并命$g(z)=\frac1s h(z)$，那么$|g(p)|>1,\sup_{z\in K}|g(z)|<1$.于是，取充分大的自然数$m$，$f(z)=g^m(z)$就是所要的函数.
+\end{proof}
+\begin{lemma}\label{lem5.1.12}
+	设$G$是$\MC^n$中的开集，$\{K_j\}$是$G$的一个正规穷竭，满足$K_j=\widehat{K}_j,j=1,2,\cdots$如果$p_j\in K_{j+1}\setminus K_j,j=1,2,\cdots$那么存在$f\in H(G)$，使得$\lim\limits_{j\to\infty}|f(p_j)|=\infty$.
+\end{lemma}
+\begin{proof}
+	我们用数学归纳法来构造一列全纯函数$\{f_j\}$，使得它们满足下面两个条件：
+	
+	(1)\hypertarget{5.1.12}{}
+	$\sup_{z\in K_j}|f_j(z)|<2^{-j},j=1,2,\cdots$；
+	
+	(2)\hypertarget{5.1.12}{}
+	$|f_j(p_j)|>j+1+\sum\limits_{l=1}^{j-1}|f_l(p_j)|,j=2,3,\cdots$.\\
+取$f_1=0$，对于$l\ge2$，假定满足\hyperlink{5.1.12}{(1)}、\hyperlink{5.1.12}{(2)}的$f_1,\cdots,f_{l-1}$已经取到.因为$p_l\notin\widehat{K}_l$，根据引理\ref{lem5.1.11}，一定存在$f_l\in H(G)$，使得
+\[\sup_{z\in K_l}|f_l(z)|<2^{-l},\,|f_l(p_l)|>l+1+\sum_{k=1}^{l-1}|f_k(p_l)|.\]
+这就证明了满足\hyperlink{5.1.12}{(1)}、\hyperlink{5.1.12}{(2)}的函数列是存在的.从\hyperlink{5.1.12}{(1)}知道级数$\sum\limits_{j=1}^\infty f_j$在$G$中内闭一致收敛.设其和为$f$，则$f\in H(G)$.我们证明$f$就是要找的函数.事实上，由\hyperlink{5.1.12}{(2)}可得
+\[|f(p_j)|\ge |f_j(p_j)|-\sum_{l\neq j}|f_l(p_j)|>j+1-\sum_{l=j+1}^\infty |f_l(p_j)|.\]
+但由\hyperlink{5.1.12}{(1)}，
+\[\sum_{l=j+1}^{\infty}|f_l(p_j)|<\sum_{l=j+1}^{\infty}2^{-l}\le1.\]
+由此即得$|f(p_j)|>j$，即$\lim\limits_{j\to\infty}|f(p_j)|=\infty$.
+\end{proof}
+现在容易证明
+\begin{theorem}\label{thm5.1.13}
+	$\MC^n$中的域$G$是全纯凸域的充分必要条件是，对每一个趋于边界$\partial G$的点列$\{p_j\}$，存在$f\in H(G)$，使得$\{f(p_j)\}$无界.
+\end{theorem}
+\begin{proof}
+	充分性\quad 如果$G$不是全纯凸的，则必存在$G$中的紧集$K$，使得$\widehat{K}$不紧，因而有$\{p_j\}\subset\widehat{K},p_j\to\partial G$.但因$K$是紧的，故有
+	\[|f(p_j)|\le\sup_{z\in K}|f|=M<\infty\]
+	对每一个$f\in H(G)$成立，这和假设相矛盾.
+	
+	必要性\quad 因为$G$是全纯凸的，根据引理\ref{lem5.1.10}，存在$G$的一个正规穷竭$\{K_j\}$，使得$K_j=\widehat{K}_j,j=1,2,\cdots$ 现设$\{p_j\}$是任一给定的趋于$\partial G$的点列，我们证明存在$\{p_j\}$的子列$\{p_{j_k}\}$和严格递增的$\lambda(k)\in\MN$，使得
+	\[p_{j_k}\in K_{\lambda(k)}\setminus K_{\lambda(k)-1}.\]
+	事实上，在$\{p_j\}$中任取一点，记作$p_{j_1}$，记$\lambda(1)\in\MN$是具有$p_{j_1}\in K_{\lambda(1)}$性质的最小足标，因而$p_{j_1}\in K_{\lambda(1)}\setminus K_{\lambda(1)-1}$.因为$\{p_j\}\cap K_{\lambda(1)}$是有限集，故可取$p_{j_2}\in\{p_j\}\setminus K_{\lambda(1)}$.再设$\lambda(2)$是具有$p_{j_2}\in K_{\lambda(2)}$性质的最小的足标，则$\lambda(2)>\lambda(1)$，且$p_{j_2}\in K_{\lambda(2)}\setminus K_{\lambda(2)-1}$.这个过程一直进行下去，便可得到所需的$\{p_{j_k}\}$和$\{K_{\lambda(k)}\}$.由于$p_{j_k}\in K_{\lambda(k)}\setminus K_{\lambda(k)-1}$，由引理\ref{lem5.1.12}，即知所需的函数存在.
+\end{proof}
+根据这个定理，马上可以判断某些域是全纯凸的.
+\begin{theorem}\label{thm5.1.14}
+	复平面上的每一个域都是全纯凸域.
+\end{theorem}
+\begin{proof}
+	设$G$是$\MC$中的域，$\{p_j\}$是$G$中一列趋于$\partial G$的点.如果$\{p_j\}$无界，那么函数$f(z)=z$在$\{p_j\}$上无界.如果$\{p_j\}$趋于$\partial G$上某点$p$，那么函数$f(z)=(z-p)^{-1}$在$\{p_j\}$上无界.由定理\ref{thm5.1.13}，$G$是全纯凸域.
+\end{proof}
+\begin{prop}\label{prop5.1.15}
+	$\MC^n$中的欧氏凸域一定是全纯凸域.
+\end{prop}
+\begin{proof}
+	设$G$是$\MC^n$中的欧氏凸域，对于每点$p\in\partial G$，用定理\ref{thm1.3.10}的证明方法可以证明存在$g\in H(G)$，它在$G$中没有零点，但$g(p)=0$，因而$f=g^{-1}\in H(G)$，但$f$在任意趋于$p$的点列$\{p_j\}$上无界.由定理\ref{thm5.1.13}，$G$是全纯凸域.
+\end{proof}
+最后举一个非全纯凸域的例子.
+\begin{example}\label{exa5.1.16}
+	当$n>1$时，域$G=\{z\in\MC^n\colon 1<|z|<2\}$不是全纯凸域.
+\end{example}
+\begin{proof}
+	取$K=\left\{z\in\MC^n\colon |z|=\frac32\right\}$，则$K\subset\subset G$.由推论\ref{cor1.3.6}知道，每个$f\in H(G)$都能全纯开拓到球$B(0,2)$，即存在$B(0,2)$上的全纯函数$F$.当$z\in G$时，$F(z)=f(z)$.由最大模原理，当$1<|z|\le\frac32$时，
+	\begin{align*}
+		|f(z)|
+		&=|F(z)|\le\sup_{|\zeta|=\frac32}|F(\zeta)|\\
+		&=\sup_{|\zeta|=\frac32}|f(\zeta)|=\sup_{\zeta\in K}|f(\zeta)|,
+	\end{align*}
+这说明$\left\{z\in G\colon |z|\le\frac32\right\}\subset\widehat{K}$，故$\widehat{K}$的闭包不在$G$中，所以$G$不是全纯凸域.
+\end{proof}
+\section{Cartan-Thullen定理\label{sec5.2}}
+这一节讨论全纯凸域和全纯域的关系，我们将证明它们是等价的.
+\subsection{全纯域一定是全纯凸域}
+设$z,w\in\MC^n$，记$d(z,w)=\max_{1\le j\le n}|z_j-w_j|$.若$A,B$是$\MC^n$中的两个集合，定义
+\[d(A,B)=\inf\{d(z,w)\colon z\in A,w\in B\}.\]
+我们首先证明全纯域一定是全纯凸的，证明的关键是下面的全纯凸包的一个重要的几何性质.
+\begin{theorem}\label{thm5.2.1}
+	设$G$是$\MC^n$中的全纯域，$K\subset\subset G$，那么
+	\begin{equation}\label{eq5.2.1}
+		d(K,\MC^n\setminus G)=d(\widehat{K},\MC^n\setminus G).
+	\end{equation}
+\end{theorem}
+\begin{proof}
+	因为$\subset\subset G$，所以$d(K,\MC^n\setminus G)>0$.取$\varepsilon$，使得$d(K,\MC^n\setminus G)>\varepsilon>0$.作
+	\[K_\varepsilon=\{z\in\MC^n\colon d(z,K)\le\varepsilon\},\]
+	则$K_\varepsilon$是有界闭集.从$d(K,\MC^n\setminus G)>\varepsilon$知道$K_\varepsilon\subset G$，任取$z\in K$，记$P(z,\varepsilon)$为以$z$为中心，$\varepsilon$为半径的多圆柱，则$P(z,\varepsilon)\subset K_\varepsilon\subset G$.于是，由定理\ref{thm1.2.3}的Cauchy不等式，对任意$f\in H(G)$，有
+	\begin{equation}\label{eq5.2.2}
+		\left|(\DD^\alpha f)(z)\right|\le\frac{\alpha!}{\varepsilon^{|\alpha|}}\sup_{\zeta\in K_\varepsilon}|f(\zeta)|,
+	\end{equation}
+这个不等式对任意$z\in K$成立.现在任取$a\in\widehat{K}$，由$\widehat{K}$的定义及\eqref{eq5.2.2}得
+\begin{equation}\label{eq5.2.3}
+	\left|(\DD^\alpha f)(a)\right|\le\sup_{z\in K}\left|(\DD^\alpha f)(z)\right|\le\frac{\alpha!}{\varepsilon^{|\alpha|}}\sup_{\zeta\in K_\varepsilon}|f(\zeta)|.
+\end{equation}
+由于$K_\varepsilon$是紧的，$\sup_{\zeta\in K_\varepsilon}|f(\zeta)|=M<\infty$，故从\eqref{eq5.2.3}可得
+\[\left|\frac{(\DD^\alpha f)(a)}{\alpha!}(z-a)^\alpha\right|\le M\left(\frac{|z_1-a_1|}{\varepsilon}\right)^{\alpha_1}\cdots\left(\frac{|z_n-a_n|}{\varepsilon}\right)^{\alpha_n}.\]
+这说明对任意$f\in H(G)$，展开式
+\begin{equation}\label{eq5.2.4}
+	f(z)=\sum_{\alpha\ge0}\frac{(\DD^\alpha f)(a)}{\alpha!}(z-a)^\alpha
+\end{equation}
+在$P(a,\varepsilon)$中成立，由此便可得$d(a,\MC^n\setminus G)\ge\varepsilon$.事实上，如果$d(a,\MC^n\setminus G)=\delta<\varepsilon$，则必有$b\in\MC^n\setminus G$，使得$d(a,b)=\delta<\varepsilon$，即$b\in P(a,\varepsilon)$.这就是说
+\[P(a,\varepsilon)\cap (\MC^n\setminus G)\neq\varnothing.\]
+既然\eqref{eq5.2.4}在$P(a,\varepsilon)$中成立，这说明每个$f\in H(G)$能全纯开拓出$G$，这和$G$是全纯域相矛盾.由于$a$是$\widehat{K}$中任意点，所以得$d(\widehat{K},\MC^n\setminus G)\ge\varepsilon$.这样我们就在$d(K,\MC^n\setminus G)>\varepsilon$的假定下，证明了$d(\widehat{K},\MC^n\setminus G)\ge\varepsilon$.现在就利用这一结论来证明\eqref{eq5.2.1}.因为$K\subset\widehat{K}$，所以$d(\widehat{K},\MC^n\setminus G)\le d(K,\MC^n\setminus G)$.如果等号不成立，不妨设$d(K,\MC^n\setminus G)-d(\widehat{K},\MC^n\setminus G)>\eta>0$.现在取$\varepsilon'=d(\widehat{K},\MC^n\setminus G)+\eta$，则得$d(K,\MC^n\setminus G)>\varepsilon'$，因而$d(\widehat{K},\MC^n\setminus G)\ge\varepsilon'=d(\widehat{K},\MC^n\setminus G)+\eta$，即$\eta\le0$.这和$\eta$的取法相矛盾，因而\eqref{eq5.2.1}成立.
+\end{proof}
+作为定理\ref{thm5.2.1}的简单推论，我们有
+\begin{theorem}\label{thm5.2.2}
+	$\MC^n$中每个全纯域一定是全纯凸域.
+\end{theorem}
+\begin{proof}
+	因为$K\subset\subset G$等价于$d(K,\MC^n\setminus G)>0$.故由定理\ref{thm5.2.1}，从$K\subset\subset G$立刻可得$\widehat{K}\subset\subset G$，因而$G$是全纯凸的.
+\end{proof}
+\subsection{全纯凸域一定是全纯域}
+定理\ref{thm5.2.2}的逆也是成立的.实际上，我们在证明定理\ref{thm5.1.13}的必要性时，已经证明了全纯凸域一定是全纯域，不过我们现在想证明得更多一些.下面我们将证明，在全纯凸域$G$上存在这样的函数$f\in H(G)$，它在$\partial G$每点附近都是无界的.为此，先证明下面的
+\begin{lemma}\label{lem5.2.3}
+	设$G$是$\MC^n$中的域.若$\{K_\nu\}$是$G$的一个正规穷竭，那么存在$G$中的点列$\{p_j\}$和严格递增的自然数列$\{\nu_j\}$，使得
+	
+	(1)
+	$p_j\in K_{\nu_{j+1}}\setminus K_{\nu_j},j=1,2,\cdots$
+	
+	(2)
+	对于每个$\zeta\in\partial G$和$\zeta$的邻域$U(\zeta),U(\zeta)\cap G$中必有$\{p_j\}$中无穷多个点.
+\end{lemma}
+\begin{proof}
+	设$a$是$\MC^n$中任意有理点，$r$是任意正有理数，记
+	\[A=\left\{B(a,r)\colon B(a,r)\cap G\neq\varnothing,B(a,r)\cap(\MC^n\setminus G)\neq\varnothing\right\}.\]
+	显然，$A$是可列集，可排列为$B_1,B_2,\cdots$，命
+	\[D_j=B_j\cap G,\quad j=1,2,\cdots.\]
+	任取$p_1\in D_1$，因$D_1=B_1\cap G\subset G$，而$G=\bigcup\limits_{\nu=1}^\infty K_\nu=\bigcup\limits_{\nu=0}^\infty(K_{\nu+1}\setminus K_\nu),K_0=\varnothing$，故存在某个$\nu_1\in\MN$，使得$p_1\in K_{\nu_1+1}\setminus K_{\nu_1}$.今从$p_1$设法选$p_2$.从$D_2$的定义以及$K_{\nu_1+1}$是$G$中紧集这一事实，即知$D_2\setminus K_{\nu_1+1}$不空.任取$p_2\in D_2\setminus K_{\nu_1+1}$，因为$p_2\in D_2\subset G$，故必存在$\nu_2\in\MN$，使得$p_2\in K_{\nu_2+1}\setminus K_{\nu_2}$.因为$p_2\notin K_{\nu_1+1}$，故必有$\nu_2>\nu_1$.这个过程一直可以进行下去，我们得到$\{p_j\}$满足
+	\[p_j\in K_{\nu_j+1}\setminus K_{\nu_j},p_j\in D_j\setminus K_{\nu_{j-1}+1},\nu_j>\nu_{j-1}.\]
+	现在证明$\partial G$的每一点都是$\{p_l\}$的极限点.为此，任取$\zeta\in\partial G$，如果$\zeta$的邻域$U(\zeta)$中只含$\{p_l\}$中的有限个点，设这有限个点与$\zeta$的最短距离为$\delta$.今在$B\left(\zeta,\frac{\delta}{2}\right)$中取一充分靠近$\zeta$的有理点$\zeta^\ast$，取一小于$\frac{\delta}{2}$的正有理数$r$，使得$B(\zeta^\ast,r)\subset B\left(\zeta,\frac{\delta}{2}\right)$，且$B(\zeta^\ast,r)\cap G\neq\varnothing,B(\zeta^\ast,r)\cap(\MC^n\setminus G)\neq\varnothing$，因而$B(\zeta^\ast,r)\in A$，不妨记$B(\zeta^\ast,r)=B_s$.显然$B_s$中没有$\{p_l\}$中的点.但由$\{p_l\}$的构造知道，$p_s\in D_s\subset B_s$，这就产生了矛盾，因而$U(\zeta)$中必有$\{p_l\}$中无穷多个点.
+\end{proof}
+现在容易证明
+\begin{theorem}\label{thm5.2.4}
+	设$G$是$\MC^n$中的全纯凸域，则必存在$G$上的全纯函数$f$，它在$\partial G$每点附近都是无界的，即$\partial G$是$f$的\textbf{自然边界}\index{Z!自然边界}.
+\end{theorem}
+\begin{proof}
+	由引理\ref{lem5.1.10}，存在$G$的一个正规穷竭$\{K_j\}$，使得$K_j=\widehat{K}_j,j=1,2,\cdots$.再由引理\ref{lem5.2.3}，存在点列$\{p_j\}$和严格递增的自然数列$\{\nu_j\}$，使得$p_j\in K_{\nu_{j+1}}\setminus K_{\nu_j},\partial G$上的每一点都是$\{p_j\}$的极限点.由于$\{K_{\nu_j}\}$也是$G$的一个满足$K_{\nu_j}=\widehat{K}_{\nu_j}$的正规穷竭，故由引理\ref{lem5.1.12}，存在$f\in H(G)$，使得$\lim\limits_{j\to\infty}|f(p_j)|=\infty$.由于$\partial G$上每点都是$\{p_j\}$的极限点，故$f$在$\partial G$每点附近无界.
+\end{proof}
+由此立刻可得
+\begin{theorem}\label{thm5.2.5}
+	$\MC^n$中每个全纯凸域一定是全纯域.
+\end{theorem}
+\begin{proof}
+	由定理\ref{thm5.2.4}即得.
+\end{proof}
+综合上面的结果，我们得到
+\begin{theorem}[（\textbf{Cartan-Thullen}）]\index{D!定理!Cartan-Thullen定理}
+	设$G$是$\MC^n$中的开集，则下列事实等价：
+	
+	(1)
+	$G$是全纯域；
+	
+	(2)
+	$G$是全纯凸域；
+	
+	(3)
+	存在一个$G$上的全纯函数，它以$\partial G$为自然边界.
+\end{theorem}
+\section{Levi拟凸域\label{sec5.3}}
+\subsection{欧氏凸域的分析特征}
+\begin{minipage}{0.4\textwidth}\parindent=2em
+	前面我们从平面上欧氏凸域的几何凸包所具有的性质（命题\ref{prop5.1.6}）得到启发，引进了全纯凸域的概念，从而给出了全纯域的一种刻画，即全纯域和全纯凸域是等价的.这一节我们将从$\MR^N$中欧氏凸域的边界所具有的性质出发，引进拟凸域的概念，进而证明它和全纯域也是等价的.我们先来考察，如何用边界条件来刻画欧氏凸域.
+\end{minipage}
+\noindent\begin{minipage}{0.6\textwidth}
+	\centering
+	\begin{tikzpicture}[> = Stealth, thick, scale = 1.3]
+		\draw [->] (-1.6,0) -- (0,0)node[below left]{$O$} -- (2,0)node[below]{$x_1,\cdots,x_{N-1}$};
+		\draw [->] (0,-1) -- (0,0.7)node[right]{$G$} -- (0,2)node[left]{$x_N$};
+		\draw[smooth,domain=-1.5:1]plot(\x,0.5*\x*\x);
+		\draw[smooth,domain=1:2.2]plot(\x,{-0.5*(\x-2)^2+1});
+		\node (a) at (2.5,0.3) {$x_N=f(x_1,\cdots,x_{N-1})$};
+	\end{tikzpicture}
+	\captionof{figure}{\label{fig5.1}}
+\end{minipage}
+
+设$G\subset\MR^N$，对每一个$x\in\partial G$，可以通过平移、旋转把$x$变成坐标原点，并使$G$的边界$\partial G$在$x$处的切平面正好是$x_N=0$.这时在原点附近，$G$可表示为
+\[G=\left\{(x_1,\cdots,x_N)\in\MR^N\colon f(x_1,\cdots,x_{N-1})-x_N<0\right\}.\]
+$G$在原点附近是欧氏凸域等价于由$f$的二阶导数构成的方阵半正定
+\begin{equation}\label{eq5.3.1}
+	\left(\pppp{f}{x_j}{x_l}\right)_{1\le j,l\le N-1}\ge0;
+\end{equation}
+
+严格凸等价于上述方阵正定
+\begin{equation}\label{eq5.3.2}
+	\left(\pppp{f}{x_j}{x_l}\right)_{1\le j,l\le N-1}>0.
+\end{equation}
+如果记$r=f(x_1,\cdots,x_{N-1})-x_N$，因为$f$在原点达到极小，所以$\pp{r}{x_j}\bigg|_{x=0}=\pp{f}{x_j}\bigg|_{x=0}=0,j=1,\cdots,N-1$，但$\pp{r}{x_N}=-1\neq0$，即$r(x_1,\cdots,x_N)=0$在原点处的法向量是$(0,\cdots,0,-1)$，因而切向量是$(\eta_1,\cdots,\eta_{N-1},0)$.由于\eqref{eq5.3.1}，\eqref{eq5.3.2}分别为
+\[\sum_{j,l=1}^{N-1}\pppp{f}{x_j}{x_l}\eta_j\eta_l=\sum_{j,l=1}^{N-1}\pppp{r}{x_j}{x_l}\eta_j\eta_l\ge0\quad\text{（或$>0$）},\]
+又因为$\eta$的第$N$个坐标为$0$，故上式等价于
+\[\sum_{j,l=1}^N \pppp{r}{x_j}{x_l}\eta_j\eta_l\ge0\quad\text{（或$>0$）}.\]
+因而\eqref{eq5.3.1}，\eqref{eq5.3.2}可理解为$N$阶方阵$\left(\pppp{r}{x_j}{x_l}\right)_{1\le j,l\le N}$在原点的切平面半正定或正定.为了能把上面的结果严格地叙述出来，我们引进下面的定义.
+\begin{definition}\label{def5.3.1}
+	$\MR^N$中的开集$G$在$p\in\partial G$点称为具有$C^k(1\le k\le\infty)$类\textbf{可微边界}，如果存在$p$点的邻域$U$和一个实值函数$\varphi\in C^k(U)$，使得
+	
+	(1)\hypertarget{5.3.1}{}
+	$U\cap G=\{x\in U\colon\varphi(x)<0\}$；
+	
+	(2)\hypertarget{5.3.1}{}
+	$\dif\varphi(x)\neq0,x\in U$.
+	
+	如果$\partial G$上每一点都具有$C^k$类可微边界，就称$G$具有\textbf{$C^k$类可微边界}，简称\textbf{$G$具有$C^k$边界}.
+	
+	任何满足\hyperlink{5.3.1}{(1)}、\hyperlink{5.3.1}{(2)}的函数$\varphi\in C^k(U)$称为$G$在$p$点的\textbf{局部定义函数}\index{J!局部定义函数}.如果$U$是$\partial G$的邻域，那么满足\hyperlink{5.3.1}{(1)}、\hyperlink{5.3.1}{(2)}的函数$\varphi\in C^k(U)$称为$G$的\textbf{整体定义函数}，简称$G$的\textbf{定义函数}\index{D!定义函数}.
+\end{definition}
+例如$\varphi(z)=z\bar{z}'-1$便是单位球的定义函数.
+
+容易看出，从定义\ref{def5.3.1}的\hyperlink{5.3.1}{(1)} \hyperlink{5.3.1}{(2)}即可推出
+\[U\cap\partial G=\{x\in U\colon\varphi(x)=0\},\]
+\[U\setminus\bar{G}=\{x\in U\colon\varphi(x)>0\}.\]
+对于有界域，一定有整体定义函数.
+\begin{prop}\label{prop5.3.2}
+	设$G$是$\MR^N$中具有$C^k$边界的有界域，则必存在$G$的整体定义函数，即存在$\partial G$的邻域$U$和$\varphi\in C^k(U)$，使得
+	\[G\cap U=\{x\in U\colon\varphi(x)<0\}.\]
+\end{prop}
+\begin{proof}
+	由于$\partial G$是紧的，故存在有限多个开集$U_1,\cdots,U_m$和局部定义函数$\varphi_j\in C^k(U_j)$，\\
+	$j=1,\cdots,m$，使得$\partial G\subset\bigcup\limits_{j=1}^m U_j$.记$U=\bigcup\limits_{j=1}^m U_j$.由单位分解定理\ref{thm4.6.3}，存在$f_j\in C_0^\infty(U_j),0\le f_j\le1$，在$U$上有$\sum\limits_{j=1}^m f_j(x)=1$.现在定义
+	\[\varphi=\sum_{j=1}^{m}f_j\varphi_j,\]
+	那么$\varphi\in C^k(\MR^N)$.现任取$x\in\partial G$，则必存在某个$l$，使得$x\in U_l$.对于其它$U_j,j\neq l$，有两种情形：如果$x\notin U_j$，则因$\supp f_j\subset U_j$，所以$f_j(x)=0$；如果$x\in U_j$，则$\varphi_j(x)=0$，因而总有$\varphi(x)=0$.同样道理$\dif\varphi(x)\neq0$.适当收缩$U$，即可断言对所有$x\in U,\dif\varphi(x)\neq0$.最后来证明
+	\[U\cap G=\{x\in U\colon\varphi(x)<0\}.\]
+	事实上，如果$x\in U\cap G$，则必存在某个$l$，使得$x\in U_l\cap G$，和上面一样讨论，即可得$\varphi(x)\le f_l(x)\varphi_l(x)$.反之，如果对某点$x\in U$，有$\varphi(x)<0$，则从$\varphi$的定义知道，必有某个$j$，使得$\varphi_j(x)<0$，因而$x\in U_j\cap G\subset U\cap G$.
+\end{proof}
+现在给出$\partial G$某点处切空间的定义.
+
+设$G\subset\MR^N$具有$C^1$边界，$\varphi$是$G$的定义函数，$p\in\partial G$，我们称
+\[T_p(\partial G)=\left\{\xi\in\MR^N\colon\sum_{j=1}^N \pp{\varphi}{x_j}(p)\xi_j=0\right\}\]
+为$\partial G$在$p$点处的\textbf{切空间}\index{Q!切空间}\index[symbolindex]{\textbf{点集}!$T_p(\partial G)$}.
+现在可以把刚才讨论的结果表述为：
+
+设$G$是$\MR^N$中具有$C^2$边界的有界域\index{C!$C^2$边界}，$\varphi$是它的定义函数，那么$G$是欧氏凸域的充分必要条件是
+\begin{equation}\label{eq5.3.3}
+	\sum_{j,k=1}^{N}\pppp{\varphi}{x_j}{x_k}(p)\xi_j\xi_k\ge0
+\end{equation}
+对所有$p\in\partial G$和$\xi\in T_p(\partial G)$成立.
+
+如果下式成立
+\[\sum_{j,k=1}^{N}\pppp{\varphi}{x_j}{x_k}(p)\xi_j\xi_k>0,\quad \xi\in T_p(\partial G),\quad \xi\neq0,\]
+就说$G\subset\MR^N$在$p\in\partial G$是强欧氏凸的.如果$G$在$\partial G$的每点都是强欧氏凸的，就说$G$是强欧氏凸域.
+\subsection{Levi拟凸域和强拟凸域}
+1910年，E. E. Levi发现具有$C^2$边界的全纯域，它的定义函数也满足一个类似于\eqref{eq5.3.3}的条件（在复的形式下）.由于欧氏凸域在双全纯映射下不再是欧氏凸域（这一点从单复变的Riemann共形映射存在定理即可看出），而全纯域在双全纯映射下还是全纯域.为了要得到Levi的条件，我们应该研究一下\eqref{eq5.3.3}的哪部分在双全纯映射下不变.
+
+条件\eqref{eq5.3.3}是说由定义函数$\varphi$的二阶偏导数构成的二次型在切空间$T_p(\partial G)$上是半正定的.在复的形式下，切空间$T_p(\partial G)$应该由复切空间来代替.我们知道，$\MC^n$中的点$z=(z_1,\cdots,z_n)$也可看成$\MR^{2n}$中的点
+\[z=(x_1,y_1,\cdots,x_n,y_n),\]
+这里$z_j=x_j+\ii y_j$.因此$\ii z$作为$\MR^{2n}$中的点，它的坐标是
+\[\ii z=(-y_1,x_1,\cdots,-y_n,x_n).\]
+设$w=(w_1,\cdots,w_n)$是$\MC^n$中另一个点，$w_j=u_j+\ii v_j$.作为$\MC^n$中的向量，$z,w$正交是指
+\[\langle z,w\rangle=\sum_{j=1}^{n}z_j\bar{w}_j=0.\]
+作为$\MR^{2n}$中的向量，$z,w$正交是指
+\[z\cdot w=\sum_{j=1}^{n}(x_ju_j+y_jv_j)=0.\]
+容易看出$\langle z,w\rangle$和$z\cdot w$有下面的关系：
+\begin{equation}\label{eq5.3.4}
+	z\cdot w=\Re\langle z,w\rangle,\quad -\ii z\cdot w=\Im\langle z,w\rangle.
+\end{equation}
+设$w$是$\MC^n$中一个给定的向量，从\eqref{eq5.3.4}可以看出，$z$和$w$复正交，即$\langle z,w\rangle=0$的充分必要条件是
+\[z\cdot w=0,\,-\ii z\cdot w=0.\]
+如果记$-\ii z=z'$，则$z'$和$w$实正交，而$z=\ii z'$.因此，$z$和$w$复正交的充分必要条件是$z$和$w$实正交，而且$z=\ii z',z'$是一个与$w$实正交的向量.由此，我们给出复切空间的定义如下：
+\begin{definition}\label{def5.3.3}
+	设$G\subset\MC^n$具有$C^1$边界，称
+	\[T_p^\MC(\partial G)=T_p(\partial G)\cap\ii T_p(\partial G)\]
+	为$\partial G$在$p$点的\textbf{复切空间}\index{F!复切空间}\index[symbolindex]{\textbf{点集}!$T_p^\MC(\partial G)$}.
+\end{definition}
+\begin{prop}\label{prop5.3.4}
+	设$\varphi$是$G\subset\MC^n$在$p\in\partial G$处的局部定义函数，那么
+	\[T_p^\MC(\partial G)=\left\{w\in\MC^n\colon\sum_{j=1}^{n}\pp{\varphi}{z_j}(p)w_j=0\right\}.\]
+\end{prop}
+\begin{proof}
+	因为$\pp{}{z_j}=\frac12\left(\pp{}{x_j}-\ii\pp{}{y_j}\right),w_j=u_j+\ii v_j$，所以$\sum\limits_{j=1}^n \pp{\varphi}{z_j}(p)w_j=0$的充分必要条件是
+	\[\sum_{j=1}^{n}\left(\pp{\varphi}{x_j}(p)u_j+\pp{\varphi}{y_j}(p)v_j\right)=0,\]
+	\[\sum_{j=1}^{n}\left(\pp{\varphi}{x_j}(p)v_j-\pp{\varphi}{y_j}(p)u_j\right)=0.\]
+	前者说明$w\in T_p(\partial G)$，后者说明$-\ii w\in T_p(\partial G)$，即$w\in\ii T_p(\partial G)$.
+\end{proof}
+现在把\eqref{eq5.3.3}中的二次型用复的形式来表示.
+
+记$w_j=\xi_j+\ii\eta_j$，把$w=(\xi_1,\eta_1,\cdots,\xi_n,\eta_n)$看成$\MR^{2n}$中的点.注意到
+\[\pp{}{x_j}=\pp{}{z_j}+\pp{}{\bar{z}_j},\quad \pp{}{y_j}=\frac1{\ii}\left(\pp{}{\bar{z}_j}-\pp{}{z_j}\right),\]
+\[\xi_j=\frac12(w_j+\bar{w}_j),\quad \eta_j=\frac1{2\ii}(w_j-\bar{w}_j),\]
+那么\eqref{eq5.3.3}中的二次型可以写为
+\begin{align*}
+	&\sum_{j,k=1}^{n}\pppp{\varphi}{x_j}{x_k}(p)\xi_j\xi_k+2\sum_{j,k=1}^{n}\pppp{\varphi}{x_j}{y_k}(p)\xi_j\eta_k+\sum_{j,k=1}^{n}\pppp{\varphi}{y_j}{y_k}(p)\eta_j\eta_k\\
+	=&\frac14\sum_{j,k=1}^{n}\left(\pp{}{z_j}+\pp{}{\bar{z}_j}\right)\left(\pp{}{z_k}+\pp{}{\bar{z}_k}\right)\varphi(p)(w_j+\bar{w}_j)(w_k+\bar{w}_k)+\\
+	&\frac12\sum_{j,k=1}^{n}\left(\pp{}{z_j}+\pp{}{\bar{z}_j}\right)\frac1{\ii}\left(\pp{}{\bar{z}_k}-\pp{}{z_k}\right)\varphi(p)(w_j+\bar{w}_j)\frac1{\ii}(w_k-\bar{w}_k)+\\
+	&\frac14\sum_{j,k=1}^{n}\frac1{\ii}\left(\pp{}{\bar{z}_j}-\pp{}{z_j}\right)\frac1{\ii}\left(\pp{}{\bar{z}_k}-\pp{}{z_k}\right)\varphi(p)\cdot\\
+	&\frac1{\ii}(w_j-\bar{w}_j)\frac1{\ii}(w_k-\bar{w}_k)\\
+	=&2\Re\left\{\sum_{j,k=1}^{n}\pppp{\varphi}{z_j}{z_k}(p)w_jw_k\right\}+2\sum_{j,k=1}^{n}\pppp{\varphi}{z_j}{\bar{z}_k}(p)w_j\bar{w}_k.
+\end{align*}
+如果记\index[symbolindex]{\textbf{函数和映射}!$Q_p(\varphi$，$w)$}\index[symbolindex]{\textbf{函数和映射}!$L_p(\varphi$，$w)$}
+\[Q_p(\varphi,w)=\sum_{j,k=1}^{n}\pppp{\varphi}{z_j}{z_k}(p)w_jw_k,\]
+\begin{equation}\label{eq5.3.5}
+	L_p(\varphi,w)=\sum_{j,k=1}^{n}\pppp{\varphi}{z_j}{\bar{z}_k}(p)w_j\bar{w}_k,
+\end{equation}
+那么\eqref{eq5.3.3}中的二次型即为
+\[2\Re Q_p(\varphi,w)+2L_p(\varphi,w).\]
+因此，$G$是欧氏凸域的条件可用复的形式表示为
+\begin{equation}\label{eq5.3.6}
+	\Re Q_p(\varphi,w)+L_p(\varphi,w)\ge0,\quad w\in T_p(\partial G).
+\end{equation}
+注意到
+\[Q_p(\varphi,-\ii w)=-Q_p(\varphi,w),\quad L_p(\varphi,-\ii w)=L_p(\varphi,w).\]
+在\eqref{eq5.3.6}中用$-\ii w$代$w$，即得
+\begin{equation}\label{eq5.3.7}
+	-\Re Q_p(\varphi,w)+L_p(\varphi,w)\ge0,\quad -\ii w\in T_p(\partial G).
+\end{equation}
+\eqref{eq5.3.6}，\eqref{eq5.3.7}两式相加即得
+\begin{equation}\label{eq5.3.8}
+	L_p(\varphi,w)\ge0,\quad w\in T_p^\MC(\partial G).
+\end{equation}
+这就是Levi得到的条件.稍后我们将证明这个条件在双全纯映射下是不变的.现在就用条件\eqref{eq5.3.8}来定义一类新的域.通常称\eqref{eq5.3.8}为\textbf{Levi条件}\index{L!Levi条件}.
+\begin{definition}\label{def5.3.5}
+	如果Levi条件\eqref{eq5.3.8}对$\MC^n$中具有$C^2$边界的域$G$的某个在$p$点附近的局部定义函数$\varphi$成立，称$G$在$p\in\partial G$是\textbf{Levi拟凸的}.如果Levi条件\eqref{eq5.3.8}对所有$p\in\partial G$成立，称$G$是\textbf{Levi拟凸域}\index{Y!域!Levi拟凸域}.
+\end{definition}
+\begin{definition}\label{def5.3.6}
+	设$G$是$\MC^n$中具有$C^2$边界的域，如果$L_p(\varphi,w)>0$对所有$w\in T_p^\MC(\partial G),w\neq0$成立，称$G$在$p\in\partial G$是\textbf{强Levi拟凸的}.如果$G$在每点$p\in\partial G$都是强Levi拟凸的，称$G$是\textbf{强Levi拟凸域}\index{Y!域!强Levi拟凸域}.
+\end{definition}
+由\eqref{eq5.3.5}式定义的$L_p(\varphi,w)$称为\textbf{Levi形式}\index{L!Levi形式}或定义函数$\varphi$在$p$点的\textbf{复Hessian}\index{F!复Hessian}.
+
+从上面的讨论，我们已经得到
+\begin{theorem}\label{thm5.3.7}
+	$\MC^n$中具有$C^2$边界的欧氏凸域是Levi拟凸域.
+\end{theorem}
+定理\ref{thm5.3.7}的逆是不成立的.
+
+下面看几个例子.
+\begin{example}\label{exa5.3.8}
+单位球$B_n$是强Levi拟凸域.	
+\end{example}
+\begin{proof}
+	因为它的定义函数$\varphi(z)=z\bar{z}'-1,\pp{\varphi}{z_j}=\bar{z}_j,\pppp{\varphi}{z_j}{\bar{z}_k}=\delta_{jk}$，所以
+	\[\sum_{j,k=1}^{n}\pppp{\varphi}{z_j}{\bar{z}_k}w_j\bar{w}_k=\sum_{j,k=1}^{n}\delta_{jk}w_j\bar{w}_k=\sum_{j=1}^{n}|w_j|^2>0,w\neq0.\]
+	因而$B_n$是强Levi拟凸域.
+\end{proof}
+\begin{example}\label{exa5.3.9}
+	域$G=\{z\in\MC^n\colon|z_1|^{p_1}+\cdots+|z_n|^{p_n}<1,p_j\ge2,j=1,\cdots,n\}$是Levi拟凸域.只有当$p_1=\cdots=p_n=2$时，它是强Levi拟凸域.
+\end{example}
+\begin{proof}
+	$G$的定义函数是
+	\[\varphi(z)=\left(z_1\bar{z}_1\right)^{\frac{p_1}2}+\cdots+\left(z_n\bar{z}_n\right)^{\frac{p_n}2}-1.\]
+	直接计算可得
+	\[\pp{\varphi}{z_j}=\frac{p_j}{2}\left(z_j\bar{z}_j\right)^{\frac{p_j}{2}-1}\bar{z}_j,\quad 
+	\pppp{\varphi}{z_j}{\bar{z}_k}=\frac{p_j^2}{4}|z_j|^{p_j-2}\delta_{jk}.\]
+	因而
+	\begin{equation}\label{eq5.3.9}
+		\sum_{j,k=1}^{n}\pppp{\varphi(\zeta)}{z_j}{\bar{z}_k}w_j\bar{w}_k=\frac14\sum_{j=1}^{n}p_j^2 |\zeta_j|^{p_j-2}|w_j|^2\ge0.	\end{equation}
+	因而$G$是Levi拟凸域.如果有某个$p_l>2$，这时取$\zeta\in\partial G$，要求它的第$l$个坐标$\zeta_l=0$，取$w=(0,\cdots,1,\cdots,0)$，它的第$l$个坐标为$1$，其它坐标为$0$，则$w\in T_\zeta^\MC(\partial G)$，且\eqref{eq5.3.9}的左端为$0$.因此$G$在这种点上不是强拟凸域.但当$p_j=2,j=1,\cdots,n$时，这种情况不会发生，这时$G$就是单位球.
+\end{proof}
+\begin{example}\label{exa5.3.10}
+	当$p_j\ge1(j=1,\cdots,n)$时，例\ref{exa5.3.9}中的域$G$是欧氏凸域.
+\end{example}
+\begin{proof}
+	我们用欧氏凸域的几何定义来证.我们证明，如果$a\in G,b\in G$，那么$\frac{a+b}{2}$也属于$G$.事实上，记
+	\[\varphi(z)=\sum_{j=1}^{n}|z_j|^{p_j}-1,\]
+	则$\varphi(a)<0,\varphi(b)<0$.利用不等式
+	\[(t_1+t_2)^p \le 2^{p-1}(t_1^p+t_2^p),\quad t_1\ge0,t_2\ge0,p\ge1.\]
+	即得
+	\begin{align*}
+		\varphi\left(\frac{a+b}{2}\right)
+		&=\sum_{j=1}^{n}\left|\frac{a_j+b_j}{2}\right|^{p_j}-1\le\sum_{j=1}^{n}\frac{1}{2^{p_j}}\left(|a_j|+|b_j|\right)^{p_j}-1\\
+		&\le\frac12\sum_{j=1}^{n}\left(|a_j|^{p_j}+|b_j|^{p_j}\right)-1<0.
+	\end{align*}
+因而$G$是欧氏凸域.
+\end{proof}
+这个例子说明欧氏凸域不一定是强Levi拟凸域.
+\subsection{Levi拟凸性和域的定义函数无关\index{D!定义函数!域的定义函数}}
+在上面的Levi拟凸域和强Levi拟凸域的定义中，存在一个明显的问题，那就是定义函数的不唯一性.
+如果在$\varphi$作为定义函数时，$G$是Levi拟凸域，换了另一个定义函数，它是否还是Levi拟凸域？下面我们将证明，域的Levi拟凸性或强Levi拟凸性与定义函数的选取无关.为此先证明
+\begin{prop}\label{prop5.3.11}
+	设$G$是$\MC^n$中的域，$p\in\partial G,U$是$p$的邻域.如果$\varphi$和$\psi$是$G$的两个在$U$上的$C^k$类局部定义函数，那么存在$p$的邻域$V\subset U$和唯一的正函数$h\in C^{k-1}(V)$，使得
+	\[\varphi=h\psi\]
+	在$V$上成立.
+\end{prop}
+\begin{proof}
+	因为$p\in U\cap\partial G$，所以$\varphi(p)=0$.由于$\dif\varphi(p)\neq0$，不妨设$\pp{\varphi}{x_1}(p)\neq0$.根据隐函数存在定理，存在$p$的邻域$V$，使得在$V$上可以从$\varphi(x_1,\cdots,x_n,y_1,\cdots,y_n)=0$中解出
+	\[x_1=\sigma(x_2,\cdots,x_n,y_1,\cdots,y_n).\]
+	不妨设$\varphi<0$对应于$x_1<\sigma(x_2,\cdots,x_n,y_1,\cdots,y_n)$.作变换
+	\[\Phi\colon(x_1,\cdots,x_n,y_1,\cdots,y_n)\to(u_1,\cdots,u_n,v_1,\cdots,v_n)\]
+	如下
+	\[u_1=x_1-\sigma(x_2,\cdots,x_n,y_1,\cdots,y_n),\]
+	\[u_j=x_j-p_j,\quad j=2,\cdots,n.\]
+	\[v_j=y_j-p_{n+j},\quad j=1,\cdots,n.\]
+	这里$(p_1,\cdots,p_{2n})$是$p$在$\MR^{2n}$中的坐标.记$\Phi(V)=Q$，命
+	\[\widetilde{\varphi}=\varphi\circ\Phi^{-1},\quad \widetilde{\psi}=\psi\circ\Phi^{-1},\]
+	则$\widetilde{\varphi}$和$\widetilde{\psi}$是$Q$上的$C^k$类函数.由于$\Phi(p)=0$，故$Q$是原点的邻域.不妨假定$Q$是欧氏凸的，不然的话，作一个以原点为中心包含在$Q$中的小球即行.命
+	\[h_1(u_1,\cdots,u_n,v_1,\cdots,v_n)=\int_{0}^{1}\pp{\widetilde{\varphi}}{u_1}(tu_1,u_2,\cdots,u_n,v_1,\cdots,v_n)\dif t,\]
+	\[h_2(u_1,\cdots,u_n,v_1,\cdots,v_n)=\int_{0}^{1}\pp{\widetilde{\psi}}{u_1}(tu_1,u_2,\cdots,u_n,v_1,\cdots,v_n)\dif t.\]
+	因为$Q$是欧氏凸域，上述积分有意义，且$h_1,h_2\in C^{k-1}(Q)$.因为$\pp{\widetilde{\varphi}}{u_1}=\pp{\varphi}{x_1}\neq0,\pp{\widetilde{\psi}}{u_1}=\pp{\psi}{x_1}\neq0$（因为$\dif\psi\neq0$，故可假设$\pp{\psi}{x_1}\neq0$），所以$h_1\neq0,h_2\neq0$.由于$\widetilde{\varphi}(0,u_2,\cdots,v_n)=\varphi\circ\Phi^{-1}(0,u_2,\cdots,v_n)=0$，因而
+	\begin{align*}
+		h_1(u_1,\cdots,v_n)
+		&=\frac1{u_1}\left(\widetilde{\varphi}(u_1,\cdots,v_n)-\widetilde{\varphi}(0,u_2,\cdots,v_n)\right)\\
+		&=\frac1{u_1}\widetilde{\varphi}(u_1,\cdots,v_n).
+	\end{align*}
+故得$h_1u_1=\widetilde{\varphi}$，同理$h_2u_1=\widetilde{\psi}$在$Q$上成立.命$\widetilde{h}=\frac{h_1}{h_2}$，则$\widetilde{h}\in C^{k-1}(Q)$.命$h=\widetilde{h}\circ\Phi$，则$h\in C^{k-1}(V)$.且当$z\in V$时，有
+\begin{align*}
+	h(z)\psi(z)
+	&=\widetilde{h}(\Phi(z))\widetilde{\psi}(\Phi(z))=\frac{h_1(\Phi(z))}{h_2(\Phi(z))}\widetilde{\psi}(\Phi(z))\\
+	&=h_1(\Phi(z))u_1=\widetilde{\varphi}(\Phi(z))=\varphi(z).
+\end{align*}
+$h$的唯一性由上面的等式即明.由于$\varphi$和$\psi$在$G\cap U$中都取负值，在$(\MC^n\setminus G)\cap U$中都取正值，所以$h$在$G\cap U$和$(\MC^n\setminus G)\cap U$中取正值.至于在$\partial G$上，由于$\dif\varphi=h\dif\psi+\psi\dif h=h\dif\psi$，且因$\dif\varphi\neq0,\dif\psi\neq0$，所以$h\neq0$.而已知$h$在$G$内取正值，故在$\partial G$上也取正值.
+\end{proof}
+有了这个命题就可证明下面的
+\begin{prop}\label{prop5.3.12}
+	设$G$是$\MC^n$中的域，$p\in\partial G,U$是$p$的邻域.如果$\varphi$和$\psi$是$G$的两个在$U$上的$C^2$定义函数，那么
+	
+	(1)\hypertarget{5.3.12}{}
+	由$\varphi$和$\psi$产生的$p$点处的复切空间是相同的；
+	
+	(2)\hypertarget{5.3.12}{}
+	如果$\varphi$满足Levi条件\eqref{eq5.3.8}。那么$\psi$也满足.
+\end{prop}
+\begin{proof}
+	\hyperlink{5.3.12}{(1)}
+	由命题\ref{prop5.3.11}，存在$p$的邻域$V\subset U$及正函数$h\in C^1(V)$，使得$\varphi=h\psi$在$V$上成立.于是
+	\begin{equation}\label{eq5.3.10}
+		\pp{\varphi}{z_j}=\pp{h}{z_j}\psi+h\pp{\psi}{z_j}.
+	\end{equation}
+由于$\psi(p)=0$，所以
+\[\sum_{j=1}^{n}\pp{\varphi}{z_j}(p)w_j=h(p)\sum_{j=1}^{n}\pp{\psi}{z_j}(p)w_j.\]
+由命题\ref{prop5.3.4}，即知二者产生的复切空间$T_p^\MC(\partial G)$是相同的.
+	
+	\hyperlink{5.3.12}{(2)}
+	在证明第二个结论时，我们需要如下的一个简单事实.设$f,g$是定义在$a\in\MR^N$附近的两个函数，$g(a)=0,\pp{g}{x_j}(a)$存在，$f$在$a$处连续，那么$fg$在$a$处对$x_j$的偏导数存在，而且
+	\[\pp{(fg)}{x_j}(a)=f(a)\pp{g}{x_j}(a).\]
+	
+	现在让\eqref{eq5.3.10}的两端对$\bar{z}_k$求偏导数，并在$p$处连续，$\psi(p)=0$，因而应用上面的简单事实可得
+	\[\pp{}{\bar{z}_k}\left(\pp{h}{z_j}\psi\right)(p)=\pp{h}{z_j}(p)\pp{\psi}{\bar{z}_k}(p).\]
+	\eqref{eq5.3.10}右端第二项求导的结果是
+	\[\pp{}{\bar{z}_k}\left(h\pp{\psi}{z_j}\right)(p)=\pp{h}{\bar{z}_k}(p)\pp{\psi}{z_j}(p)+h(p)\pppp{\psi}{z_j}{\bar{z}_k}(p).\]
+	于是由\eqref{eq5.3.10}即得
+	\begin{align*}
+		\sum_{j,k=1}^{n}\pppp{\varphi}{z_j}{\bar{z}_k}(p)w_j\bar{w}_k
+		=&2\Re\left\{\sum_{k=1}^{n}\pp{h}{\bar{z}_k}(p)\bar{w}_k\sum_{j=1}^{n}\pp{\psi}{z_j}(p)w_j\right\}+\\
+		&h(p)\sum_{j,k=1}^{n}\pppp{\psi}{z_j}{\bar{z}_k}(p)w_j\bar{w}_k.
+	\end{align*}
+因而当$w\in T_p^\MC(\partial G)$时，就有
+\[L_p(\varphi,w)=h(p)L_p(\psi,w).\]
+因为$h(p)>0$，故$L_p(\varphi,w)$和$L_p(\psi,w)$同时取正值.
+\end{proof}
+这个命题说明域的Levi拟凸性或强拟凸性与定义函数的选取无关.但从证明中可以看出，如果$w$不是取自复切空间$T_p^\MC(\partial G)$，Levi形式的符号有可能随定义函数而异.但在强Levi拟凸的情形，我们总可以选取一个适当的定义函数，使其Levi形式对任意$w\neq0$都取正值.
+\begin{theorem}\label{thm5.3.13}
+	设$G$是$\MC^n$中具有$C^2$边界的有界强Levi拟凸域，则必存在$G$的定义函数$\rho$和正数$\lambda_0$，使得对任意非零的$w\in\MC^n$和$p\in\partial G$，有
+	\begin{equation}\label{eq5.3.11}
+		L_p(\rho,w)\ge\lambda_0|w|^2.
+	\end{equation}
+\end{theorem}
+\begin{proof}
+	根据命题\ref{prop5.3.2}，设$\varphi$是$G$的一个整体定义函数，则对任意$\alpha>0,\rho=\frac1\alpha (\ee^{\alpha\varphi}-1)$也是$G$的一个定义函数.由直接计算可得
+	\[\pppp{\rho}{z_j}{\bar{z}_k}=\alpha\ee^{\alpha\varphi}\pp{\varphi}{z_j}\pp{\varphi}{\bar{z}_k}+\ee^{\alpha\varphi}\pppp{\varphi}{z_j}{\bar{z}_k}.\]
+	固定$p\in\partial G$，则$\varphi(p)=0$，由上式可得
+	\begin{equation}\label{eq5.3.12}
+		L_p(\rho,w)=\left\{L_p(\varphi,w)+\alpha\left|\sum_{j=1}^{n}\pp{\varphi}{z_j}(p)w_j\right|^2\right\}\ee^{\alpha\varphi}.
+	\end{equation}
+用$S$记$\MC^n$中的单位球面，命
+\[A=\{w\in S\colon L_p(\varphi,w)\le0\}.\]
+由于$G$是强Levi拟凸域，且$A$是紧的，所以
+\[\min_{w\in A}\left|\sum_{j=1}^{n}\pp{\varphi}{z_j}(p)w_j\right|>0.\]
+于是必可取到正数$\alpha$，使得
+\[\alpha>-\min_{w\in A} L_p(\varphi,w)\left(\min_{w\in A}\left|\sum_{j=1}^{n}\pp{\varphi}{z_j}(p)w_j\right|\right)^{-2}.\]
+由\eqref{eq5.3.12}知道，这样选取的$\alpha$所产生的$\rho$必有
+\begin{equation}\label{eq5.3.13}
+	L_p(\rho,w)>0
+\end{equation}
+对任意$w\in S$成立.由$L_p(\rho,w)$的连续性，\eqref{eq5.3.13}对$p$附近的点也成立.综上所述，对每个$p\in\partial G$，存在$p$的邻域$U(p)$及相应的$\alpha>0$，使得\eqref{eq5.3.13}对$U(p)$中的点都成立.由于$\partial G$是紧的，故可取到有限个$U(p)$覆盖$\partial G$，每个$U(p)$对应一个$\alpha$，设$\alpha_0$是这有限个$\alpha$中之最大者.取$\rho=\frac1{\alpha_0}(\ee^{\alpha_0\varphi}-1)$，则\eqref{eq5.3.13}对所有$p\in\partial G$成立.由于$\partial G\times S$是紧的，$L_p(\rho,w)$在$\partial G\times S$上有最小值$\lambda_0>0$，因而对任意非零的$w\in\MC^n$及$p\in\partial G$，\eqref{eq5.3.11}成立.
+\end{proof}
+最后，我们来证明Levi拟凸性在双全纯映射下的不变性.
+\begin{prop}\label{prop5.3.14}
+	设$\MC^n$中的域$G$在$p\in\partial G$附近具有$C^2$边界，$U$是$p$的一个邻域.如果$\zeta=F(z)$是$U$上一个双全纯映射，记$D=F(U\cap G)$，那么$D$在$q=F(p)$处是Levi拟凸的充分必要条件是$G$在$p$处是Levi拟凸的.
+\end{prop}
+\begin{proof}
+	设$\varphi$是$G$在$p$附近的定义函数，那么$\psi=\varphi\circ F^{-1}$是$D$在$q$附近的定义函数.用$F'(p)$记双全纯映射$F$在$p$点处的导数，若记$\xi=F'(p)w$，那么从$\varphi(z)=\psi(F(z))$通过直接计算可得
+	\begin{equation}\label{eq5.3.14}
+		\sum_{j=1}^{n}\pp{\varphi}{z_j}(p)w_j=\sum_{j=1}^{n}\pp{\psi}{\zeta_j}(q)\xi_j,
+	\end{equation}
+\begin{equation}\label{eq5.3.15}
+	L_p(\varphi,w)=L_q(\psi,\xi).
+\end{equation}
+若$G$在$p$处是Levi拟凸的，取$\xi\in T_q^\MC(\partial D)$，记$w=(F'(p))^{-1}\xi$，则从\eqref{eq5.3.14}知道$w\in T_p^\MC(\partial G)$，因而$L_p(\varphi,w)\ge0$，从\eqref{eq5.3.15}即得$L_q(\psi,\xi)\ge0$，因而$D$在$q$处是Levi拟凸的.反之亦然.
+\end{proof}
+\section{多重次调和函数\label{sec5.4}}
+\subsection{多重次调和函数的基本性质}
+在下面的讨论中，多重次调和函数的概念起着重要的作用.
+\begin{definition}\label{def5.4.1}
+	设$G$是$\MC^n$中的域，$u$是$G$上的实值函数$u\colon G\to\MR\cup\{-\infty\}(u\not\equiv-\infty)$.如果$u$满足
+	
+	(1)\hypertarget{5.4.1}{}
+	$u$是上半连续的；
+	
+	(2)\hypertarget{5.4.1}{}
+	限制在每条复直线上的$u$都是次调和的，即对每个$z_0\in G$与$a\in\MC^n,u$是$\{z_0+\lambda a\colon\lambda\in\MC\}\cap G$上的单复变数$\lambda$的次调和函数；
+	
+	就称$u$是$G$上的\textbf{多重次调和函数}\index{D!多重次调和函数}.用$PS(G)$记$G$上多重次调和函数的全体\index[symbolindex]{\textbf{函数和映射}!$PS(G)$}.
+\end{definition}
+称$\{z_0+\lambda a\colon\lambda\in\MC\}$是通过$z_0$的以$a$为方向的\textbf{复直线}.
+
+如果$f\in H(G)$，那么$f(z_0+\lambda a)$是$\lambda$的全纯函数.由命题\ref{prop1.5.7}知道$\log|f|$和$|f|^p(0<p<\infty)$都是$G$上的多重次调和函数.
+\begin{prop}\label{prop5.4.2}
+	域$G$上的多重次调和函数一定是次调和函数.
+\end{prop}
+\begin{proof}
+	设$u$是$G$上的多重次调和函数.任取$z_0+rB\subset G$，因为$u(z_0+\lambda\zeta)$是$\lambda$的次调和函数，这里$\zeta\in\partial B$，所以$u(z_0)\le\frac1{2\pi}\int_{-\pi}^{\pi}u(z_0+r\ee^{\ii\theta}\zeta)\dif\theta$，两边对$\zeta$在$\partial B$上积分，利用定理\ref{thm1.4.4}\hyperlink{1.4.4}{(1)}得
+	\[u(z_0)\le\int_{\partial B}\dif\sigma(\zeta)\frac1{2\pi}\int_{-\pi}^{\pi}u(z_0+r\ee^{\ii\theta}\zeta)\dif\theta=\int_{\partial B}u(z_0+r\zeta)\dif\sigma(\zeta).\]
+	由定义\ref{def1.5.9}知道$u$是$G$上的次调和函数.
+\end{proof}
+\begin{prop}\label{prop5.4.3}
+	如果$u$是域$G\subset\MC^n$上的二次连续可微函数，那么$u$在$G$上是多重次调和函数的充分必要条件是$\left(\pppp{u}{z_j}{\bar{z}_l}\right)_{1\le j,l\le n}\ge0$在$G$上成立.
+\end{prop}
+\begin{proof}
+	对于任何复直线$z_0+\lambda a\subset G,a\in\MC^n$，由定理\ref{thm1.5.8}知道，函数$\lambda\to u(z_0+\lambda a)$是次调和函数的充分必要条件是$\pppp{u(z_0+\lambda a)}{\lambda}{\bar{\lambda}}\ge0$，即$\sum\limits_{j,l=1}^n \pppp{u}{z_j}{\bar{z}_l}a_j\bar{a}_l\ge0$，它等价于$\left(\pppp{u}{z_j}{\bar{z}_l}\right)_{1\le j,l\le n}\ge0$.
+\end{proof}
+上面的条件也可以等价地说成$u$的Levi形式
+\[L_p(u,w)\ge0\]
+对所有$p\in G$及$w\in\MC^n$成立.
+\begin{definition}\label{def5.4.4}
+	设$G$是$\MC^n$中的域.如果实值函数$u\in C^2(G)$对$p\in G$及所有$w\in\MC^n(w\neq0)$满足$L_p(u,w)>0$，就称$u$在$p$点是\textbf{强多重次调和的}.如果$u$在$G$中所有点都是强多重次调和的，就称$u$在$G$上是\textbf{强多重次调和函数}\index{D!多重次调和函数!强多重次调和函数}.
+\end{definition}
+例如$u(z)=|z|^2$就是$\MC^n$中的强多重次调和函数.因为$u(z)=\sum_{j=1}^{n}z_j\bar{z}_j,\pppp{u}{z_j}{\bar{z}_k}=\delta_{jk}$，所以$L_p(u,w)=|w|^2>0,w\neq0$对所有$p,w\in\MC^n$成立.
+
+利用强多重次调和函数的概念，定理\ref{thm5.3.13}可叙述为
+\begin{theorem}\label{thm5.4.5}
+	设$G$是$\MC^n$中具有$C^2$边界的有界强Levi拟凸域，则在$\partial G$的邻域$U$上存在$G$的定义函数$\rho$，使得$\rho$在$U$中是强多次调和函数.
+\end{theorem}
+利用命题\ref{prop5.4.3}，可以证明多重次调和函数在全纯映射下是不变的.
+\begin{prop}\label{prop5.4.6}
+	设$G,D$分别是$\MC^n$和$\MC^m$中的域，$F\colon D\to G$是全纯映射.如果$u\in PS(G)\cap C^2(G)$，那么$u\circ F\in PS(D)$.
+\end{prop}
+\begin{proof}
+	通过直接计算知道，对任意$a\in D$有
+	\[L_a(u\circ F,w)=L_{F(a)}(u,F'(a)w).\]
+	因为$u\in PS(G)$，故右端非负，因而左端也非负，所以$u\circ F\in PS(D)$.
+\end{proof}
+这个命题的缺陷是要假定$u\in C^2(G)$.实际上，，没有这个条件结论也成立，但需要用到关于多重次调和函数的逼近定理.为此先证一个引理.
+\begin{lemma}\label{lem5.4.7}
+	设$G$是$\MC^n$中的域.如果$u\in PS(G)$，那么$u\in L^1(G,\loc)$\footnote{$L^1(G,\loc)$是指在$G$的任意紧集上可积函数的全体.}\index[symbolindex]{\textbf{函数和映射}!$L^1(G$，$\loc)$}.特别$\{z\in G\colon u(z)=-\infty\}$的Lebesgue测度为$0$.
+\end{lemma}
+\begin{proof}
+	因为$u\not\equiv-\infty$，所以存在$a\in G,u(a)>-\infty$.取$B(a,r)\subset G$，我们证明$\int_{B(a,r)}u\dif\nu$存在.因为$u$在$B(a,r)$中有上界，所以只须证明$\int_{B(a,r)}u\dif\nu>-\infty$.由命题\ref{prop5.4.2}知道，$u$是次调和函数，再根据命题\ref{prop1.5.10}，即得
+	\[-\infty<u(a)<\int_{B(a,r)}u\dif\nu.\]
+	现设
+	\[E=\{a\in G\colon\text{$u$在$a$的某个邻域中可积}\}.\]
+	显然$E$是开集.由刚才的证明知道$E$不空.今若$a\in G\setminus E$，则由上所证，必有$a$的某个邻域，对这邻域中所有的$z,u(z)=-\infty$.因而$G\setminus E$也是开集.由于$G$是连通的，所以$G=E$.
+\end{proof}
+\subsection{用$C^\infty$的强多重次调和函数逼近多重次调和函数}
+现在可以证明下面的多重次调和函数逼近定理.
+\begin{theorem}\label{thm5.4.8}
+	设$G$是$\MC^n$中的域，$u\in PS(G)$，记
+	\[G_j=\left\{z\in G\colon |z|<j,d(z)>\frac1j\right\},\quad j=1,2,\cdots,\]
+	这里$d(z)=d(z,\partial G)$是$z$到$\partial G$的欧氏距离，则必存在$\{u_j\}\subset C^\infty(G)$，使得
+	
+	(1)\hypertarget{5.4.8}{}
+	$u_j$在$G_j$上是强多重次调和函数；
+	
+	(2)\hypertarget{5.4.8}{}
+	$u_j(z)\ge u_{j+1}(z),z\in G_j$；
+	
+	(3)\hypertarget{5.4.8}{}
+	$\lim_{j\to\infty} u_j(z)=u(z),z\in G$；
+	
+	(4)\hypertarget{5.4.8}{}
+	如果$u$是连续函数，那么\hyperlink{5.4.8}{(3)}的收敛是内闭一致的.
+\end{theorem}
+\begin{proof}
+	命
+	\[\psi(z)=\begin{cases}
+		\ee^{\frac1{|z|^2-1}},&|z|<1,\\
+		0,&|z|\ge1.
+	\end{cases}\]
+记$s=\int_{\MC^n} \psi(z)\dif m(z),\chi(z)=\frac1s \psi(z)$，则$\chi$有下列性质：
+
+(a) $\chi\ge0$；
+
+(b) $\supp\chi=\{z\colon|z|\le1\}$；
+
+(c) $\chi\in C_0^\infty(\MC^n)$；
+
+(d) $\int_{\MC^n}\chi\dif m=1$；
+
+(e) $\chi$是径向函数\index{J!径向函数}，即若$|z|=|w|$，则$\chi(z)=\chi(w)$.
+
+因为$G_j\subset\subset G$，由引理\ref{lem5.4.7}，$u\in L^1(G_j),j=1,2,\cdots$.命
+\[v_j(z)=\int_{G_j}u(\zeta)\chi(j(z-\zeta))j^{2n}\dif m(\zeta).\]
+因为$\chi$在整个$\MC^n$上有定义，所以$v_j$也在$\MC^n$中有定义，且$v_j\in C^\infty(\MC^n)$.因为当$z\in G_j,|\xi|<1$时，$z-\frac1j \xi\in G$，所以在对上面的积分作线性变换$\xi=j(z-\zeta)$后，$v_j$可表示为
+\begin{equation}\label{eq5.4.1}
+	v_j(z)=\int_{|\xi|<1}u\left(z-\frac{\xi}{j}\right)\chi(\xi)\dif m(\xi),\quad z\in G_j.
+\end{equation}
+我们要证明$v_j\in PS(G_j)$，即要证明对任意$a\in G_j,w\in\MC^n,v_j(a+\lambda w)$是$\lambda$的次调和函数.因为$u(a+\lambda w)$是$\lambda$的次调和函数，所以
+\[u(a)\le\frac1{2\pi}\int_{0}^{2\pi}u(a+r\ee^{\ii\theta}w)\dif\theta.\]
+于是
+\begin{align*}
+	v_j(a)
+	&=\int_{|\xi|<1}u\left(a-\frac{\xi}{j}\right)\chi(\xi)\dif m(\xi)\\
+	&\le\int_{|\xi|<1}\chi(\xi)\left\{\frac1{2\pi}\int_{0}^{2\pi}u\left(a-\frac{\xi}{j}+r\ee^{\ii\theta}w\right)\dif\theta\right\}\dif m(\xi)\\
+	&=\frac1{2\pi}\int_{0}^{2\pi}\left\{\int_{|\xi|<1}u\left(a-\frac{\xi}{j}+r\ee^{\ii\theta}w\right)\chi(\xi)\dif m(\xi)\right\}\dif\theta\\
+	&=\frac1{2\pi}\int_{0}^{2\pi}v_j(a+r\ee^{\ii\theta}w)\dif\theta.
+\end{align*}
+这就证明了$v_j\in PS(G_j)$.把等式\eqref{eq5.4.1}改写成
+\begin{align}\label{eq5.4.2}
+	v_j(z)
+	&=\int_{|\xi|<1}\left\{\frac1{2\pi}\int_{0}^{2\pi} u\left(z-\frac{\ee^{\ii\theta}}{j}\xi\right)\chi(\ee^{\ii\theta}\xi)\dif\theta\right\}\dif m(\xi)\notag\\
+	&=\int_{|\xi|<1}\left\{\frac1{2\pi}\int_{0}^{2\pi} u\left(z-\frac{\ee^{\ii\theta}}{j}\xi\right)\dif\theta\right\}\chi(\xi)\dif m(\xi),
+\end{align}
+这里我们已经利用了$\chi$是径向函数的性质.由于$u(z-\lambda\xi)$是$\lambda$的次调和函数，由定理\ref{thm1.5.6}，
+\[\frac1{2\pi}\int_{0}^{2\pi}u(z-r\ee^{\ii\theta}\xi)\dif\theta\]
+是$r$的递增函数，因而由\eqref{eq5.4.2}即得$v_j(z)\ge v_{j+1}(z)$.从\eqref{eq5.4.2}还能得到
+\begin{equation}\label{eq5.4.3}
+	v_j(z)\ge u(z)\int_{|\xi|<1}\chi(\xi)\dif m(\xi)=u(z).
+\end{equation}
+由$u$的上半连续性，对于任给的$\varepsilon>0$，存在$\delta>0$，当$|\eta-z|<\delta$时，$u(\eta)<u(z)+\varepsilon$.现取$j>\frac1\delta$，当$|\xi|<1$时，$\left|z-\frac{\xi}{j}-z\right|<\delta$，因而$u\left(z-\frac{\xi}{j}\right)<u(z)+\varepsilon$.于是，从\eqref{eq5.4.1}和\eqref{eq5.4.3}即得
+\begin{equation}\label{eq5.4.4}
+	u(z)\le v_j(z)<u(z)+\varepsilon.
+\end{equation}
+为了得到需要的$u_j(z)$，现在只须命
+\begin{equation}\label{eq5.4.5}
+	u_j(z)=v_j(z)+\frac1j |z|^2.
+\end{equation}
+那么对任意$a\in G_j$，
+\[L_a(u_j,w)=L_a(v_j,w)+\frac1j |w|^2\ge\frac1j |w|^2,\]
+所以$u_j\in C^\infty(G)$，而且是强多重次调和函数，这就是\hyperlink{5.4.8}{(1)}.此外，
+\[u_j(z)=v_j(z)+\frac1j |z|^2\ge v_{j+1}+\frac1{j+1}|z|^2=u_{j+1}(z),\]
+这就是\hyperlink{5.4.8}{(2)}.从\eqref{eq5.4.4}和\eqref{eq5.4.5}即得
+\[\lim_{j\to\infty} u_j(z)=\lim_{j\to\infty}v_j(z)=u(z),\]
+这就是\hyperlink{5.4.8}{(3)}.当$u$是连续函数时，由于$u_j$单调下降，故由Dini定理，\hyperlink{5.4.8}{(3)}的收敛是内闭一致的，这就是\hyperlink{5.4.8}{(4)}.
+\end{proof}
+这个定理说明，域$G$上任意一个多重次调和函数，可以用一列$C^\infty$的强多重次调和函数来逼近，这是一个很有用的定理.我们先用它来去掉命题\ref{prop5.4.6}中$u\in C^2(G)$的限制，为此还需要一个引理.
+\begin{lemma}\label{lem5.4.9}
+	设$G$是$\MC$中的域，$u_j(j=1,2,\cdots)$是$G$上一列次调和函数.如果$u_j$单调下降趋于$u$，那么$u$也是$G$上的次调和函数.
+\end{lemma}
+\begin{proof}
+	如果我们能证明，对任意紧域$K\subset\subset G$及任意在$K$上连续，$K$内调和的实值函数$h$.如果$u(z)\le h(z)$在$\partial K$上成立，那么在$K$内也有$u(z)\le h(z)$.那么由定理\ref{thm1.5.5}即知$u$是$G$上的次调和函数.对任意给定的$\varepsilon>0$，命
+	\[E_j=\{z\in\partial K\colon u_j(z)\ge h(z)+\varepsilon\},\]
+	则$E_j$是$\partial K$上的闭子集.因为$u_j$单调下降，所以$E_{j+1}\subset E_j$，而且$\bigcap_{j=1}^\infty E_j=\varnothing$.不然的话，如果有$a\in\bigcap_{j=1}^\infty E_j$，则对所有的$j$有$u_j(a)\ge h(a)+\varepsilon$，让$j\to\infty$得$u(a)\ge h(a)+\varepsilon$，这和假定$u(z)\le h(z)(z\in\partial K)$不符.据此，我们断言，必定存在某个自然数$l$，使得$E_l$是空集.否则所有的$E_1,E_2,\cdots$都不是空集，取$p_j\in E_j(j=1,2,\cdots)$，因$E_{j+1}\subset E_j$，所以$\{p_m,p_{m+1},\cdots\}\subset E_m\subset\partial K$.由于$\partial K$是紧的，故$\{p_j\}$有收敛的子列，不妨设$\lim_{j\to\infty} p_j=p$.因为每个$E_m$都是闭集，而且当$k\ge m$时，$p_k\in E_m$，所以$p\in E_m$对$m=1,2,\cdots$都成立，即$p\in\bigcap_{j=1}^\infty E_j$，这和前面已证的$\bigcap_{j=1}^\infty E_j$是开集相矛盾.由于$E_l$是空集，故当$z\in\partial K$时，$u_l(z)<h(z)+\varepsilon$.由于$u_l$是次调和函数，故在$K$上也有$u_l(z)<h(z)+\varepsilon$，让$l\to\infty$，即得$u(z)\le h(z)+\varepsilon$，再让$\varepsilon\to0$，即得$u(z)\le h(z)$在$K$上成立.
+\end{proof}
+现在可以证明
+\begin{theorem}\label{thm5.4.10}
+	设$G,D$分别是$\MC^n$和$\MC^m$中的域，$F\colon D\to G$是全纯映射.如果$u\in PS(G)$，那么$u\circ F\in PS(D)$.
+\end{theorem}
+\begin{proof}
+	取$Q\subset\subset D$，记$F(Q)=K$，则$K\subset\subset G$.取充分大的$j$，使得$K\subset G_j$.根据定理\ref{thm5.4.8}，存在$u_j\in PS(G_j)\cap C^\infty(G)$，使得$u_j$单调下降趋于$u$.由命题\ref{prop5.4.6}，$u_j\circ F\in PS(Q)$，而$u_j\circ F$单调下降趋于$u\circ F$.故由引理\ref{lem5.4.9}，$u\circ F\in PS(Q)$，即$u\circ F\in PS(D)$.
+\end{proof}
+\section{拟凸域\label{sec5.5.1}}
+\subsection{拟凸域的定义}
+在\ref{sec5.3}讨论域的Levi拟凸性时，是以域具有$C^2$边界为前提的.这一节我们要对不具有$C^2$边界的域来讨论它的拟凸性.为此先引进穷竭函数的概念.
+\begin{definition}\label{def5.5.1}
+	设$G$是$\MC^n$中的域，$\varphi$是定义在$G$上的实值函数.如果对任意实数$c$，均有
+	\begin{equation}\label{eq5.5.1}
+		\{z\in G\colon\varphi(z)\le c\}\subset\subset G,
+	\end{equation}
+就称$\varphi$是$G$的\textbf{穷竭函数}\index{Q!穷竭函数}.
+\end{definition}
+容易看出，如果$\varphi$是$G$的一个穷竭函数，那么当$z\to\partial G$时，$\varphi(z)\to\infty$.如果$G$是有界域，那么满足这个条件的函数一定是$G$的穷竭函数.
+
+由于当$z\to\partial G$时，$-\log d(z)\to\infty$，所以当$G$是有界域时，$-\log d(z)$便是它的一个穷竭函数.
+\begin{definition}\label{def5.5.2}
+	如果在域$G\subset\MC^n$上存在连续的多重次调和穷竭函数\index{D!多重次调和函数!多重次调和穷竭函数}，就称$G$是\textbf{拟凸域}\index{Y!域!拟凸域}.
+\end{definition}
+这样定义的拟凸域不需要假定它具有$C^2$边界，这是Levi拟凸域概念的一种推广.但要说明这种推广是合理的，必须能证明，当$G$具有$C^2$边界时，Levi拟凸域和现在定义的拟凸域概念是一致的.
+\begin{definition}\label{def5.5.3}
+	设$G$是$\MC^n$中的域,，$D$是$\MC$中一个开圆盘.如果对任意一列在$\bar{D}$上连续、在$D$上全纯的映射
+	\[\varphi_l\colon \bar{D}\to G,\quad l=1,2,\cdots\]
+	均能从$\bigcup_{j=1}^\infty \varphi_l(\partial D)\subset\subset G$推出$\bigcup_{j=1}^\infty\varphi_l(D)\subset\subset G$，就称$G$具有\textbf{圆盘性质}\index{J!具有圆盘性质的域}，或称$G$满足\textbf{连续性原理}.
+\end{definition}
+具有圆盘性质的域有些什么性质？
+\begin{theorem}\label{thm5.5.4}
+	若$\MC^n$中的域$G$具有圆盘性质，则$-\log d(z)$是$G$上的多重次调和函数，这里$d(z)=d(z,\partial G)$.
+\end{theorem}
+\begin{proof}
+	如果$-\log d(z)$不是多重次调和函数，则必存在$a\in G$和$b\in\MC^n$，使得$-\log d(a+\lambda b)$不是$\lambda=0$附近的次调和函数.为讨论简单起见，不妨设$a=0,b=e_1=(1,0,\cdots,0)$.因而$-\log d(\lambda,0,\cdots,0)$不是$\lambda=0$附近的次调和函数.于是，存在$r>0$，使得
+	\[-\log d(0)>\frac1{2\pi}\int_{0}^{2\pi}-\log d(r\ee^{\ii\theta},0,\cdots,0)\dif\theta.\]
+	记$D_r=\{\lambda\in\MC\colon|\lambda|<r\}$.存在在$\bar{D}_r$上连续、在$D_r$中调和的函数$h$，使得在$\partial D_r$上有$h(r\ee^{\ii\theta})=-\log d(r\ee^{\ii\theta},0,\cdots,0)$.再作$f\in H(D_r)\cap C(\bar{D}_r)$，使得在$D_r$上有
+	\[\Re f(\lambda)=h(\lambda),\quad \Im f(0)=0.\]
+	由中值公式，
+	\begin{align*}
+		\Re f(0)
+		&=h(0)=\frac1{2\pi}\int_{0}^{2\pi}h(r\ee^{\ii\theta})\dif\theta\\
+		&=\frac1{2\pi}\int_{0}^{2\pi}-\log d(r\ee^{\ii\theta},0,\cdots,0)\dif\theta<-\log d(0).
+	\end{align*}
+即$\varepsilon=-\log d(0)-\Re f(0)>0$，并命$g=f+\varepsilon$，于是
+\begin{equation}\label{eq5.5.2}
+	\Re g(r\ee^{\ii\theta})=h(r\ee^{\ii\theta})+\varepsilon=-\log d(r\ee^{\ii\theta},0,\cdots,0)+\varepsilon,
+\end{equation}
+\begin{equation}\label{eq5.5.3}
+	\Re g(0)=h(0)+\varepsilon=-\log d(0),\quad \Im g(0)=\Im f(0)=0.
+\end{equation}
+选取$\zeta\in\partial G$，使得$d(0)=d(0,\zeta)=|\zeta|$.作一列映射
+\begin{equation}\label{eq5.5.4}
+	\varphi_l(\lambda)=\lambda e_1+\left(1-\frac1l\right)\ee^{-g(\lambda)}\frac{\zeta}{|\zeta|},l=1,2,\cdots,
+\end{equation}
+它在$\bar{D}_r$上连续、在$D_r$上全纯，且当$\lambda\in\partial D_r$时，由\eqref{eq5.5.2}可得
+\[|\varphi_l(\lambda)-\lambda e_1|<|\ee^{-g(\lambda)}|=\ee^{-\Re g(\lambda)}=\ee^{-\varepsilon}d(\lambda e_1),\]
+这说明$\varphi_l(r\ee^{\ii\theta})$落在以$r\ee^{\ii\theta}e_1$为球心，$\ee^{-\varepsilon}d(r\ee^{\ii\theta}e_1)$为半径的球内，即$\varphi_l(\partial D_r)\subset G$，而且$\bigcup_{l=1}^\infty \varphi_l(\partial D_r)\subset\subset G$.但若在\eqref{eq5.5.4}中取$\lambda=0$，并注意到\eqref{eq5.5.3}，即得
+\[\lim_{l\to\infty}\varphi_l(0)=\ee^{-g(0)}\frac{\zeta}{|\zeta|}=d(0)\frac{\zeta}{|\zeta|}=\zeta\in\partial G.\]
+因而$\bar{\bigcup_{l=1}^\infty \varphi_l(D_r)}$不是$G$中的紧集，这和$G$具有圆盘性质相矛盾.
+\end{proof}
+什么样的域具有圆盘性质？
+\begin{theorem}\label{thm5.5.5}
+	$\MC^n$中的全纯域具有圆盘性质.
+\end{theorem}
+\begin{proof}
+	设$G$是$\MC^n$中的全纯域.由Cartan-Thullen定理，它是全纯凸域.设$\{\varphi_l\}$是任意一列在圆盘$\bar{D}$上连续、在$D$内全纯的映射，且$\bigcup_{l=1}^\infty \varphi_l(\partial D)\subset\subset G$，记$K=\bigcup_{l=1}^\infty \varphi_l(\partial D)$.我们要证明$\bigcup_{l=1}^\infty \varphi_l(D)\subset\widehat{K}$.为此，任取$z\in\bigcup_{l=1}^\infty \varphi_l(D)$，则有$l_0$，使得$z\in\varphi_{l_0}(D)$，因而有$\lambda_0\in D$，使得$z=\varphi_{l_0}(\lambda_0)$.任取$f\in H(G)$，
+	\[|f(z)|=|f(\varphi_{l_0}(\lambda_0))|\le\sup_{\lambda\in\partial D}|f(\varphi_{l_0}(\lambda))|\le\sup_{w\in K}|f(w)|.\]
+	这正好说明$z\in\widehat{K}$.于是，从$\widehat{K}\subset\subset G$即得$\bigcup_{l=1}^\infty \varphi_l(D)\subset\subset G$，即$G$具有圆盘性质.
+\end{proof}
+综合定理\ref{thm5.5.4}和定理\ref{thm5.5.5}，我们有
+\begin{theorem}\label{thm5.5.6}
+	如果$G$是$\MC^n$中的全纯域，那么$-\log d(z)$是$G$上的多重次调和函数.
+\end{theorem}
+现在给出$G$是拟凸域的特征.
+\begin{theorem}\label{thm5.5.7}
+	$G$是$\MC^n$中的拟凸域的充分必要条件是$G$具有圆盘性质.
+\end{theorem}
+\begin{proof}
+	充分性\quad 如果$G$具有圆盘性质，由定理\ref{thm5.5.4}知道，$-\log d(z)$是$G$上的连续的多重次调和函数.于是，当$G$有界时，$-\log d(z)$便是$G$上一个连续的多重次调和穷竭函数，所以$G$是拟凸域.如果$G$无界，取
+	\[\varphi(z)=|z|^2-\log d(z),\]
+	由于$|z|^2$和$-\log d(z)$都是多重次调和函数，所以$\varphi$也是多重次调和函数，且$\{z\in G\colon |z|^2-\log d(z)\le c\}$是有界集，所以$\varphi$是$G$的连续的多重次调和穷竭函数，故$G$为拟凸域.
+	
+	必要性\quad 若$G$是拟凸域，设$\varphi$是$G$上一个连续的多重次调和穷竭函数.设$F_l\colon\bar{D}_l\to G,l=1,2,\cdots,D$是$\MC$中一个圆盘，$F_l\in H(D)\cap C(\bar{D})$，且有$\bigcup_{l=1}^\infty F_l(\partial D)\subset\subset G$.因为$\bar{\bigcup_{l=1}^\infty F_l(\partial D)}$是紧集，故存在常数$c_0$，使得当$z\in\bar{\bigcup_{l=1}^\infty F_l(\partial D)}$时，$\varphi(z)\le c_0$.由$F_l\in H(D)$，从定理\ref{thm5.4.10}知道$\varphi\circ F_l$是$D$上的次调和函数.根据次调和函数的极值原理，当$z\in\bigcup_{l=1}^\infty F_l(D)$时，也有$\varphi(z)\le c_0$，即
+	\[\bigcup_{l=1}^\infty F_l(D)\subset\{z\in G\colon\varphi(z)\le c_0\}.\]
+	但由穷竭函数的定义，上式右端相对于$G$是紧的，因而
+	\[\bigcup_{l=1}^\infty F_l(D)\subset\subset G.\]
+	即$G$具有圆盘性质.
+\end{proof}
+\subsection{拟凸域是Levi拟凸域的推广}
+现在可以证明
+\begin{theorem}\label{thm5.5.8}
+	如果$\MC^n$中的有界域$G$具有$C^2$边界，那么$G$是拟凸域的充分必要条件是$G$是Levi拟凸域.
+\end{theorem}
+\begin{proof}
+	必要性\quad 设$G$是$\MC^n$中的拟凸域.由定理\ref{thm5.5.7}知道，$G$具有圆盘性质，再由定理\ref{thm5.5.4}，$-\log d\in PS(G)$.由于$G$是具有$C^2$边界的有界域，故存在$\partial G$的邻域$U$，使得$d(z)\in C^2(U)$（注意，这一事实看起来颇为明显，证明起来并不容易，这儿我们不再给出证明，有兴趣的读者可参阅\cite[p.164习题4]{krantz2001function}）.根据命题\ref{prop5.4.3}可得
+	\begin{equation}\label{eq5.5.5}
+		L_z(-\log d,w)\ge0,z\in U,w\in\MC^n.
+	\end{equation}
+取$G$的定义函数如下：
+\begin{equation}\label{eq5.5.6}
+	r(z)=\begin{cases}
+		-d(z), &z\in G,\\
+		0, &z\in\partial G,\\
+		d(z,G), &z\in\MC^n\setminus G.
+	\end{cases}
+\end{equation}
+由于
+\begin{align*}
+	\pppp{(-\log d(z))}{z_j}{\bar{z}_k}
+	&=-\frac1{d(z)}\pppp{d(z)}{z_j}{\bar{z}_k}+\frac1{d^2(z)}\pp{d(z)}{z_j}\pp{d(z)}{\bar{z}_k}\\
+	&=-\frac1{r(z)}\pppp{r(z)}{z_j}{\bar{z}_k}+\frac1{r^2(z)}\pp{r(z)}{z_j}\pp{r(z)}{\bar{z}_k}.
+\end{align*}
+	所以
+	\[L_z(-\log d,w)=-\frac1{r(z)}L_z(r,w)+\frac1{r^2(z)}\left|\sum_{j=1}^{n}\pp{r(z)}{z_j}w_j\right|^2.\]
+	对于给定的$z$，取$w\in\MC^n$，使之满足$\sum_{j=1}^{n}\pp{r(z)}{z_j}w_j=0$.于是，从\eqref{eq5.5.5}可得
+	\[L_z(r,w)\ge0,\quad \text{$w$满足$\sum_{j=1}^{n}\pp{r(z)}{z_j}w_j=0.$}\]
+	让$z\to p\in\partial G$，上式变成
+	\[L_p(r,w)\ge0,\quad w\in T_p^\MC(\partial G).\]
+	这就证明了$G$是Levi拟凸域.
+	
+	充分性\quad 如果$G$是Levi拟凸域，我们证明$-\log d(z)$在边界附近是多重次调和函数.如果不是这样，则必存在$z_0\in G$，及$a\in\MC^n$，使得
+	\begin{equation}\label{eq5.5.7}
+		C=\pppp{\log d(z_0+\lambda a)}{\lambda}{\bar{\lambda}}\bigg|_{\lambda=0}>0.
+	\end{equation}
+这里我们应用了定理\ref{thm1.5.8}.在$\partial G$上取点$\zeta_0$，使得
+\[d(z_0,\zeta_0)=|\zeta_0-z_0|=d(z_0).\]
+我们将证明存在$w\in T_{\zeta_0}^\MC(\partial G)$，使得$L_{\zeta_0}(r,w)<0$，这里$r$是\eqref{eq5.5.6}式定义的$G$的定义函数，这就和$G$的Levi拟凸性相矛盾了.把$\log d(z_0+\lambda a)$在$\lambda=0$处展开得
+\begin{equation}\label{eq5.5.8}
+	\log d(z_0+\lambda a)=\log d(z_0)+\Re(A\lambda+B\lambda^2)+C|\lambda|^2+O(|\lambda|^3),
+\end{equation}
+这里
+\[A=\frac12\sum_{j=1}^{n}\pp{\log d(z_0)}{z_j}a_j,\quad B=\sum_{j,k=1}^{n}\pppp{\log d(z_0)}{z_j}{z_k}a_ja_k,\]
+$C$就是表达式\eqref{eq5.5.7}.由\eqref{eq5.5.8}可得
+\begin{align}\label{eq5.5.9}
+	d(z_0+\lambda a)
+	&=d(z_0)\ee^{\Re(A\lambda+B\lambda^2)}\ee^{C|\lambda|^2+O(|\lambda|^3)}\notag\\
+	&=d(z_0)\left|\ee^{A\lambda+B\lambda^2}\right|(1+C|\lambda|^2+O(|\lambda|^3)).
+\end{align}
+命$z(\lambda)=z_0+a\lambda+(\zeta_0-z_0)\ee^{A\lambda+B\lambda^2}$，由三角不等式有
+\begin{align*}
+	|\zeta_0-z_0|\,\left|\ee^{A\lambda+B\lambda^2}\right|
+	&=d(z(\lambda),z_0+\lambda a)\\
+	&\ge d(z_0+\lambda a)-d(z(\lambda)),
+\end{align*}
+所以由\eqref{eq5.5.9}得
+\begin{align*}
+	d(z(\lambda))
+	&\ge d(z_0+\lambda a)-d(z_0)\left|\ee^{A\lambda+B\lambda^2}\right|\\
+	&=d(z_0)\left|\ee^{A\lambda+B\lambda^2}\right|(C|\lambda|^2+O(|\lambda|^3)).
+\end{align*}
+由于$C>0$，所以当$\lambda$充分小，但$\lambda\neq0$时，有$d(z(\lambda))>0$，即$z(\lambda)\in G$；而当$\lambda=0$时，有$d(z(0))=d(\zeta_0)=0$.所以函数$d(z(\lambda))$在$\lambda=0$处取极小值，因而有
+\begin{equation}\label{eq5.5.10}
+	\pp{}{\lambda}d(z(\lambda))\bigg|_{\lambda=0}=0.
+\end{equation}
+把$d(z(\lambda))$在$\lambda=0$处展开，由于零次项和一次项都等于$0$，而$d(z(\lambda))>0$，所以有
+\begin{equation}\label{eq5.5.11}
+	\pppp{}{\lambda}{\bar{\lambda}}d(z(\lambda))\bigg|_{\lambda=0}>0.
+\end{equation}
+由于$r(z)=-d(z)$是$G$的定义函数，从\eqref{eq5.5.10}和\eqref{eq5.5.11}得
+\[0=-\pp{d(z(\lambda))}{\lambda}\bigg|_{\lambda=0}=\pp{r(z(\lambda))}{\lambda}\bigg|_{\lambda=0}=\sum_{j=1}^{n}\pp{r(\zeta_0)}{z_j}\pp{z_j(0)}{\lambda},\]
+\[0>-\pppp{d(z(\lambda))}{\lambda}{\bar{\lambda}}\bigg|_{\lambda=0}=\pppp{r(z(\lambda))}{\lambda}{\bar{\lambda}}\bigg|_{\lambda=0}=\sum_{j,l=1}^{n}\pppp{r(\zeta_0)}{z_j}{\bar{z}_l}\pp{z_j(0)}{\lambda}\bar{\pp{z_l(0)}{\lambda}}.\]
+取$w_j=\pp{z_j(0)}{\lambda},j=1,2,\cdots,n$，就得到了矛盾.这样我们证明了$-\log d(z)$在$\partial G$附近是多重次调和函数.因为$G$是有界域，所以$-\log d(z)$便是$G$的一个连续的多重次调和穷竭函数，所以$G$是拟凸域.
+\end{proof}
+现在很容易证明下面的
+\begin{theorem}\label{thm5.5.9}
+	$\MC^n$中的全纯域一定是拟凸域.
+\end{theorem}
+\begin{proof}
+	由定理\ref{thm5.5.5}知道，全纯域具有圆盘性质.再由定理\ref{thm5.5.7}，具有圆盘性质的域一定是拟凸域，因而全纯域必是拟凸域.
+\end{proof}
+一个自然的问题是：拟凸域是否一定是全纯域？这是Levi在1910年提出的问题.他首先就一些特殊情形证明上面问题的答案是肯定的.一般的情形就成了有名的Levi猜测.到1942年，Oka解决了$n=2$的情形，1954年，Oka\index{O!Oka, K.}，Norguet\index{N!Norguet, F.}和Bremermann\index{B!Bremermann, H}同时解决了这个问题.复流形上的Levi问题是由Grauert\index{G!Grauert, H.}在1958年用层论的方法解决的.到20世纪60年代中期，Kohn\index{K!Kohn, J. J.}，H\"ormander\index{H!H\"ormander, L.}等用$\bar{\partial}$算子的$L^2$估计解决了Levi问题.因此，Levi问题长期以来对多复变的发展起着重要的影响.下一章中我们将用$\bar{\partial}$算子的$L^2$估计来解决Levi问题，即给出拟凸域一定是全纯域的证明.
+\subsection{拟凸域上存在$C^\infty$的强多重次调和穷竭函数}
+在下一章的讨论中，我们要用到拟凸域的一个深刻的性质.按照定义\ref{def5.5.2}，拟凸域上存在连续的多重次调和穷竭函数.实际上，我们可由这个连续的多重次调和穷竭函数出发，构造出一个$C^\infty$的强多重次调和穷竭函数.
+\begin{theorem}\label{thm5.5.10}
+	设$G$是$\MC^n$中的拟凸域，则在$G$上存在$C^\infty$的强多重次调和穷竭函数.
+\end{theorem}
+\begin{proof}
+	根据拟凸域的定义，在$G$上存在连续的多重次调和穷竭函数，设其为$u$.命
+	\[G_j=\{z\colon z\in G,u(z)\le j\},\quad j=0,1,2,\cdots\]
+	则$G_j\subset\subset G$.记$\delta_j=\frac12 d(G_j,\MC^n\setminus G)$，则$\delta_j\to0$.命
+	\[v_j(z)=\int_{|\xi|<1}u(z-\delta_j\xi)\chi(\xi)\dif m(\xi),\]
+	这里$\chi$如定理\ref{thm5.4.8}所示.再命
+	\[u_j(z)=v_j(z)+\delta_j |z|^2,\quad j=0,1,2,\cdots\]
+	那么和定理\ref{thm5.4.8}的证法一样，可以证明$u_j$是$G_j$上的$C^\infty$的强多重次调和函数，而且满足不等式
+	\[u(z)\le u_j(z)< u(z)+1,\quad j=0,1,2,\cdots\]
+	
+	现取$\varphi\in C^\infty(\MR)$，使得$\varphi$是递增的凸函数，当$t\le0$时，$\varphi(t)=0$；当$t>0$时，$\varphi'(t)>0$.现用归纳法证明，对于给定的自然数$k$，一定能找到正数$a_1,\cdots,a_k$，使得在$G_k$上有
+	\[\psi_k=\varphi(u_0+1)+\sum_{j=1}^{k}a_j\varphi(u_j(z)+1-j)\ge u(z),\]
+	且$\psi_k$是$C^\infty$的强多重次调和函数.当$z\in G_0$时，$u(z)\le0$，而$\varphi(u_0+1)\ge0$，故在$G_0$上有$\varphi(u_0+1)\ge u$.显然，$\varphi(u_0+1)$在$G_0$上是$C^\infty$的强多重次调和函数.若已经选出$a_1,\cdots,a_{k-1}$，使得$\psi_{k-1}=\varphi(u_0+1)+\sum_{j=1}^{k-1}a_j\varphi(u_j(z)+1-j)\ge u(z)$在$G_{k-1}$上成立，且$\psi_{k-1}$是$G_{k-1}$上的$C^\infty$强多重次调和函数.写$\psi_k(z)=\psi_{k-1}(z)+a_k\varphi(u_k+1-k)$，这里$a_k$待定，因为$G_k=(G_k\setminus G_{k-1})\cup G_{k-1}$，显然，当$z\in G_{k-1}$时，$\psi_k(z)\ge u(z)$成立.当$z\in G_k\setminus G_{k-1}$时，有$k-1<u(z)\le u_k(z)$，因而可选择充分大的$a_k$，使得$a_k\varphi(u_k+1-k)\ge u$成立.而$\psi_{k-1}$在$G_k\setminus G_{k-1}$上非负，因而在$G_k\setminus G_{k-1}$上也有$\psi_k(z)\ge u(z)$.同样道理，$\psi_k$在$G_k$上也是$C^\infty$的强多重次调和函数.今设$K$是$G$中任意紧集，则必存在$m>0$，使得$K\subset G_m$.于是，当$j\ge m+2,z\in K\subset G_m$时有
+	\[u_j(z)+1-j<u(z)+2-j<m+2-j\le0,\]
+	因而$\varphi(u_j(z)+1-j)=0$，所以有
+	\[\psi_j(z)=\psi_{m+1}(z),j>m+1,z\in K.\]
+	这说明$\{\psi_k\}$在$G$的任意紧子集上一致收敛，若记$\psi(z)=\lim_{k\to\infty}\psi_k(z)$，则$\psi$就是$G$上的$C^\infty$强多重次调和穷竭函数.
+\end{proof}
+综合\ref{sec5.4}和\ref{sec5.5.1}中的结果，我们已经证明了
+\begin{theorem}\label{thm5.5.11}
+	设$G$是$\MC^n$中的域，那么下列五条性质等价：
+	
+	(1)\hypertarget{5.5.11}{}
+	$G$是拟凸域；
+	
+	(2)\hypertarget{5.5.11}{}
+	$G$具有圆盘性质；
+	
+	(3)\hypertarget{5.5.11}{}
+	$G$是全纯域；
+	
+	(4)\hypertarget{5.5.11}{}
+	$G$上存在$C^\infty$的强多重次调和穷竭函数；
+	
+	(5)\hypertarget{5.5.11}{}
+	$-\log d(z)$是$G$上的多重次调和函数；
+
+如果$G$是具有$C^2$边界的有界域，那么上述五条性质和下面的性质等价：
+	
+	(6)\hypertarget{5.5.11}{}
+	$G$是Levi拟凸域.
+\end{theorem}
+\begin{proof}
+	各条性质之间的推导关系如下图所示：
+	
+	\noindent\begin{minipage}{1\textwidth}
+		\centering
+		\begin{tikzpicture}[->,>=stealth',auto,node distance=8em, thick]
+			\node (A) {\hyperlink{5.5.11}{(1)}};
+			\node (B) [right of=A] {\hyperlink{5.5.11}{(2)}};
+			\node (C) [left of=A] {\hyperlink{5.5.11}{(3)}};
+			\node (D) [below left of=A] {\hyperlink{5.5.11}{(4)}};
+			\node (E) [below right of=A]
+			{\hyperlink{5.5.11}{(5)}};
+			\node (F) [above of=A]
+			{\hyperlink{5.5.11}{(6)}};
+			
+			\draw (A.200) -- (C.-20) ;
+			\draw (C.20) -- (A.160) node[midway, above] {定理\ref{thm5.5.9}};
+			\draw (A) -- (B) node[midway, above] {定理\ref{thm5.5.7}};
+			\draw (B) -- (A) ;
+			\draw (A) -- (D) node[midway,above,rotate=44] {定理\ref{thm5.5.10}};
+			\draw (D) -- (A) ;
+			\draw (E) -- (A) ;
+			\draw (B) -- (E) node[midway, below right] {定理\ref{thm5.5.4}};
+			\draw (A) -- (F) node[midway, right] {定理\ref{thm5.5.8}};
+			\draw (F) -- (A) ;
+		\end{tikzpicture}
+	\end{minipage}
+
+\hyperlink{5.5.11}{(5)}$\to$\hyperlink{5.5.11}{(1)}的证明已蕴涵在定理\ref{thm5.5.7}中，唯有\hyperlink{5.5.11}{(1)}$\to$\hyperlink{5.5.11}{(3)}的证明将留待第\ref{chap6}章.
+\end{proof}
+
+\section*{注记}\addcontentsline{toc}{section}{注记}
+\ref{sec5.1}和\ref{sec5.2}的结果主要都是由 H. Cartan 和 P. Thullen\cite{cartan1932theorie} 得到的.在两个变数的情况下，全纯域满足Levi条件这一事实是由 E. E. Levi 在1910年证明的.1933年 J. Krzoska 在他的博士论文中把它推广到$n$个变数.定理\ref{thm5.3.13}是 J. J. Kohn\cite{kohn1963harmonic}在1963年证明的.两个变数的多重次调和函数的概念首先是由 Oka\cite{oka1984collected} 在1941年引进的，1953年他把它推广到$n$个变数的情形，当时 Oka 把这种函数叫做拟凸函数.1945年 P. Lelong\cite{lelong1945fonctions}又独立地引入了多重次调和函数的概念，他称这种函数为多重次调和函数，一直沿用至今.\ref{sec5.4}中关于多重次调和函数的性质大部分是由他们得到的.关于多重次调和函数和实的凸函数之间的相似性，有兴趣的读者可参阅\cite{bremermann1956complex}.$-\log d(z)$在拟凸域上的多重次调和性（定理\ref{thm5.5.11}\hyperlink{5.5.11}{(1)}$\to$\hyperlink{5.5.11}{(5)}）首先是由Oka\cite{oka1984collected}在$\MC^2$中证明的.一般的情形由 Oka\cite[155$\sim$157]{oka1984collected}，P. Lelong\cite{lelong1952convexite} 和H. Bremermann\cite{bremermann1956complex}所证明.
